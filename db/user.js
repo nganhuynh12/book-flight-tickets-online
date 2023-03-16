@@ -97,10 +97,27 @@ const updateUserById = (id, user) => {
   });
 };
 
+const deleteUserById = (id) => {
+  return new Promise((resolve, reject) => {
+    db.getConnection(async (error, connection) => {
+      if (error) throw error;
+      const sql = 'DELETE FROM user WHERE id = ?';
+      const query = mysql.format(sql, [id]);
+
+      await connection.query(query, (error, result) => {
+        if (error) throw error;
+        connection.release();
+        resolve({ success: true, message: 'delete user success' });
+      });
+    });
+  });
+};
+
 module.exports = {
   register,
   login,
   findAllUser,
   findUserById,
   updateUserById,
+  deleteUserById,
 };
