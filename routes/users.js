@@ -1,5 +1,5 @@
 const express = require('express');
-const { findAllUser, findUserById } = require('../db/user');
+const { findAllUser, findUserById, updateUserById } = require('../db/user');
 const router = express.Router();
 
 router.get('/', async (req, res, next) => {
@@ -9,7 +9,11 @@ router.get('/', async (req, res, next) => {
 
 router.get('/:id', async (req, res, next) => {
   const result = await findUserById(req.params.id);
-  console.log(result);
+  res.json(result);
+});
+
+router.put('/:id', async (req, res, next) => {
+  const result = await updateUserById(req.body, req.params.id);
   res.json(result);
 });
 

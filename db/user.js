@@ -1,13 +1,12 @@
 const db = require('./dbConnect');
 const mysql = require('mysql');
 const bcrypt = require('bcrypt');
-const { connection } = require('mongoose');
 
 const register = async (email, password) => {
   return new Promise(async (resolve, reject) => {
     const hashedPassword = await bcrypt.hash(password, 10);
     db.getConnection(async (err, connection) => {
-      const sql = 'INSERT INTO user VALUES (?, ?)';
+      const sql = 'INSERT INTO user (email, password) VALUES (?, ?)';
       const query = mysql.format(sql, [email, hashedPassword]);
 
       await connection.query(query, (err, result) => {
@@ -73,9 +72,35 @@ const findUserById = (id) => {
   });
 };
 
+const updateUserById = (id, user) => {
+  return new Promise((resolve, reject) => {
+    db.getConnection(async (error, connection) => {
+      if (error) throw error;
+      const sql =
+        'UPDATE user SET email = ?, username = ?, password = ?, gender = ?, phone = ?, address = ? WHERE id = ?';
+      const query = mysql.format(sql, [
+        user.email,
+        user.username,
+        user.password,
+        user.gender,
+        user.phone,
+        user.address,
+        id,
+      ]);
+
+      await connection.query(query, (error, result) => {
+        if (error) throw error;
+        connection.release();
+        resolve({ success: true, message: 'update success' });
+      });
+    });
+  });
+};
+
 module.exports = {
   register,
   login,
   findAllUser,
   findUserById,
+  updateUserById,
 };
