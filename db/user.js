@@ -57,8 +57,25 @@ const findAllUser = () => {
   });
 };
 
+const findUserById = (id) => {
+  return new Promise((resolve, reject) => {
+    db.getConnection(async (error, connection) => {
+      if (error) throw error;
+      const sql = 'SELECT * FROM user WHERE id = ?';
+      const query = mysql.format(sql, [id]);
+
+      await connection.query(query, (error, result) => {
+        if (error) throw error;
+        connection.release();
+        resolve(result);
+      });
+    });
+  });
+};
+
 module.exports = {
   register,
   login,
   findAllUser,
+  findUserById,
 };
