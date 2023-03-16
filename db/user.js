@@ -91,7 +91,7 @@ const updateUserById = (id, user) => {
       await connection.query(query, (error, result) => {
         if (error) throw error;
         connection.release();
-        resolve({ success: true, message: 'update success' });
+        resolve({ success: true, message: 'update user success' });
       });
     });
   });

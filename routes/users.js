@@ -13,7 +13,7 @@ router.get('/:id', async (req, res, next) => {
 });
 
 router.put('/:id', async (req, res, next) => {
-  const result = await updateUserById(req.body, req.params.id);
+  const result = await updateUserById(req.params.id, req.body);
   res.json(result);
 });
 
