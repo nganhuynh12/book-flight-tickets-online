@@ -2,12 +2,12 @@ const db = require('./dbConnect');
 const mysql = require('mysql');
 const bcrypt = require('bcrypt');
 
-const register = async (username, password) => {
+const register = async (email, password) => {
   return new Promise(async (resolve, reject) => {
     const hashedPassword = await bcrypt.hash(password, 10);
     db.getConnection(async (err, connection) => {
       const sql = 'INSERT INTO user VALUES (?, ?)';
-      const query = mysql.format(sql, [username, hashedPassword]);
+      const query = mysql.format(sql, [email, hashedPassword]);
 
       await connection.query(query, (err, result) => {
         connection.release();
@@ -18,12 +18,12 @@ const register = async (username, password) => {
   });
 };
 
-const login = async (username, password, callback) => {
+const login = async (email, password, callback) => {
   return new Promise((resolve, reject) => {
     db.getConnection(async (error, connection) => {
       if (error) throw error;
-      const sql = 'SELECT * FROM user WHERE username = ?';
-      const query = mysql.format(sql, [username]);
+      const sql = 'SELECT * FROM user WHERE email = ?';
+      const query = mysql.format(sql, [email]);
 
       await connection.query(query, async (error, result) => {
         connection.release();
