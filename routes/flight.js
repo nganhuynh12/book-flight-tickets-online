@@ -1,5 +1,5 @@
 const express = require('express');
-const { addFlight } = require('../db/flight');
+const { addFlight, findAllFlight } = require('../db/flight');
 const { body, validationResult } = require('express-validator');
 
 const router = express.Router();
@@ -20,5 +20,10 @@ router.post(
     res.json(result);
   }
 );
+
+router.get('/', async (req, res, next) => {
+  const result = await findAllFlight();
+  res.json(result);
+});
 
 module.exports = router;

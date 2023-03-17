@@ -1,6 +1,7 @@
 const db = require('./dbConnect');
 const mysql = require('mysql');
 const { genInsertQuery } = require('../utils');
+const { findAll } = require('./base');
 
 const addTicket = (ticket) => {
   return new Promise((resolve, reject) => {
@@ -19,6 +20,11 @@ const addTicket = (ticket) => {
 
 const updateTicketById = (id, ticket) => {};
 
+const findAllTicket = () => {
+  return findAll('ticket');
+};
+
 module.exports = {
   addTicket,
+  findAllTicket,
 };

@@ -1,5 +1,6 @@
 const db = require('./dbConnect');
 const { genInsertQuery } = require('../utils');
+const { findAll } = require('./base');
 
 const addFlight = async (flight) => {
   return new Promise(async (resolve, reject) => {
@@ -16,6 +17,11 @@ const addFlight = async (flight) => {
   });
 };
 
+const findAllFlight = () => {
+  return findAll('flight');
+};
+
 module.exports = {
   addFlight,
+  findAllFlight,
 };

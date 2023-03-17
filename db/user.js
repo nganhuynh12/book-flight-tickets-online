@@ -1,6 +1,7 @@
 const db = require('./dbConnect');
 const mysql = require('mysql');
 const bcrypt = require('bcrypt');
+const { findAll } = require('./base');
 
 const register = async (email, password) => {
   return new Promise(async (resolve, reject) => {
@@ -42,19 +43,7 @@ const login = async (email, password, callback) => {
 };
 
 const findAllUser = () => {
-  return new Promise((resolve, reject) => {
-    db.getConnection(async (error, connection) => {
-      if (error) throw error;
-      const sql = 'SELECT * FROM user';
-      const query = mysql.format(sql);
-
-      await connection.query(query, (error, result) => {
-        if (error) throw error;
-        connection.release();
-        resolve(result);
-      });
-    });
-  });
+  return findAll('user');
 };
 
 const findUserById = (id) => {
