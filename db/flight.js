@@ -10,8 +10,8 @@ const addFlight = (flight) => {
       const query = mysql.format(sql, [
         flight.startTime,
         flight.arriveTime,
-        flight.startDestination,
-        flight.arriveDestination,
+        flight.startLocation,
+        flight.endLocation,
         // flight.planeId,
       ]);
 

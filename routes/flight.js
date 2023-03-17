@@ -8,8 +8,8 @@ router.post(
   '/',
   body('startTime').exists().isDate({ format: 'YYYY-MM-DD hh:mm:ss' }),
   body('arriveState').exists().isDate({ format: 'YYYY-MM-DD hh:mm:ss' }),
-  body('startDestination').exists().notEmpty(),
-  body('arriveDestination').exists().notEmpty(),
+  body('startLocation').exists().notEmpty(),
+  body('arriveLocation').exists().notEmpty(),
   async (req, res, next) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
