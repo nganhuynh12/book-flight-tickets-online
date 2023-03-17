@@ -1,20 +1,12 @@
 const db = require('./dbConnect');
-const mysql = require('mysql');
+const { genInsertQuery } = require('../utils');
 
-const addFlight = (flight) => {
+const addFlight = async (flight) => {
   return new Promise(async (resolve, reject) => {
     db.getConnection(async (error, connection) => {
       if (error) throw error;
-      const sql =
-        'INSERT INTO flight (startTime, arriveTime, startDestination, arriveDestination) VALUES (?, ?, ?, ?)';
-      const query = mysql.format(sql, [
-        flight.startTime,
-        flight.arriveTime,
-        flight.startLocation,
-        flight.endLocation,
-        // flight.planeId,
-      ]);
 
+      const query = genInsertQuery('flight', flight);
       await connection.query(query, (err, result) => {
         connection.release();
         if (err) throw err;
