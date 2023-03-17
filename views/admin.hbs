@@ -1,204 +1,206 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<html lang='en'>
+  <head>
+    <meta charset='UTF-8' />
+    <meta
+      name='viewport'
+      content='width=device-width,initial-scale=1,maximum-scale=1'
+    />
     <title>Admin Page</title>
     <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lykmapipo/themify-icons@0.1.2/css/themify-icons.css"> -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" />
+    <link
+      rel='stylesheet'
+      href='https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css'
+    />
 
-    <link rel="stylesheet" href="/stylesheets/admin.css">
-</head>
-<body>
-    
-    <input type="checkbox" id="sidebar-toggle">
-    <div class="sidebar">
-        <div class="sidebar-header">
-            <h3 class="brand">
-                <span class="fa fa-plane"></span> 
-                <span>SVO</span>
-            </h3> 
-            <label for="sidebar-toggle" class="ti-menu-alt"></label>
-        </div>
-        
-        <div class="sidebar-menu">
-            <ul>
-                <li>
-                    <a href="">
-                        <span class="fa fa-home"></span>
-                        <span>Trang chủ</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="">
-                        <span class="fa fa-plane"></span>
-                        <span>Quản lý thông tin chuyến bay</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="">
-                        <span class="fa fa-fighter-jet"></span>
-                        <span>Quản lý chuyến bay nổi bậc</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="">
-                        <span class="fa fa-thumb-tack"></span>
-                        <span>Quản lý địa điểm bắt đầu</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="">
-                        <span class="fa fa-map-marker"></span>
-                        <span>Quản lý địa điểm đến</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="">
-                        <span class="fa fa-user"></span>
-                        <span>Quản lý khách hàng</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="">
-                        <span class="fa fa-ticket"></span>
-                        <span>Quản lý lịch sử mua vé</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="">
-                        <span class="fa fa-money"></span>
-                        <span>Thống kê</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="">
-                        <span class="fa fa-sign-out"></span>
-                        <span>Logout</span>
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </div>
-    
-    
-    <div class="main-content">
-        
-        <header>
-            <div class="search-wrapper">
-                <span class="ti-search"></span>
-                <input type="search" placeholder="Search">
-            </div>
-            
-            <div class="social-icons">
-               <strong>Admin SVO</strong>
-                <div></div>
-            </div>
-        </header>
-        
-        <main>
-            
-            <h2 class="dash-title">Overview</h2>
-            
-            <div class="dash-cards">
-                <div class="card-single">
-                    <div class="card-body">
-                        <span class="fa fa-plane"></span>
-                        <div>
-                            <h3>Quản lý thông tin chuyến bay</h3>
-                            <h5>Số lượng: </h5>
-                        </div>
-                    </div>
-                    <div class="card-footer">
-                        <a href="">View all</a>
-                    </div>
-                </div>
-                
-                <div class="card-single">
-                    <div class="card-body">
-                        <span class="fa fa-fighter-jet"></span>
-                        <div>
-                            <h3>Quản lý chuyến bay nổi bậc</h3>
-                            <h5>Số lượng: </h5>
-                        </div>
-                    </div>
-                    <div class="card-footer">
-                        <a href="">View all</a>
-                    </div>
-                </div>
-                
-                <div class="card-single">
-                    <div class="card-body">
-                        <span class="fa fa-thumb-tack"></span>
-                        <div>
-                            <h3>Quản lý địa điểm bắt đầu</h3>
-                            <h5>Địa điểm:</h5>
-                        </div>
-                    </div>
-                    <div class="card-footer">
-                        <a href="">View all</a>
-                    </div>
-                </div>
-                
-                <div class="card-single">
-                    <div class="card-body">
-                        <span class="fa fa-map-marker"></span>
-                        <div>
-                            <h3>Quản lý địa điểm đến</h3>
-                            <h5>Điạ điểm: </h5>
-                        </div>
-                    </div>
-                    <div class="card-footer">
-                        <a href="">View all</a>
-                    </div>
-                </div>
+    <link rel='stylesheet' href='/stylesheets/admin.css' />
+  </head>
+  <body>
 
-                <div class="card-single">
-                    <div class="card-body">
-                        <span class="fa fa-user"></span>
-                        <div>
-                            <h3>Quản lý khách hàng</h3>
-                            <h5>Số lượng: </h5>
-                        </div>
-                    </div>
-                    <div class="card-footer">
-                        <a href="">View all</a>
-                    </div>
-                </div>
+    <input type='checkbox' id='sidebar-toggle' />
+    <div class='sidebar'>
+      <div class='sidebar-header'>
+        <h3 class='brand'>
+          <span class='fa fa-plane'></span>
+          <span>SVO</span>
+        </h3>
+        <label for='sidebar-toggle' class='ti-menu-alt'></label>
+      </div>
 
-                <div class="card-single">
-                    <div class="card-body">
-                        <span class="fa fa-ticket"></span>
-                        <div>
-                            <h3>Quản lý lịch sử mua vé</h3>
-                            <h5>Lịch sử: </h5>
-                        </div>
-                    </div>
-                    <div class="card-footer">
-                        <a href="">View all</a>
-                    </div>
-                </div>
-
-                <div class="card-single">
-                    <div class="card-body">
-                        <span class="fa fa-money"></span>
-                        <div>
-                            <h3>Thống kê</h3>
-                            <h5>Số tiền:</h5>
-                        </div>
-                    </div>
-                    <div class="card-footer">
-                        <a href="">View all</a>
-                    </div>
-                </div>
-
-                
-            </div>
-
-        </main>
-        
+      <div class='sidebar-menu'>
+        <ul>
+          <li>
+            <a href=''>
+              <span class='fa fa-home'></span>
+              <span>Trang chủ</span>
+            </a>
+          </li>
+          <li>
+            <a href=''>
+              <span class='fa fa-plane'></span>
+              <span>Quản lý thông tin chuyến bay</span>
+            </a>
+          </li>
+          <li>
+            <a href=''>
+              <span class='fa fa-fighter-jet'></span>
+              <span>Quản lý chuyến bay nổi bậc</span>
+            </a>
+          </li>
+          <li>
+            <a href=''>
+              <span class='fa fa-thumb-tack'></span>
+              <span>Quản lý địa điểm bắt đầu</span>
+            </a>
+          </li>
+          <li>
+            <a href=''>
+              <span class='fa fa-map-marker'></span>
+              <span>Quản lý địa điểm đến</span>
+            </a>
+          </li>
+          <li>
+            <a href=''>
+              <span class='fa fa-user'></span>
+              <span>Quản lý khách hàng</span>
+            </a>
+          </li>
+          <li>
+            <a href=''>
+              <span class='fa fa-ticket'></span>
+              <span>Quản lý lịch sử mua vé</span>
+            </a>
+          </li>
+          <li>
+            <a href=''>
+              <span class='fa fa-money'></span>
+              <span>Thống kê</span>
+            </a>
+          </li>
+          <li>
+            <a href=''>
+              <span class='fa fa-sign-out'></span>
+              <span>Logout</span>
+            </a>
+          </li>
+        </ul>
+      </div>
     </div>
 
+    <div class='main-content'>
 
-</body>
+      <header>
+        <div class='search-wrapper'>
+          <span class='ti-search'></span>
+          <input type='search' placeholder='Search' />
+        </div>
+
+        <div class='social-icons'>
+          <strong>Admin SVO</strong>
+          <div></div>
+        </div>
+      </header>
+
+      <main>
+
+        <h2 class='dash-title'>Overview</h2>
+
+        <div class='dash-cards'>
+          <div class='card-single'>
+            <div class='card-body'>
+              <span class='fa fa-plane'></span>
+              <div>
+                <h3>Quản lý thông tin chuyến bay</h3>
+                <h5>Số lượng: </h5>
+              </div>
+            </div>
+            <div class='card-footer'>
+              <a href=''>View all</a>
+            </div>
+          </div>
+
+          <div class='card-single'>
+            <div class='card-body'>
+              <span class='fa fa-fighter-jet'></span>
+              <div>
+                <h3>Quản lý chuyến bay nổi bậc</h3>
+                <h5>Số lượng: </h5>
+              </div>
+            </div>
+            <div class='card-footer'>
+              <a href=''>View all</a>
+            </div>
+          </div>
+
+          <div class='card-single'>
+            <div class='card-body'>
+              <span class='fa fa-thumb-tack'></span>
+              <div>
+                <h3>Quản lý địa điểm bắt đầu</h3>
+                <h5>Địa điểm:</h5>
+              </div>
+            </div>
+            <div class='card-footer'>
+              <a href=''>View all</a>
+            </div>
+          </div>
+
+          <div class='card-single'>
+            <div class='card-body'>
+              <span class='fa fa-map-marker'></span>
+              <div>
+                <h3>Quản lý địa điểm đến</h3>
+                <h5>Điạ điểm: </h5>
+              </div>
+            </div>
+            <div class='card-footer'>
+              <a href=''>View all</a>
+            </div>
+          </div>
+
+          <div class='card-single'>
+            <div class='card-body'>
+              <span class='fa fa-user'></span>
+              <div>
+                <h3>Quản lý khách hàng</h3>
+                <h5>Số lượng: </h5>
+              </div>
+            </div>
+            <div class='card-footer'>
+              <a href=''>View all</a>
+            </div>
+          </div>
+
+          <div class='card-single'>
+            <div class='card-body'>
+              <span class='fa fa-ticket'></span>
+              <div>
+                <h3>Quản lý lịch sử mua vé</h3>
+                <h5>Lịch sử: </h5>
+              </div>
+            </div>
+            <div class='card-footer'>
+              <a href=''>View all</a>
+            </div>
+          </div>
+
+          <div class='card-single'>
+            <div class='card-body'>
+              <span class='fa fa-money'></span>
+              <div>
+                <h3>Thống kê</h3>
+                <h5>Số tiền:</h5>
+              </div>
+            </div>
+            <div class='card-footer'>
+              <a href=''>View all</a>
+            </div>
+          </div>
+
+        </div>
+
+      </main>
+
+    </div>
+
+  </body>
 </html>

@@ -5,7 +5,7 @@ const {
   updateUserById,
   deleteUserById,
 } = require('../db/user');
-const { body } = require('express-validator');
+const { body, validationResult } = require('express-validator');
 const router = express.Router();
 
 router.get('/', async (req, res, next) => {
@@ -27,6 +27,11 @@ router.put(
   body('phone').notEmpty().isNumeric(),
   body('gender').notEmpty().isIn([0, 1]),
   async (req, res, next) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      res.json(errors.array());
+    }
+
     const result = await updateUserById(req.params.id, req.body);
     res.json(result);
   }

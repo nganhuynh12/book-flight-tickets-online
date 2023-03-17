@@ -5,7 +5,8 @@ const bcrypt = require('bcrypt');
 const register = async (email, password) => {
   return new Promise(async (resolve, reject) => {
     const hashedPassword = await bcrypt.hash(password, 10);
-    db.getConnection(async (err, connection) => {
+    db.getConnection(async (error, connection) => {
+      if (error) throw error;
       const sql = 'INSERT INTO user (email, password) VALUES (?, ?)';
       const query = mysql.format(sql, [email, hashedPassword]);
 
