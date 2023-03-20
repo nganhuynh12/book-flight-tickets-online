@@ -1,19 +1,19 @@
-const { addFlight, findAllFlight } = require('../repositories/flight');
 const { body, validationResult } = require('express-validator');
+const flightService = require('../services/flightService');
 
 class flightController {
-  async addFlight(req, res, next) {
+  async add(req, res, next) {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      res.json(errors.array());
+      return res.json(errors.array());
     }
 
-    const result = await addFlight(req.body);
-    res.json(result);
+    const result = await flightService.add(req.body);
+    return res.json(result);
   }
 
-  async findAllFlight(req, res, next) {
-    const result = await findAllFlight();
+  async find(req, res, next) {
+    const result = await flightService.find();
     res.json(result);
   }
 }

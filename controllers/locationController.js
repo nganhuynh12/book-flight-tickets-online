@@ -1,19 +1,18 @@
 const { validationResult } = require('express-validator');
-const { addLocation, findAllLocation } = require('../services/location');
+const locationService = require('../services/locationService');
 
 class locationController {
-  async addLocation(req, res, next) {
+  async add(req, res, next) {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       res.json(errors.array());
     }
-
-    const result = await addLocation(req.body);
+    const result = await locationService.add(req.body);
     res.json(result);
   }
 
-  async findAllLocation(req, res, next) {
-    const result = await findAllLocation();
+  async find(req, res, next) {
+    const result = await locationService.find();
     res.json(result);
   }
 }
