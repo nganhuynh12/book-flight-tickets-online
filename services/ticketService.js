@@ -8,5 +8,9 @@ class ticketService {
   async add(ticket) {
     return await ticketRepository.save(ticket);
   }
+
+  async delete(id) {
+    return await ticketRepository.delete(id);
+  }
 }
 module.exports = new ticketService();
