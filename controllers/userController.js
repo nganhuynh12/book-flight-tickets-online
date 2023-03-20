@@ -1,29 +1,29 @@
-const { findAllUser, findUserById } = require('../db/user');
 const { validationResult } = require('express-validator');
+const userSerivce = require('../services/userService');
 
 class userController {
-  async findAllUser(req, res, next) {
-    const result = await findAllUser();
+  async find(req, res, next) {
+    const result = await userSerivce.find();
     res.json(result);
   }
 
-  async findUserById(req, res, next) {
-    const result = await findUserById(req.params.id);
+  async findById(req, res, next) {
+    const result = await userSerivce.findById(req.params.id);
     res.json(result);
   }
 
-  async updateUserById(req, res, next) {
+  async updateById(req, res, next) {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       res.json(errors.array());
     }
 
-    const result = await updateUserById(req.params.id, req.body);
+    const result = await updateById(req.params.id, req.body);
     res.json(result);
   }
 
-  async deleteUserById(req, res, next) {
-    const result = await deleteUserById(req.params.id);
+  async delete(req, res, next) {
+    const result = await userSerivce.delete(req.params.id);
     res.json(result);
   }
 }
