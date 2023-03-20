@@ -15,6 +15,11 @@ class locationController {
     const result = await locationService.find();
     res.json(result);
   }
+
+  async delete(req, res, next) {
+    const result = await locationService.delete(req.params.id);
+    res.json(result);
+  }
 }
 
 module.exports = new locationController();
