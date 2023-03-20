@@ -27,7 +27,7 @@ app.use('/', indexRouter);
 app.use('/auth', authRouter);
 app.use('/users', userRouter);
 app.use('/flights', flightRouter);
-// app.use('/tickets', ticketRouter);
+app.use('/tickets', ticketRouter);
 app.use('/locations', locationRouter);
 
 // catch 404 and forward to error handler

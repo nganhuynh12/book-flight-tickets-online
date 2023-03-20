@@ -1,14 +1,13 @@
-const { validationResult } = require('express-validator');
-const { addTicket, findAllTicket } = require('../services/ticket');
+const ticketService = require('../services/ticketService');
 
 class ticketController {
-  async addTicket(req, res, next) {
-    const result = await addTicket(req.body);
+  async add(req, res, next) {
+    const result = await ticketService.add(req.body);
     res.json(result);
   }
 
-  async findAllTicket(req, res, next) {
-    const result = await findAllTicket();
+  async find(req, res, next) {
+    const result = await ticketService.find();
     res.json(result);
   }
 }

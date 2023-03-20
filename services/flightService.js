@@ -1,7 +1,7 @@
 const flightRepository = require('../repositories/flightRepository');
 
 class flightService {
-  async findAll() {
+  async find() {
     return await flightRepository.find();
   }
 

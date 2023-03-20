@@ -9,4 +9,8 @@ router.get('/faq', (req, res, next) => {
   res.render('faq');
 });
 
+router.get('/admin', (req, res, next) => {
+  res.render('admin');
+});
+
 module.exports = router;
