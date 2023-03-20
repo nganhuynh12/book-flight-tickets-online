@@ -22,13 +22,16 @@ class baseRepository {
         let whereStatement = ' WHERE ';
 
         if (options && options.where) {
-          const columns = [];
-          const values = [];
+          const statement = [];
 
           for (const [column, value] of Object.entries(options.where)) {
-            columns.push(column);
-            values.push(value);
-            whereStatement += `${column} = '${value}'`;
+            statement.push(`${column} = '${value}'`);
+          }
+
+          if (statement.length == 1) {
+            whereStatement += statement[0];
+          } else {
+            whereStatement += statement.join(' AND ');
           }
 
           sql += whereStatement;

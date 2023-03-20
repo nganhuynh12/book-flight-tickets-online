@@ -1,13 +1,6 @@
 const flightRepository = require('../repositories/flightRepository');
+const baseService = require('./baseService');
 
-class flightService {
-  async find(options) {
-    return await flightRepository.find(options);
-  }
+class flightService extends baseService {}
 
-  async add(flight) {
-    return await flightRepository.save(flight);
-  }
-}
-
-module.exports = new flightService();
+module.exports = new flightService(flightRepository);

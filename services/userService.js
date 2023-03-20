@@ -1,25 +1,6 @@
 const userRepository = require('../repositories/userRepository');
+const baseService = require('./baseService');
 
-class userSerivce {
-  async find() {
-    return await userRepository.find();
-  }
+class userSerivce extends baseService {}
 
-  async findById(id) {
-    return await userRepository.findById(id);
-  }
-
-  async add(user) {
-    return userRepository.add(user);
-  }
-
-  // async updateById(id, user) {
-  //   return await userRepository.updateById(id, user)
-  // }
-
-  async delete(id) {
-    return await userRepository.delete(id);
-  }
-}
-
-module.exports = new userSerivce();
+module.exports = new userSerivce(userRepository);

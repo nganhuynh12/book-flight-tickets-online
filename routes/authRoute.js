@@ -28,4 +28,6 @@ router.post(
   authController.login
 );
 
+router.post('/reset', authController.reset);
+
 module.exports = router;

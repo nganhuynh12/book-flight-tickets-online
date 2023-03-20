@@ -25,6 +25,16 @@ class authController {
     const result = await authService.login(req.body);
     res.json(result);
   }
+
+  async reset(req, res, next) {
+    const errors = validationResult(req);
+    if (!errors.isEmpty) {
+      return res.json({ errors: errors.array() });
+    }
+
+    const result = await authService.login(req.body);
+    res.json(result);
+  }
 }
 
 module.exports = new authController();

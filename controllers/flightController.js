@@ -13,15 +13,24 @@ class flightController {
   }
 
   async find(req, res, next) {
-    if (req.query.startLocation) {
+    if (req.query.startLocation && req.query.arriveLocation) {
       const result = await flightService.find({
-        where: { startLocation: req.query.startLocation },
+        where: {
+          arriveLocation: req.query.arriveLocation,
+          startLocation: req.query.startLocation,
+        },
       });
 
       return res.json(result);
     } else if (req.query.arriveLocation) {
       const result = await flightService.find({
         where: { arriveLocation: req.query.arriveLocation },
+      });
+
+      return res.json(result);
+    } else if (req.query.startLocation) {
+      const result = await flightService.find({
+        where: { startLocation: req.query.startLocation },
       });
 
       return res.json(result);

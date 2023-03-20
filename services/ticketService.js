@@ -1,16 +1,6 @@
 const ticketRepository = require('../repositories/ticketRepository');
+const baseService = require('./baseService');
 
-class ticketService {
-  async find() {
-    return await ticketRepository.find();
-  }
+class ticketService extends baseService {}
 
-  async add(ticket) {
-    return await ticketRepository.save(ticket);
-  }
-
-  async delete(id) {
-    return await ticketRepository.delete(id);
-  }
-}
-module.exports = new ticketService();
+module.exports = new ticketService(ticketRepository);

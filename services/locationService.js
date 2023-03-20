@@ -1,17 +1,6 @@
 const locationRepository = require('../repositories/locationRepository');
+const baseService = require('./baseService');
 
-class locationService {
-  async find() {
-    return await locationRepository.find();
-  }
+class locationService extends baseService {}
 
-  async add(location) {
-    return await locationRepository.save(location);
-  }
-
-  async delete(id) {
-    return await locationRepository.delete(id);
-  }
-}
-
-module.exports = new locationService();
+module.exports = new locationService(locationRepository);

@@ -18,6 +18,13 @@ class userSerivce {
       }
     }
   }
+
+  async reset(user) {
+    const res = await userRepository.find({ where: { email: user.email } });
+
+    if (res.length !== 0) {
+    }
+  }
 }
 
 module.exports = new userSerivce();
