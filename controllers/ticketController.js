@@ -7,8 +7,15 @@ class ticketController {
   }
 
   async find(req, res, next) {
-    const result = await ticketService.find();
-    res.json(result);
+    if (req.query.userId) {
+      const result = await ticketService.find({
+        where: { userId: req.query.userId },
+      });
+      res.json(result);
+    } else {
+      const result = await ticketService.find();
+      res.json(result);
+    }
   }
 
   async delete(req, res, next) {
