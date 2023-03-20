@@ -1,22 +1,11 @@
+const userController = require('../controllers/userController');
 const express = require('express');
-const {
-  findAllUser,
-  findUserById,
-  updateUserById,
-  deleteUserById,
-} = require('../db/user');
-const { body, validationResult } = require('express-validator');
+const { body } = require('express-validator');
 const router = express.Router();
 
-router.get('/', async (req, res, next) => {
-  const result = await findAllUser();
-  res.json(result);
-});
+router.get('/', userController.findAllUser);
 
-router.get('/:id', async (req, res, next) => {
-  const result = await findUserById(req.params.id);
-  res.json(result);
-});
+router.get('/:id', userController.findUserById);
 
 router.put(
   '/:id',
@@ -26,20 +15,9 @@ router.put(
   body('address').notEmpty(),
   body('phone').notEmpty().isNumeric(),
   body('gender').notEmpty().isIn([0, 1]),
-  async (req, res, next) => {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      res.json(errors.array());
-    }
-
-    const result = await updateUserById(req.params.id, req.body);
-    res.json(result);
-  }
+  userController.updateUserById
 );
 
-router.delete('/:id', async (req, res, next) => {
-  const result = await deleteUserById(req.params.id);
-  res.json(result);
-});
+router.delete('/:id', userController.deleteUserById);
 
 module.exports = router;
