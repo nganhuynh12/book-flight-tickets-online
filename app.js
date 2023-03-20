@@ -4,12 +4,12 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 
-const indexRouter = require('./routes/index');
-const authRouter = require('./routes/auth');
-const usersRouter = require('./routes/users');
-const flightRouter = require('./routes/flight');
-const ticketRouter = require('./routes/ticket');
-const locationRouter = require('./routes/location');
+const indexRouter = require('./routes/indexRoute');
+const authRouter = require('./routes/authRoute');
+const userRouter = require('./routes/userRoute');
+const flightRouter = require('./routes/flightRoute');
+const ticketRouter = require('./routes/ticketRoute');
+const locationRouter = require('./routes/locationRoute');
 
 const app = express();
 
@@ -25,10 +25,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/auth', authRouter);
-app.use('/users', usersRouter);
-app.use('/flights', flightRouter);
-app.use('/tickets', ticketRouter);
-app.use('/locations', locationRouter);
+app.use('/users', userRouter);
+// app.use('/flights', flightRouter);
+// app.use('/tickets', ticketRouter);
+// app.use('/locations', locationRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

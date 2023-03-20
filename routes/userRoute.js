@@ -3,9 +3,9 @@ const express = require('express');
 const { body } = require('express-validator');
 const router = express.Router();
 
-router.get('/', userController.findAllUser);
+router.get('/', userController.find);
 
-router.get('/:id', userController.findUserById);
+router.get('/:id', userController.findById);
 
 router.put(
   '/:id',
@@ -15,9 +15,9 @@ router.put(
   body('address').notEmpty(),
   body('phone').notEmpty().isNumeric(),
   body('gender').notEmpty().isIn([0, 1]),
-  userController.updateUserById
+  userController.updateById
 );
 
-router.delete('/:id', userController.deleteUserById);
+router.delete('/:id', userController.delete);
 
 module.exports = router;

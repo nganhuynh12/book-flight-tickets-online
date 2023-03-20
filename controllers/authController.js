@@ -1,5 +1,5 @@
 const { validationResult } = require('express-validator');
-const { register, login } = require('../services/user');
+const authService = require('../services/authService');
 
 class authController {
   show(req, res, next) {
@@ -12,7 +12,7 @@ class authController {
       return res.status(400).json({ errors: errors.array() });
     }
 
-    const result = await register(req.body.email, req.body.password);
+    const result = await authService.register(req.body);
     res.status(201).json(result);
   }
 
@@ -22,7 +22,7 @@ class authController {
       return res.json({ errors: errors.array() });
     }
 
-    const result = await login(req.body.email, req.body.password);
+    const result = await authService.login(req.body);
     res.json(result);
   }
 }
