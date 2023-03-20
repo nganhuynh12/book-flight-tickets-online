@@ -20,6 +20,11 @@ class locationController {
     const result = await locationService.delete(req.params.id);
     res.json(result);
   }
+
+  async update(req, res, next) {
+    const result = await locationService.update(req.params.id, req.body);
+    res.json(result);
+  }
 }
 
 module.exports = new locationController();

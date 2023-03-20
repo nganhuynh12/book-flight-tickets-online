@@ -95,6 +95,35 @@ class baseRepository {
       });
     });
   }
+
+  update(id, row) {
+    return new Promise(async (resolve, reject) => {
+      db.getConnection(async (error, connection) => {
+        if (error) throw error;
+        const statement = [];
+        let setStatement = ' SET ';
+        for (const [column, value] of Object.entries(row)) {
+          statement.push(`${column} = '${value}'`);
+        }
+
+        if (statement.length == 0) {
+          setStatement += statement[0];
+        } else {
+          setStatement += statement.join(', ');
+        }
+
+        console.log(setStatement);
+
+        const sql = `UPDATE ${this.tableName} ${setStatement} WHERE id = ${id}`;
+        const query = mysql.format(sql, id);
+        await connection.query(query, (err, result) => {
+          connection.release();
+          if (err) throw err;
+          resolve({ success: true, message: 'update succeed' });
+        });
+      });
+    });
+  }
 }
 
 module.exports = baseRepository;

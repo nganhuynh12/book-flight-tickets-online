@@ -18,6 +18,10 @@ class baseService {
   async add(row) {
     return await this.repository.save(row);
   }
+
+  async update(id, row) {
+    return await this.repository.update(id, row);
+  }
 }
 
 module.exports = baseService;
