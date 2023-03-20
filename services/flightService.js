@@ -1,8 +1,8 @@
 const flightRepository = require('../repositories/flightRepository');
 
 class flightService {
-  async find() {
-    return await flightRepository.find();
+  async find(options) {
+    return await flightRepository.find(options);
   }
 
   async add(flight) {
