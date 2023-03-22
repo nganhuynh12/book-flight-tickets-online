@@ -1,11 +1,11 @@
-const userController = require('../controllers/userController');
+const userController = require('../controllers/user.controller');
 const express = require('express');
 const { body } = require('express-validator');
 const router = express.Router();
 
-router.get('/', userController.find);
+router.get('/', userController.findAll);
 
-router.get('/:id', userController.findById);
+router.get('/:id', userController.findByPk);
 
 router.put(
   '/:id',

@@ -3,13 +3,14 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
+const sequelize = require('./models');
 
-const indexRouter = require('./routes/indexRoute');
-const authRouter = require('./routes/authRoute');
-const userRouter = require('./routes/userRoute');
-const flightRouter = require('./routes/flightRoute');
-const ticketRouter = require('./routes/ticketRoute');
-const locationRouter = require('./routes/locationRoute');
+const indexRouter = require('./routes/index.route');
+const authRouter = require('./routes/auth.route');
+const userRouter = require('./routes/user.route');
+const flightRouter = require('./routes/flight.route');
+const ticketRouter = require('./routes/ticket.route');
+const locationRouter = require('./routes/location.route');
 
 const app = express();
 
@@ -46,4 +47,6 @@ app.use(function (err, req, res, next) {
   res.render('error');
 });
 
-module.exports = app;
+sequelize.sync({ alter: true }).then(() => {
+  app.listen('3000');
+});
