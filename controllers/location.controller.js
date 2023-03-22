@@ -1,5 +1,5 @@
 const { validationResult } = require('express-validator');
-const locationService = require('../services/locationService');
+const locationService = require('../services/location.service');
 
 class locationController {
   async add(req, res, next) {

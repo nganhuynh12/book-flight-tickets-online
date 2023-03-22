@@ -1,5 +1,5 @@
 const Location = require('../models/location.model');
-const baseService = require('./baseService');
+const baseService = require('./base.service');
 
 class locationService extends baseService {}
 
