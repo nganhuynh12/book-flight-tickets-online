@@ -6,20 +6,13 @@ class ticketController {
     res.json(result);
   }
 
-  async find(req, res, next) {
-    if (req.query.userId) {
-      const result = await ticketService.find({
-        where: { userId: req.query.userId },
-      });
-      res.json(result);
-    } else {
-      const result = await ticketService.find();
-      res.json(result);
-    }
+  async findAll(req, res, next) {
+    const result = await ticketService.findAll({ where: req.query });
+    res.json(result);
   }
 
-  async delete(req, res, next) {
-    const result = await ticketService.delete(req.params.id);
+  async deleteById(req, res, next) {
+    const result = await ticketService.deleteById(req.params.id);
     res.json(result);
   }
 }

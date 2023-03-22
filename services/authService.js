@@ -1,18 +1,19 @@
-const userRepository = require('../repositories/userRepository');
 const bcrypt = require('bcrypt');
+const User = require('../models/user.model');
 
 class userSerivce {
   async register(user) {
     const hashedPassword = await bcrypt.hash(user.password, 10);
     user.password = hashedPassword;
-    return await userRepository.save(user);
+    console.log(user);
+    return await User.create(user);
   }
 
   async login(user) {
-    const res = await userRepository.find({ where: { email: user.email } });
+    const usr = await User.findOne({ where: { email: user.email } });
 
-    if (res.length !== 0) {
-      const hashedPassword = res[0].password;
+    if (usr) {
+      const hashedPassword = usr.password;
       if (await bcrypt.compare(user.password, hashedPassword)) {
         return { success: true };
       }
@@ -20,7 +21,7 @@ class userSerivce {
   }
 
   async reset(user) {
-    const res = await userRepository.find({ where: { email: user.email } });
+    const res = await User.findOne({ where: { email: user.email } });
 
     if (res.length !== 0) {
     }

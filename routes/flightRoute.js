@@ -13,6 +13,6 @@ router.post(
   flightController.add
 );
 
-router.get('/', flightController.find);
+router.get('/', flightController.findAll);
 
 module.exports = router;

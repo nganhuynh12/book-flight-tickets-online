@@ -3,8 +3,8 @@ const router = express.Router();
 const locationController = require('../controllers/locationController');
 
 router.post('/', locationController.add);
-router.get('/', locationController.find);
-router.delete('/:id', locationController.delete);
-router.put('/:id', locationController.update);
+router.get('/', locationController.findAll);
+router.delete('/:id', locationController.deleteById);
+router.put('/:id', locationController.updateById);
 
 module.exports = router;

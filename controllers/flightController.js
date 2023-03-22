@@ -12,8 +12,8 @@ class flightController {
     return res.json(result);
   }
 
-  async find(req, res, next) {
-    const result = await flightService.find({ where: req.query });
+  async findAll(req, res, next) {
+    const result = await flightService.findAll({ where: req.query });
 
     return res.json(result);
   }

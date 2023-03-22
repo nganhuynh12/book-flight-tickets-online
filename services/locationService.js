@@ -1,6 +1,6 @@
-const locationRepository = require('../repositories/locationRepository');
+const Location = require('../models/location.model');
 const baseService = require('./baseService');
 
 class locationService extends baseService {}
 
-module.exports = new locationService(locationRepository);
+module.exports = new locationService(Location);

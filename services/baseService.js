@@ -1,26 +1,26 @@
 class baseService {
-  constructor(repository) {
-    this.repository = repository;
+  constructor(model) {
+    this.model = model;
   }
 
-  async find(options) {
-    return await this.repository.find(options);
+  async findAll(options) {
+    return await this.model.findAll(options);
   }
 
-  async findById() {
-    return await this.repository.findById();
+  async findByPk(pk) {
+    return await this.model.findByPk(pk);
   }
 
-  async delete(id) {
-    return await this.repository.delete(id);
+  async deleteById(id) {
+    return await this.model.destroy({ where: { id } });
   }
 
   async add(row) {
-    return await this.repository.save(row);
+    return await this.model.create(row);
   }
 
-  async update(id, row) {
-    return await this.repository.update(id, row);
+  async updateById(id, row) {
+    return await this.model.update(row, { where: { id } });
   }
 }
 
