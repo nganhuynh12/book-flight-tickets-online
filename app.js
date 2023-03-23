@@ -24,7 +24,7 @@ app.engine(
     helpers: {
       gen_seats(colNum, rowNum, options) {
         const matrix = [];
-        let count = 0;
+        let count = 1;
         for (let i = 0; i < rowNum; i++) {
           const row = [];
           for (let j = 0; j < colNum; j++) {
@@ -37,7 +37,10 @@ app.engine(
           }
           matrix.push(`<div style="display: flex">${row.join(' ')}</div>`);
         }
-        return matrix.join(' ');
+        return `<div style='display: flex; flex-direction: column;'> 
+              ${matrix.join(' ')}
+          </div>
+        `;
       },
     },
   })
