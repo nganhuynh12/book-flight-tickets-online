@@ -11,11 +11,37 @@ const userRouter = require('./routes/user.route');
 const flightRouter = require('./routes/flight.route');
 const ticketRouter = require('./routes/ticket.route');
 const locationRouter = require('./routes/location.route');
+const { engine } = require('express-handlebars');
+const { count } = require('console');
 
 const app = express();
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
+app.engine(
+  'hbs',
+  engine({
+    extname: 'hbs',
+    helpers: {
+      gen_seats(colNum, rowNum, options) {
+        const matrix = [];
+        let count = 0;
+        for (let i = 0; i < rowNum; i++) {
+          const row = [];
+          for (let j = 0; j < colNum; j++) {
+            row.push(
+              `<div style="width: 50px; height: 50px;">${options.fn(
+                count
+              )}</div>`
+            );
+            count += 1;
+          }
+          matrix.push(`<div style="display: flex">${row.join(' ')}</div>`);
+        }
+        return matrix.join(' ');
+      },
+    },
+  })
+);
 app.set('view engine', 'hbs');
 
 app.use(logger('dev'));
@@ -47,6 +73,6 @@ app.use(function (err, req, res, next) {
   res.render('error');
 });
 
-db.sequelize.sync({ alter: true }).then(() => {
+db.sequelize.sync().then(() => {
   app.listen('3000');
 });
