@@ -37,7 +37,7 @@
                 </li>
                 <li>
                     <div>
-                        <span class="fa fa-fighter-jet"></span>
+                        <span class="fa fa-star"></span>
                         <span>Quản lý chuyến bay nổi bậc</span>
                     </div>
                 </li>
@@ -111,7 +111,7 @@
                     
                     <div class="card-single">
                         <div class="card-body">
-                            <span class="fa fa-fighter-jet"></span>
+                            <span class="fa fa-star"></span>
                             <div>
                                 <h3>Quản lý chuyến bay nổi bậc</h3>
                                 <h5>Số lượng: </h5>
@@ -180,7 +180,7 @@
         <div id="flight" class="tabs" style="display: none;">
             <main>
                 <div class="title-container">
-                    <h2 class="dash-title">Quản lý chuyến bay</h2>
+                    <h2>Quản lý chuyến bay</h2>
                     <button class="btn-add" onclick="showAddFlightForm()">Thêm chuyến bay</button>
                 </div>
                 <table>
@@ -226,13 +226,12 @@
 
 
 {{!-- Thêm chuyến bay --}}
-    <div id="add-flight-form">
-  <div class="form-header">
-    
-    <button class="form-close" onclick="hideAddFlightForm()">x</button>
-  </div>
+<div id="add-flight-form">
   <form>
-    <h3 class="form-title">Thêm chuyến bay</h3>
+    <div class="title-header-form">
+       <h3 class="form-title">Thêm chuyến bay</h3> 
+       <button class="form-close" onclick="hideAddFlightForm()">x</button>            
+    </div>
     <label for="flight-no">Số chuyến bay:</label>
     <input type="text" id="flight-no" name="flight-no" required>
 
