@@ -8,8 +8,8 @@ router.post(
   '/',
   body('startTime').exists(),
   body('arriveTime').exists(),
-  body('startLocation').exists().notEmpty(),
-  body('arriveLocation').exists().notEmpty(),
+  body('startLocationId').exists().notEmpty(),
+  body('arriveLocationId').exists().notEmpty(),
   flightController.add
 );
 

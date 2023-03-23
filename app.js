@@ -3,7 +3,7 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
-const sequelize = require('./models');
+const db = require('./models');
 
 const indexRouter = require('./routes/index.route');
 const authRouter = require('./routes/auth.route');
@@ -47,6 +47,6 @@ app.use(function (err, req, res, next) {
   res.render('error');
 });
 
-sequelize.sync({ alter: true }).then(() => {
+db.sequelize.sync({ alter: true }).then(() => {
   app.listen('3000');
 });

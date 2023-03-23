@@ -1,23 +1,22 @@
-const { Model, DataTypes } = require('sequelize');
-const sequelize = require('.');
+module.exports = (sequelize, Sequelize) => {
+  class Location extends Sequelize.Model {}
 
-class Location extends Model {}
-
-Location.init(
-  {
-    id: {
-      type: DataTypes.INTEGER,
-      autoIncrement: true,
-      primaryKey: true,
+  Location.init(
+    {
+      id: {
+        type: Sequelize.INTEGER,
+        autoIncrement: true,
+        primaryKey: true,
+      },
+      value: {
+        type: Sequelize.STRING,
+      },
     },
-    value: {
-      type: DataTypes.STRING,
-    },
-  },
-  {
-    sequelize,
-    modelName: 'location',
-  }
-);
+    {
+      sequelize,
+      modelName: 'location',
+    }
+  );
 
-module.exports = Location;
+  return Location;
+};

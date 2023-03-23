@@ -1,6 +1,6 @@
 const baseService = require('./base.service');
-const Flight = require('../models/flight.model');
+const db = require('../models');
 
 class flightService extends baseService {}
 
-module.exports = new flightService(Flight);
+module.exports = new flightService(db.flights);

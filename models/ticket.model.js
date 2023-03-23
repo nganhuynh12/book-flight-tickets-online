@@ -1,32 +1,25 @@
-const { Model, DataTypes } = require('sequelize');
-const sequelize = require('.');
+module.exports = (sequelize, Sequelize) => {
+  class Ticket extends Sequelize.Model {}
 
-class Ticket extends Model {}
+  Ticket.init(
+    {
+      id: {
+        type: Sequelize.INTEGER,
+        autoIncrement: true,
+        primaryKey: true,
+      },
+      type: {
+        type: Sequelize.BOOLEAN,
+      },
+      price: {
+        type: Sequelize.FLOAT,
+      },
+      seatId: {
+        type: Sequelize.INTEGER,
+      },
+    },
+    { sequelize, modelName: 'ticket' }
+  );
 
-Ticket.init(
-  {
-    id: {
-      type: DataTypes.INTEGER,
-      autoIncrement: true,
-      primaryKey: true,
-    },
-    type: {
-      type: DataTypes.BOOLEAN,
-    },
-    price: {
-      type: DataTypes.FLOAT,
-    },
-    flightId: {
-      type: DataTypes.INTEGER,
-    },
-    userId: {
-      type: DataTypes.INTEGER,
-    },
-    seatId: {
-      type: DataTypes.INTEGER,
-    },
-  },
-  { sequelize, modelName: 'ticket' }
-);
-
-module.exports = Ticket;
+  return Ticket;
+};

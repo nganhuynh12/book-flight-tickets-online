@@ -1,32 +1,25 @@
-const { DataTypes, Model } = require('sequelize');
-const sequelize = require('.');
+module.exports = (sequelize, Sequelize) => {
+  class Flight extends Sequelize.Model {}
 
-class Flight extends Model {}
+  Flight.init(
+    {
+      startTime: {
+        type: Sequelize.STRING,
+      },
+      arriveTime: {
+        type: Sequelize.DATE,
+      },
+      id: {
+        type: Sequelize.INTEGER,
+        primaryKey: true,
+        autoIncrement: true,
+      },
+      numSeat: {
+        type: Sequelize.INTEGER,
+      },
+    },
+    { sequelize, modelName: 'flight' }
+  );
 
-Flight.init(
-  {
-    startTime: {
-      type: DataTypes.STRING,
-    },
-    arriveTime: {
-      type: DataTypes.DATE,
-    },
-    startLocation: {
-      type: DataTypes.INTEGER,
-    },
-    arriveLocation: {
-      type: DataTypes.INTEGER,
-    },
-    id: {
-      type: DataTypes.INTEGER,
-      primaryKey: true,
-      autoIncrement: true,
-    },
-    numSeat: {
-      type: DataTypes.INTEGER,
-    },
-  },
-  { sequelize, modelName: 'flight' }
-);
-
-module.exports = Flight;
+  return Flight;
+};
