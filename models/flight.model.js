@@ -3,19 +3,22 @@ module.exports = (sequelize, Sequelize) => {
 
   Flight.init(
     {
+      id: {
+        type: Sequelize.UUID,
+        primaryKey: true,
+        defaultValue: Sequelize.UUIDV4,
+      },
       startTime: {
         type: Sequelize.STRING,
+        allowNull: false,
       },
       arriveTime: {
         type: Sequelize.DATE,
-      },
-      id: {
-        type: Sequelize.INTEGER,
-        primaryKey: true,
-        autoIncrement: true,
+        allowNull: false,
       },
       numSeat: {
         type: Sequelize.INTEGER,
+        allowNull: false,
       },
     },
     { sequelize, modelName: 'flight' }

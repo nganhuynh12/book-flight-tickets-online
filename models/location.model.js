@@ -4,12 +4,13 @@ module.exports = (sequelize, Sequelize) => {
   Location.init(
     {
       id: {
-        type: Sequelize.INTEGER,
-        autoIncrement: true,
+        type: Sequelize.UUID,
+        defaultValue: Sequelize.UUIDV4,
         primaryKey: true,
       },
       value: {
         type: Sequelize.STRING,
+        allowNull: false,
       },
     },
     {

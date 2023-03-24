@@ -3,29 +3,36 @@ module.exports = (sequelize, Sequelize) => {
 
   User.init(
     {
+      id: {
+        type: Sequelize.UUID,
+        primaryKey: true,
+        defaultValue: Sequelize.UUIDV4,
+      },
       email: {
         type: Sequelize.STRING,
+        allowNull: false,
+        unique: true,
       },
       password: {
         type: Sequelize.STRING,
+        allowNull: false,
       },
       username: {
         type: Sequelize.STRING,
-      },
-      id: {
-        type: Sequelize.INTEGER,
-        autoIncrement: true,
-        primaryKey: true,
+        allowNull: false,
       },
       gender: {
         type: Sequelize.BOOLEAN,
         defaultValue: 0,
+        allowNull: false,
       },
       phone: {
         type: Sequelize.STRING,
+        allowNull: false,
       },
       address: {
         type: Sequelize.STRING,
+        allowNull: false,
       },
     },
     {

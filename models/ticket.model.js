@@ -4,18 +4,21 @@ module.exports = (sequelize, Sequelize) => {
   Ticket.init(
     {
       id: {
-        type: Sequelize.INTEGER,
-        autoIncrement: true,
+        type: Sequelize.UUID,
         primaryKey: true,
+        defaultValue: Sequelize.UUIDV4,
       },
       type: {
         type: Sequelize.BOOLEAN,
+        allowNull: false,
       },
       price: {
         type: Sequelize.FLOAT,
+        allowNull: false,
       },
       seatId: {
         type: Sequelize.INTEGER,
+        allowNull: false,
       },
     },
     { sequelize, modelName: 'ticket' }
