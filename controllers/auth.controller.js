@@ -21,6 +21,7 @@ class authController {
     if (!errors.isEmpty()) {
       return res.json({ errors: errors.array() });
     }
+
     if (req.user) {
       res.json({
         success: true,

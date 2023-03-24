@@ -27,8 +27,8 @@ router.post(
     .notEmpty()
     .isLength({ min: 6, max: 20 }),
   passport.authenticate('local', {
-    failureMessage: 'test',
-    successMessage: 'test',
+    failureRedirect: '/auth',
+    successRedirect: '/test',
   }),
   authController.login
 );

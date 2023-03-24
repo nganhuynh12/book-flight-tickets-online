@@ -5,19 +5,11 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const passport = require('passport');
 const session = require('express-session');
-const SQLiteStore = require('connect-sqlite3')(session);
-const env = require('dotenv').config();
 
 const db = require('./models');
 
 require('./config/passport');
 
-const indexRouter = require('./routes/index.route');
-const authRouter = require('./routes/auth.route');
-const userRouter = require('./routes/user.route');
-const flightRouter = require('./routes/flight.route');
-const ticketRouter = require('./routes/ticket.route');
-const locationRouter = require('./routes/location.route');
 const { engine } = require('express-handlebars');
 
 const app = express();
@@ -68,12 +60,7 @@ app.use(
 app.use(passport.session());
 app.use(passport.authenticate('session'));
 
-app.use('/', indexRouter);
-app.use('/auth', authRouter);
-app.use('/users', userRouter);
-app.use('/flights', flightRouter);
-app.use('/tickets', ticketRouter);
-app.use('/locations', locationRouter);
+require('./routes')(app);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
@@ -81,7 +68,7 @@ app.use(function (req, res, next) {
 });
 
 // error handler
-app.use(function (err, req, res, next) {
+app.use(function (err, req, res) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};

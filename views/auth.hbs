@@ -11,7 +11,7 @@
   <body>
     <div class='container' id='container'>
       <div class='form-container register-container'>
-        <form action='#'>
+        <form action='/auth/register' method='post'>
           <h1>Đăng ký</h1>
           <input type='text' placeholder='Họ và tên' />
           <input type='email' placeholder='Email' />
@@ -25,10 +25,10 @@
       </div>
 
       <div class='form-container login-container'>
-        <form action='#'>
+        <form action='/auth/login' method='post'>
           <h1>Đăng nhập</h1>
-          <input type='email' placeholder='Email' />
-          <input type='password' placeholder='Password' />
+          <input type='email' placeholder='Email' name='email' />
+          <input type='password' placeholder='Password' name='password' />
           <div class='content'>
             <div class='pass-link'>
               <a href='#'>Quên mật khẩu?</a>
