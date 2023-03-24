@@ -1,0 +1,25 @@
+{{!-- Thêm chuyến bay --}}
+<div id="add-flight-form">
+  <form>
+    <div class="title-header-form">
+       <h3 class="form-title">Thêm chuyến bay</h3> 
+       <button class="form-close" onclick="hideAddFlightForm()">x</button>            
+    </div>
+    <label for="flight-no">Số chuyến bay:</label>
+    <input type="text" id="flight-no" name="flight-no" required>
+
+    <label for="flight-date">Ngày bay:</label>
+    <input type="date" id="flight-date" name="flight-date" required>
+
+    <label for="flight-time">Thời gian bay:</label>
+    <input type="time" id="flight-time" name="flight-time" required>
+
+    <label for="departure">Điểm khởi hành:</label>
+    <input type="text" id="departure" name="departure" required>
+
+    <label for="destination">Điểm đến:</label>
+    <input type="text" id="destination" name="destination" required>
+
+    <button type="submit" class="btn-submit">Thêm</button>
+  </form>
+</div>

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
 :root {
     --main-color: #047683;
     --color-dark: #1D2231;
@@ -6,7 +6,7 @@
 }
 
 * {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Montserrat';
     margin: 0;
     padding: 0;
     text-decoration: none;
@@ -132,13 +132,13 @@ header {
 }
 
 main {
-    margin-top: 60px;
     background: #f1f5f9;
     height: 100%;
     padding: 1rem 3rem;
 }
 
 .dash-title {
+    margin-top: 90px;
     color: var(--color-dark);
     margin-bottom: 1rem;
 }
@@ -200,7 +200,7 @@ main {
 
 .title-container{
     display: flex;
-    margin-top: 31px;
+    margin-top: 90px;
 }
 
 table {

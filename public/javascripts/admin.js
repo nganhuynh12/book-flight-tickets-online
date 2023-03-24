@@ -17,11 +17,19 @@ function showAddFlightForm() {
   }, 50);
 }
 
+/* Ẩn form chuyến bay */
 function hideAddFlightForm() {
   document.querySelector("#add-flight-form form").classList.remove("show");
   setTimeout(function() {
     document.getElementById("add-flight-form").classList.remove("show");
   }, 300);
+}
+
+var modal = document.getElementById('add-flight-form form');
+window.onclick = function(event){
+  if(event.target == modal){
+    modal.display.style = "none";
+  }
 }
 
 
