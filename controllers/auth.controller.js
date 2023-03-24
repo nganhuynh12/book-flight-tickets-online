@@ -21,9 +21,11 @@ class authController {
     if (!errors.isEmpty()) {
       return res.json({ errors: errors.array() });
     }
-
-    const result = await authService.login(req.body);
-    res.json(result);
+    if (req.user) {
+      res.json({
+        success: true,
+      });
+    }
   }
 
   async reset(req, res, next) {

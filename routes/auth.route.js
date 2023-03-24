@@ -1,6 +1,7 @@
 const express = require('express');
 const { body } = require('express-validator');
-const authController = require('../controllers/auth.controller');
+const passport = require('passport');
+const { authController } = require('../controllers');
 
 const router = express.Router();
 
@@ -25,6 +26,10 @@ router.post(
     .isAlphanumeric()
     .notEmpty()
     .isLength({ min: 6, max: 20 }),
+  passport.authenticate('local', {
+    failureMessage: 'test',
+    successMessage: 'test',
+  }),
   authController.login
 );
 

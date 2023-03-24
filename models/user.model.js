@@ -24,15 +24,12 @@ module.exports = (sequelize, Sequelize) => {
       gender: {
         type: Sequelize.BOOLEAN,
         defaultValue: 0,
-        allowNull: false,
       },
       phone: {
         type: Sequelize.STRING,
-        allowNull: false,
       },
       address: {
         type: Sequelize.STRING,
-        allowNull: false,
       },
     },
     {
