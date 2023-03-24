@@ -20,6 +20,11 @@ module.exports = (sequelize, Sequelize) => {
         type: Sequelize.INTEGER,
         allowNull: false,
       },
+      luggageType: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        default: 0,
+      },
     },
     { sequelize, modelName: 'ticket' }
   );
