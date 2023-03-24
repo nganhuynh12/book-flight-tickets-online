@@ -5,12 +5,16 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const passport = require('passport');
 const session = require('express-session');
+const cors = require('cors');
+const csurf = require('csurf');
+const rateLimit = require('express-rate-limit');
 
 const db = require('./models');
 
 require('./config/passport');
 
 const { engine } = require('express-handlebars');
+const { default: helmet } = require('helmet');
 
 const app = express();
 
@@ -46,10 +50,20 @@ app.engine(
 app.set('view engine', 'hbs');
 
 app.use(logger('dev'));
+app.use(helmet());
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(csurf());
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 100,
+  standardHeader: true,
+  legacyHeader: false,
+});
+app.use(limiter);
 app.use(
   session({
     secret: 'suvasdhfioweufklj',
