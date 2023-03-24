@@ -36,31 +36,31 @@
                     </div>
                 </li>
                 <li>
-                    <div>
+                    <div onclick="openTabs('out-flight')">
                         <span class="fa fa-star"></span>
                         <span>Quản lý chuyến bay nổi bậc</span>
                     </div>
                 </li>
                 <li>
-                    <div>
+                    <div onclick="openTabs('place')">
                         <span class="fa fa-map-marker"></span>
                         <span>Quản lý địa điểm</span>
                     </div>
                 </li>
                 <li>
-                    <div>
+                    <div onclick="openTabs('customer')">
                         <span class="fa fa-user"></span>
                         <span>Quản lý khách hàng</span>
                     </div>
                 </li>
                 <li>
-                    <div>
+                    <div onclick="openTabs('ticket')">
                         <span class="fa fa-ticket"></span>
                         <span>Quản lý lịch sử mua vé</span>
                     </div>
                 </li>
                 <li>
-                    <div>
+                    <div onclick="openTabs('statistical')">
                         <span class="fa fa-money"></span>
                         <span>Thống kê</span>
                     </div>
@@ -118,7 +118,7 @@
                             </div>
                         </div>
                         <div class="card-footer">
-                            <a href="">View all</a>
+                            <a onclick="openTabs('out-flight')">View all</a>
                         </div>
                     </div>
                     
@@ -131,7 +131,7 @@
                             </div>
                         </div>
                         <div class="card-footer">
-                            <a href="">View all</a>
+                            <a onclick="openTabs('place')">View all</a>
                         </div>
                     </div>
     
@@ -144,7 +144,7 @@
                             </div>
                         </div>
                         <div class="card-footer">
-                            <a href="">View all</a>
+                            <a onclick="openTabs('customer')">View all</a>
                         </div>
                     </div>
     
@@ -157,7 +157,7 @@
                             </div>
                         </div>
                         <div class="card-footer">
-                            <a href="">View all</a>
+                            <a onclick="openTabs('ticket')">View all</a>
                         </div>
                     </div>
     
@@ -170,7 +170,7 @@
                             </div>
                         </div>
                         <div class="card-footer">
-                            <a href="">View all</a>
+                            <a onclick="openTabs('statistical')">View all</a>
                         </div>
                     </div>
                 </div>
@@ -221,7 +221,233 @@
                     </tr>
                 </table>
             </main>
-        </div>            
+        </div>  
+
+{{!-- outenting flight --}}
+        <div id="out-flight" class="tabs" style="display: none;">
+            <main>
+                <div class="title-container">
+                    <h2>Quản lý chuyến bay nổi bậc</h2>
+                    <button class="btn-add">Thêm chuyến bay nổi bậc</button>
+                </div>
+                <table>
+                    <tr style="background-color: #047683;">
+                        <th>STT</th>
+                        <th>Chuyến bay</th>
+                        <th>Ngày bay</th>
+                        <th>Thời gian</th>
+                        <th>Địa điểm đi</th>
+                        <th>Địa điểm đến</th>
+                        <th>Action</th>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>VN6002</td>
+                        <td>16/03/2023</td>
+                        <td>6:30 - 9:05</td>
+                        <td>Hồ Chí Minh</td>
+                        <td>Hà Nội</td>
+                        <td>
+                            <button class="btn-view"><span class="fa fa-eye"></span></button>
+                            <button class="btn-edit"><span class="fa fa-pencil"></span></button>
+                            <button class="btn-delete"><span class="fa fa-trash"></span></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>VN6002</td>
+                        <td>16/03/2023</td>
+                        <td>6:30 - 9:05</td>
+                        <td>Hồ Chí Minh</td>
+                        <td>Hà Nội</td>
+                        <td>
+                            <button class="btn-view"><span class="fa fa-eye"></span></button>
+                            <button class="btn-edit"><span class="fa fa-pencil"></span></button>
+                            <button class="btn-delete"><span class="fa fa-trash"></span></button>
+                        </td>
+                    </tr>
+                </table>
+            </main>
+        </div>  
+{{!-- place --}}
+        <div id="place" class="tabs" style="display: none;">
+            <main>
+                <div class="title-container">
+                    <h2>Quản lý điạ điểm</h2>
+                    <button class="btn-add">Thêm địa điểm</button>
+                </div>
+                <table>
+                    <tr style="background-color: #047683;">
+                        <th>STT</th>
+                        <th>Địa điểm đi</th>
+                        <th>Địa điểm đến</th>
+                        <th>Action</th>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Hồ Chí Minh</td>
+                        <td>Hà Nội</td>
+                        <td>
+                            <button class="btn-view"><span class="fa fa-eye"></span></button>
+                            <button class="btn-edit"><span class="fa fa-pencil"></span></button>
+                            <button class="btn-delete"><span class="fa fa-trash"></span></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Hồ Chí Minh</td>
+                        <td>Hà Nội</td>
+                        <td>
+                            <button class="btn-view"><span class="fa fa-eye"></span></button>
+                            <button class="btn-edit"><span class="fa fa-pencil"></span></button>
+                            <button class="btn-delete"><span class="fa fa-trash"></span></button>
+                        </td>
+                    </tr>
+                </table>
+            </main>
+        </div>  
+{{!-- customer --}}
+        <div id="customer" class="tabs" style="display: none;">
+            <main>
+                <div class="title-container">
+                    <h2>Quản lý khách hàng</h2>
+                </div>
+                <table>
+                    <tr style="background-color: #047683;">
+                        <th>STT</th>
+                        <th>Username</th>
+                        <th>Email</th>
+                        <th>Address</th>
+                        <th>Phone</th>
+                        <th>Gender</th>
+                        <th>Action</th>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Thảo Ngân</td>
+                        <td>ngan@gmail.com</td>
+                        <td>Hồ Chí Minh</td>
+                        <td>012233678</td>
+                        <td>Nữ</td>
+                        <td>
+                            <button class="btn-view"><span class="fa fa-eye"></span></button>
+                            <button class="btn-edit"><span class="fa fa-pencil"></span></button>
+                            <button class="btn-delete"><span class="fa fa-trash"></span></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Thảo Ngân</td>
+                        <td>ngan@gmail.com</td>
+                        <td>Hồ Chí Minh</td>
+                        <td>012233678</td>
+                        <td>Nữ</td>
+                        <td>
+                            <button class="btn-view"><span class="fa fa-eye"></span></button>
+                            <button class="btn-edit"><span class="fa fa-pencil"></span></button>
+                            <button class="btn-delete"><span class="fa fa-trash"></span></button>
+                        </td>
+                    </tr>
+                </table>
+            </main>
+        </div>
+{{!-- ticket --}}
+        <div id="ticket" class="tabs" style="display: none;">
+            <main>
+                <div class="title-container">
+                    <h2>Quản lý lịch sử đặt vé</h2>
+                </div>
+                <table>
+                    <tr style="background-color: #047683;">
+                        <th>STT</th>
+                        <th>Khách hàng</th>
+                        <th>Loại vé</th>
+                        <th>Giá</th>
+                        <th>Loại máy bay</th>
+                        <th>Chổ ngồi</th>
+                        <th>Địa điểm đi</th>
+                        <th>Địa điểm đến</th>
+                        <th>Action</th>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Thảo Ngân</td>
+                        <td>Thương gia</td>
+                        <td>1000000</td>
+                        <td>B52</td>
+                        <td>B01</td>
+                        <td>Hồ Chí Minh</td>
+                        <td>Hà Nội</td>
+                        <td>
+                            <button class="btn-view"><span class="fa fa-eye"></span></button>
+                            <button class="btn-edit"><span class="fa fa-pencil"></span></button>
+                            <button class="btn-delete"><span class="fa fa-trash"></span></button>
+                        </td>
+                    </tr>
+                         <td>1</td>
+                        <td>Thảo Ngân</td>
+                        <td>Thương gia</td>
+                        <td>1000000</td>
+                        <td>B52</td>
+                        <td>B01</td>
+                        <td>Hồ Chí Minh</td>
+                        <td>Hà Nội</td>
+                        <td>
+                            <button class="btn-view"><span class="fa fa-eye"></span></button>
+                            <button class="btn-edit"><span class="fa fa-pencil"></span></button>
+                            <button class="btn-delete"><span class="fa fa-trash"></span></button>
+                        </td>
+                    </tr>
+                </table>
+            </main>
+        </div> 
+{{!-- stctistical --}}
+<div id="statistical" class="tabs" style="display: none;">
+            <main>
+                <div class="title-container">
+                    <h2>Thống kê</h2>
+                </div>
+                <table>
+                    <tr style="background-color: #047683;">
+                        <th>STT</th>
+                        <th>Số lượng vé thường</th>
+                        <th>Giá tiền vé thường</th>
+                        <th>Số lượng vẽ thương gia</th>
+                        <th>Giá tiền vé thương gia</th>
+                        <th>Thống kê</th>
+                        <th>Action</th>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>10</td>
+                        <td>5000000</td>
+                        <td>10</td>
+                        <td>10000000</td>
+                        <td>150000000</td>
+                        <td>
+                            <button class="btn-view"><span class="fa fa-eye"></span></button>
+                            <button class="btn-edit"><span class="fa fa-pencil"></span></button>
+                            <button class="btn-delete"><span class="fa fa-trash"></span></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>10</td>
+                        <td>5000000</td>
+                        <td>10</td>
+                        <td>10000000</td>
+                        <td>150000000</td>
+                        <td>
+                            <button class="btn-view"><span class="fa fa-eye"></span></button>
+                            <button class="btn-edit"><span class="fa fa-pencil"></span></button>
+                            <button class="btn-delete"><span class="fa fa-trash"></span></button>
+                        </td>
+                    </tr>
+                </table>
+            </main>
+        </div>
+
+
     </div>
 
 
