@@ -3,7 +3,14 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
+const passport = require('passport');
+const session = require('express-session');
+const SQLiteStore = require('connect-sqlite3')(session);
+const env = require('dotenv').config();
+
 const db = require('./models');
+
+require('./config/passport');
 
 const indexRouter = require('./routes/index.route');
 const authRouter = require('./routes/auth.route');
@@ -12,7 +19,6 @@ const flightRouter = require('./routes/flight.route');
 const ticketRouter = require('./routes/ticket.route');
 const locationRouter = require('./routes/location.route');
 const { engine } = require('express-handlebars');
-const { count } = require('console');
 
 const app = express();
 
@@ -49,9 +55,18 @@ app.set('view engine', 'hbs');
 
 app.use(logger('dev'));
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(
+  session({
+    secret: 'suvasdhfioweufklj',
+    resave: true,
+    saveUninitialized: true,
+  })
+);
+app.use(passport.session());
+app.use(passport.authenticate('session'));
 
 app.use('/', indexRouter);
 app.use('/auth', authRouter);
@@ -76,6 +91,6 @@ app.use(function (err, req, res, next) {
   res.render('error');
 });
 
-db.sequelize.sync().then(() => {
+db.sequelize.sync({ alter: true }).then(() => {
   app.listen('3000');
 });
