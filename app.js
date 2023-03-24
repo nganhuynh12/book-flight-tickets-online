@@ -78,6 +78,6 @@ app.use(function (err, req, res) {
   res.render('error');
 });
 
-db.sequelize.sync({ alter: true }).then(() => {
+db.sequelize.sync().then(() => {
   app.listen('3000');
 });
