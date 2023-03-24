@@ -12,8 +12,12 @@ class authController {
       return res.status(400).json({ errors: errors.array() });
     }
 
-    const result = await authService.register(req.body);
-    res.status(201).json(result);
+    try {
+      const result = await authService.register(req.body);
+      if (result) res.redirect('/test');
+    } catch (error) {
+      res.redirect('/auth', { error_message: error.message });
+    }
   }
 
   async login(req, res, next) {
