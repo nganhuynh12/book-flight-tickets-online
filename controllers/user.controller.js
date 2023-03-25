@@ -1,6 +1,5 @@
 const { validationResult } = require('express-validator');
-const userService = require('../services/user.service');
-const userSerivce = require('../services/user.service');
+const { userService } = require('../services');
 
 class userController {
   async findAll(req, res, next) {

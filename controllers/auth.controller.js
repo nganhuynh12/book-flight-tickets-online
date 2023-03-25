@@ -1,5 +1,5 @@
 const { validationResult } = require('express-validator');
-const authService = require('../services/auth.service');
+const { authService } = require('../services');
 
 class authController {
   show(req, res, next) {

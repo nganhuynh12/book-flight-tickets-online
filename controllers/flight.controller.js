@@ -1,5 +1,5 @@
 const { body, validationResult } = require('express-validator');
-const flightService = require('../services/flight.service');
+const { flightService } = require('../services');
 
 class flightController {
   async add(req, res, next) {
