@@ -6,7 +6,7 @@ const logger = require('morgan');
 const passport = require('passport');
 const session = require('express-session');
 const cors = require('cors');
-const csurf = require('csurf');
+// const csurf = require('csurf');
 const rateLimit = require('express-rate-limit');
 
 const db = require('./models');
@@ -61,7 +61,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(csurf());
+// app.use(csurf());
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000,
   max: 100,
