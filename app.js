@@ -44,6 +44,11 @@ app.engine(
           </div>
         `;
       },
+      static(name) {
+        const baseUrl = '';
+
+        return baseUrl + name;
+      },
     },
   })
 );
