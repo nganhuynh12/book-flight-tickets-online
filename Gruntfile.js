@@ -39,11 +39,16 @@ module.exports = (grunt) => {
           'public/javascripts/minify.min.js',
           'public/stylesheets/minify.min.css',
         ],
-        dest: ['config.js'],
+        dest: ['config/config.js'],
       },
     },
   });
+  [
+    'grunt-contrib-less',
+    'grunt-contrib-cssmin',
+    'grunt-contrib-uglify',
+    'grunt-hashres',
+  ].forEach((task) => grunt.loadNpmTasks(task));
 
   grunt.registerTask('static', ['less', 'cssmin', 'uglify', 'hashres']);
-  grunt.loadNpmTasks('static');
 };

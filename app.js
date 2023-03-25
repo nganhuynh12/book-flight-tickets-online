@@ -8,8 +8,9 @@ const session = require('express-session');
 const cors = require('cors');
 // const csurf = require('csurf');
 const rateLimit = require('express-rate-limit');
-
+const bundler = require('connect-bundle')(require('./config/config'));
 const db = require('./models');
+console.log(require('./config/config'));
 
 require('./config/passport');
 
@@ -53,6 +54,7 @@ app.engine(
   })
 );
 app.set('view engine', 'hbs');
+app.use(bundler);
 
 app.use(logger('dev'));
 app.use(helmet());
