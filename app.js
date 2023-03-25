@@ -2,11 +2,10 @@ const createError = require('http-errors');
 const express = require('express');
 const db = require('./models');
 
-
 const app = express();
 
 require('./config/passport');
-require('./config/server')(app);
+require('./config/server')(app, __dirname);
 require('./routes')(app);
 
 // catch 404 and forward to error handler

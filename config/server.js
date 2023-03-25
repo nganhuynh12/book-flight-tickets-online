@@ -10,7 +10,7 @@ const rateLimit = require('express-rate-limit');
 const bundler = require('connect-bundle')(require('./config'));
 const express = require('express');
 
-module.exports = (app) => {
+module.exports = (app, dirName) => {
   // view engine setup
   app.engine(
     'hbs',
@@ -54,7 +54,7 @@ module.exports = (app) => {
   app.use(express.json());
   app.use(express.urlencoded({ extended: true }));
   app.use(cookieParser());
-  app.use(express.static(path.join(__dirname, 'public')));
+  app.use(express.static(path.join(dirName, 'public')));
   const limiter = rateLimit({
     windowMs: 15 * 60 * 1000,
     max: 100,
