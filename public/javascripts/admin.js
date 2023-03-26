@@ -1,3 +1,51 @@
+var btnAddFlight = document.getElementById('btn-add-flight');
+var showAddFlight = document.getElementById('add-flight-form');
+var hideAddFlight = document.getElementById('close-add-flight-form');
+
+//Chuyển tab khi click vào sidebar
+document.getElementById('sidebar-home').addEventListener("click",() => {
+  openTabs('dashboard');
+});
+document.getElementById('sidebar-flight').addEventListener("click",() => {
+  openTabs('flight');
+});
+document.getElementById('sidebar-out-flight').addEventListener("click",() => {
+  openTabs('out-flight');
+});
+document.getElementById('sidebar-place').addEventListener("click",() => {
+  openTabs('place');
+});
+document.getElementById('sidebar-customer').addEventListener("click",() => {
+  openTabs('customer');
+});
+document.getElementById('sidebar-ticket').addEventListener("click",() => {
+  openTabs('ticket');
+});
+document.getElementById('sidebar-statistical').addEventListener("click",() => {
+  openTabs('statistical');
+});
+
+//Chuyển tab khi click vào viewall
+document.getElementById('openFlight').addEventListener('click', () => {
+  openTabs('flight');
+});
+document.getElementById('openOutstadingFlight').addEventListener('click', () => {
+  openTabs('out-flight');
+});
+document.getElementById('openPlace').addEventListener('click', () => {
+  openTabs('place');
+});
+document.getElementById('openCustomer').addEventListener('click', () => {
+  openTabs('customer');
+});
+document.getElementById('openTicket').addEventListener('click', () => {
+  openTabs('ticket');
+});
+document.getElementById('openStatistical').addEventListener('click', () => {
+  openTabs('statistical');
+});
+
+//Hàm chuyển tab
 function openTabs(tabName) {
   var i;
   var x = document.getElementsByClassName('tabs');
@@ -8,8 +56,12 @@ function openTabs(tabName) {
 }
 
 /* Thêm chuyến bay */
+btnAddFlight.addEventListener("click",showAddFlightForm);
+hideAddFlight.addEventListener("click",hideAddFlightForm);
+
+
 function showAddFlightForm() {
-  document.getElementById('add-flight-form').classList.add('show');
+  showAddFlight.classList.add('show');
   setTimeout(function () {
     document.querySelector('#add-flight-form form').classList.add('show');
   }, 50);
@@ -23,12 +75,12 @@ function hideAddFlightForm() {
   }, 300);
 }
 
-var modal = document.getElementById('add-flight-form form');
-window.onclick = function (event) {
-  if (event.target == modal) {
-    modal.display.style = 'none';
+//Ẩn form khi click vào vùng ngoài form
+window.onclick = function(event){
+  if(event.target == showAddFlight){
+    hideAddFlightForm();
   }
-};
+}
 
 /* Xem thông tin chi tiết chuyến bay */
 function showFlightDetails() {
@@ -52,7 +104,4 @@ function hideFlightDetails() {
 
 /* Chỉnh sửa thông tin chuyến bay */
 
-document.getElementById('openFlight').addEventListener('click', () => {
-  console.log('test');
-  openTabs('flight');
-});
+
