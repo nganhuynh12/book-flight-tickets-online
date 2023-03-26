@@ -23,7 +23,7 @@ class authController {
   async login(req, res, next) {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      return res.json({ errors: errors.array() });
+      return res.status(400).json({ errors: errors.array() });
     }
 
     if (req.user) {
@@ -41,6 +41,13 @@ class authController {
 
     const result = await authService.login(req.body);
     res.json(result);
+  }
+
+  logout(req, res, next) {
+    req.logout((error) => {
+      if (error) return error;
+      res.redirect('/auth');
+    });
   }
 }
 

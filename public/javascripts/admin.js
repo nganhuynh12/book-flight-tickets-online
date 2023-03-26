@@ -51,3 +51,8 @@ function hideFlightDetails() {
 }
 
 /* Chỉnh sửa thông tin chuyến bay */
+
+document.getElementById('openFlight').addEventListener('click', () => {
+  console.log('test');
+  openTabs('flight');
+});

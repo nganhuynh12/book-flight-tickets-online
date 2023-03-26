@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
     <title>Admin Page</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lykmapipo/themify-icons@0.1.2/css/themify-icons.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" /
-    <link rel='stylesheet' href='{{static '/stylesheets/admin.css'}}' />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" />
+    <link rel='stylesheet' href='{{static "stylesheets/admin.css"}}' />
 </head>
 <body>
     
@@ -29,7 +29,7 @@
                     </div>
                 </li>
                 <li>
-                    <div onclick="openTabs('flight')">
+                    <div>
                         <span class="fa fa-plane"></span>
                         <span>Quản lý chuyến bay</span>
                     </div>
@@ -104,7 +104,7 @@
                             </div>
                         </div>
                         <div class="card-footer">
-                            <a onclick="openTabs('flight')">View all</a>
+                            <a id="openFlight">View all</a>
                         </div>
                     </div>
                     
@@ -253,7 +253,6 @@
   </div>
 </div>
 
-
-    <script src='{{static javascripts/admin.js}}'></script>
+    <script src='{{static 'javascripts/admin.js'}}'></script>
 </body>
 </html>

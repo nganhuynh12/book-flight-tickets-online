@@ -7,7 +7,6 @@ const passport = require('passport');
 const session = require('express-session');
 const cors = require('cors');
 const rateLimit = require('express-rate-limit');
-const bundler = require('connect-bundle')(require('./config'));
 const express = require('express');
 
 module.exports = (app, dirName) => {
@@ -46,7 +45,6 @@ module.exports = (app, dirName) => {
     })
   );
   app.set('view engine', 'hbs');
-  app.use(bundler);
 
   app.use(logger('dev'));
   app.use(helmet());

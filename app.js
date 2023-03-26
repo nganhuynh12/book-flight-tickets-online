@@ -27,3 +27,5 @@ app.use(function (err, req, res) {
 db.sequelize.sync().then(() => {
   app.listen('3000');
 });
+
+module.exports = app;

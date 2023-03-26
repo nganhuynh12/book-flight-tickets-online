@@ -2,6 +2,7 @@ const express = require('express');
 const { body } = require('express-validator');
 const passport = require('passport');
 const { authController } = require('../controllers');
+const localAuthGuard = require('../guards/local-auth.guard');
 
 const router = express.Router();
 
@@ -32,6 +33,8 @@ router.post(
   }),
   authController.login
 );
+
+router.post('/logout', localAuthGuard, authController.logout);
 
 router.post('/reset', authController.reset);
 

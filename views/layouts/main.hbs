@@ -1,16 +1,9 @@
 <html>
   <head>
     <title>{{title}}</title>
-    {{#each _bundles.css}}
-      <link rel='stylesheet' href='{{static .}}' />
-    {{/each}}
     <link rel='stylesheet' href='{{static "/stylesheets/variable.css"}}' />
-
   </head>
   <body>
     {{{body}}}
-    {{#each _bundles.js.head}}
-    <script src='{{static .}}'></script>
-    {{/each}}
   </body>
 </html>
