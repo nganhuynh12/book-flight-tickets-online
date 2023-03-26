@@ -18,4 +18,8 @@ router.get('/test', localAuthGuard, (req, res, next) => {
   res.render('test');
 });
 
+router.get('/aboutus', (req, res, next) => {
+  res.render('aboutus');
+});
+
 module.exports = router;
