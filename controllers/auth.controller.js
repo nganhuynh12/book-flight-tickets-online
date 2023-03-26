@@ -7,25 +7,16 @@ class authController {
   }
 
   async register(req, res, next) {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      return res.status(400).json({ errors: errors.array() });
-    }
-
     try {
       const result = await authService.register(req.body);
       if (result) res.redirect('/test');
     } catch (error) {
-      res.redirect('/auth', { error_message: error.message });
+      console.log(error);
+      res.render('auth', { error_message: error.message });
     }
   }
 
   async login(req, res, next) {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      return res.status(400).json({ errors: errors.array() });
-    }
-
     if (req.user) {
       res.json({
         success: true,

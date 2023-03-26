@@ -13,11 +13,6 @@ class userController {
   }
 
   async updateById(req, res, next) {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      res.json(errors.array());
-    }
-
     const result = await userService.updateById(req.params.id, req.body);
     res.json(result);
   }
