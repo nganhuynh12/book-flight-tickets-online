@@ -34,37 +34,37 @@ $(document).ready(() => {
   });
 
   //Hàm chuyển tab
-  function openTabs(tabName) {
-    var i;
-    var x = document.getElementsByClassName('tabs');
-    for (i = 0; i < x.length; i++) {
-      x[i].style.display = 'none';
-    }
-    document.getElementById(tabName).style.display = 'block';
+  const openTabs = (tabName) => {
+    const tabList = $('.tabs');
+    tabList.each((index, element) => {
+      console.log(element.style);
+      element.style.display = 'none';
+    });
+    $(`#${tabName}`)[0].style.display = 'block';
 
     if (tabName === 'place') {
       loadLocationTable();
     }
-  }
+  };
 
   /* Thêm chuyến bay */
-  btnAddFlight.addEventListener('click', showAddFlightForm);
-  hideAddFlight.addEventListener('click', hideAddFlightForm);
+  btnAddFlight.on('click', showAddFlightForm);
+  hideAddFlight.on('click', hideAddFlightForm);
 
-  function showAddFlightForm() {
+  const showAddFlightForm = () => {
     showAddFlight.classList.add('show');
     setTimeout(function () {
       document.querySelector('#add-flight-form form').classList.add('show');
     }, 50);
-  }
+  };
 
   /* Ẩn form chuyến bay */
-  function hideAddFlightForm() {
+  const hideAddFlightForm = () => {
     document.querySelector('#add-flight-form form').classList.remove('show');
     setTimeout(function () {
       document.getElementById('add-flight-form').classList.remove('show');
     }, 300);
-  }
+  };
 
   //Ẩn form khi click vào vùng ngoài form
   window.onclick = function (event) {
@@ -74,7 +74,7 @@ $(document).ready(() => {
   };
 
   /* Xem thông tin chi tiết chuyến bay */
-  function showFlightDetails() {
+  const showFlightDetails = () => {
     let dialog = document
       .getElementById('flight-details')
       .querySelector('.dialog');
@@ -83,15 +83,15 @@ $(document).ready(() => {
       dialog.focus();
     }, 6000); // focus on dialog after animation completes
     document.getElementById('flight-details').classList.add('show');
-  }
+  };
 
-  function hideFlightDetails() {
+  const hideFlightDetails = () => {
     let dialog = document
       .getElementById('flight-details')
       .querySelector('.dialog');
     dialog.classList.remove('show');
     document.getElementById('flight-details').classList.remove('show');
-  }
+  };
 
   /* Chỉnh sửa thông tin chuyến bay */
 
@@ -100,11 +100,10 @@ $(document).ready(() => {
     const tbody = $('#place').find('tbody');
     if (locationData.length > 0) {
       let count = 1;
-      locationData.forEach((location) => {
-        console.log(location);
+      locationData.forEach((location, index) => {
         tbody.append(
           `<tr>
-          <td>${count}</td>
+          <td>${index}</td>
           <td>${location.value}</td>
           <td>
             <button class='btn-view'><span class='fa fa-eye'></span></button>
@@ -115,7 +114,6 @@ $(document).ready(() => {
           </td>
         </tr>`
         );
-        count++;
       });
     }
   };
