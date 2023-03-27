@@ -8,8 +8,13 @@ const session = require('express-session');
 const cors = require('cors');
 const rateLimit = require('express-rate-limit');
 const express = require('express');
+require('dotenv').config();
 
 module.exports = (app, dirName) => {
+  app.use(function (req, res, next) {
+    // res.set('Content-Security-Policy', "default-src 'self'");
+    next();
+  });
   app.engine(
     'hbs',
     engine({
@@ -44,7 +49,7 @@ module.exports = (app, dirName) => {
   app.set('view engine', 'hbs');
 
   app.use(logger('dev'));
-  app.use(helmet());
+  // app.use(helmet());
   app.use(cors());
   app.use(cookieParser());
   app.use(express.json());
@@ -59,7 +64,7 @@ module.exports = (app, dirName) => {
   app.use(limiter);
   app.use(
     session({
-      secret: '',
+      secret: process.env.SESSION_SECRET,
       resave: true,
       saveUninitialized: true,
     })
