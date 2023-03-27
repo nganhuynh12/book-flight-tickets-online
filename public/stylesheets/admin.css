@@ -1,9 +1,4 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat');
-:root {
-  --main-color: #047683;
-  --color-dark: #1d2231;
-  --text-grey: #8390a2;
-}
 
 * {
   font-family: 'Montserrat';
@@ -422,6 +417,10 @@ input:focus {
   .dialog {
     width: 90%;
   }
+}
+
+.sidebar-menu ul li {
+  cursor: pointer;
 }
 
 /* Chỉnh sửa thông tin chuyến bay */
