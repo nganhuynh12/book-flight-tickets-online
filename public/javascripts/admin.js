@@ -111,7 +111,7 @@ function hideFlightDetails() {
 
 const loadLocationTable = async () => {
   const locationData = await $.get('http://localhost:3000/locations');
-  const tbody = $('tbody');
+  const tbody = $('#place').find('tbody');
   if (locationData.length > 0) {
     let count = 1;
     locationData.forEach((location) => {
