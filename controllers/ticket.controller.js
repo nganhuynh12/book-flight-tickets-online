@@ -2,8 +2,12 @@ const { ticketService } = require('../services');
 
 class ticketController {
   async add(req, res, next) {
-    const result = await ticketService.add(req.body);
-    res.json(result);
+    try {
+      const result = await ticketService.add(req.body);
+      return res.status(201).json(result);
+    } catch (error) {
+      return res.status(400).json(error);
+    }
   }
 
   async findAll(req, res, next) {
@@ -12,8 +16,12 @@ class ticketController {
   }
 
   async deleteById(req, res, next) {
-    const result = await ticketService.deleteById(req.params.id);
-    res.json(result);
+    try {
+      const result = await ticketService.deleteById(req.params.id);
+      res.json(result);
+    } catch (error) {
+      return res.status(400).json(error);
+    }
   }
 }
 

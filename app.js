@@ -7,6 +7,7 @@ const app = express();
 require('./config/passport');
 require('./config/server')(app, __dirname);
 require('./routes')(app);
+require('dotenv').config();
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

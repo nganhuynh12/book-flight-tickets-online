@@ -3,8 +3,12 @@ const { flightService } = require('../services');
 
 class flightController {
   async add(req, res, next) {
-    const result = await flightService.add(req.body);
-    return res.status(201).json(result);
+    try {
+      const result = await flightService.add(req.body);
+      return res.status(201).json(result);
+    } catch (error) {
+      return res.json(400).json(error);
+    }
   }
 
   async findAll(req, res, next) {

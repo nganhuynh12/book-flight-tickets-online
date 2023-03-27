@@ -7,15 +7,17 @@ passport.use(
   new LocalStrategy(
     { usernameField: 'email', passwordField: 'password' },
     async (email, password, done) => {
-      console.log(email, password);
       try {
         const user = await db.users.findOne({ where: { email } });
-        if (!user) return done(null, false, { message: 'Unknown user' });
+        if (!user)
+          return done(null, false, { success: false, message: 'Unknown user' });
         if (await bcrypt.compare(password, user.password)) {
-          console.log('success');
           return done(null, user);
         } else {
-          return done(null, false, { message: 'Wrong password' });
+          return done(null, false, {
+            success: false,
+            message: 'Wrong password',
+          });
         }
       } catch (error) {
         return done(error);

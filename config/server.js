@@ -10,7 +10,6 @@ const rateLimit = require('express-rate-limit');
 const express = require('express');
 
 module.exports = (app, dirName) => {
-  // view engine setup
   app.engine(
     'hbs',
     engine({
@@ -37,9 +36,7 @@ module.exports = (app, dirName) => {
         `;
         },
         static(name) {
-          const baseUrl = '';
-
-          return baseUrl + name;
+          return require('../lib/static').map(name);
         },
       },
     })
@@ -49,9 +46,9 @@ module.exports = (app, dirName) => {
   app.use(logger('dev'));
   app.use(helmet());
   app.use(cors());
+  app.use(cookieParser());
   app.use(express.json());
   app.use(express.urlencoded({ extended: true }));
-  app.use(cookieParser());
   app.use(express.static(path.join(dirName, 'public')));
   const limiter = rateLimit({
     windowMs: 15 * 60 * 1000,
@@ -62,7 +59,7 @@ module.exports = (app, dirName) => {
   app.use(limiter);
   app.use(
     session({
-      secret: 'suvasdhfioweufklj',
+      secret: '',
       resave: true,
       saveUninitialized: true,
     })
