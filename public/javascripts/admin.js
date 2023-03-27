@@ -2,35 +2,17 @@ $(document).ready(() => {
   const btnAddFlight = $('#btn-add-flight');
   const showAddFlight = $('#add-flight-form');
   const hideAddFlight = $('#close-add-flight-form');
-  const sidebarElement = $("div[id^='sidebar']");
+  const prefixList = ['sidebar', 'Opentab'];
 
-  sidebarElement.each((index, element) => {
-    $(element).on('click', () => {
-      const id = element.id;
-      openTabs(id.slice(id.indexOf('-') + 1, id.length));
-    });
-  });
+  prefixList.forEach((prefix) => {
+    const elementList = $(`div[id^=${prefix}]`);
 
-  //Chuyển tab khi click vào viewall
-  document.getElementById('openFlight').addEventListener('click', () => {
-    openTabs('flight');
-  });
-  document
-    .getElementById('openOutstadingFlight')
-    .addEventListener('click', () => {
-      openTabs('out-flight');
+    elementList.each((index, element) => {
+      $(element).on('click', () => {
+        const id = element.id;
+        openTabs(id.slice(id.indexOf('-') + 1, id.length));
+      });
     });
-  document.getElementById('openPlace').addEventListener('click', () => {
-    openTabs('place');
-  });
-  document.getElementById('openCustomer').addEventListener('click', () => {
-    openTabs('customer');
-  });
-  document.getElementById('openTicket').addEventListener('click', () => {
-    openTabs('ticket');
-  });
-  document.getElementById('openStatistical').addEventListener('click', () => {
-    openTabs('statistical');
   });
 
   //Hàm chuyển tab
