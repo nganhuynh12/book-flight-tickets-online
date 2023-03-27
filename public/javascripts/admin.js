@@ -18,11 +18,21 @@ $(document).ready(() => {
   //Hàm chuyển tab
   const openTabs = (tabName) => {
     const tabList = $('.tabs');
+    const tabActive = $('.menu-items');
+    var indexTab;
     tabList.each((index, element) => {
-      console.log(element.style);
       element.style.display = 'none';
     });
     $(`#${tabName}`)[0].style.display = 'block';
+
+    tabActive.each((index,element) => {
+      const id = element.id;
+      if(tabName === id.slice(id.indexOf('-') + 1, id.length)){
+        indexTab = index;
+      }
+      element.classList.remove('active');
+    });
+    tabActive[indexTab].classList.add('active');
 
     if (tabName === 'place') {
       loadLocationTable();
@@ -30,7 +40,7 @@ $(document).ready(() => {
   };
 
   /* Thêm chuyến bay */
-  btnAddFlight.on('click', showAddFlightForm);
+  btnAddFlight.on('click',showAddFlightForm);
   hideAddFlight.on('click', hideAddFlightForm);
 
   const showAddFlightForm = () => {

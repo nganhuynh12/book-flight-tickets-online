@@ -33,17 +33,14 @@
   padding: 0rem 1rem;
 }
 
-.sidebar-menu {
-  padding: 1rem;
-}
-
-.sidebar li {
-  margin-bottom: 1.5rem;
-}
-
-.sidebar div {
+.menu-items {
+  display: table-cell;
+  vertical-align: middle;
+  width: 250px;
   color: #fff;
   font-size: 0.8rem;
+  height: 40px;
+  padding-left: 1rem;
 }
 
 .sidebar div span:last-child {
@@ -54,9 +51,19 @@
   width: 60px;
 }
 
-#sidebar-toggle:checked ~ .sidebar .sidebar-header h3 span,
+#sidebar-toggle:checked ~ .sidebar .sidebar-header h3 span ,
 #sidebar-toggle:checked ~ .sidebar li span:last-child {
   display: none;
+}
+
+#sidebar-toggle:checked ~ .sidebar li span:first-child{
+  padding-left: 0.4rem;
+  display: table-cell;
+  vertical-align: middle;
+  width: 60px;
+  color: #fff;
+  font-size: 0.8rem;
+  height: 40px;
 }
 
 #sidebar-toggle:checked ~ .sidebar .sidebar-header,
@@ -175,11 +182,11 @@ main {
 }
 
 .card-footer {
-  padding: 0.2rem 1rem;
+  padding: 0px 0px 10px 20px;
   background: #f9fafc;
 }
 
-.card-footer a {
+.card-footer div {
   color: var(--main-color);
 }
 
@@ -419,8 +426,16 @@ input:focus {
   }
 }
 
-.sidebar-menu ul li {
+.menu-items {
   cursor: pointer;
+}
+
+.menu-items:hover{
+  background-color: #0097a8;
+}
+
+.menu-items.active{
+  background-color: #0097a8;
 }
 
 /* Chỉnh sửa thông tin chuyến bay */
