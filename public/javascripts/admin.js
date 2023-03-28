@@ -15,19 +15,66 @@ $(document).ready(() => {
     });
   });
 
+  const loadLocationTable = async () => {
+    const selectField = ['value'];
+    const result = await $.get('http://localhost:3000/locations');
+    const table = $('#place table');
+    const tbody = $('<tbody></tbody>');
+    $.each(result, (index, data) => {
+      tbody.append(
+        `<tr><td>${index}</td>${$.map(selectField, (field) => {
+          return `<td>${data[field]}</td>`;
+        })}
+          <td>
+             <button class='btn-view'><span class='fa fa-eye'></span></button>
+             <button class='btn-edit'><span class='fa fa-pencil'></span></button>
+             <button class='btn-delete'><span
+               class='fa fa-trash'
+            ></span></button>
+           </td>
+        </tr>`
+      );
+    });
+    table.empty();
+    table.append(
+      `<thead style="background-color: var(--main-color)"><tr><th>ID</th>${$.map(
+        selectField,
+        (value) => {
+          console.log('value', value);
+          return `<th>${value}</th>`;
+        }
+      )}<th>action</th></tr></thead>`,
+      tbody
+    );
+    // if (locationData.length > 0) {
+    //   locationData.forEach((location, index) => {
+    //     $('<tr></tr>').html('td');
+    //     tbody.append(
+    //       `<tr>
+    //       <td>${index}</td>
+    //       <td>${location.value}</td>
+    //     </tr>`
+    //     );
+    //   });
+    // }
+    $.each(result, (index, data) => {
+      console.log(data, table);
+    });
+  };
+
   //Hàm chuyển tab
   const openTabs = (tabName) => {
     const tabList = $('.tabs');
     const tabActive = $('.menu-items');
-    var indexTab;
+    let indexTab;
     tabList.each((index, element) => {
       element.style.display = 'none';
     });
     $(`#${tabName}`)[0].style.display = 'block';
 
-    tabActive.each((index,element) => {
+    tabActive.each((index, element) => {
       const id = element.id;
-      if(tabName === id.slice(id.indexOf('-') + 1, id.length)){
+      if (tabName === id.slice(id.indexOf('-') + 1, id.length)) {
         indexTab = index;
       }
       element.classList.remove('active');
@@ -40,7 +87,7 @@ $(document).ready(() => {
   };
 
   /* Thêm chuyến bay */
-  btnAddFlight.on('click',showAddFlightForm);
+  btnAddFlight.on('click', showAddFlightForm);
   hideAddFlight.on('click', hideAddFlightForm);
 
   const showAddFlightForm = () => {
@@ -86,27 +133,4 @@ $(document).ready(() => {
   };
 
   /* Chỉnh sửa thông tin chuyến bay */
-
-  const loadLocationTable = async () => {
-    const locationData = await $.get('http://localhost:3000/locations');
-    const tbody = $('#place').find('tbody');
-    if (locationData.length > 0) {
-      let count = 1;
-      locationData.forEach((location, index) => {
-        tbody.append(
-          `<tr>
-          <td>${index}</td>
-          <td>${location.value}</td>
-          <td>
-            <button class='btn-view'><span class='fa fa-eye'></span></button>
-            <button class='btn-edit'><span class='fa fa-pencil'></span></button>
-            <button class='btn-delete'><span
-              class='fa fa-trash'
-            ></span></button> 
-          </td>
-        </tr>`
-        );
-      });
-    }
-  };
 });
