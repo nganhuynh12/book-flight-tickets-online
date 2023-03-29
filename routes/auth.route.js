@@ -1,6 +1,9 @@
 const express = require('express');
 const { body } = require('express-validator');
-const authController = require('../controllers/auth.controller');
+const passport = require('passport');
+const { authController } = require('../controllers');
+const localAuthGuard = require('../guards/local-auth.guard');
+const validationPipe = require('../pipes/validation.pipe');
 
 const router = express.Router();
 
@@ -14,6 +17,7 @@ router.post(
     .isAlphanumeric()
     .notEmpty()
     .isLength({ min: 6, max: 20 }),
+  validationPipe,
   authController.register
 );
 
@@ -25,8 +29,15 @@ router.post(
     .isAlphanumeric()
     .notEmpty()
     .isLength({ min: 6, max: 20 }),
+  passport.authenticate('local', {
+    failureRedirect: '/auth',
+    successRedirect: '/test',
+  }),
+  validationPipe,
   authController.login
 );
+
+router.post('/logout', localAuthGuard, authController.logout);
 
 router.post('/reset', authController.reset);
 

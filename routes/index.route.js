@@ -1,4 +1,5 @@
 var express = require('express');
+const localAuthGuard = require('../guards/local-auth.guard');
 var router = express.Router();
 
 router.get('/', function (req, res, next) {
@@ -13,10 +14,12 @@ router.get('/admin', (req, res, next) => {
   res.render('admin');
 });
 
-router.get('/test', (req, res, next) => {
+router.get('/test', localAuthGuard, (req, res, next) => {
   res.render('test');
 });
+
 router.get('/aboutus', (req, res, next) => {
   res.render('aboutus');
 });
+
 module.exports = router;

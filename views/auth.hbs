@@ -1,50 +1,50 @@
-<html lang='en'>
+<html lang="en">
 
   <head>
-    <meta charset='UTF-8' />
-    <meta http-equiv='X-UA-Compatible' content='IE=edge' />
-    <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login Page</title>
-    <link rel='stylesheet' href='/stylesheets/login_register.css' />
+    <link rel="stylesheet" href="{{static 'stylesheets/login_register.css'}}" />
   </head>
 
   <body>
-    <div class='container' id='container'>
-      <div class='form-container register-container'>
-        <form action='#'>
+    <div class="container" id="container">
+      <div class="form-container register-container">
+        <form action="/auth/register" method="post">
           <h1>Đăng ký</h1>
-          <input type='text' placeholder='Họ và tên' />
-          <input type='email' placeholder='Email' />
-          <input type='password' placeholder='Password' />
+          <input type="text" placeholder="Họ và tên" name="username" />
+          <input type="email" placeholder="Email" name="email" />
+          <input type="password" placeholder="Password" name="password" />
           <button>Đăng ký</button>
-          <div class='create-account'>
-            <span style='color: rgba(0, 0, 0,0.5);'>Đã có tài khoản?
-              <a href='#' id='login'>Đăng nhập</a></span>
+          <div class="create-account">
+            <span style="color: rgba(0, 0, 0,0.5);">Đã có tài khoản?
+              <a href="#" id="login">Đăng nhập</a></span>
           </div>
         </form>
       </div>
 
-      <div class='form-container login-container'>
-        <form action='#'>
+      <div class="form-container login-container">
+        <form action="/auth/login" method="post">
           <h1>Đăng nhập</h1>
-          <input type='email' placeholder='Email' />
-          <input type='password' placeholder='Password' />
-          <div class='content'>
-            <div class='pass-link'>
-              <a href='#'>Quên mật khẩu?</a>
+          <input type="email" placeholder="Email" name="email" />
+          <input type="password" placeholder="Password" name="password" />
+          <div class="content">
+            <div class="pass-link">
+              <a href="#">Quên mật khẩu?</a>
             </div>
           </div>
           <button>Đăng nhập</button>
-          <div class='create-account'>
-            <a href='#' id='register'>Tạo tài khoản?</a>
+          <div class="create-account">
+            <a href="#" id="register">Tạo tài khoản?</a>
           </div>
         </form>
       </div>
-      <div class='overlay-container'>
-        <div class='overlay'>
+      <div class="overlay-container">
+        <div class="overlay">
         </div>
       </div>
     </div>
-    <script src='javascripts/script.js'></script>
+    <script src="{{static 'javascripts/script.js'}}"></script>
   </body>
 </html>

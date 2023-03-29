@@ -1,39 +1,38 @@
 const { validationResult } = require('express-validator');
-const authService = require('../services/auth.service');
+const { authService } = require('../services');
 
 class authController {
   show(req, res, next) {
-    res.render('auth');
+    return res.render('auth');
   }
 
   async register(req, res, next) {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      return res.status(400).json({ errors: errors.array() });
+    try {
+      const result = await authService.register(req.body);
+      if (result) return res.redirect('/test');
+    } catch (error) {
+      return res.render('auth', { error_message: error.message });
     }
-
-    const result = await authService.register(req.body);
-    res.status(201).json(result);
   }
 
   async login(req, res, next) {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      return res.json({ errors: errors.array() });
+    if (req.user) {
+      return res.json({
+        success: true,
+      });
     }
-
-    const result = await authService.login(req.body);
-    res.json(result);
   }
 
   async reset(req, res, next) {
-    const errors = validationResult(req);
-    if (!errors.isEmpty) {
-      return res.json({ errors: errors.array() });
-    }
-
     const result = await authService.login(req.body);
-    res.json(result);
+    return res.json(result);
+  }
+
+  logout(req, res, next) {
+    req.logout((error) => {
+      if (error) return error;
+      return res.redirect('/auth');
+    });
   }
 }
 

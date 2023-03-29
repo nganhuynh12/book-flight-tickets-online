@@ -1,13 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
     <title>Admin Page</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lykmapipo/themify-icons@0.1.2/css/themify-icons.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" />
-
-    <link rel='stylesheet' href='/stylesheets/admin.css' />
+    <link rel='stylesheet' href='{{static "stylesheets/admin.css"}}' />
 </head>
 <body>
     
@@ -24,49 +23,49 @@
         <div class="sidebar-menu">
             <ul>
                 <li>
-                    <div onclick="openTabs('dashboard')">
+                    <div class="menu-items active" id="sidebar-home">
                         <span class="fa fa-home"></span>
                         <span>Trang chủ</span>
                     </div>
                 </li>
                 <li>
-                    <div onclick="openTabs('flight')">
+                    <div class="menu-items" id="sidebar-flight">
                         <span class="fa fa-plane"></span>
                         <span>Quản lý chuyến bay</span>
                     </div>
                 </li>
                 <li>
-                    <div onclick="openTabs('out-flight')">
+                    <div class="menu-items" id="sidebar-out-flight">
                         <span class="fa fa-star"></span>
                         <span>Quản lý chuyến bay nổi bậc</span>
                     </div>
                 </li>
                 <li>
-                    <div onclick="openTabs('place')">
+                    <div class="menu-items" id="sidebar-place">
                         <span class="fa fa-map-marker"></span>
                         <span>Quản lý địa điểm</span>
                     </div>
                 </li>
                 <li>
-                    <div onclick="openTabs('customer')">
+                    <div class="menu-items" id="sidebar-customer">
                         <span class="fa fa-user"></span>
                         <span>Quản lý khách hàng</span>
                     </div>
                 </li>
                 <li>
-                    <div onclick="openTabs('ticket')">
+                    <div class="menu-items" id="sidebar-ticket">
                         <span class="fa fa-ticket"></span>
                         <span>Quản lý lịch sử mua vé</span>
                     </div>
                 </li>
                 <li>
-                    <div onclick="openTabs('statistical')">
+                    <div class="menu-items" id="sidebar-statistical">
                         <span class="fa fa-money"></span>
                         <span>Thống kê</span>
                     </div>
                 </li>
                 <li>
-                    <div>
+                    <div class="menu-items">
                         <span class="fa fa-sign-out"></span>
                         <span>Logout</span>
                     </div>
@@ -90,7 +89,7 @@
             </div>
         </header>
         
-        <div id="dashboard" class="tabs">
+        <div id="home" class="tabs">
             <main>
             
                 <h2 class="dash-title">Overview</h2>
@@ -105,7 +104,7 @@
                             </div>
                         </div>
                         <div class="card-footer">
-                            <a onclick="openTabs('flight')">View all</a>
+                            <div id="sidebar-flight">View all</div>
                         </div>
                     </div>
                     
@@ -118,7 +117,7 @@
                             </div>
                         </div>
                         <div class="card-footer">
-                            <a onclick="openTabs('out-flight')">View all</a>
+                            <div id="sidebar-out-flight">View all</div>
                         </div>
                     </div>
                     
@@ -126,12 +125,12 @@
                         <div class="card-body">
                             <span class="fa fa-map-marker"></span>
                             <div>
-                                <h3>Quản lý địa điểm đến</h3>
+                                <h3>Quản lý địa điểm</h3>
                                 <h5>Điạ điểm: </h5>
                             </div>
                         </div>
                         <div class="card-footer">
-                            <a onclick="openTabs('place')">View all</a>
+                            <div id="sidebar-place">View all</div>
                         </div>
                     </div>
     
@@ -144,7 +143,7 @@
                             </div>
                         </div>
                         <div class="card-footer">
-                            <a onclick="openTabs('customer')">View all</a>
+                            <div id="sidebar-customer">View all</div>
                         </div>
                     </div>
     
@@ -157,7 +156,7 @@
                             </div>
                         </div>
                         <div class="card-footer">
-                            <a onclick="openTabs('ticket')">View all</a>
+                            <div id="sidebar-ticket">View all</div>
                         </div>
                     </div>
     
@@ -170,313 +169,29 @@
                             </div>
                         </div>
                         <div class="card-footer">
-                            <a onclick="openTabs('statistical')">View all</a>
+                            <div id="sidebar-statistical">View all</div>
                         </div>
                     </div>
                 </div>
             </main>
         </div>
 
-        <div id="flight" class="tabs" style="display: none;">
-            <main>
-                <div class="title-container">
-                    <h2>Quản lý chuyến bay</h2>
-                    <button class="btn-add" onclick="showAddFlightForm()">Thêm chuyến bay</button>
-                </div>
-                <table>
-                    <tr style="background-color: #047683;">
-                        <th>STT</th>
-                        <th>Chuyến bay</th>
-                        <th>Ngày bay</th>
-                        <th>Thời gian</th>
-                        <th>Địa điểm đi</th>
-                        <th>Địa điểm đến</th>
-                        <th>Action</th>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>VN6002</td>
-                        <td>16/03/2023</td>
-                        <td>6:30 - 9:05</td>
-                        <td>Hồ Chí Minh</td>
-                        <td>Hà Nội</td>
-                        <td>
-                            <button class="btn-view" onclick="showFlightDetails()"><span class="fa fa-eye"></span></button>
-                            <button class="btn-edit" onclick="showEditDialog()"><span class="fa fa-pencil"></span></button>
-                            <button class="btn-delete"><span class="fa fa-trash"></span></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>VN6002</td>
-                        <td>16/03/2023</td>
-                        <td>6:30 - 9:05</td>
-                        <td>Hồ Chí Minh</td>
-                        <td>Hà Nội</td>
-                        <td>
-                            <button class="btn-view"><span class="fa fa-eye"></span></button>
-                            <button class="btn-edit"><span class="fa fa-pencil"></span></button>
-                            <button class="btn-delete"><span class="fa fa-trash"></span></button>
-                        </td>
-                    </tr>
-                </table>
-            </main>
-        </div>  
 
+    {{> flight_table}}
 {{!-- outenting flight --}}
-        <div id="out-flight" class="tabs" style="display: none;">
-            <main>
-                <div class="title-container">
-                    <h2>Quản lý chuyến bay nổi bậc</h2>
-                    <button class="btn-add">Thêm chuyến bay nổi bậc</button>
-                </div>
-                <table>
-                    <tr style="background-color: #047683;">
-                        <th>STT</th>
-                        <th>Chuyến bay</th>
-                        <th>Ngày bay</th>
-                        <th>Thời gian</th>
-                        <th>Địa điểm đi</th>
-                        <th>Địa điểm đến</th>
-                        <th>Action</th>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>VN6002</td>
-                        <td>16/03/2023</td>
-                        <td>6:30 - 9:05</td>
-                        <td>Hồ Chí Minh</td>
-                        <td>Hà Nội</td>
-                        <td>
-                            <button class="btn-view"><span class="fa fa-eye"></span></button>
-                            <button class="btn-edit"><span class="fa fa-pencil"></span></button>
-                            <button class="btn-delete"><span class="fa fa-trash"></span></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>VN6002</td>
-                        <td>16/03/2023</td>
-                        <td>6:30 - 9:05</td>
-                        <td>Hồ Chí Minh</td>
-                        <td>Hà Nội</td>
-                        <td>
-                            <button class="btn-view"><span class="fa fa-eye"></span></button>
-                            <button class="btn-edit"><span class="fa fa-pencil"></span></button>
-                            <button class="btn-delete"><span class="fa fa-trash"></span></button>
-                        </td>
-                    </tr>
-                </table>
-            </main>
-        </div>  
+    {{> outstanding_flight_table}} 
 {{!-- place --}}
-        <div id="place" class="tabs" style="display: none;">
-            <main>
-                <div class="title-container">
-                    <h2>Quản lý điạ điểm</h2>
-                    <button class="btn-add">Thêm địa điểm</button>
-                </div>
-                <table>
-                    <tr style="background-color: #047683;">
-                        <th>STT</th>
-                        <th>Địa điểm đi</th>
-                        <th>Địa điểm đến</th>
-                        <th>Action</th>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Hồ Chí Minh</td>
-                        <td>Hà Nội</td>
-                        <td>
-                            <button class="btn-view"><span class="fa fa-eye"></span></button>
-                            <button class="btn-edit"><span class="fa fa-pencil"></span></button>
-                            <button class="btn-delete"><span class="fa fa-trash"></span></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Hồ Chí Minh</td>
-                        <td>Hà Nội</td>
-                        <td>
-                            <button class="btn-view"><span class="fa fa-eye"></span></button>
-                            <button class="btn-edit"><span class="fa fa-pencil"></span></button>
-                            <button class="btn-delete"><span class="fa fa-trash"></span></button>
-                        </td>
-                    </tr>
-                </table>
-            </main>
-        </div>  
+    {{> place_table}}  
 {{!-- customer --}}
-        <div id="customer" class="tabs" style="display: none;">
-            <main>
-                <div class="title-container">
-                    <h2>Quản lý khách hàng</h2>
-                </div>
-                <table>
-                    <tr style="background-color: #047683;">
-                        <th>STT</th>
-                        <th>Username</th>
-                        <th>Email</th>
-                        <th>Address</th>
-                        <th>Phone</th>
-                        <th>Gender</th>
-                        <th>Action</th>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Thảo Ngân</td>
-                        <td>ngan@gmail.com</td>
-                        <td>Hồ Chí Minh</td>
-                        <td>012233678</td>
-                        <td>Nữ</td>
-                        <td>
-                            <button class="btn-view"><span class="fa fa-eye"></span></button>
-                            <button class="btn-edit"><span class="fa fa-pencil"></span></button>
-                            <button class="btn-delete"><span class="fa fa-trash"></span></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Thảo Ngân</td>
-                        <td>ngan@gmail.com</td>
-                        <td>Hồ Chí Minh</td>
-                        <td>012233678</td>
-                        <td>Nữ</td>
-                        <td>
-                            <button class="btn-view"><span class="fa fa-eye"></span></button>
-                            <button class="btn-edit"><span class="fa fa-pencil"></span></button>
-                            <button class="btn-delete"><span class="fa fa-trash"></span></button>
-                        </td>
-                    </tr>
-                </table>
-            </main>
-        </div>
+    {{> customer_table}}
 {{!-- ticket --}}
-        <div id="ticket" class="tabs" style="display: none;">
-            <main>
-                <div class="title-container">
-                    <h2>Quản lý lịch sử đặt vé</h2>
-                </div>
-                <table>
-                    <tr style="background-color: #047683;">
-                        <th>STT</th>
-                        <th>Khách hàng</th>
-                        <th>Loại vé</th>
-                        <th>Giá</th>
-                        <th>Loại máy bay</th>
-                        <th>Chổ ngồi</th>
-                        <th>Địa điểm đi</th>
-                        <th>Địa điểm đến</th>
-                        <th>Action</th>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Thảo Ngân</td>
-                        <td>Thương gia</td>
-                        <td>1000000</td>
-                        <td>B52</td>
-                        <td>B01</td>
-                        <td>Hồ Chí Minh</td>
-                        <td>Hà Nội</td>
-                        <td>
-                            <button class="btn-view"><span class="fa fa-eye"></span></button>
-                            <button class="btn-edit"><span class="fa fa-pencil"></span></button>
-                            <button class="btn-delete"><span class="fa fa-trash"></span></button>
-                        </td>
-                    </tr>
-                         <td>1</td>
-                        <td>Thảo Ngân</td>
-                        <td>Thương gia</td>
-                        <td>1000000</td>
-                        <td>B52</td>
-                        <td>B01</td>
-                        <td>Hồ Chí Minh</td>
-                        <td>Hà Nội</td>
-                        <td>
-                            <button class="btn-view"><span class="fa fa-eye"></span></button>
-                            <button class="btn-edit"><span class="fa fa-pencil"></span></button>
-                            <button class="btn-delete"><span class="fa fa-trash"></span></button>
-                        </td>
-                    </tr>
-                </table>
-            </main>
-        </div> 
+    {{> ticket_table}}
 {{!-- stctistical --}}
-<div id="statistical" class="tabs" style="display: none;">
-            <main>
-                <div class="title-container">
-                    <h2>Thống kê</h2>
-                </div>
-                <table>
-                    <tr style="background-color: #047683;">
-                        <th>STT</th>
-                        <th>Số lượng vé thường</th>
-                        <th>Giá tiền vé thường</th>
-                        <th>Số lượng vẽ thương gia</th>
-                        <th>Giá tiền vé thương gia</th>
-                        <th>Thống kê</th>
-                        <th>Action</th>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>10</td>
-                        <td>5000000</td>
-                        <td>10</td>
-                        <td>10000000</td>
-                        <td>150000000</td>
-                        <td>
-                            <button class="btn-view"><span class="fa fa-eye"></span></button>
-                            <button class="btn-edit"><span class="fa fa-pencil"></span></button>
-                            <button class="btn-delete"><span class="fa fa-trash"></span></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>10</td>
-                        <td>5000000</td>
-                        <td>10</td>
-                        <td>10000000</td>
-                        <td>150000000</td>
-                        <td>
-                            <button class="btn-view"><span class="fa fa-eye"></span></button>
-                            <button class="btn-edit"><span class="fa fa-pencil"></span></button>
-                            <button class="btn-delete"><span class="fa fa-trash"></span></button>
-                        </td>
-                    </tr>
-                </table>
-            </main>
-        </div>
-
-
+    {{> stctistical_table}}
     </div>
 
-
-{{!-- Thêm chuyến bay --}}
-<div id="add-flight-form">
-  <form>
-    <div class="title-header-form">
-       <h3 class="form-title">Thêm chuyến bay</h3> 
-       <button class="form-close" onclick="hideAddFlightForm()">x</button>            
-    </div>
-    <label for="flight-no">Số chuyến bay:</label>
-    <input type="text" id="flight-no" name="flight-no" required>
-
-    <label for="flight-date">Ngày bay:</label>
-    <input type="date" id="flight-date" name="flight-date" required>
-
-    <label for="flight-time">Thời gian bay:</label>
-    <input type="time" id="flight-time" name="flight-time" required>
-
-    <label for="departure">Điểm khởi hành:</label>
-    <input type="text" id="departure" name="departure" required>
-
-    <label for="destination">Điểm đến:</label>
-    <input type="text" id="destination" name="destination" required>
-
-    <button type="submit" class="btn-submit">Thêm</button>
-  </form>
-</div>
-
+{{!-- Thêm,xóa,sửa,xem chuyến bay --}}
+    {{> flight_management}}
 
 {{!-- Xem chi tiết chuyến bay --}}
 <div id="flight-details" class="overlay">
@@ -538,7 +253,6 @@
   </div>
 </div>
 
-
-    <script src='javascripts/admin.js'></script>
+    <script src='{{static 'javascripts/admin.js'}}'></script>
 </body>
 </html>

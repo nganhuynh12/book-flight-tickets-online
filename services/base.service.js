@@ -16,11 +16,21 @@ class baseService {
   }
 
   async add(row) {
-    return await this.model.create(row);
+    try {
+      const result = await this.model.create(row);
+      return result;
+    } catch (error) {
+      return error;
+    }
   }
 
   async updateById(id, row) {
-    return await this.model.update(row, { where: { id } });
+    try {
+      const result = await this.model.update(row, { where: { id } });
+      return result;
+    } catch (error) {
+      return error;
+    }
   }
 }
 

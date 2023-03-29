@@ -1,11 +1,18 @@
 const bcrypt = require('bcrypt');
+const { where } = require('sequelize');
 const db = require('../models');
 
 class authService {
   async register(user) {
-    const hashedPassword = await bcrypt.hash(user.password, 10);
+    const res = await db.users.findOne({ where: { email: user.email } });
+    if (res) {
+      throw { message: 'Already use email' };
+    }
+    const hashedPassword = await bcrypt.hash(
+      user.password,
+      await bcrypt.genSalt(10)
+    );
     user.password = hashedPassword;
-    console.log(user);
     return await db.users.create(user);
   }
 

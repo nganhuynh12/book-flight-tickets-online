@@ -1,66 +1,64 @@
-.header{
-          border-radius: 15px 15px 0px 0px;
-          padding: 10px;
-          background: #047683;
-          color: #fff;
-          width: 100%;
-          display: flex;
-          align-content: center;
-          justify-content: center;
-        }
-        .navbar {
-          background-color: #047683;
-        }
-        .nav-item {
-          margin-right: 10px;
-          font-size: 20px;
-          font-weight: 500;
-        }
-        .navbar-brand {
-          margin-left: 20px;
-          font-size: 50px;
-          font-style: italic;
-          font-weight: bold;
-        }
-        .a1 {
-          padding: 20px;
-
-        }
-        h1{
-          color: #0097a8;
-          font-size: 80px;
-        }
-        h3 {
-          color: #0097a8;
-          margin-top: 24px;
-          margin-left: 5px;
-
-        }
-        p {
-          margin-left: 10px;
-          text-align: justify;
-        }
-        .border {
-          border-color: #047683;
-        }
-        .card-header {
-          background: #047683;
-          color: white;
-        }
-        .submit {
-          background-color:#047683;
-          color: white;
-          float: right;
-        }
-        .submit:hover {
-          background-color:#0097a8;
-          color: white;
-        }
-        .card {
-          background-color: #F0F8FF;
-          margin-top: 20px;
-          margin-left: 100px;
-          padding: 0px;
-          width: 80%;
-          height: 50%;
-        }
+.header {
+  border-radius: 15px 15px 0px 0px;
+  padding: 10px;
+  background: var(--primary-color);
+  color: #fff;
+  width: 100%;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}
+.navbar {
+  background-color: var(--primary-color);
+}
+.nav-item {
+  margin-right: 10px;
+  font-size: 20px;
+  font-weight: 500;
+}
+.navbar-brand {
+  margin-left: 20px;
+  font-size: 50px;
+  font-style: italic;
+  font-weight: bold;
+}
+.a1 {
+  padding: 20px;
+}
+h1 {
+  color: #0097a8;
+  font-size: 80px;
+}
+h3 {
+  color: #0097a8;
+  margin-top: 24px;
+  margin-left: 5px;
+}
+p {
+  margin-left: 10px;
+  text-align: justify;
+}
+.border {
+  border-color: var(--primary-color);
+}
+.card-header {
+  background: var(--primary-color);
+  color: white;
+}
+.submit {
+  background-color: var(--primary-color);
+  color: white;
+  float: right;
+}
+.submit:hover {
+  background-color: #0097a8;
+  color: white;
+}
+.card {
+  background-color: #f0f8ff;
+  margin-top: 20px;
+  margin-left: 100px;
+  padding: 0px;
+  width: 80%;
+  height: 50%;
+}
