@@ -17,7 +17,7 @@
                 <span class="fa fa-plane"></span> 
                 <span>SVO Airlines</span>
             </h3> 
-            <label for="sidebar-toggle" class="ti-menu-alt"></label>
+            <label for="sidebar-toggle" class="ti-menu-alt label-toggle"></label>
         </div>
         
         <div class="sidebar-menu">
@@ -32,12 +32,6 @@
                     <div class="menu-items" id="sidebar-flight">
                         <span class="fa fa-plane"></span>
                         <span>Quản lý chuyến bay</span>
-                    </div>
-                </li>
-                <li>
-                    <div class="menu-items" id="sidebar-out-flight">
-                        <span class="fa fa-star"></span>
-                        <span>Quản lý chuyến bay nổi bậc</span>
                     </div>
                 </li>
                 <li>
@@ -110,19 +104,6 @@
                     
                     <div class="card-single">
                         <div class="card-body">
-                            <span class="fa fa-star"></span>
-                            <div>
-                                <h3>Quản lý chuyến bay nổi bậc</h3>
-                                <h5>Số lượng: </h5>
-                            </div>
-                        </div>
-                        <div class="card-footer">
-                            <div id="sidebar-out-flight">View all</div>
-                        </div>
-                    </div>
-                    
-                    <div class="card-single">
-                        <div class="card-body">
                             <span class="fa fa-map-marker"></span>
                             <div>
                                 <h3>Quản lý địa điểm</h3>
@@ -177,9 +158,7 @@
         </div>
 
 
-    {{> flight_table}}
-{{!-- outenting flight --}}
-    {{> outstanding_flight_table}} 
+    {{> flight_table}} 
 {{!-- place --}}
     {{> place_table}}  
 {{!-- customer --}}
@@ -190,8 +169,8 @@
     {{> stctistical_table}}
     </div>
 
-{{!-- Thêm,xóa,sửa,xem chuyến bay --}}
-    {{> flight_management}}
+{{!-- các chức năng thêm xóa sửa cho các dữ liệu --}}
+    {{> airlines_management}}
 
 {{!-- Xem chi tiết chuyến bay --}}
 <div id="flight-details" class="overlay">

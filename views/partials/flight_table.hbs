@@ -4,31 +4,28 @@
       <h2>Quản lý chuyến bay</h2>
       <button class='btn-add' id='btn-add-flight'>Thêm chuyến bay</button>
     </div>
-    <table>
-      <thead>
-        <tr style='background-color: #047683;'>
-          <th>STT</th>
+    <table class="airlines_table">
+        <tr>
           <th>Chuyến bay</th>
           <th>Ngày bay</th>
           <th>Thời gian</th>
           <th>Địa điểm đi</th>
           <th>Địa điểm đến</th>
+          <th>Nổi bật</th>
           <th>Action</th>
         </tr>
-      </thead>
-      <tbody>
         <tr>
-          <td>1</td>
           <td>VN6002</td>
           <td>16/03/2023</td>
           <td>6:30 - 9:05</td>
           <td>Hồ Chí Minh</td>
           <td>Hà Nội</td>
+          <td><input type="checkbox" id="outstanding" name="outstanding"></td>
           <td>
             <button class='btn-view' onclick='showFlightDetails()'><span
                 class='fa fa-eye'
               ></span></button>
-            <button class='btn-edit' onclick='showEditDialog()'><span
+            <button class='btn-edit' id="btn-update-flight"><span
                 class='fa fa-pencil'
               ></span></button>
             <button class='btn-delete'><span
@@ -37,21 +34,20 @@
           </td>
         </tr>
         <tr>
-          <td>1</td>
           <td>VN6002</td>
           <td>16/03/2023</td>
           <td>6:30 - 9:05</td>
           <td>Hồ Chí Minh</td>
           <td>Hà Nội</td>
+          <td><input type="checkbox" id="outstanding" name="outstanding"></td>
           <td>
             <button class='btn-view'><span class='fa fa-eye'></span></button>
-            <button class='btn-edit'><span class='fa fa-pencil'></span></button>
+            <button class='btn-edit' id="btn-update-flight"><span class='fa fa-pencil'></span></button>
             <button class='btn-delete'><span
                 class='fa fa-trash'
               ></span></button>
           </td>
         </tr>
-      </tbody>
     </table>
   </main>
 </div>

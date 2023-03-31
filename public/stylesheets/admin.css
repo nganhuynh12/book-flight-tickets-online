@@ -187,6 +187,8 @@ main {
 }
 
 .card-footer div {
+  cursor: pointer;
+  width: fit-content;
   color: var(--main-color);
 }
 
@@ -198,6 +200,7 @@ main {
   color: white;
   background-color: #047683;
   margin-left: 40px;
+  cursor: pointer;
 }
 
 .title-container {
@@ -211,6 +214,10 @@ table {
   margin-top: 20px;
 }
 
+.airlines_table tr:first-child{
+  background-color: var(--main-color);
+}
+
 td {
   border-top: 1px solid #bdb7b73d;
   padding: 5px;
@@ -219,7 +226,7 @@ td {
 
 th {
   color: white;
-  padding: 5px;
+  padding: 10px;
 }
 
 .btn-view {
@@ -229,6 +236,7 @@ th {
   height: 41px;
   border-radius: 10px;
   background-color: #28a745;
+  cursor: pointer;
 }
 
 .btn-edit {
@@ -238,6 +246,7 @@ th {
   height: 41px;
   border-radius: 10px;
   background-color: #007bff;
+  cursor: pointer;
 }
 
 .btn-delete {
@@ -247,11 +256,12 @@ th {
   height: 41px;
   border-radius: 10px;
   background-color: #dc3545;
+  cursor: pointer;
 }
 
 /* Thêm chuyến bay */
 
-#add-flight-form {
+#add-flight-form, #update-flight-form {
   display: none;
   position: absolute;
   top: 0;
@@ -264,27 +274,36 @@ th {
   transition: all 0.5s ease-in-out;
 }
 
-#add-flight-form.show {
+#add-flight-form.show, #update-flight-form.show {
   display: block;
 }
 
-.form-title {
-  margin: 0;
+.title-header-form {
+  margin-bottom: 70px;
+  display: flex;
+  justify-content: space-between;
 }
 
 .form-close {
-  background-color: transparent;
-  border: none;
-  font-size: 20px;
-  color: var(--color-dark);
+  width: 15px;
+  opacity: 0.3;
   cursor: pointer;
-  outline: none;
-  margin-left: 520px;
 }
-
-.title-header-form {
-  display: flex;
-  margin-bottom: 30px;
+.form-close:hover {
+  opacity: 1;
+}
+.form-close:before, .form-close:after {
+  position: absolute;
+  content: ' ';
+  height: 22px;
+  width: 2px;
+  background-color: #333;
+}
+.form-close:before {
+  transform: rotate(45deg);
+}
+.form-close:after {
+  transform: rotate(-45deg);
 }
 
 form {
@@ -300,15 +319,23 @@ form.show {
   transform: translateX(0); /* Di chuyển form về vị trí ban đầu */
 }
 
-label {
+.label-toggle {
+  cursor: pointer;
   font-size: 18px;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.label-input {
+  font-size: 20px;
   display: block;
   margin-bottom: 5px;
 }
 
 input[type='text'],
 input[type='date'],
-input[type='time'] {
+input[type='time'],
+input[type='number'] {
   width: 100%;
   padding: 10px;
   margin-bottom: 20px;
@@ -321,18 +348,40 @@ input:focus {
   outline: none;
 }
 
-.btn-submit {
+.btn-submit-add {
+  width: 30%;
   background-color: #047683;
   color: #fff;
   border: none;
   padding: 10px 20px;
   border-radius: 5px;
   cursor: pointer;
+  font-size: 20px;
+  margin-top: 30px;
 }
 
-.btn-submit:hover {
+.btn-submit-add:hover {
   background-color: #fff;
   color: #047683;
+  transition: all 0.3s ease-in-out;
+  border: 1px solid #047683;
+}
+
+.btn-submit-update {
+  width: 30%;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 20px;
+  margin-top: 30px;
+}
+
+.btn-submit-update:hover {
+  background-color: #fff;
+  color: #007bff;
   transition: all 0.3s ease-in-out;
   border: 1px solid #047683;
 }
@@ -385,7 +434,8 @@ input:focus {
 
 .form-group input[type='text'],
 .form-group input[type='date'],
-.form-group input[type='time'] {
+.form-group input[type='time'],
+.form-group input[type='number'] {
   display: block;
   width: 100%;
   padding: 10px;
@@ -396,7 +446,8 @@ input:focus {
 
 .form-group input[type='text'][disabled],
 .form-group input[type='date'][disabled],
-.form-group input[type='time'][disabled] {
+.form-group input[type='time'][disabled],
+.form-group input[type='number'][disabled] {
   background-color: transparent;
   color: #555;
   font-style: italic;
@@ -436,6 +487,26 @@ input:focus {
 
 .menu-items.active{
   background-color: #0097a8;
+}
+
+.container-group-3{
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.container-group-3 div{
+  width: 30%;
+}
+
+.container-group-2{
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.container-group-2 div{
+  width: 47.5%;
 }
 
 /* Chỉnh sửa thông tin chuyến bay */

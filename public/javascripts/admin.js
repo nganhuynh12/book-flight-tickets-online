@@ -1,8 +1,10 @@
 $(document).ready(() => {
   const btnAddFlight = $('#btn-add-flight');
-  const showAddFlight = $('#add-flight-form');
-  const hideAddFlight = $('#close-add-flight-form');
+  const btnHideForm = $('.form-close');
   const prefixList = ['sidebar', 'Opentab'];
+  const btnUpdate = $('.btn-edit');
+  const showFlightForm = $('#add-flight-form');
+  let formName = '';
 
   prefixList.forEach((prefix) => {
     const elementList = $(`div[id^=${prefix}]`);
@@ -87,30 +89,48 @@ $(document).ready(() => {
   };
 
   /* Thêm chuyến bay */
-  btnAddFlight.on('click', showAddFlightForm);
-  hideAddFlight.on('click', hideAddFlightForm);
+  btnAddFlight.on('click', function(){
+    var id = $(this).attr('id');
+    formName = '#' + id.slice(id.indexOf('-') + 1, id.length) + '-form';
+    showAddForm();
+  });
+  btnHideForm.on('click', hideForm);
 
-  const showAddFlightForm = () => {
-    showAddFlight.classList.add('show');
+  btnUpdate.on("click",function(){
+    var id = $(this).attr('id');
+    formName = '#' + id.slice(id.indexOf('-') + 1, id.length) + '-form';
+    showUpdateForm();
+  })
+
+  function showAddForm() {
+    showFlightForm.css("display","block");
     setTimeout(function () {
       document.querySelector('#add-flight-form form').classList.add('show');
     }, 50);
   };
 
-  /* Ẩn form chuyến bay */
-  const hideAddFlightForm = () => {
-    document.querySelector('#add-flight-form form').classList.remove('show');
+  function showUpdateForm() {
+    $(formName).css("display","block");
     setTimeout(function () {
-      document.getElementById('add-flight-form').classList.remove('show');
+      document.querySelector(formName + ' form').classList.add('show');
+    }, 50);
+  };
+
+  /* Ẩn form chuyến bay */
+  function hideForm(){
+    document.querySelector(formName + ' form').classList.remove('show');
+    setTimeout(function () {
+      $(formName).css("display","none");
     }, 300);
   };
 
   //Ẩn form khi click vào vùng ngoài form
-  window.onclick = function (event) {
-    if (event.target == showAddFlight) {
-      hideAddFlightForm();
+  $(document).on("click", function(event){
+    var formID = formName.slice(formName.indexOf('#') + 1, formName.length);
+    if (event.target.id == formID) {
+      hideForm();
     }
-  };
+  })
 
   /* Xem thông tin chi tiết chuyến bay */
   const showFlightDetails = () => {
