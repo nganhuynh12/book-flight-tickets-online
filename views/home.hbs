@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Home</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel='stylesheet' href='{{static /stylesheets/home.css}}' />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/css/bootstrap.min.css">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+      <div class="container-fluid">
+          <a class="navbar-brand" href="home.html" style = "font-size: 30px;">SVO Airlines</a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="home.html"><i class="fa fa-home"></i> Trang chủ</a>
+              </li>
+              <li class="nav-item aria-current">
+                <a class="nav-link" href="search_flight.html"> Chuyến bay</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="history.html">Tra cứu</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="login.html"><i class="fa fa-user-o" aria-hidden="true"></i> Đăng nhập</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" href="help.html"> Trợ giúp</a>
+              </li>
+            </ul>
+          </div>
+      </div>
+    </nav> 
+    <img src="bannerhome.png" alt="faq-banner" width="100%">
+    <div class = "container mt-3">
+      <div class = "card w-50 mx-auto searchCard">
+        <div class = "card-header header">VÉ MÁY BAY</div>
+        <div class = "card-body radio">
+          <div class= "row">
+            <div class = "col-lg-6">
+              <input type="radio" id="radio1" name="ticket_type">&nbsp;Khứ hồi</span>
+            </div>
+            <div class = "col-lg-6">
+              <input type="radio" id="radio2" name="ticket_type"><span>&nbsp;Một chiều</span>
+            </div>
+          </div>
+          <div class = "row mt-3">
+            <div class = "col-lg-4 ">
+              <span>&nbsp;Người lớn:</span>
+              <input aria-label="quantity" class="input-qty passenger" max="20" min="0" name="numberOfPassenger" type="number" value="0">
+            </div>
+            <div class = "col-lg-4">
+              <span>Trẻ em:</span>
+              <input aria-label="quantity" class="input-qty passenger"  max="50" min="0" name="numberOfPassenger" type="number" value="0">
+            </div>
+                <div class = "col-lg-4">
+                  <span>Em bé:</span>
+                  <input aria-label="quantity" class="input-qty passenger" max="50" min="0" name="numberOfPassenger" type="number" value="0">
+            </div>
+          </div>
+          <div class = "row mt-3 mb-2">
+            <div class = "col-lg-6">
+              <label for="diemdi">&nbsp;Điểm đi:</label>
+              <select class="form-select mt-2  " name = "diemdi" aria-label="Default select example"> 
+                <option selected></option>
+                <option value="1">Thành phố Hồ Chí Minh</option>
+                <option value="2">Hà Nội</option>
+                <option value="3">Đà Nẵng</option>
+              </select>
+            </div>
+            <div class = "col-lg-6">
+              <label for="diemdi">&nbsp;Điểm đến:</label>
+              <select class="form-select mt-2"  name = "diemden" aria-label="Default select example"> 
+                <option selected></option>
+                <option value="1">Thành phố Hồ Chí Minh</option>
+                <option value="2">Hà Nội</option>
+                <option value="3">Đà Nẵng</option>
+              </select>
+            </div>
+          </div>
+          <div class = "row">
+            <div class = "col-lg-6">
+              &nbsp;Chọn ngày đi: &nbsp;
+              <input type = "date" id = "ngayDi" class="w-50 input-qty">  
+            </div>
+            <div class = "col-lg-6">
+              &nbsp;Chọn ngày về: &nbsp;
+              <input type = "date" id = "ngayDi" class="w-50 input-qty">  
+            </div>
+          </div>
+            <!-- &nbsp;&nbsp;&nbsp;Chọn ngày đi: &nbsp;
+            <input type = "date" id = "ngayDi" class="w-25 mb-3 input-qty">
+          </div>
+          <div class = "row">
+            &nbsp;&nbsp;&nbsp;Chọn ngày về: &nbsp;
+            <input type = "date" id = "ngayDi" class="w-25 input-qty">
+          </div> -->
+        </div>
+        <button id = "searchButton" class="btnHover btn text-white mx-auto mb-3" href="search_flight.html"><i class="fa fa-search fa-1x" aria-hidden="true">&nbsp;</i> Tìm chuyến bay</i></button>
+      </div>
+      <div class = "symbols">
+        <img src = "slog1.png" width="250px" height="250px" style="margin-right: 30px">
+        <img src = "slog4.png" width="250px" height="250px">
+        <img src = "slog3.png" width="250px" height="250px" style="margin-right: 30px">
+        <img src = "slog2.png" width="250px" height="250px">
+      </div>
+      <h3 class = "text-center mt-3 mb-3">Chuyến bay nổi bật</h3>
+      <div class = "row">
+        <div class="col-sm-4">
+          <div class="highlights">
+            <div class="card">
+              <img src="img2.jpg" class="card-img-top" height="200px">
+              <div class="card-body">
+                <h5 class="card-title">TP. Hồ Chí Minh (HCM) đến Hà Nội (HN)</h5>
+                <p class="card-text">Ngày đi: 29/12/2022</p>
+                <p class="card-text">Áp dụng cho tới khi bán hết</p>
+                <h5 class = "text-danger font-weight-bold">Giá chỉ từ: 5.625.000đ</h5>
+                <button id = "searchButton" class="btnHover btn text-white mt-2 mb-3" href="search_flight.html">Tìm hiểu thêm</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="highlights">
+            <div class="card">
+              <img src="img3.png" class="card-img-top" height="200px">
+              <div class="card-body">
+                <h5 class="card-title">Hà Nội (HN) đến Sydney - Úc (SYD) </h5>
+                <p class="card-text">Ngày đi: 29/12/2022</p>
+                <p class="card-text">Áp dụng cho tới khi bán hết</p>
+                <h5 class = "text-danger font-weight-bold">Giá chỉ từ: 5.625.000đ</h5>
+                <button id = "searchButton" class="btnHover btn text-white mb-3 mt-2" href="search_flight.html">Tìm hiểu thêm</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="highlights">
+            <div class="card">
+              <img src="img4.jpg" class="card-img-top" height="200px">
+              <div class="card-body">
+                <h5 class="card-title">Hà Nội (HN) đến TP. Hồ Chí Minh (HCM)</h5>
+                <p class="card-text">Ngày đi: 29/12/2022</p>
+                <p class="card-text">Áp dụng cho tới khi bán hết</p>
+                <h5 class = "text-danger font-weight-bold">Giá chỉ từ: 5.625.000đ</h5>
+                <button id = "searchButton" class="btnHover btn text-white mb-3 mt-2" href="search_flight.html">Tìm hiểu thêm</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class = "row">
+        <div class="col-sm-4">
+          <div class="highlights">
+            <div class="card">
+              <img src="img5.jpg" class="card-img-top" height="200px">
+              <div class="card-body">
+                <h5 class="card-title">TP. Hồ Chí Minh (HCM) đến Singapore (SGP)</h5>
+                <p class="card-text">Ngày đi: 29/12/2022</p>
+                <p class="card-text">Áp dụng cho tới khi bán hết</p>
+                <h5 class = "text-danger font-weight-bold">Giá chỉ từ: 5.625.000đ</h5>
+                <button id = "searchButton" class="btnHover btn text-white mt-2 mb-3" href="search_flight.html">Tìm hiểu thêm</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="highlights">
+            <div class="card">
+              <img src="img6.jpg" class="card-img-top" height="200px">
+              <div class="card-body">
+                <h5 class="card-title">TP. Hồ Chí Minh (HCM) đến Kuala Lumpur - Malaysia (KL) </h5>
+                <p class="card-text">Ngày đi: 29/12/2022</p>
+                <p class="card-text">Áp dụng cho tới khi bán hết</p>
+                <h5 class = "text-danger font-weight-bold">Giá chỉ từ: 5.625.000đ</h5>
+                <button id = "searchButton" class="btnHover btn text-white mb-3 mt-2" href="search_flight.html">Tìm hiểu thêm</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="highlights">
+            <div class="card">
+              <img src="img7.jpg" class="card-img-top" height="200px">
+              <div class="card-body">
+                <h5 class="card-title">TP. Hồ Chí Minh (HCM) đến Phuket - Thái Lan(PK)</h5>
+                <p class="card-text">Ngày đi: 29/12/2022</p>
+                <p class="card-text">Áp dụng cho tới khi bán hết</p>
+                <h5 class = "text-danger font-weight-bold">Giá chỉ từ: 5.625.000đ</h5>
+                <button id = "searchButton" class="btnHover btn text-white mb-3 mt-2" href="search_flight.html">Tìm hiểu thêm</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class = "row">
+        <div class="col-sm-4">
+          <div class="highlights">
+            <div class="card">
+              <img src="img8.jpg" class="card-img-top" height="200px">
+              <div class="card-body">
+                <h5 class="card-title">TP. Hồ Chí Minh (HCM) đến Singapore (SGP)</h5>
+                <p class="card-text">Ngày đi: 29/12/2022</p>
+                <p class="card-text">Áp dụng cho tới khi bán hết</p>
+                <h5 class = "text-danger font-weight-bold">Giá chỉ từ: 5.625.000đ</h5>
+                <button id = "searchButton" class="btnHover btn text-white mt-2 mb-3" href="search_flight.html">Tìm hiểu thêm</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="highlights">
+            <div class="card">
+              <img src="img9.jpg" class="card-img-top" height="200px">
+              <div class="card-body">
+                <h5 class="card-title">TP. Hồ Chí Minh (HCM) đến Kuala Lumpur - Malaysia (KL) </h5>
+                <p class="card-text">Ngày đi: 29/12/2022</p>
+                <p class="card-text">Áp dụng cho tới khi bán hết</p>
+                <h5 class = "text-danger font-weight-bold">Giá chỉ từ: 5.625.000đ</h5>
+                <button id = "searchButton" class="btnHover btn text-white mb-3 mt-2" href="search_flight.html">Tìm hiểu thêm</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="highlights">
+            <div class="card">
+              <img src="img10.jpg" class="card-img-top" height="200px">
+              <div class="card-body">
+                <h5 class="card-title">TP. Hồ Chí Minh (HCM) đến Phuket - Thái Lan(PK)</h5>
+                <p class="card-text">Ngày đi: 29/12/2022</p>
+                <p class="card-text">Áp dụng cho tới khi bán hết</p>
+                <h5 class = "text-danger font-weight-bold">Giá chỉ từ: 5.625.000đ</h5>
+                <button id = "searchButton" class="btnHover btn text-white mb-3 mt-2" href="search_flight.html">Tìm hiểu thêm</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <h3 class = "text-center mt-3 mb-3">Điểm đến nổi bật</h3>
+        <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+          <!-- Carousel indicators -->
+          <ol class="carousel-indicators">
+              <li data-bs-target="#myCarousel" data-bs-slide-to="0" class="active"></li>
+              <li data-bs-target="#myCarousel" data-bs-slide-to="1"></li>
+              <li data-bs-target="#myCarousel" data-bs-slide-to="2"></li>
+              <li data-bs-target="#myCarousel" data-bs-slide-to="3"></li>
+          </ol>
+    
+          <!-- Wrapper for carousel items -->
+          <div class="carousel-inner">
+              <div class="carousel-item active">
+                  <img src="rec1.png" class="d-block w-100" alt="Slide 1">
+                  <div class="carousel-caption d-none d-md-block">
+                    <h5>Phuket Thái Lan</h5>
+                    <p>Phuket Thái Lan là một tỉnh nằm ở phía Nam Thái Lan, nơi đây sở hữu đảo Phuket lớn với diện tích lên đến 576km2 và 32 hòn đảo nhỏ xung quanh. Đảo Phuket cũng là đảo lớn nhất tại Thái Lan, được mệnh danh là “hòn ngọc của vùng vịnh Andaman” với thiên nhiên tuyệt đẹp.</p>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <img src="rec2.png" class="d-block w-100" alt="Slide 2">
+                <div class="carousel-caption d-none d-md-block">
+                  <h5>Singapore</h5>
+                  <p>Singapore nổi tiếng là một đất nước xinh đẹp và trong sạch nhất thế giới. Quốc đảo này có hình dạng như một viên kim cương và được tạo nên từ 63 hòn đảo lớn nhỏ khác nhau.                  </p>
+                </div>
+              </div>
+              <div class="carousel-item">
+                  <img src="rec3.png" class="d-block w-100" alt="Slide 3">
+                  <div class="carousel-caption d-none d-md-block">
+                    <h5>Delhi Ấn Độ</h5>
+                    <p>Delhi, gọi chính thức là Lãnh thổ Thủ đô Quốc gia Delhi, là lãnh thổ thủ đô của Ấn Độ. Trong thời kỳ Ấn Độ thuộc Anh, Delhi là bộ phận của tỉnh Punjab và duy trì liên kết lịch sử và văn hóa với khu vực Punjab và Doab</p>
+                  </div>  
+              </div>
+              <div class="carousel-item">
+                <img src="rec4.png" class="d-block w-100" alt="Slide 4">
+                <div class="carousel-caption d-none d-md-block">
+                  <h5>Phnôm Pênh - Campuchia</h5>
+                  <p>Phnom Penh vừa là thủ đô vừa là thành phố lớn nhất của Vương quốc Campuchia. Thành phố này có vị trí nằm ở hợp lưu của sông Mekong, Tonle Sap và Bassac và cũng là cái nôi của tín ngưỡng Phật Giáo. </p>
+              </div>
+            </div>
+          </div>
+        <!-- Carousel controls -->
+          <a class="carousel-control-prev" href="#myCarousel" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon"></span>
+          </a>
+          <a class="carousel-control-next" href="#myCarousel" data-bs-slide="next">
+              <span class="carousel-control-next-icon"></span>
+          </a>
+        </div>
+        <h3 class = "text-center mt-3 mb-3">Góc chill trải nghiệm</h3>  
+        <div class = "row mt-">
+          <div class="col-lg-6">
+            <div class="card news">
+              <img src="new1.jpg" class="card-img-top newss" height="300px">
+              <div class="card-body">
+                <h5 class="card-title">Du Thuyền Bhaya Classic Hạ Long</h5>
+                <p class="card-text">Hải trình độc đáo hòa trộn giữa phong cách du lịch nghỉ dưỡng và khám phá. Du khách có cơ hội trải nghiệm thư giãn trên bãi biển Trinh Nữ, chèo thuyền Kayak xuyên qua những vách đá tuyệt đẹp, khám phá các nhũ đá hàng nghìn năm tuổi trong hang Sửng Sốt, hay thưởng thức một ly đồ uống mát lạnh trên bong tàu.</p>
+                <p class = "card-text date"><i class="fa fa-calendar" aria-hidden="true"></i> 25/3/2023</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class = "row">
+              <div class = "col-lg-6">
+                <div class = "card news">
+                  <img src="new4.jpg" class="card-img-top newss " height="160px">
+                  <div class = "card-body">
+                    <h6 class = "card-title">Show Diễn Ký Ức Hội An</h6>
+                    <p class = "card-text date"><i class="fa fa-calendar" aria-hidden="true"></i> 25/3/2023</p>  
+                  </div>
+                </div>
+              </div>
+              <div class = "col-lg-6">
+                <div class = "card news">
+                  <img src="new2.png" class="card-img-top newss " height="160px">
+                  <div class = "card-body">
+                    <h6 class = "card-title">Sim 4G Nhật Bản</h6>
+                    <p class = "card-text date"><i class="fa fa-calendar" aria-hidden="true"></i> 25/3/2023</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class = "row">
+              <div class = "col-lg-6">
+                <div class = "card news">
+                  <img src="new5.png" class="card-img-top newss " height="160px">
+                  <div class = "card-body">
+                    <h6 class = "card-title">[Gói Cơ Bản] Bảo hiểm du lịch quốc tế Travel Guard – AIG</h6>
+                    <p class = "card-text date"><i class="fa fa-calendar" aria-hidden="true"></i> 25/3/2023</p>  
+                  </div>
+                </div>
+              </div>
+              <div class = "col-lg-6">
+                <div class = "card news">
+                  <img src="new3.jpg" class="card-img-top newss " height="160px">
+                  <div class = "card-body">
+                    <h6 class = "card-title">Cáp Treo Sun World Ba Den Mountain Tây Ninh</h6>
+                    <p class = "card-text date"><i class="fa fa-calendar" aria-hidden="true"></i> 25/3/2023</p>  
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+            <!-- <div class="card news">
+              <img src="new1.jpg" class="card-img-top" height="300px">
+              <div class="card-body">
+                <h5 class="card-title">Du Thuyền Bhaya Classic Hạ Long</h5>
+                <p class="card-text">Hải trình độc đáo hòa trộn giữa phong cách du lịch nghỉ dưỡng và khám phá. Du khách có cơ hội trải nghiệm thư giãn trên bãi biển Trinh Nữ, chèo thuyền Kayak xuyên qua những vách đá tuyệt đẹp, khám phá các nhũ đá hàng nghìn năm tuổi trong hang Sửng Sốt, hay thưởng thức một ly đồ uống mát lạnh trên bong tàu.</p>
+                <p class = card-text><i class="fa fa-calendar" aria-hidden="true"></i> 25/3/2023</p>
+              </div> -->
+          </div>
+        </div>
+      </div>
+      <footer class="bg-dark text-center text-lg-start text-white mt-5">
+        <div class="container p-4">
+          <div class="row">
+            <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+              <h6 class="text-uppercase">về chúng tôi</h6>
+              <ul class="list-unstyled mb-0">
+                <li>
+                  <a href="aboutus.html" class="text-white">Tập đoàn</a>
+                </li>
+                <li>
+                  <a href="aboutus.html" class="text-white">Đội bay</a>
+                </li>
+                <li>
+                  <a href="aboutus.html" class="text-white">Cam kết với khách hàng</a>
+                </li>
+                <li>
+                  <a href="aboutus.html" class="text-white">Các điều kiện và điều khoản</a>
+                </li>
+              </ul>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+              <h6 class="text-uppercase">Sản phẩm</h6>
+    
+              <ul class="list-unstyled">
+                <li>
+                  <i class="fa fa-ticket" aria-hidden="true"></i><a href="search_flight.html" class="text-white"> Vé máy bay</a>
+                </li>
+              </ul>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+              <h6 class="text-uppercase">Đối tác thanh toán</h6>
+              <ul class="list-unstyled">
+                <li>
+                    <div>
+                      VISA
+                  </a>
+                </li>
+                <li>
+                    <div>
+                      MASTERCARD
+                    </div>
+                </li>
+                <li>
+                    <div>
+                      MOMO
+                    </div>
+                </li>
+                <li>
+                    <div>
+                      ZALOPAY
+                    </div>
+                </li>
+              </ul>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+              <h6 class="text-uppercase">liên hệ</h6>    
+              <ul class="list-unstyled">
+                <li>
+                  <p class="text-white"><i class="fa fa-phone" aria-hidden="true"></i> SDT: 0909.291.291</p>
+                </li>
+                <li>
+                  <p class="text-white"><i class="fa fa-location-arrow" aria-hidden="true"></i> Email: svoairlines@gmail.com</p>
+                </li>
+                <li>
+                  <p class="text-white"><i class="fa fa-map-marker" aria-hidden="true"></i> Địa chỉ: Quận 7, TP. Hồ Chí Minh</p>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
+          © 2022 Copyright:
+          <a class="text-white" href="home.html">svoairlines.com.vn</a>
+        </div>
+    </footer>
+    </body>
+    <script>
+      $(document).ready(function(){
+          $("#myCarousel").carousel();
+      });
+      </script>
+</html>
