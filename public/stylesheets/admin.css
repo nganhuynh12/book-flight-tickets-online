@@ -358,6 +358,7 @@ input:focus {
   cursor: pointer;
   font-size: 20px;
   margin-top: 30px;
+  float: right;
 }
 
 .btn-submit-add:hover {
@@ -369,7 +370,7 @@ input:focus {
 
 .btn-submit-update {
   width: 30%;
-  background-color: #007bff;
+  background-color: #047683;
   color: #fff;
   border: none;
   padding: 10px 20px;
@@ -377,11 +378,12 @@ input:focus {
   cursor: pointer;
   font-size: 20px;
   margin-top: 30px;
+  float: right;
 }
 
 .btn-submit-update:hover {
   background-color: #fff;
-  color: #007bff;
+  color: #047683;
   transition: all 0.3s ease-in-out;
   border: 1px solid #047683;
 }
