@@ -1,14 +1,16 @@
-const { validationResult } = require('express-validator');
-const { authService } = require('../services');
-
 class authController {
+  constructor(service) {
+    this.service = service;
+  }
+
   show(req, res, next) {
     return res.render('auth');
   }
 
   async register(req, res, next) {
     try {
-      const result = await authService.register(req.body);
+      console.log(this);
+      const result = await this.service.register(req.body);
       if (result) return res.redirect('/test');
     } catch (error) {
       return res.render('auth', { error_message: error.message });
@@ -24,7 +26,7 @@ class authController {
   }
 
   async reset(req, res, next) {
-    const result = await authService.login(req.body);
+    const result = await this.service.login(req.body);
     return res.json(result);
   }
 
@@ -36,4 +38,4 @@ class authController {
   }
 }
 
-module.exports = new authController();
+module.exports = authController;

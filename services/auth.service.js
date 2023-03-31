@@ -1,10 +1,12 @@
 const bcrypt = require('bcrypt');
-const { where } = require('sequelize');
-const db = require('../models');
 
-class authService {
+module.exports = class authService {
+  constructor(model) {
+    this.model = model;
+  }
+
   async register(user) {
-    const res = await db.users.findOne({ where: { email: user.email } });
+    const res = await this.model.findOne({ where: { email: user.email } });
     if (res) {
       throw { message: 'Already use email' };
     }
@@ -13,11 +15,11 @@ class authService {
       await bcrypt.genSalt(10)
     );
     user.password = hashedPassword;
-    return await db.users.create(user);
+    return await this.model.create(user);
   }
 
   async login(user) {
-    const usr = await db.users.findOne({ where: { email: user.email } });
+    const usr = await this.model.findOne({ where: { email: user.email } });
 
     if (usr) {
       const hashedPassword = usr.password;
@@ -28,11 +30,9 @@ class authService {
   }
 
   async reset(user) {
-    const res = await db.users.findOne({ where: { email: user.email } });
+    const res = await this.model.findOne({ where: { email: user.email } });
 
     if (res.length !== 0) {
     }
   }
-}
-
-module.exports = new authService();
+};

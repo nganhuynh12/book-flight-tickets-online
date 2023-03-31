@@ -12,9 +12,9 @@ router.post(
   body('startLocationId').exists().notEmpty(),
   body('arriveLocationId').exists().notEmpty(),
   validationPipe,
-  flightController.add
+  flightController.add.bind(flightController)
 );
 
-router.get('/', flightController.findAll);
+router.get('/', flightController.findAll.bind(flightController));
 
 module.exports = router;

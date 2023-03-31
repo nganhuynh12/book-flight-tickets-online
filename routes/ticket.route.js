@@ -12,9 +12,9 @@ router.post(
   body('flightId').exists().notEmpty(),
   body('userId').exists().notEmpty(),
   validationPipe,
-  ticketController.add
+  ticketController.add.bind(ticketController)
 );
-router.get('/', ticketController.findAll);
-router.delete('/:id', ticketController.deleteById);
+router.get('/', ticketController.findAll.bind(ticketController));
+router.delete('/:id', ticketController.deleteById.bind(ticketController));
 
 module.exports = router;

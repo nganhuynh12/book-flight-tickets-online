@@ -1,10 +1,11 @@
-const { body, validationResult } = require('express-validator');
-const { flightService } = require('../services');
+module.exports = class flightController {
+  constructor(service) {
+    this.service = service;
+  }
 
-class flightController {
   async add(req, res, next) {
     try {
-      const result = await flightService.add(req.body);
+      const result = await this.service.add(req.body);
       return res.status(201).json(result);
     } catch (error) {
       return res.json(400).json(error);
@@ -12,9 +13,7 @@ class flightController {
   }
 
   async findAll(req, res, next) {
-    const result = await flightService.findAll({ where: req.query });
+    const result = await this.service.findAll({ where: req.query });
     return res.json(result);
   }
-}
-
-module.exports = new flightController();
+};

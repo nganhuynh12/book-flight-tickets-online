@@ -1,7 +1,9 @@
+const db = require('../models');
+
 module.exports = {
-  authService: require('./auth.service'),
-  flightService: require('./flight.service'),
-  locationService: require('./location.service'),
-  ticketService: require('./ticket.service'),
-  userService: require('./user.service'),
+  authService: new (require('./auth.service'))(db.users),
+  flightService: new (require('./flight.service'))(db.flights),
+  locationService: new (require('./location.service'))(db.locations),
+  ticketService: new (require('./ticket.service'))(db.tickets),
+  userService: new (require('./user.service'))(db.users),
 };

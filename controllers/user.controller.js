@@ -1,25 +1,27 @@
-const { validationResult } = require('express-validator');
-const { userService } = require('../services');
-
 class userController {
+  constructor(service) {
+    this.service = service;
+  }
+
   async findAll(req, res, next) {
-    const result = await userSerivce.findAll();
+    const result = await this.service.findAll();
     return res.json(result);
   }
 
   async findByPk(req, res, next) {
-    const result = await userSerivce.findByPk(req.params.id);
+    console.log('test', this);
+    const result = await this.service.findByPk(req.params.id);
     return res.json(result);
   }
 
   async updateById(req, res, next) {
-    const result = await userService.updateById(req.params.id, req.body);
+    const result = await this.service.updateById(req.params.id, req.body);
     return res.json(result);
   }
 
   async delete(req, res, next) {
     try {
-      const result = await userSerivce.deleteById(req.params.id);
+      const result = await this.service.deleteById(req.params.id);
       return res.json(result);
     } catch (error) {
       return res.status(400).json(error);
@@ -27,4 +29,4 @@ class userController {
   }
 }
 
-module.exports = new userController();
+module.exports = userController;

@@ -4,9 +4,9 @@ const { body } = require('express-validator');
 const validationPipe = require('../pipes/validation.pipe');
 const router = express.Router();
 
-router.get('/', userController.findAll);
+router.get('/', userController.findAll.bind(userController));
 
-router.get('/:id', userController.findByPk);
+router.get('/:id', userController.findByPk.bind(userController));
 
 router.put(
   '/:id',
@@ -17,9 +17,9 @@ router.put(
   body('phone').notEmpty().isNumeric(),
   body('gender').notEmpty().isIn([0, 1]),
   validationPipe,
-  userController.updateById
+  userController.updateById.bind(userController)
 );
 
-router.delete('/:id', userController.delete);
+router.delete('/:id', userController.delete.bind(userController));
 
 module.exports = router;

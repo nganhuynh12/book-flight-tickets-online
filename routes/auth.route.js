@@ -18,7 +18,7 @@ router.post(
     .notEmpty()
     .isLength({ min: 6, max: 20 }),
   validationPipe,
-  authController.register
+  authController.register.bind(authController)
 );
 
 router.post(
@@ -34,11 +34,15 @@ router.post(
     successRedirect: '/test',
   }),
   validationPipe,
-  authController.login
+  authController.login.bind(authController)
 );
 
-router.post('/logout', localAuthGuard, authController.logout);
+router.post(
+  '/logout',
+  localAuthGuard,
+  authController.logout.bind(authController)
+);
 
-router.post('/reset', authController.reset);
+router.post('/reset', authController.reset.bind(authController));
 
 module.exports = router;

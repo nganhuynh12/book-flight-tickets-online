@@ -1,7 +1,11 @@
+const service = require('../services');
+
 module.exports = {
-  authController: require('./auth.controller'),
-  flightController: require('./flight.controller'),
-  locationController: require('./location.controller'),
-  ticketController: require('./ticket.controller'),
-  userController: require('./user.controller'),
+  authController: new (require('./auth.controller'))(service.authService),
+  flightController: new (require('./flight.controller'))(service.flightService),
+  locationController: new (require('./location.controller'))(
+    service.locationService
+  ),
+  ticketController: new (require('./ticket.controller'))(service.ticketService),
+  userController: new (require('./user.controller'))(service.userService),
 };

@@ -8,10 +8,10 @@ router.post(
   '/',
   body('value').exists().notEmpty(),
   validationPipe,
-  locationController.add
+  locationController.add.bind(locationController)
 );
-router.get('/', locationController.findAll);
-router.delete('/:id', locationController.deleteById);
-router.put('/:id', locationController.updateById);
+router.get('/', locationController.findAll.bind(locationController));
+router.delete('/:id', locationController.deleteById.bind(locationController));
+router.put('/:id', locationController.updateById.bind(locationController));
 
 module.exports = router;

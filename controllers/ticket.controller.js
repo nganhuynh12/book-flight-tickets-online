@@ -1,9 +1,11 @@
-const { ticketService } = require('../services');
-
 class ticketController {
+  constructor(service) {
+    this.service = service;
+  }
+
   async add(req, res, next) {
     try {
-      const result = await ticketService.add(req.body);
+      const result = await this.service.add(req.body);
       return res.status(201).json(result);
     } catch (error) {
       return res.status(400).json(error);
@@ -11,13 +13,13 @@ class ticketController {
   }
 
   async findAll(req, res, next) {
-    const result = await ticketService.findAll({ where: req.query });
+    const result = await this.service.findAll({ where: req.query });
     res.json(result);
   }
 
   async deleteById(req, res, next) {
     try {
-      const result = await ticketService.deleteById(req.params.id);
+      const result = await this.service.deleteById(req.params.id);
       res.json(result);
     } catch (error) {
       return res.status(400).json(error);
@@ -25,4 +27,4 @@ class ticketController {
   }
 }
 
-module.exports = new ticketController();
+module.exports = ticketController;
