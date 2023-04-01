@@ -1,7 +1,6 @@
   .header {
-    border-radius: 15px 15px 0px 0px;
     padding: 10px;
-    background-color: var(--main-color);
+    background: var(--main-color);
     color: #fff;
     width: 100%;
     display: flex;
