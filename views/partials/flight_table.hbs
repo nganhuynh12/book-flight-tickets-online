@@ -1,7 +1,7 @@
 <div id='flight' class='tabs' style='display: none;'>
   <main>
     <div class='title-container'>
-      <h2>Quản lý chuyến bay</h2>
+      <h2 class="title-table">Quản lý chuyến bay</h2>
       <button class='btn-add' id='btn-add-flight'>Thêm chuyến bay</button>
     </div>
     <table class="airlines_table">
@@ -22,13 +22,13 @@
           <td>Hà Nội</td>
           <td><input type="checkbox" id="outstanding" name="outstanding"></td>
           <td>
-            <button class='btn-view' onclick='showFlightDetails()'><span
+            <button class='btn-view'><span
                 class='fa fa-eye'
               ></span></button>
             <button class='btn-edit' id="btn-update-flight"><span
                 class='fa fa-pencil'
               ></span></button>
-            <button class='btn-delete'><span
+            <button class='btn-delete' id="btn-delete-flight"><span
                 class='fa fa-trash'
               ></span></button>
           </td>
@@ -41,9 +41,13 @@
           <td>Hà Nội</td>
           <td><input type="checkbox" id="outstanding" name="outstanding"></td>
           <td>
-            <button class='btn-view'><span class='fa fa-eye'></span></button>
-            <button class='btn-edit' id="btn-update-flight"><span class='fa fa-pencil'></span></button>
-            <button class='btn-delete'><span
+            <button class='btn-view'><span
+                class='fa fa-eye'
+              ></span></button>
+            <button class='btn-edit' id="btn-update-flight"><span
+                class='fa fa-pencil'
+              ></span></button>
+            <button class='btn-delete' id="btn-delete-flight"><span
                 class='fa fa-trash'
               ></span></button>
           </td>

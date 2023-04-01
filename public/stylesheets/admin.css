@@ -136,6 +136,7 @@ header {
 main {
   background: #f1f5f9;
   height: 100%;
+  overflow: auto;
   padding: 1rem 3rem;
 }
 
@@ -306,7 +307,7 @@ th {
   transform: rotate(-45deg);
 }
 
-form {
+.admin-form {
   background-color: #fff;
   width: 50%;
   height: 100%;
@@ -315,7 +316,7 @@ form {
   transform: translateX(100%); /* Di chuyển form sang bên phải */
   transition: all 0.5s ease-in-out;
 }
-form.show {
+.admin-form.show {
   transform: translateX(0); /* Di chuyển form về vị trí ban đầu */
 }
 
@@ -422,9 +423,67 @@ input:focus {
   transform: translateY(0);
 }
 
-.dialog h2 {
+.dialog-header{
+  display: flex;
+  justify-content: space-between;
+}
+
+.dialog-header .form-close:before, .dialog-header .form-close:after{
+  height: 21px;
+  top: 23px;
+}
+
+.dialog-header h2 {
   font-size: 22px;
   margin: 0 0 20px;
+}
+
+.content-delete{
+  margin-bottom: 20px;
+}
+
+.btn-submit-delete {
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  font-weight: bold;
+  color: white;
+  background-color: #dc3545;
+  float: right;
+  cursor: pointer;
+}
+
+.btn-submit-delete:hover {
+  background-color: #fff;
+  background-color: #ae2c39;
+  transition: all 0.3s ease-in-out;
+}
+
+.btn-close-dialog {
+  margin-right: 10px;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  font-weight: bold;
+  color: white;
+  background-color: #6c757d;
+  float: right;
+  cursor: pointer;
+}
+
+.btn-close-dialog:hover {
+  background-color: #fff;
+  background-color: #52585e;
+  float: right;
+  transition: all 0.3s ease-in-out;
+}
+
+.dialog .btn-submit-add{
+  margin-top: 0;
+  width: auto;
+  font-size: 13px;
+  font-weight: bold;
+
 }
 
 .form-group {
@@ -441,20 +500,11 @@ input:focus {
 .form-group input[type='time'],
 .form-group input[type='number'] {
   display: block;
+  height: 5%;
   width: 100%;
   padding: 10px;
-  border: none;
   border-radius: 5px;
-  background-color: #f2f2f2;
-}
-
-.form-group input[type='text'][disabled],
-.form-group input[type='date'][disabled],
-.form-group input[type='time'][disabled],
-.form-group input[type='number'][disabled] {
-  background-color: transparent;
-  color: #555;
-  font-style: italic;
+  background-color: #fff;
 }
 
 .close {
@@ -502,5 +552,3 @@ input:focus {
 .container-group-2 div{
   width: 47.5%;
 }
-
-/* Chỉnh sửa thông tin chuyến bay */

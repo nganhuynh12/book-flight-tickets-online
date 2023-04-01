@@ -174,64 +174,15 @@
 
 {{!-- Xem chi tiết chuyến bay --}}
 <div id="flight-details" class="overlay">
-  <div class="dialog">
-    <button class="close" onclick="hideFlightDetails()">x</button>
-    <h2>Thông tin chi tiết chuyến bay</h2>
-    <div class="form-group">
-      <label for="flight-no">Số chuyến bay:</label>
-      <input type="text" id="detail-flight-no" name="flight-no" disabled>
+    <div class="dialog">
+        <button class="close" onclick="hideFlightDetails()">x</button>
+        <h2>Thông tin chi tiết chuyến bay</h2>
+        <div class="form-group">
+            <label for="flight-no">Số chuyến bay:</label>
+            <input type="text" id="detail-flight-no" name="flight-no" disabled>
+        </div>
     </div>
-    <div class="form-group">
-      <label for="flight-date">Ngày bay:</label>
-      <input type="date" id="detail-flight-date" name="flight-date" disabled>
-    </div>
-    <div class="form-group">
-      <label for="flight-time">Thời gian bay:</label>
-      <input type="time" id="detail-flight-time" name="flight-time" disabled>
-    </div>
-    <div class="form-group">
-      <label for="departure">Điểm khởi hành:</label>
-      <input type="text" id="detail-departure" name="departure" disabled>
-    </div>
-    <div class="form-group">
-      <label for="destination">Điểm đến:</label>
-      <input type="text" id="detail-destination" name="destination" disabled>
-    </div>
-  </div>
 </div>
-
-
-{{!-- Chỉnh sửa thông tin chuyến bay --}}
-<div id="edit-dialog" class="overlay">
-  <div class="dialog">
-    <button class="close">&times;</button>
-    <h2>Chỉnh sửa thông tin chuyến bay</h2>
-    <form>
-      <div class="form-group">
-        <label for="flight-no">Số chuyến bay:</label>
-        <input type="text" id="edit-flight-no" name="flight-no" required>
-      </div>
-      <div class="form-group">
-        <label for="flight-date">Ngày bay:</label>
-        <input type="date" id="edit-flight-date" name="flight-date" required>
-      </div>
-      <div class="form-group">
-        <label for="flight-time">Thời gian bay:</label>
-        <input type="time" id="edit-flight-time" name="flight-time" required>
-      </div>
-      <div class="form-group">
-        <label for="departure">Điểm khởi hành:</label>
-        <input type="text" id="edit-departure" name="departure" required>
-      </div>
-      <div class="form-group">
-        <label for="destination">Điểm đến:</label>
-        <input type="text" id="edit-destination" name="destination" required>
-      </div>
-      <button type="submit">Lưu thay đổi</button>
-    </form>
-  </div>
-</div>
-
     <script src='{{static 'javascripts/admin.js'}}'></script>
 </body>
 </html>
