@@ -295,7 +295,7 @@ th {
 .form-close:before, .form-close:after {
   position: absolute;
   content: ' ';
-  height: 22px;
+  height: 27px;
   width: 2px;
   background-color: #333;
 }
@@ -336,6 +336,7 @@ input[type='text'],
 input[type='date'],
 input[type='time'],
 input[type='number'] {
+  height: 50%;
   width: 100%;
   padding: 10px;
   margin-bottom: 20px;
@@ -343,6 +344,7 @@ input[type='number'] {
   border: 1px solid #ccc;
   border-radius: 4px;
   box-sizing: border-box;
+  font-size: 16px;
 }
 input:focus {
   outline: none;
@@ -489,16 +491,6 @@ input:focus {
 
 .menu-items.active{
   background-color: #0097a8;
-}
-
-.container-group-3{
-  margin-top: 10px;
-  display: flex;
-  justify-content: space-between;
-}
-
-.container-group-3 div{
-  width: 30%;
 }
 
 .container-group-2{
