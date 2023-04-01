@@ -21,5 +21,7 @@ router.get('/test', localAuthGuard, (req, res, next) => {
 router.get('/aboutus', (req, res, next) => {
   res.render('aboutus');
 });
-
+router.get('/home', (req, res, next) => {
+  res.render('home');
+});
 module.exports = router;
