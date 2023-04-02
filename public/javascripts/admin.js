@@ -2,11 +2,10 @@ $(document).ready(() => {
   const btnAddFlight = $('#btn-add-flight');
   const btnHideForm = $('.form-close');
   const prefixList = ['sidebar', 'Opentab'];
-  const btnUpdate = $('.btn-edit');
   const addFlightForm = $('#add-flight-form');
   const updateFlightForm = $('#update-flight-form');
+  const updateTicketForm = $('#update-ticket-form');
   const btnViewFlightDetail = $('.btn-view');
-  const btnDelete = $('.btn-delete');
   const btnCloseDialog = $('.btn-close-dialog');
   const btnAddPlace = $('#btn-add-place');
   let formName = '';
@@ -34,7 +33,7 @@ $(document).ready(() => {
           return `<td>${data[field]}</td>`;
         })}
           <td>
-             <button class='btn-edit'><span class='fa fa-pencil'></span></button>
+             <button class='btn-edit' id='btn-update-place'><span class='fa fa-pencil'></span></button>
              <button class='btn-delete' id='btn-delete-place'><span
                class='fa fa-trash'
             ></span></button>
@@ -99,28 +98,47 @@ $(document).ready(() => {
     hideForm();
     hideDialog();
   });
-  btnUpdate.on("click", function(){
-    console.log($(this).attr('id'));
-    showUpdateFlightForm();
-  });
+
   btnViewFlightDetail.on("click",function(){
     showDialog();
-  })
-  btnDelete.on("click",function(){
+  });
+
+  $("body").on("click", ".btn-delete",function(){
     var id = $(this).attr('id');
+    console.log(id);
+    var currentRow = $(this).closest("tr");;
     dialogID = id.slice(id.indexOf('-') + 1, id.length);
-    var currentRow = $(this).closest("tr");
-    var idFlight = currentRow.find("td:eq(0)").html();
-    $('#flightID').html(idFlight);
+    if(dialogID.includes('flight')){
+      var idFlight = currentRow.find("td:eq(0)").html();
+      $('#flightID').html(idFlight);
+    }else if(dialogID.includes('place')){
+      var placeName = currentRow.find("td:eq(1)").html();
+      $('#placeName').html(placeName);
+    }else if(dialogID.includes('customer')){
+      var customerName = currentRow.find("td:eq(1)").html();
+      $('#customerName').html(customerName);
+    }
     showDialog();
-  })
+  });
+
   btnCloseDialog.on("click",hideDialog);
+
   btnAddPlace.on("click",function(){
     var id = btnAddPlace.attr('id')
     dialogID = id.slice(id.indexOf('-') + 1, id.length);
     showDialog();
   })
 
+  $("body").on("click", ".btn-edit", function() {
+    var id = $(this).attr('id');
+    if(id.includes('flight')){
+      showUpdateFlightForm();
+    }else{
+      dialogID = id.slice(id.indexOf('-') + 1, id.length);
+      showDialog();
+    }
+    
+  });
 
   function showAddFlightForm() {
     formName = '#' + addFlightForm.attr('id');

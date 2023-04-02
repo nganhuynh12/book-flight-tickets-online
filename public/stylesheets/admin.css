@@ -21,7 +21,7 @@
   top: 0;
   z-index: 100;
   background: var(--main-color);
-  color: #fff;
+  color: var(--text-white);
   overflow-y: auto;
 }
 
@@ -37,7 +37,7 @@
   display: table-cell;
   vertical-align: middle;
   width: 250px;
-  color: #fff;
+  color: var(--text-white);
   font-size: 0.8rem;
   height: 40px;
   padding-left: 1rem;
@@ -61,7 +61,7 @@
   display: table-cell;
   vertical-align: middle;
   width: 60px;
-  color: #fff;
+  color: var(--text-white);
   font-size: 0.8rem;
   height: 40px;
 }
@@ -93,7 +93,7 @@ header {
   top: 0;
   z-index: 100;
   width: calc(100% - 240px);
-  background: #fff;
+  background: var(--text-white);
   height: 60px;
   padding: 0rem 1rem;
   display: flex;
@@ -153,7 +153,7 @@ main {
 }
 
 .card-single {
-  background: #fff;
+  background: var(--text-white);
   border-radius: 7px;
   box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
   margin-top: 40px;
@@ -198,8 +198,8 @@ main {
   border-radius: 5px;
   padding: 10px;
   font-weight: bold;
-  color: white;
-  background-color: #047683;
+  color: var(--text-white);
+  background-color: var(--main-color);
   margin-left: 40px;
   cursor: pointer;
 }
@@ -226,12 +226,12 @@ td {
 }
 
 th {
-  color: white;
+  color: var(--text-white);
   padding: 10px;
 }
 
 .btn-view {
-  color: white;
+  color: var(--text-white);
   border: none;
   width: 42px;
   height: 41px;
@@ -241,7 +241,7 @@ th {
 }
 
 .btn-edit {
-  color: white;
+  color: var(--text-white);
   border: none;
   width: 42px;
   height: 41px;
@@ -251,7 +251,7 @@ th {
 }
 
 .btn-delete {
-  color: white;
+  color: var(--text-white);
   border: none;
   width: 42px;
   height: 41px;
@@ -308,7 +308,7 @@ th {
 }
 
 .admin-form {
-  background-color: #fff;
+  background-color: var(--text-white);
   width: 50%;
   height: 100%;
   padding: 20px;
@@ -353,8 +353,8 @@ input:focus {
 
 .btn-submit-add {
   width: 30%;
-  background-color: #047683;
-  color: #fff;
+  background-color: var(--main-color);
+  color: var(--text-white);
   border: none;
   padding: 10px 20px;
   border-radius: 5px;
@@ -365,16 +365,16 @@ input:focus {
 }
 
 .btn-submit-add:hover {
-  background-color: #fff;
-  color: #047683;
+  background-color: var(--text-white);
+  color: var(--main-color);
   transition: all 0.3s ease-in-out;
-  border: 1px solid #047683;
+  border: 1px solid var(--main-color);
 }
 
 .btn-submit-update {
   width: 30%;
-  background-color: #047683;
-  color: #fff;
+  background-color: var(--main-color);
+  color: var(--text-white);
   border: none;
   padding: 10px 20px;
   border-radius: 5px;
@@ -385,10 +385,10 @@ input:focus {
 }
 
 .btn-submit-update:hover {
-  background-color: #fff;
-  color: #047683;
+  background-color: var(--text-white);
+  color: var(--main-color);
   transition: all 0.3s ease-in-out;
-  border: 1px solid #047683;
+  border: 1px solid var(--main-color);
 }
 
 /* Xem thông tin chi tiết chuyến bay */
@@ -410,7 +410,7 @@ input:focus {
 }
 
 .dialog {
-  background-color: #fff;
+  background-color: var(--text-white);
   width: 450px;
   padding: 20px;
   border-radius: 10px;
@@ -447,14 +447,14 @@ input:focus {
   border-radius: 5px;
   padding: 10px;
   font-weight: bold;
-  color: white;
+  color: var(--text-white);
   background-color: #dc3545;
   float: right;
   cursor: pointer;
 }
 
 .btn-submit-delete:hover {
-  background-color: #fff;
+  background-color: var(--text-white);
   background-color: #ae2c39;
   transition: all 0.3s ease-in-out;
 }
@@ -465,14 +465,14 @@ input:focus {
   border-radius: 5px;
   padding: 10px;
   font-weight: bold;
-  color: white;
+  color: var(--text-white);
   background-color: #6c757d;
   float: right;
   cursor: pointer;
 }
 
 .btn-close-dialog:hover {
-  background-color: #fff;
+  background-color: var(--text-white);
   background-color: #52585e;
   float: right;
   transition: all 0.3s ease-in-out;
@@ -504,7 +504,7 @@ input:focus {
   width: 100%;
   padding: 10px;
   border-radius: 5px;
-  background-color: #fff;
+  background-color: var(--text-white);
 }
 
 .close {

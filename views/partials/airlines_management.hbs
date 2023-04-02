@@ -153,7 +153,7 @@
 <div id="update-place" class="overlay">
     <div class="dialog">
       <div class='dialog-header'>
-        <h2>Thêm địa điểm</h2>
+        <h2>Sửa địa điểm</h2>
         <span class='form-close'></span>
       </div>
       <form>
@@ -161,7 +161,52 @@
             <label for="flight-no">Địa điểm:</label>
             <input type="text" id="place" name="place">
         </div>
-        <button type="submit" class="btn-submit-add">Thêm</button>
+        <button type="submit" class="btn-submit-add">Sửa</button>
+      </form>
+      <button class="btn-close-dialog">Đóng</button>
+    </div>
+</div>
+
+{{!Xóa địa điểm}}
+<div id="delete-place" class="overlay">
+    <div class="dialog">
+      <div class='dialog-header'>
+        <h2>Xóa địa điểm</h2>
+        <span class='form-close'></span>
+      </div>
+      <p class="content-delete">Bạn có chắc muốn xóa <b id="placeName"></b> không?</p>
+      <form>
+        <button type="submit" class="btn-submit-delete">Xóa</button>
+      </form>
+      <button class="btn-close-dialog">Đóng</button>
+    </div>
+</div>
+
+{{!Xóa khách hàng}}
+<div id="delete-customer" class="overlay">
+    <div class="dialog">
+      <div class='dialog-header'>
+        <h2>Xóa khách hàng</h2>
+        <span class='form-close'></span>
+      </div>
+      <p class="content-delete">Bạn có chắc muốn xóa khách hàng <b id="customerName"></b> không?</p>
+      <form>
+        <button type="submit" class="btn-submit-delete">Xóa</button>
+      </form>
+      <button class="btn-close-dialog">Đóng</button>
+    </div>
+</div>
+
+{{!Xóa vé}}
+<div id="delete-ticket" class="overlay">
+    <div class="dialog">
+      <div class='dialog-header'>
+        <h2>Xóa vé</h2>
+        <span class='form-close'></span>
+      </div>
+      <p class="content-delete">Bạn có chắc muốn xóa vé này không?</p>
+      <form>
+        <button type="submit" class="btn-submit-delete">Xóa</button>
       </form>
       <button class="btn-close-dialog">Đóng</button>
     </div>
