@@ -9,9 +9,12 @@ class authController {
 
   async register(req, res, next) {
     try {
-      console.log(this);
       const result = await this.service.register(req.body);
-      if (result) return res.redirect('/test');
+      if (result.success) {
+        return res.redirect('/test');
+      } else {
+        return res.render('auth', { error_message: res.message });
+      }
     } catch (error) {
       return res.render('auth', { error_message: error.message });
     }
@@ -30,12 +33,7 @@ class authController {
     return res.json(result);
   }
 
-  logout(req, res, next) {
-    req.logout((error) => {
-      if (error) return error;
-      return res.redirect('/auth');
-    });
-  }
+  logout(req, res, next) {}
 }
 
 module.exports = authController;

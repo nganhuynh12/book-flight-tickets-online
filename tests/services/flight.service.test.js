@@ -91,4 +91,15 @@ describe('Flight Service Test Suite', () => {
       });
     });
   });
+
+  describe('Create flight method test', () => {
+    describe('given flight object', () => {
+      it('should return back flight object', async () => {
+        mockFlightModel.create.mockReturnValue(mockFlightLists[0]);
+
+        const flight = await flightService.add(mockFlightLists[0]);
+        expect(flight).toMatchObject(mockFlightLists[0]);
+      });
+    });
+  });
 });
