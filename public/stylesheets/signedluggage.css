@@ -62,18 +62,21 @@ h1 {
 }
 
 .baggage-btn{
-  width: 80%;
+  width: 85%;
   margin: auto;
-  border: 1px solid rgb(167, 167, 167);
-  padding: 20px;
+  border: 1px solid rgb(249, 247, 247);
+  padding: 22px;
   border-radius: 5px;
   text-align: center;
   margin-bottom: 40px;
-  background-color: rgb(200, 220, 255);
+  background-color: rgb(217, 230, 250);
 
 }
 
-table {
+.fa-info-circle{
+  margin-right: 20px;
+}
+/* table {
   border-collapse: collapse;
   width: 100%;
   max-width: 1000px;
@@ -94,7 +97,7 @@ th {
   background-color: #f2f2f2;
   font-weight: bold;
   text-align: center;
-}
+} */
 
 
 .card {
