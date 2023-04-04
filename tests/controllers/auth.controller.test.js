@@ -1,6 +1,7 @@
 const app = require('../../app');
 const req = require('supertest');
 const authService = require('../../services/auth.service');
+const e = require('express');
 jest.mock('../../services/auth.service');
 
 describe('Auth Controller Test Suite', () => {
@@ -13,7 +14,7 @@ describe('Auth Controller Test Suite', () => {
     });
   });
 
-  describe('post /auth/register', () => {
+  describe('POST /auth/register', () => {
     describe('Given enough data', () => {
       describe("Given user data don't exists in database", () => {
         beforeAll(() => {
@@ -54,7 +55,8 @@ describe('Auth Controller Test Suite', () => {
         });
       });
     });
-    describe('not given enough data', () => {
+
+    describe('given not enough data', () => {
       it('should return with a 400 status code', () => {
         [({ email: 'test@gmail.com' }, { password: '123456' })].forEach(
           async (mockData) => {
@@ -62,6 +64,21 @@ describe('Auth Controller Test Suite', () => {
             expect(res.statusCode).toBe(400);
           }
         );
+      });
+    });
+
+    describe('given data in wrong format', () => {
+      [
+        { email: 'test@gmail', password: '123456' },
+        { email: 'test@gmail.com', password: '12345' },
+        { email: 'test@gmail.com', password: '1234567891011121314151617' },
+      ].forEach((mockData) => {
+        it('should return with a 400 status code', async () => {
+          const res = await req(app).post('/auth/register').send(mockData);
+
+          expect(res.statusCode).toBe(400);
+          expect(res).toBeDefined();
+        });
       });
     });
   });
