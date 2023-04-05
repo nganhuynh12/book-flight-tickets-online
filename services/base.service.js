@@ -8,8 +8,8 @@ class baseService {
     this.pathName = pathName;
   }
 
-  async findAll({ page, per_page }) {
-    if (page && per_page) {
+  async findAll({ page, per_page } = { page: undefined, per_page: undefined }) {
+    if (page !== undefined && per_page !== undefined) {
       const offset = (page - 1) * per_page;
       const limit = per_page;
 
@@ -37,8 +37,9 @@ class baseService {
       }
 
       return res;
+    } else {
+      return await this.model.findAll();
     }
-    return await this.model.findAll();
   }
 
   async findByPk(pk) {
@@ -46,7 +47,18 @@ class baseService {
   }
 
   async deleteById(id) {
-    return await this.model.destroy({ where: { id } });
+    let success, message;
+
+    const res = await this.model.destroy({ where: { id } });
+    if (res > 0) {
+      success = true;
+      message = 'delete success';
+    } else {
+      success = false;
+      message = 'delete fail';
+    }
+
+    return { success, message };
   }
 
   async add(row) {
