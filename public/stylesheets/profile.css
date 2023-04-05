@@ -1,4 +1,8 @@
-.header{
+.group {
+  display: flex;
+}
+
+.header {
   border-radius: 15px 15px 0px 0px;
   padding: 10px;
   background: #047683;
@@ -11,61 +15,101 @@
 .navbar {
   background-color: #047683;
 }
+
 .nav-item {
   margin-right: 10px;
   font-size: 20px;
   font-weight: 500;
 }
+
 .navbar-brand {
   margin-left: 20px;
   font-size: 50px;
   font-style: italic;
   font-weight: bold;
 }
-.a1 {
-  padding: 20px;
+
+.a2 {
+  padding: 10px;
 
 }
-h1{
-  color: #0097a8;
-  font-size: 80px;
-}
-h3 {
-  color: #0097a8;
-  margin-top: 24px;
-  margin-left: 5px;
 
-}
 p {
   margin-left: 10px;
   text-align: justify;
 }
+
 .border {
   border-color: #047683;
 }
+
 .card-header {
   background: #047683;
   color: white;
+  text-align: center;
+  justify-content: center;
 }
-.submit {
-  background-color:#047683;
+
+.btn-submit {
+  width: 200px;
+  background-color: #047683;
   color: white;
+  padding: 10px;
+  border-radius: 5px;
+  margin: 0 auto;
   float: right;
 }
-.submit:hover {
-  background-color:#0097a8;
-  color: white;
+
+.btn-submit:hover {
+  background-color: #0097a8;
 }
+
 .card {
   background-color: #F0F8FF;
   margin-top: 20px;
-  margin-left: 500px;
+  margin-left: 100px;
   padding: 0px;
-  width: 100%;
-  height: 50%;
-  text-align: center;
+  width: fit-content;
+  height: 90%;
+  text-align: left;
 }
-.card-body{
-  text-align:left;
-  width: 30%
+
+.card-body {
+  font-size: 20px;
+  display: block;
+  margin-bottom: 5px;
+
+}
+
+input[type='text'],
+input[type='date'],
+input[type='emai'],
+input[type='tel'] input[type='file'] {
+  height: 50%;
+  width: 100%;
+  padding: 7px;
+  margin-bottom: 10px;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+.image-wrap {
+  width: 250px;
+  height: 250px;
+  background-color: white;
+  border-radius: 50%;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  overflow: hidden;
+  border: 1px solid black;
+  margin: 15px;
+}
+
+.uploader img {
+  position: relative;
+  width: 302px;
+  height: 352px;
 }
