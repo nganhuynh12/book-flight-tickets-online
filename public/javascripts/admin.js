@@ -131,7 +131,7 @@ $(document).ready(() => {
   btnAddPlace.on('click', function () {
     var id = btnAddPlace.attr('id');
     dialogID = id.slice(id.indexOf('-') + 1, id.length);
-    showDialog();
+    showDialog('add', 'locations');
   });
 
   $('body').on('click', '.btn-edit', function () {
@@ -214,6 +214,19 @@ $(document).ready(() => {
             loadLocationTable();
             dialog.removeClass('show');
             $(`#${dialogID}`).removeClass('show');
+          }
+        });
+      }
+    } else if (actionType === 'add') {
+      if (tableName === 'locations') {
+        confirmButton.on('click', async () => {
+          const res = await $.post('/locations', {
+            value: dialog.find('input[name=value]').val(),
+          });
+          if (res) {
+            dialog.find('input[name=value]').val('');
+            loadLocationTable();
+            hideDialog();
           }
         });
       }
