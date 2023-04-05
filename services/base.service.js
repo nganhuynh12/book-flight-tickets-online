@@ -1,5 +1,3 @@
-const { baseAddress } = require('./base.service');
-
 class baseService {
   static baseAddress = 'localhost:3000';
 

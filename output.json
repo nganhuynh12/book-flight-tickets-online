@@ -1,0 +1,446 @@
+{
+  "numFailedTests": 0,
+  "numPassedTestSuites": 5,
+  "numPassedTests": 22,
+  "numPendingTestSuites": 0,
+  "numPendingTests": 0,
+  "numRuntimeErrorTestSuites": 0,
+  "numTodoTests": 0,
+  "numTotalTestSuites": 5,
+  "numTotalTests": 22,
+  "openHandles": [],
+  "snapshot": {
+    "added": 0,
+    "didUpdate": false,
+    "failure": false,
+    "filesAdded": 0,
+    "filesRemoved": 0,
+    "filesRemovedList": [],
+    "filesUnmatched": 0,
+    "filesUpdated": 0,
+    "matched": 0,
+    "total": 0,
+    "unchecked": 0,
+    "uncheckedKeysByFile": [],
+    "unmatched": 0,
+    "updated": 0
+  },
+  "startTime": 1680506352554,
+  "success": true,
+  "testResults": [
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": [
+            "Flight Service Test Suite",
+            "Find all flight method test",
+            "Given flight list"
+          ],
+          "duration": 6,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "Flight Service Test Suite Find all flight method test Given flight list should return flight list",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 1,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "should return flight list"
+        },
+        {
+          "ancestorTitles": [
+            "Flight Service Test Suite",
+            "Find all flight method test",
+            "Given flight list"
+          ],
+          "duration": 23,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "Flight Service Test Suite Find all flight method test Given flight list should return flight list with length equal to 2",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 1,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "should return flight list with length equal to 2"
+        },
+        {
+          "ancestorTitles": [
+            "Flight Service Test Suite",
+            "Find all flight method test",
+            "Given empty flight list"
+          ],
+          "duration": 0,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "Flight Service Test Suite Find all flight method test Given empty flight list should return flight list",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 1,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "should return flight list"
+        },
+        {
+          "ancestorTitles": [
+            "Flight Service Test Suite",
+            "Find all flight method test",
+            "Given empty flight list"
+          ],
+          "duration": 1,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "Flight Service Test Suite Find all flight method test Given empty flight list should return flight list with length equal to 0",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 1,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "should return flight list with length equal to 0"
+        },
+        {
+          "ancestorTitles": [
+            "Flight Service Test Suite",
+            "Find flight by PK",
+            "Given exist flight id"
+          ],
+          "duration": 1,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "Flight Service Test Suite Find flight by PK Given exist flight id should return flight with this id",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 1,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "should return flight with this id"
+        },
+        {
+          "ancestorTitles": [
+            "Flight Service Test Suite",
+            "Find flight by PK",
+            "Given non exist id"
+          ],
+          "duration": 1,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "Flight Service Test Suite Find flight by PK Given non exist id should not return any flight",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 1,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "should not return any flight"
+        },
+        {
+          "ancestorTitles": [
+            "Flight Service Test Suite",
+            "Create flight method test",
+            "given flight object"
+          ],
+          "duration": 4,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "Flight Service Test Suite Create flight method test given flight object should return back flight object",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 1,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "should return back flight object"
+        }
+      ],
+      "endTime": 1680506355737,
+      "message": "",
+      "name": "D:\\Code\\web_node\\ck\\tests\\services\\flight.service.test.js",
+      "startTime": 1680506353616,
+      "status": "passed",
+      "summary": ""
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": ["Auth Service Test Suite", "register method test"],
+          "duration": 8,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "Auth Service Test Suite register method test given exist email",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 1,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "given exist email"
+        },
+        {
+          "ancestorTitles": ["Auth Service Test Suite", "register method test"],
+          "duration": 345,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "Auth Service Test Suite register method test given doesn't exist email",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 1,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "given doesn't exist email"
+        }
+      ],
+      "endTime": 1680506357214,
+      "message": "",
+      "name": "D:\\Code\\web_node\\ck\\tests\\services\\auth.service.test.js",
+      "startTime": 1680506355798,
+      "status": "passed",
+      "summary": ""
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": [
+            "Location Service Test Suite",
+            "Find all location method test",
+            "Given location list and page and per_page param"
+          ],
+          "duration": 8,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "Location Service Test Suite Find all location method test Given location list and page and per_page param should return location list with pagination",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 4,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "should return location list with pagination"
+        },
+        {
+          "ancestorTitles": [
+            "Location Service Test Suite",
+            "Find all location method test",
+            "given location list"
+          ],
+          "duration": 1,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "Location Service Test Suite Find all location method test given location list should return location list",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 3,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "should return location list"
+        },
+        {
+          "ancestorTitles": [
+            "Location Service Test Suite",
+            "Find location by id method test",
+            "Given id exist in db"
+          ],
+          "duration": 1,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "Location Service Test Suite Find location by id method test Given id exist in db should return the location with id equal to that id",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 2,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "should return the location with id equal to that id"
+        },
+        {
+          "ancestorTitles": [
+            "Location Service Test Suite",
+            "Find location by id method test",
+            "Given id not exist in db"
+          ],
+          "duration": 1,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "Location Service Test Suite Find location by id method test Given id not exist in db should return null",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 1,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "should return null"
+        },
+        {
+          "ancestorTitles": [
+            "Location Service Test Suite",
+            "Delete location method test",
+            "Given id exist in db"
+          ],
+          "duration": 1,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "Location Service Test Suite Delete location method test Given id exist in db should return object has success equal to true",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 1,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "should return object has success equal to true"
+        },
+        {
+          "ancestorTitles": [
+            "Location Service Test Suite",
+            "Delete location method test",
+            "Given id not exist in db"
+          ],
+          "duration": 1,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "Location Service Test Suite Delete location method test Given id not exist in db should return object has success equal to false",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 1,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "should return object has success equal to false"
+        }
+      ],
+      "endTime": 1680506357742,
+      "message": "",
+      "name": "D:\\Code\\web_node\\ck\\tests\\services\\location.service.test.js",
+      "startTime": 1680506357250,
+      "status": "passed",
+      "summary": ""
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": [
+            "Location Controller Test Suite",
+            "POST /locations",
+            "Given enough data field"
+          ],
+          "duration": 131,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "Location Controller Test Suite POST /locations Given enough data field should respone with a 201 status code",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 2,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "should respone with a 201 status code"
+        },
+        {
+          "ancestorTitles": [
+            "Location Controller Test Suite",
+            "POST /locations",
+            "Given not enough data field"
+          ],
+          "duration": 18,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "Location Controller Test Suite POST /locations Given not enough data field should response with 400 status code",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 2,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "should response with 400 status code"
+        },
+        {
+          "ancestorTitles": [
+            "Location Controller Test Suite",
+            "GET /locations"
+          ],
+          "duration": 14,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "Location Controller Test Suite GET /locations should respone with a 200 status code",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 2,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "should respone with a 200 status code"
+        }
+      ],
+      "endTime": 1680506359288,
+      "message": "",
+      "name": "D:\\Code\\web_node\\ck\\tests\\controllers\\location.controller.test.js",
+      "startTime": 1680506353468,
+      "status": "passed",
+      "summary": ""
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": ["Auth Controller Test Suite", "GET /auth"],
+          "duration": 178,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "Auth Controller Test Suite GET /auth should respone with 200 status code",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 2,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "should respone with 200 status code"
+        },
+        {
+          "ancestorTitles": [
+            "Auth Controller Test Suite",
+            "POST /auth/register",
+            "Given enough data",
+            "Given user data don't exists in database"
+          ],
+          "duration": 60,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "Auth Controller Test Suite POST /auth/register Given enough data Given user data don't exists in database should return with 302 status code",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 2,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "should return with 302 status code"
+        },
+        {
+          "ancestorTitles": [
+            "Auth Controller Test Suite",
+            "POST /auth/resgister",
+            "Given enough data",
+            "given user data that already exists in database"
+          ],
+          "duration": 34,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "Auth Controller Test Suite POST /auth/register Given enough data given user data that already exists in database should return with a 200 status code",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 1,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "should return with a 200 status code"
+        },
+        {
+          "ancestorTitles": [
+            "Auth Controller Test Suite",
+            "POST /auth/register",
+            "not given enough data"
+          ],
+          "duration": 4,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "Auth Controller Test Suite POST /auth/register not given enough data should return with a 400 status code",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 0,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "should return with a 400 status code"
+        }
+      ],
+      "endTime": 1680506359513,
+      "message": "",
+      "name": "D:\\Code\\web_node\\ck\\tests\\controllers\\auth.controller.test.js",
+      "startTime": 1680506353462,
+      "status": "passed",
+      "summary": ""
+    }
+  ],
+  "wasInterrupted": false
+}
