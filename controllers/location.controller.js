@@ -13,16 +13,18 @@ class locationController {
   }
 
   async findAll(req, res, next) {
-    console.log(req);
+    console.log(req.query);
     const result = await this.service.findAll(req.query);
     return res.json(result);
   }
 
   async deleteById(req, res, next) {
+    const result = await this.service.deleteById(req.params.id);
     return res.json(result);
   }
 
   async updateById(req, res, next) {
+    console.log(req.body);
     const result = await this.service.updateById(req.params.id, req.body);
     return res.json(result);
   }

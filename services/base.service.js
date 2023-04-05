@@ -72,8 +72,20 @@ class baseService {
 
   async updateById(id, row) {
     try {
+      let success, message;
       const result = await this.model.update(row, { where: { id } });
-      return result;
+      if (result > 0) {
+        success = true;
+        message = 'update success';
+      } else {
+        success = false;
+        message = 'update fail';
+      }
+
+      return {
+        success,
+        message,
+      };
     } catch (error) {
       return error;
     }

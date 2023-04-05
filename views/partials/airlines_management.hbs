@@ -1,55 +1,55 @@
 {{! Thêm chuyến bay }}
-<div id="add-flight-form">
-  <form class="admin-form">
+<div id='add-flight-form'>
+  <form class='admin-form'>
     <div class='title-header-form'>
       <h1>Thêm chuyến bay</h1>
-      <span class='form-close' id="close-add-flight-form"></span>
+      <span class='form-close' id='close-add-flight-form'></span>
     </div>
 
-    <div class="container-group-2">
+    <div class='container-group-2'>
       <div>
-        <label class="label-input" for='flight-no'>Mã chuyến bay:</label>
+        <label class='label-input' for='flight-no'>Mã chuyến bay:</label>
         <input type='text' id='flight-no' name='flight-no' required />
       </div>
 
       <div>
-        <label class="label-input" for='flight-date'>Ngày bay:</label>
+        <label class='label-input' for='flight-date'>Ngày bay:</label>
         <input type='date' id='flight-date' name='flight-date' required />
       </div>
     </div>
 
-    <div class="container-group-2">
+    <div class='container-group-2'>
       <div>
-        <label class="label-input" for='departure-time'>Thời gian đi:</label>
+        <label class='label-input' for='departure-time'>Thời gian đi:</label>
         <input type='time' id='departure-time' name='departure-time' required />
       </div>
-      
+
       <div>
-        <label class="label-input" for='arrival-time'>Thời gian đến:</label>
+        <label class='label-input' for='arrival-time'>Thời gian đến:</label>
         <input type='time' id='arrival-time' name='arrival-time' required />
       </div>
     </div>
 
-     <div class="container-group-2">
+    <div class='container-group-2'>
       <div>
-        <label class="label-input" for='numSeat'>Số ghế:</label>
+        <label class='label-input' for='numSeat'>Số ghế:</label>
         <input type='number' id='numSeat' name='numSeat' required />
       </div>
-      
+
       <div>
-        <label class="label-input" for='ticketClass'>Hạng vé:</label>
+        <label class='label-input' for='ticketClass'>Hạng vé:</label>
         <input type='text' id='ticketClass' name='ticketClass' required />
       </div>
     </div>
 
-    <div class="container-group-2">
+    <div class='container-group-2'>
       <div>
-        <label class="label-input" for='departure'>Điểm khởi hành:</label>
+        <label class='label-input' for='departure'>Điểm khởi hành:</label>
         <input type='text' id='departure' name='departure' required />
       </div>
-      
+
       <div>
-        <label class="label-input" for='destination'>Điểm đến:</label>
+        <label class='label-input' for='destination'>Điểm đến:</label>
         <input type='text' id='destination' name='destination' required />
       </div>
     </div>
@@ -58,58 +58,98 @@
 </div>
 
 {{! Sửa chuyến bay }}
-<div id="update-flight-form">
-  <form class="admin-form">
+<div id='update-flight-form'>
+  <form class='admin-form'>
     <div class='title-header-form'>
       <h1>Sửa chuyến bay</h1>
-      <span class='form-close' id="close-update-flight-form"></span>
+      <span class='form-close' id='close-update-flight-form'></span>
     </div>
 
-    <div class="container-group-2">
+    <div class='container-group-2'>
       <div>
-        <label class="label-input" for='flight-no'>Mã chuyến bay:</label>
-        <input type='text' id='update-flight-no' name='update-flight-no' required />
+        <label class='label-input' for='flight-no'>Mã chuyến bay:</label>
+        <input
+          type='text'
+          id='update-flight-no'
+          name='update-flight-no'
+          required
+        />
       </div>
 
       <div>
-        <label class="label-input" for='flight-date'>Ngày bay:</label>
-        <input type='date' id='update-flight-date' name='update-flight-date' required />
-      </div>
-    </div>
-
-    <div class="container-group-2">
-      <div>
-        <label class="label-input" for='departure-time'>Thời gian đi:</label>
-        <input type='time' id='update-departure-time' name='update-departure-time' required />
-      </div>
-      
-      <div>
-        <label class="label-input" for='arrival-time'>Thời gian đến:</label>
-        <input type='time' id='update-arrival-time' name='update-arrival-time' required />
-      </div>
-    </div>
-
-    <div class="container-group-2">
-      <div>
-        <label class="label-input" for='numSeat'>Số ghế:</label>
-        <input type='number' id='update-numSeat' name='update-numSeat' required />
-      </div>
-      
-      <div>
-        <label class="label-input" for='ticketClass'>Hạng vé:</label>
-        <input type='text' id='update-ticketClass' name='update-ticketClass' required />
+        <label class='label-input' for='flight-date'>Ngày bay:</label>
+        <input
+          type='date'
+          id='update-flight-date'
+          name='update-flight-date'
+          required
+        />
       </div>
     </div>
 
-    <div class="container-group-2">
+    <div class='container-group-2'>
       <div>
-        <label class="label-input" for='departure'>Điểm khởi hành:</label>
-        <input type='text' id='update-departure' name='update-departure' required />
+        <label class='label-input' for='departure-time'>Thời gian đi:</label>
+        <input
+          type='time'
+          id='update-departure-time'
+          name='update-departure-time'
+          required
+        />
       </div>
-      
+
       <div>
-        <label class="label-input" for='destination'>Điểm đến:</label>
-        <input type='text' id='update-destination' name='update-destination' required />
+        <label class='label-input' for='arrival-time'>Thời gian đến:</label>
+        <input
+          type='time'
+          id='update-arrival-time'
+          name='update-arrival-time'
+          required
+        />
+      </div>
+    </div>
+
+    <div class='container-group-2'>
+      <div>
+        <label class='label-input' for='numSeat'>Số ghế:</label>
+        <input
+          type='number'
+          id='update-numSeat'
+          name='update-numSeat'
+          required
+        />
+      </div>
+
+      <div>
+        <label class='label-input' for='ticketClass'>Hạng vé:</label>
+        <input
+          type='text'
+          id='update-ticketClass'
+          name='update-ticketClass'
+          required
+        />
+      </div>
+    </div>
+
+    <div class='container-group-2'>
+      <div>
+        <label class='label-input' for='departure'>Điểm khởi hành:</label>
+        <input
+          type='text'
+          id='update-departure'
+          name='update-departure'
+          required
+        />
+      </div>
+
+      <div>
+        <label class='label-input' for='destination'>Điểm đến:</label>
+        <input
+          type='text'
+          id='update-destination'
+          name='update-destination'
+          required
+        />
       </div>
     </div>
     <button type='submit' class='btn-submit-update'>Sửa</button>
@@ -117,97 +157,99 @@
 </div>
 
 {{!Xóa chuyến bay}}
-<div id="delete-flight" class="overlay">
-    <div class="dialog">
-      <div class='dialog-header'>
-        <h2>Xóa chuyến bay</h2>
-        <span class='form-close'></span>
-      </div>
-      <p class="content-delete">Bạn có chắc muốn xóa chuyến bay <b id="flightID"></b> không?</p>
-      <form>
-        <button type="submit" class="btn-submit-delete">Xóa</button>
-      </form>
-      <button class="btn-close-dialog">Đóng</button>
+<div id='delete-flight' class='overlay'>
+  <div class='dialog'>
+    <div class='dialog-header'>
+      <h2>Xóa chuyến bay</h2>
+      <span class='form-close'></span>
     </div>
+    <p class='content-delete'>Bạn có chắc muốn xóa chuyến bay
+      <b id='flightID'></b>
+      không?</p>
+    <form>
+      <button type='submit' class='btn-submit-delete'>Xóa</button>
+    </form>
+    <button class='btn-close-dialog'>Đóng</button>
+  </div>
 </div>
 
 {{!Thêm địa điểm}}
-<div id="add-place" class="overlay">
-    <div class="dialog">
-      <div class='dialog-header'>
-        <h2>Thêm địa điểm</h2>
-        <span class='form-close'></span>
-      </div>
-      <form>
-        <div class="form-group">
-            <label for="flight-no">Địa điểm:</label>
-            <input type="text" id="place" name="place">
-        </div>
-        <button type="submit" class="btn-submit-add">Thêm</button>
-      </form>
-      <button class="btn-close-dialog">Đóng</button>
+<div id='add-place' class='overlay'>
+  <div class='dialog'>
+    <div class='dialog-header'>
+      <h2>Thêm địa điểm</h2>
+      <span class='form-close'></span>
     </div>
+    <form>
+      <div class='form-group'>
+        <label for='flight-no'>Địa điểm:</label>
+        <input type='text' id='place' name='place' />
+      </div>
+      <button type='submit' class='btn-submit-add'>Thêm</button>
+    </form>
+    <button class='btn-close-dialog'>Đóng</button>
+  </div>
 </div>
 
 {{!Sửa địa điểm}}
-<div id="update-place" class="overlay">
-    <div class="dialog">
-      <div class='dialog-header'>
-        <h2>Sửa địa điểm</h2>
-        <span class='form-close'></span>
-      </div>
-      <form>
-        <div class="form-group">
-            <label for="flight-no">Địa điểm:</label>
-            <input type="text" id="place" name="place">
-        </div>
-        <button type="submit" class="btn-submit-add">Sửa</button>
-      </form>
-      <button class="btn-close-dialog">Đóng</button>
+<div id='update-place' class='overlay'>
+  <div class='dialog'>
+    <div class='dialog-header'>
+      <h2>Sửa địa điểm</h2>
+      <span class='form-close'></span>
     </div>
+    <div class='form-group'>
+      <label for='flight-no'>Địa điểm:</label>
+      <input type='text' id='place' name='value' />
+    </div>
+    <button type='submit' class='btn-submit-add'>Sửa</button>
+    <button class='btn-close-dialog'>Đóng</button>
+  </div>
 </div>
 
 {{!Xóa địa điểm}}
-<div id="delete-place" class="overlay">
-    <div class="dialog">
-      <div class='dialog-header'>
-        <h2>Xóa địa điểm</h2>
-        <span class='form-close'></span>
-      </div>
-      <p class="content-delete">Bạn có chắc muốn xóa <b id="placeName"></b> không?</p>
-      <form>
-        <button type="submit" class="btn-submit-delete">Xóa</button>
-      </form>
-      <button class="btn-close-dialog">Đóng</button>
+<div id='delete-place' class='overlay'>
+  <div class='dialog'>
+    <div class='dialog-header'>
+      <h2>Xóa địa điểm</h2>
+      <span class='form-close'></span>
     </div>
+    <p class='content-delete'>Bạn có chắc muốn xóa
+      <b id='placeName'></b>
+      không?</p>
+    <button type='submit' class='btn-submit-delete'>Xóa</button>
+    <button class='btn-close-dialog'>Đóng</button>
+  </div>
 </div>
 
 {{!Xóa khách hàng}}
-<div id="delete-customer" class="overlay">
-    <div class="dialog">
-      <div class='dialog-header'>
-        <h2>Xóa khách hàng</h2>
-        <span class='form-close'></span>
-      </div>
-      <p class="content-delete">Bạn có chắc muốn xóa khách hàng <b id="customerName"></b> không?</p>
-      <form>
-        <button type="submit" class="btn-submit-delete">Xóa</button>
-      </form>
-      <button class="btn-close-dialog">Đóng</button>
+<div id='delete-customer' class='overlay'>
+  <div class='dialog'>
+    <div class='dialog-header'>
+      <h2>Xóa khách hàng</h2>
+      <span class='form-close'></span>
     </div>
+    <p class='content-delete'>Bạn có chắc muốn xóa khách hàng
+      <b id='customerName'></b>
+      không?</p>
+    <form>
+      <button type='submit' class='btn-submit-delete'>Xóa</button>
+    </form>
+    <button class='btn-close-dialog'>Đóng</button>
+  </div>
 </div>
 
 {{!Xóa vé}}
-<div id="delete-ticket" class="overlay">
-    <div class="dialog">
-      <div class='dialog-header'>
-        <h2>Xóa vé</h2>
-        <span class='form-close'></span>
-      </div>
-      <p class="content-delete">Bạn có chắc muốn xóa vé này không?</p>
-      <form>
-        <button type="submit" class="btn-submit-delete">Xóa</button>
-      </form>
-      <button class="btn-close-dialog">Đóng</button>
+<div id='delete-ticket' class='overlay'>
+  <div class='dialog'>
+    <div class='dialog-header'>
+      <h2>Xóa vé</h2>
+      <span class='form-close'></span>
     </div>
+    <p class='content-delete'>Bạn có chắc muốn xóa vé này không?</p>
+    <form>
+      <button type='submit' class='btn-submit-delete'>Xóa</button>
+    </form>
+    <button class='btn-close-dialog'>Đóng</button>
+  </div>
 </div>

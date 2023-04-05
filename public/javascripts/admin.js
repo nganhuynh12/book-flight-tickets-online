@@ -24,12 +24,12 @@ $(document).ready(() => {
 
   const loadLocationTable = async () => {
     const selectField = ['value'];
-    const result = await $.get('http://localhost:3000/locations');
+    const result = await $.get('/locations');
     const table = $('#place table');
     const tbody = $('<tbody></tbody>');
     $.each(result, (index, data) => {
       tbody.append(
-        `<tr><td>${index}</td>${$.map(selectField, (field) => {
+        `<tr id="${data.id}"><td>${index}</td>${$.map(selectField, (field) => {
           return `<td>${data[field]}</td>`;
         })}
           <td>
@@ -46,7 +46,6 @@ $(document).ready(() => {
       `<thead style="background-color: var(--main-color)"><tr><th>ID</th>${$.map(
         selectField,
         (value) => {
-          console.log('value', value);
           return `<th>${value}</th>`;
         }
       )}<th>action</th></tr></thead>`,
@@ -63,9 +62,6 @@ $(document).ready(() => {
     //     );
     //   });
     // }
-    $.each(result, (index, data) => {
-      console.log(data, table);
-    });
   };
 
   //Hàm chuyển tab
@@ -87,110 +83,174 @@ $(document).ready(() => {
     });
     tabActive[indexTab].classList.add('active');
 
+    console.log(tabName);
     if (tabName === 'place') {
       loadLocationTable();
+    } else if (tabName === 'flight') {
+      loadFlightTable();
+    } else if (tabName === 'customer') {
+      console.log('test');
+      loadUserTable();
     }
   };
 
   /* Thêm chuyến bay */
   btnAddFlight.on('click', showAddFlightForm);
-  btnHideForm.on('click', function(){
+  btnHideForm.on('click', function () {
     hideForm();
     hideDialog();
   });
 
-  btnViewFlightDetail.on("click",function(){
+  btnViewFlightDetail.on('click', function () {
     showDialog();
   });
 
-  $("body").on("click", ".btn-delete",function(){
-    var id = $(this).attr('id');
+  $('body').on('click', '.btn-delete', function () {
+    let id = $(this).attr('id');
     console.log(id);
-    var currentRow = $(this).closest("tr");;
+    let currentRow = $(this).closest('tr');
+    let currentRowId = currentRow.attr('id');
     dialogID = id.slice(id.indexOf('-') + 1, id.length);
-    if(dialogID.includes('flight')){
-      var idFlight = currentRow.find("td:eq(0)").html();
+    if (dialogID.includes('flight')) {
+      var idFlight = currentRow.find('td:eq(0)').html();
       $('#flightID').html(idFlight);
-    }else if(dialogID.includes('place')){
-      var placeName = currentRow.find("td:eq(1)").html();
+    } else if (dialogID.includes('place')) {
+      var placeName = currentRow.find('td:eq(1)').html();
       $('#placeName').html(placeName);
-    }else if(dialogID.includes('customer')){
-      var customerName = currentRow.find("td:eq(1)").html();
+    } else if (dialogID.includes('customer')) {
+      var customerName = currentRow.find('td:eq(1)').html();
       $('#customerName').html(customerName);
     }
+    showDialog('delete', currentRowId);
+  });
+
+  btnCloseDialog.on('click', hideDialog);
+
+  btnAddPlace.on('click', function () {
+    var id = btnAddPlace.attr('id');
+    dialogID = id.slice(id.indexOf('-') + 1, id.length);
     showDialog();
   });
 
-  btnCloseDialog.on("click",hideDialog);
-
-  btnAddPlace.on("click",function(){
-    var id = btnAddPlace.attr('id')
-    dialogID = id.slice(id.indexOf('-') + 1, id.length);
-    showDialog();
-  })
-
-  $("body").on("click", ".btn-edit", function() {
+  $('body').on('click', '.btn-edit', function () {
     var id = $(this).attr('id');
-    if(id.includes('flight')){
+    if (id.includes('flight')) {
       showUpdateFlightForm();
-    }else{
+    } else {
       dialogID = id.slice(id.indexOf('-') + 1, id.length);
-      showDialog();
+
+      showDialog('update', $(this).closest('tr').attr('id'));
     }
-    
   });
 
   function showAddFlightForm() {
     formName = '#' + addFlightForm.attr('id');
-    addFlightForm.css("display","block");
+    addFlightForm.css('display', 'block');
     setTimeout(function () {
       document.querySelector('#add-flight-form form').classList.add('show');
     }, 50);
-  };
+  }
 
   function showUpdateFlightForm() {
     formName = '#' + updateFlightForm.attr('id');
-    updateFlightForm.css("display","block");
+    updateFlightForm.css('display', 'block');
     setTimeout(function () {
       document.querySelector('#update-flight-form form').classList.add('show');
     }, 50);
-  };
+  }
 
   /* Ẩn form chuyến bay */
-  function hideForm(){
+  function hideForm() {
     document.querySelector(formName + ' form').classList.remove('show');
     setTimeout(function () {
-      $(formName).css("display","none");
+      $(formName).css('display', 'none');
     }, 300);
-  };
+  }
 
   //Ẩn form khi click vào vùng ngoài form
-  $(document).on("click", function(event){
+  $(document).on('click', function (event) {
     var formID = formName.slice(formName.indexOf('#') + 1, formName.length);
     if (event.target.id == formID) {
       hideForm();
     }
-  })
+  });
 
   /* Xem thông tin chi tiết chuyến bay */
-  function showDialog() {
-    let dialog = document
-      .getElementById(dialogID)
-      .querySelector('.dialog');
-    dialog.classList.add('show');
+  function showDialog(type, currentRowId) {
+    let dialog = $(`#${dialogID}`).find('.dialog');
+    let confirmButton = dialog.find('button[type="submit"]');
+    if (type === 'delete') {
+      confirmButton.on('click', async () => {
+        const res = await $.ajax({
+          url: `/locations/${currentRowId}`,
+          type: 'DELETE',
+        });
+
+        if (res.success) {
+          loadLocationTable();
+          dialog.removeClass('show');
+          $(`#${dialogID}`).removeClass('show');
+        }
+      });
+    } else if (type === 'update') {
+      dialog.find('input[name=value]').val('');
+
+      confirmButton.on('click', async () => {
+        const res = await $.ajax({
+          url: `locations/${currentRowId}`,
+          type: 'PUT',
+          data: {
+            value: dialog.find('input[name=value]').val(),
+          },
+        });
+
+        if (res.success) {
+          loadLocationTable();
+          dialog.removeClass('show');
+          $(`#${dialogID}`).removeClass('show');
+        }
+      });
+    }
+    dialog.addClass('show');
     setTimeout(function () {
       dialog.focus();
     }, 6000); // focus on dialog after animation completes
-    document.getElementById(dialogID).classList.add('show');
-  };
+    $(`#${dialogID}`).addClass('show');
+  }
 
   function hideDialog() {
-    let dialog = document
-      .getElementById(dialogID)
-      .querySelector('.dialog');
+    let dialog = document.getElementById(dialogID).querySelector('.dialog');
     dialog.classList.remove('show');
     document.getElementById(dialogID).classList.remove('show');
-  };
+  }
 
   /* Chỉnh sửa thông tin chuyến bay */
+
+  const loadFlightTable = async () => {
+    const res = await $.get('/flights');
+    console.log(res);
+  };
+
+  const loadUserTable = async () => {
+    const res = await $.get('/users');
+    const userTable = $('#user_table');
+    const userTbody = userTable.find('tbody');
+
+    console.log(userTable, userTbody);
+
+    res.forEach((user, index) => {
+      console.log(user);
+      userTbody.append(`<tr>
+        <td>${index}</td>  
+        <td>${user.username}</td>
+        <td>${user.email}</td>
+        <td>${user.address}</td>
+        <td>${user.phone}</td>
+        <td>${user.gender === true ? 'Nam' : 'Nữ'}</td>
+       <td>
+          <button class='btn-delete' id="btn-delete-customer"><span class='fa fa-trash'></span></button>
+        </td> 
+      </tr>`);
+    });
+  };
 });
