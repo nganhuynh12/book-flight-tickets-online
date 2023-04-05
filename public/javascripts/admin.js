@@ -114,14 +114,16 @@ $(document).ready(() => {
     if (dialogID.includes('flight')) {
       var idFlight = currentRow.find('td:eq(0)').html();
       $('#flightID').html(idFlight);
+      showDialog('delete', 'customer', currentRowId);
     } else if (dialogID.includes('place')) {
       var placeName = currentRow.find('td:eq(1)').html();
       $('#placeName').html(placeName);
+      showDialog('delete', 'location', currentRowId);
     } else if (dialogID.includes('customer')) {
       var customerName = currentRow.find('td:eq(1)').html();
       $('#customerName').html(customerName);
+      showDialog('delete', 'customer', currentRowId);
     }
-    showDialog('delete', currentRowId);
   });
 
   btnCloseDialog.on('click', hideDialog);
@@ -139,7 +141,7 @@ $(document).ready(() => {
     } else {
       dialogID = id.slice(id.indexOf('-') + 1, id.length);
 
-      showDialog('update', $(this).closest('tr').attr('id'));
+      showDialog('update', 'location', $(this).closest('tr').attr('id'));
     }
   });
 
@@ -176,40 +178,43 @@ $(document).ready(() => {
   });
 
   /* Xem thông tin chi tiết chuyến bay */
-  function showDialog(type, currentRowId) {
+  function showDialog(actionType, tableName, currentRowId, data) {
     let dialog = $(`#${dialogID}`).find('.dialog');
     let confirmButton = dialog.find('button[type="submit"]');
-    if (type === 'delete') {
-      confirmButton.on('click', async () => {
-        const res = await $.ajax({
-          url: `/locations/${currentRowId}`,
-          type: 'DELETE',
+    if (actionType === 'delete') {
+      if (tableName === 'location') {
+        confirmButton.on('click', async () => {
+          const res = await $.ajax({
+            url: `/locations/${currentRowId}`,
+            type: 'DELETE',
+          });
+
+          if (res.success) {
+            loadLocationTable();
+            dialog.removeClass('show');
+            $(`#${dialogID}`).removeClass('show');
+          }
         });
+      }
+    } else if (actionType === 'update') {
+      if (tableName === 'location') {
+        dialog.find('input[name=value]').val('');
+        confirmButton.on('click', async () => {
+          const res = await $.ajax({
+            url: `locations/${currentRowId}`,
+            type: 'PUT',
+            data: {
+              value: dialog.find('input[name=value]').val(),
+            },
+          });
 
-        if (res.success) {
-          loadLocationTable();
-          dialog.removeClass('show');
-          $(`#${dialogID}`).removeClass('show');
-        }
-      });
-    } else if (type === 'update') {
-      dialog.find('input[name=value]').val('');
-
-      confirmButton.on('click', async () => {
-        const res = await $.ajax({
-          url: `locations/${currentRowId}`,
-          type: 'PUT',
-          data: {
-            value: dialog.find('input[name=value]').val(),
-          },
+          if (res.success) {
+            loadLocationTable();
+            dialog.removeClass('show');
+            $(`#${dialogID}`).removeClass('show');
+          }
         });
-
-        if (res.success) {
-          loadLocationTable();
-          dialog.removeClass('show');
-          $(`#${dialogID}`).removeClass('show');
-        }
-      });
+      }
     }
     dialog.addClass('show');
     setTimeout(function () {
