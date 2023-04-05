@@ -114,15 +114,15 @@ $(document).ready(() => {
     if (dialogID.includes('flight')) {
       var idFlight = currentRow.find('td:eq(0)').html();
       $('#flightID').html(idFlight);
-      showDialog('delete', 'customer', currentRowId);
+      showDialog('delete', 'users', currentRowId);
     } else if (dialogID.includes('place')) {
       var placeName = currentRow.find('td:eq(1)').html();
       $('#placeName').html(placeName);
-      showDialog('delete', 'location', currentRowId);
+      showDialog('delete', 'locations', currentRowId);
     } else if (dialogID.includes('customer')) {
       var customerName = currentRow.find('td:eq(1)').html();
       $('#customerName').html(customerName);
-      showDialog('delete', 'customer', currentRowId);
+      showDialog('delete', 'users', currentRowId);
     }
   });
 
@@ -141,7 +141,7 @@ $(document).ready(() => {
     } else {
       dialogID = id.slice(id.indexOf('-') + 1, id.length);
 
-      showDialog('update', 'location', $(this).closest('tr').attr('id'));
+      showDialog('update', 'locations', $(this).closest('tr').attr('id'));
     }
   });
 
@@ -182,22 +182,24 @@ $(document).ready(() => {
     let dialog = $(`#${dialogID}`).find('.dialog');
     let confirmButton = dialog.find('button[type="submit"]');
     if (actionType === 'delete') {
-      if (tableName === 'location') {
-        confirmButton.on('click', async () => {
-          const res = await $.ajax({
-            url: `/locations/${currentRowId}`,
-            type: 'DELETE',
-          });
-
-          if (res.success) {
-            loadLocationTable();
-            dialog.removeClass('show');
-            $(`#${dialogID}`).removeClass('show');
-          }
+      confirmButton.on('click', async () => {
+        const res = await $.ajax({
+          url: `/${tableName}/${currentRowId}`,
+          type: 'DELETE',
         });
-      }
+
+        if (res.success) {
+          if (tableName === 'locations') {
+            loadLocationTable();
+          } else if (tableName === 'users') {
+            loadUserTable();
+          }
+          dialog.removeClass('show');
+          $(`#${dialogID}`).removeClass('show');
+        }
+      });
     } else if (actionType === 'update') {
-      if (tableName === 'location') {
+      if (tableName === 'locations') {
         dialog.find('input[name=value]').val('');
         confirmButton.on('click', async () => {
           const res = await $.ajax({
@@ -240,12 +242,13 @@ $(document).ready(() => {
     const res = await $.get('/users');
     const userTable = $('#user_table');
     const userTbody = userTable.find('tbody');
+    userTbody.empty();
 
     console.log(userTable, userTbody);
 
     res.forEach((user, index) => {
       console.log(user);
-      userTbody.append(`<tr>
+      userTbody.append(`<tr id=${user.id}>
         <td>${index}</td>  
         <td>${user.username}</td>
         <td>${user.email}</td>

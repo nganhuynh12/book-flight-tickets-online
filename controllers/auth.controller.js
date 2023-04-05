@@ -16,6 +16,7 @@ class authController {
         return res.render('auth', { error_message: res.message });
       }
     } catch (error) {
+      console.error(error);
       return res.render('auth', { error_message: error.message });
     }
   }

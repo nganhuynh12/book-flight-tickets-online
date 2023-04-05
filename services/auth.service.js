@@ -1,4 +1,5 @@
 const bcrypt = require('bcrypt');
+const { log } = require('grunt');
 
 module.exports = class authService {
   constructor(model) {
@@ -18,8 +19,8 @@ module.exports = class authService {
       await bcrypt.genSalt(10)
     );
     user.password = hashedPassword;
-    res = await this.model.create(user);
-    if (res) {
+    const result = await this.model.create(user);
+    if (result) {
       return { success: true, message: 'User created' };
     }
   }
