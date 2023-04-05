@@ -1,4 +1,5 @@
 const mockLocationList = [{ value: 'TP.HCM' }, { value: 'Thủ đô Hà Nội' }];
+
 const mockLocationModel = {
   findAll: jest.fn(),
   findByPk: jest.fn(),
@@ -109,6 +110,16 @@ describe('Location Service Test Suite', () => {
   });
 
   describe('Add location method test', () => {
-    describe('', () => {});
+    describe('given location data', () => {
+      beforeAll(() => {
+        mockLocationModel.create.mockReturnValueOnce(mockLocationList[0]);
+      });
+
+      it('should return created location', async () => {
+        const res = await locationService.add(mockLocationList[0]);
+
+        expect(res).toMatchObject(mockLocationList[0]);
+      });
+    });
   });
 });

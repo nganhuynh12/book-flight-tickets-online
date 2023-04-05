@@ -80,4 +80,29 @@ describe('User Service Test Suite', () => {
       });
     });
   });
+
+  describe('Delete user method test', () => {
+    describe('Given exist user id', () => {
+      beforeAll(() => {
+        mockUserModel.destroy.mockReturnValueOnce(1);
+      });
+      it('should return result with success equal to true', async () => {
+        const res = await userService.deleteById('1');
+
+        expect(res.success).toBe(true);
+      });
+    });
+
+    describe('Given non exist user id', () => {
+      beforeAll(() => {
+        mockUserModel.destroy.mockReturnValueOnce(null);
+      });
+
+      it('should return result with success equal to false', async () => {
+        const res = await userService.deleteById('1');
+
+        expect(res.success).toBe(false);
+      });
+    });
+  });
 });
