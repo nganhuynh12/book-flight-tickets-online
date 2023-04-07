@@ -15,9 +15,9 @@ const locationService = new (require('../../services/location.service'))(
 
 describe('Location Service Test Suite', () => {
   describe('Find all location method test', () => {
-    describe('Given location list and page and per_page param', () => {
+    describe('When given location list and page and per_page param', () => {
       beforeAll(() => {
-        mockLocationModel.findAndCountAll.mockReturnValue({
+        mockLocationModel.findAndCountAll.mockReturnValueOnce({
           count: 1,
           rows: mockLocationList,
         });
@@ -32,29 +32,29 @@ describe('Location Service Test Suite', () => {
           page_count: 1,
         });
         expect(Object.keys(res).length).toEqual(5);
-        expect(mockLocationModel.findAndCountAll).toHaveBeenCalled();
+        expect(mockLocationModel.findAndCountAll).toHaveBeenCalledTimes(1);
         expect(mockLocationModel.findAll).not.toHaveBeenCalled();
       });
     });
 
-    describe('given location list', () => {
+    describe('When given location list', () => {
       beforeAll(() => {
         mockLocationModel.findAll.mockReturnValue(mockLocationList);
         mockLocationModel.findAndCountAll.mockClear();
       });
 
-      it('should return location list', async () => {
+      it('Should return location list', async () => {
         const res = await locationService.findAll();
 
-        expect(res).toBeDefined();
-        expect(mockLocationModel.findAll).toHaveBeenCalled();
+        expect(res).toMatchObject(mockLocationList);
+        expect(mockLocationModel.findAll).toHaveBeenCalledTimes(1);
         expect(mockLocationModel.findAndCountAll).not.toHaveBeenCalled();
       });
     });
   });
 
   describe('Find location by id method test', () => {
-    describe('Given id exist in db', () => {
+    describe('When given exist id', () => {
       beforeAll(() => {
         mockLocationModel.findByPk.mockReturnValue(mockLocationList[0]);
       });
@@ -62,8 +62,8 @@ describe('Location Service Test Suite', () => {
       it('should return the location with id equal to that id', async () => {
         const res = await locationService.findByPk('fake id');
 
-        expect(res).toBeDefined();
-        expect(mockLocationModel.findByPk).toHaveBeenCalled();
+        expect(res).toMatchObject(mockLocationList[0]);
+        expect(mockLocationModel.findByPk).toHaveBeenCalledTimes(1);
       });
     });
 
@@ -90,11 +90,16 @@ describe('Location Service Test Suite', () => {
         const res = await locationService.deleteById('2');
 
         expect(res).toMatchObject({ success: true, message: 'delete success' });
+        expect(mockLocationModel.destroy).toBeCalledTimes(1);
+        expect(mockLocationModel.destroy).toBeCalledWith({
+          where: { id: '2' },
+        });
       });
     });
 
     describe('Given id not exist in db', () => {
       beforeAll(() => {
+        mockLocationModel.destroy.mockClear();
         mockLocationModel.destroy.mockReturnValue(0);
       });
 
@@ -105,20 +110,62 @@ describe('Location Service Test Suite', () => {
           success: false,
           message: 'delete fail',
         });
+        expect(mockLocationModel.destroy).toBeCalledTimes(1);
+        expect(mockLocationModel.destroy).toBeCalledWith({
+          where: { id: '2' },
+        });
       });
     });
   });
 
   describe('Add location method test', () => {
-    describe('given location data', () => {
+    describe('When given location data', () => {
       beforeAll(() => {
         mockLocationModel.create.mockReturnValueOnce(mockLocationList[0]);
       });
 
-      it('should return created location', async () => {
+      it('Should return created location', async () => {
         const res = await locationService.add(mockLocationList[0]);
 
         expect(res).toMatchObject(mockLocationList[0]);
+        expect(mockLocationModel.create).toBeCalledTimes(1);
+        expect(mockLocationModel.create).toBeCalledWith(mockLocationList[0]);
+      });
+    });
+  });
+
+  describe('Update location method test', () => {
+    describe('When given exist id', () => {
+      beforeAll(() => {
+        mockLocationModel.update.mockClear();
+        mockLocationModel.update.mockReturnValueOnce(1);
+      });
+
+      it('should return object with success property equal to true', async () => {
+        const res = await locationService.updateById('1', mockLocationList[0]);
+
+        expect(res).toMatchObject({ success: true });
+        expect(mockLocationModel.update).toBeCalledTimes(1);
+        expect(mockLocationModel.update).toBeCalledWith(mockLocationList[0], {
+          where: { id: '1' },
+        });
+      });
+    });
+
+    describe('Given non exist id', () => {
+      beforeAll(() => {
+        mockLocationModel.update.mockClear();
+        mockLocationModel.update.mockReturnValueOnce(0);
+      });
+
+      it('should return object with success property equal to false', async () => {
+        const res = await locationService.updateById('1', mockLocationList[0]);
+
+        expect(res).toMatchObject({ success: false });
+        expect(mockLocationModel.update).toBeCalledTimes(1);
+        expect(mockLocationModel.update).toBeCalledWith(mockLocationList[0], {
+          where: { id: '1' },
+        });
       });
     });
   });
