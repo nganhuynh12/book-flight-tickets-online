@@ -10,7 +10,7 @@ const flightService = new (require('../../services/flight.service'))(
   mockFlightModel
 );
 
-const mockFlightLists = [
+const mockFlightList = [
   {
     id: '1',
     startTime: '2023-04-01 14:00:01',
@@ -31,21 +31,27 @@ const mockFlightLists = [
 
 describe('Flight Service Test Suite', () => {
   describe('Find all flight method test', () => {
-    describe('Given flight list', () => {
+    describe('When given flight list', () => {
       beforeAll(() => {
-        mockFlightModel.findAll.mockReturnValue(mockFlightLists);
+        mockFlightModel.findAll.mockReturnValue(mockFlightList);
       });
 
-      it('should return flight list', async () => {
-        const flightList = await flightService.findAll();
+      it('Should return flight list', async () => {
+        const res = await flightService.findAll();
 
-        expect(flightList).toBeDefined();
+        expect(res).toBeDefined();
       });
 
-      it('should return flight list with length equal to 2', async () => {
-        const flightList = await flightService.findAll();
+      it('Should return flight list with length equal to 2', async () => {
+        const res = await flightService.findAll();
 
-        expect(flightList).toHaveLength(2);
+        expect(res).toHaveLength(2);
+      });
+
+      it('Should return flight list match special shape', async () => {
+        const res = await flightService.findAll();
+
+        expect(res[0]).toMatchObject(mockFlightList[0]);
       });
     });
 
@@ -71,7 +77,7 @@ describe('Flight Service Test Suite', () => {
   describe('Find flight by PK', () => {
     describe('Given exist flight id', () => {
       beforeAll(() => {
-        mockFlightModel.findByPk.mockReturnValue(mockFlightLists[0]);
+        mockFlightModel.findByPk.mockReturnValue(mockFlightList[0]);
       });
 
       it('should return flight with this id', async () => {
@@ -95,10 +101,10 @@ describe('Flight Service Test Suite', () => {
   describe('Create flight method test', () => {
     describe('given flight object', () => {
       it('should return back flight object', async () => {
-        mockFlightModel.create.mockReturnValue(mockFlightLists[0]);
+        mockFlightModel.create.mockReturnValue(mockFlightList[0]);
 
-        const flight = await flightService.add(mockFlightLists[0]);
-        expect(flight).toMatchObject(mockFlightLists[0]);
+        const flight = await flightService.add(mockFlightList[0]);
+        expect(flight).toMatchObject(mockFlightList[0]);
       });
     });
   });
