@@ -215,7 +215,7 @@ table {
   margin-top: 20px;
 }
 
-.airlines_table tr:first-child{
+.airlines_table thead{
   background-color: var(--main-color);
 }
 

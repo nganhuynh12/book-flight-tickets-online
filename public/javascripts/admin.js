@@ -43,7 +43,7 @@ $(document).ready(() => {
     });
     table.empty();
     table.append(
-      `<thead style="background-color: var(--main-color)"><tr><th>ID</th>${$.map(
+      `<thead><tr><th>ID</th>${$.map(
         selectField,
         (value) => {
           return `<th>${value}</th>`;
