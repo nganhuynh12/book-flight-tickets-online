@@ -7,9 +7,12 @@ $(document).ready(() => {
   const updateTicketForm = $('#update-ticket-form');
   const btnCloseDialog = $('.btn-close-dialog');
   const btnAddLocation = $('#btn-add-location');
+  const pagination = $('#pagination');
   let formName = '';
   let dialogID = '';
   let locationName = '';
+  let page = 1;
+  let pageCount = 0;
 
   prefixList.forEach((prefix) => {
     const elementList = $(`div[id^=${prefix}]`);
@@ -22,12 +25,20 @@ $(document).ready(() => {
     });
   });
 
+  pagination.on('click','.pagination-link',function(){
+    $('.pagination-link').removeClass('active');
+    $(this).addClass('active');
+    page = $(this).html();
+    loadLocationTable();
+  })
+
   const loadLocationTable = async () => {
     const selectField = ['value'];
-    const result = await $.get('/locations');
+    const result = await $.get('/locations',{ page: page, per_page: 6});
+    pageCount = result.page_count;
     const table = $('#location table');
     const tbody = $('<tbody></tbody>');
-    $.each(result, (index, data) => {
+    $.each(result.rows, (index, data) => {
       tbody.append(
         `<tr id="${data.id}"><td>${index}</td>${$.map(selectField, (field) => {
           return `<td>${data[field]}</td>`;
@@ -51,6 +62,7 @@ $(document).ready(() => {
       )}<th>action</th></tr></thead>`,
       tbody
     );
+    return pageCount;
     // if (locationData.length > 0) {
     //   locationData.forEach((location, index) => {
     //     $('<tr></tr>').html('td');
@@ -63,6 +75,23 @@ $(document).ready(() => {
     //   });
     // }
   };
+
+  async function createPageLink(){
+    const pageTotal = await loadLocationTable();
+    var pageLink = '';
+    pageLink += `<a class='pagination-link'><<</a>`;
+    pageLink += `<a class='pagination-link'><</a>`;
+    for(let i = 1; i <= pageTotal; i++){
+      if (i == 1){
+        pageLink += `<a class='pagination-link active'> ${i} </a>`;
+      }else{
+        pageLink += `<a class='pagination-link'> ${i} </a>`; 
+      }
+    }
+    pageLink += `<a class='pagination-link'>></a>`;
+    pageLink += `<a class='pagination-link'>>></a>`
+    pagination.append(pageLink);
+  }
 
   //Hàm chuyển tab
   const openTabs = (tabName) => {
@@ -86,6 +115,7 @@ $(document).ready(() => {
     console.log(tabName);
     if (tabName === 'location') {
       loadLocationTable();
+      createPageLink();
     } else if (tabName === 'flight') {
       loadFlightTable();
     } else if (tabName === 'customer') {
