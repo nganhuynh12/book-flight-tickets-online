@@ -14,7 +14,12 @@ class ticketController {
 
   async findAll(req, res, next) {
     const result = await this.service.findAll({ where: req.query });
-    res.json(result);
+    return res.json(result);
+  }
+
+  async findByPk(req, res, next) {
+    const result = await this.service.findTicketWithUserData(req.params.id);
+    return res.json(result);
   }
 
   async deleteById(req, res, next) {

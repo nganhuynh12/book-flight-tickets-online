@@ -2,6 +2,7 @@ const express = require('express');
 const { ticketController } = require('../controllers');
 const { body } = require('express-validator');
 const validationPipe = require('../pipes/validation.pipe');
+const { route } = require('./index.route');
 
 const router = express.Router();
 
@@ -15,6 +16,7 @@ router.post(
   ticketController.add.bind(ticketController)
 );
 router.get('/', ticketController.findAll.bind(ticketController));
+router.get('/:id', ticketController.findByPk.bind(ticketController));
 router.delete('/:id', ticketController.deleteById.bind(ticketController));
 
 module.exports = router;
