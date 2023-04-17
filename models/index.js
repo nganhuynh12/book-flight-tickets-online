@@ -20,11 +20,23 @@ db.tickets.belongsTo(db.flights);
 
 db.locations.hasMany(db.flights, {
   foreignKey: 'arriveLocationId',
+  as: 'arriveLocation',
 });
+
 db.locations.hasMany(db.flights, {
   foreignKey: 'startLocationId',
+  as: 'startLocation',
 });
-db.flights.belongsTo(db.locations);
+
+db.flights.belongsTo(db.locations, {
+  foreignKey: 'startLocationId',
+  as: 'startLocation',
+});
+
+db.flights.belongsTo(db.locations, {
+  foreignKey: 'arriveLocationId',
+  as: 'arriveLocation',
+});
 
 db.users.hasMany(db.tickets);
 db.tickets.belongsTo(db.users);
