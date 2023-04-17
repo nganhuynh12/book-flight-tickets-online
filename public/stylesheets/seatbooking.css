@@ -1,0 +1,257 @@
+.header {
+    border-radius: 15px 15px 0px 0px;
+    padding: 10px;
+    background: #047683;
+    color: #fff;
+    width: 100%;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
+
+hr {
+    background-color: #9b9b9b;
+}
+
+.navbar {
+    background-color: #047683;
+}
+
+.nav-item {
+    margin-right: 10px;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.navbar-brand {
+    margin-left: 20px;
+    font-size: 50px;
+    font-style: italic;
+    font-weight: bold;
+}
+
+
+/* processbar */
+.progressbar-wrapper {
+    background: #fff;
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 5px;
+    margin-bottom: 90px;
+    margin-left: 220px;
+
+}
+
+.progressbar li {
+    list-style-type: none;
+    width: 16.3%;
+    float: left;
+    font-size: 12px;
+    position: relative;
+    text-align: center;
+    text-transform: uppercase;
+    color: #7d7d7d;
+}
+
+.progressbar li:before {
+    width: 60px;
+    height: 60px;
+    content: "";
+    line-height: 60px;
+    border: 2px solid #7d7d7d;
+    display: block;
+    text-align: center;
+    margin: 0 auto 3px auto;
+    border-radius: 50%;
+    position: relative;
+    z-index: 2;
+    background-color: #fff;
+}
+
+.progressbar li:after {
+    width: 100%;
+    height: 2px;
+    content: '';
+    position: absolute;
+    background-color: #7d7d7d;
+    top: 30px;
+    left: -50%;
+    z-index: 0;
+}
+
+.progressbar li:first-child:after {
+    content: none;
+}
+
+.progressbar li.active {
+    color: #b2b0b0;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.progressbar li.active:before {
+    border-color: #047683;
+    background: #7d7d7d;
+}
+
+.progressbar li.active+li:after {
+    background-color: #047683;
+}
+
+.progressbar li.active:before {
+    background: #047683 url(user.svg) no-repeat center center;
+    background-size: 60%;
+}
+
+.progressbar li::before {
+    background: #fff url(user.svg) no-repeat center center;
+    background-size: 60%;
+
+}
+
+.progressbar {
+    counter-reset: step;
+}
+
+.progressbar li:before {
+    content: counter(step);
+    counter-increment: step;
+
+}
+
+/* end processbar */
+
+h1 {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.price {
+    float: right;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.button-continue {
+    padding: 7px;
+    text-decoration: none;
+    border-radius: 5px;
+    border: 1px solid #047683;
+    background-color: #047683;
+    color: white;
+    margin-left: 50px;
+    float: right;
+    font-size: 20px;
+}
+
+.button-continue:hover {
+    background-color: #018290;
+    color: #ffffff;
+
+}
+
+.movie-container1 {
+    margin: 20px 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border: 1px solid black;
+    background-color: #F0F8FF;
+
+}
+
+.movie-container1 select {
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    border: 0;
+    padding: 5px 15px;
+    margin-bottom: 40px;
+    font-size: 14px;
+    border-radius: 5px;
+}
+
+.container1 {
+    perspective: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.seat {
+    background-color: #0097a8;
+    height: 15px;
+    width: 15px;
+    margin: 3px;
+}
+
+.selected {
+    background-color: #ff0000;
+}
+
+.occupied {
+    background-color: #444451;
+    ;
+}
+
+.seat:nth-of-type(4) {
+    margin-right: 18px;
+}
+
+.seat:nth-last-of-type(4) {
+    margin-left: 18px;
+}
+
+.seat:not(.occupied):hover {
+    cursor: pointer;
+    transform: scale(1.2);
+}
+
+.showcase .seat:not(.occupied):hover {
+    cursor: default;
+    transform: scale(1);
+}
+
+.showcase {
+    display: flex;
+    justify-content: center;
+    list-style-type: none;
+    background: #F0F8FF;
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: #777;
+    width: fit-content;
+    height: fit-content;
+    border: 1px solid rgb(216, 205, 205);
+    margin: 0 auto;
+}
+
+.showcase li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 10px;
+}
+
+.showcase li small {
+    margin-left: 2px;
+}
+
+.row1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-header {
+    background: #047683;
+    color: white;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    width: 17%;
+    margin: 0 auto;
+}

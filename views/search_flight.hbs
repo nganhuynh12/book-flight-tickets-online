@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Home</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href='{{static /stylesheets/search_flight.css}}'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/css/bootstrap.min.css">
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+
+<body>
+
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="home.html" style="font-size: 30px;">SVO Airlines</a>
+      <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="home.html"> Trang chủ</a>
+          </li>
+          <li class="nav-item aria-current">
+            <a class="nav-link" href="search_flight.html"> Chuyến bay</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="history.html">Tra cứu</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="login.html"> Đăng nhập</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="help.html"> Trợ giúp</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <br>
+
+  <div class="progressbar-wrapper">
+    <ul class="progressbar">
+      <li class="active">Chuyến bay</li>
+      <li>Hành lý</li>
+      <li>Chổ ngồi</li>
+      <li>Điền thông tin & thanh toán</li>
+    </ul>
+  </div>
+
+  <h1>Chọn vé máy bay</h1>
+
+  <div class="container mt-5">
+    <div class="card w-50 mx-auto searchCard">
+      <div class="header">VÉ MÁY BAY</div>
+      <div class="card-body radio">
+        <div class="row">
+          <div class="col-lg-6">
+            <input type="radio" id="radio1" name="ticket_type">&nbsp;Khứ hồi</span>
+          </div>
+          <div class="col-lg-6">
+            <input type="radio" id="radio2" name="ticket_type"><span>&nbsp;Một chiều</span>
+          </div>
+        </div>
+        <div class="row mt-3">
+          <div class="col-lg-4 ">
+            <span>&nbsp;Người lớn:</span>
+            <input aria-label="quantity" class="input-qty passenger" max="20" min="0" name="numberOfPassenger"
+              type="number" value="0">
+          </div>
+          <div class="col-lg-4">
+            <span>Trẻ em:</span>
+            <input aria-label="quantity" class="input-qty passenger" max="50" min="0" name="numberOfPassenger"
+              type="number" value="0">
+          </div>
+          <div class="col-lg-4">
+            <span>Em bé:</span>
+            <input aria-label="quantity" class="input-qty passenger" max="50" min="0" name="numberOfPassenger"
+              type="number" value="0">
+          </div>
+        </div>
+        <div class="row mt-3 mb-2">
+          <div class="col-lg-6">
+            <label for="diemdi">&nbsp;Điểm đi:</label>
+            <select class="form-select mt-2  " name="diemdi" aria-label="Default select example">
+              <option selected></option>
+              <option value="1">Thành phố Hồ Chí Minh</option>
+              <option value="2">Hà Nội</option>
+              <option value="3">Đà Nẵng</option>
+            </select>
+          </div>
+          <div class="col-lg-6">
+            <label for="diemdi">&nbsp;Điểm đến:</label>
+            <select class="form-select mt-2" name="diemden" aria-label="Default select example">
+              <option selected></option>
+              <option value="1">Thành phố Hồ Chí Minh</option>
+              <option value="2">Hà Nội</option>
+              <option value="3">Đà Nẵng</option>
+            </select>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-6">
+            &nbsp;Chọn ngày đi: &nbsp;
+            <input type="date" id="ngayDi" class="w-50 input-qty">
+          </div>
+          <div class="col-lg-6">
+            &nbsp;Chọn ngày về: &nbsp;
+            <input type="date" id="ngayDi" class="w-50 input-qty">
+          </div>
+        </div>
+      </div>
+      <button id="searchButton" class="btnHover btn text-white mx-auto mb-3" href="search_flight.html"><i
+          class="fa fa-search fa-1x" aria-hidden="true">&nbsp;</i> Tìm chuyến bay</i></button>
+    </div>
+  </div>
+
+
+  <div class="container">
+    <div class="left-column">
+      <div class="card text-dark">
+        <div class="card-header">
+          <div>Chuyến đi</div>
+          <p>Hồ Chí Minh (SGN) - Hà Nội (HAN)</p>
+          <p>Thứ 5, 20/04/2023</p>
+        </div>
+        <div class="card-body">
+          <p class="card-text">Đang chọn chuyến đi</p>
+        </div>
+      </div>
+    </div>
+    <div class="right-column">
+      <div class="card text-dark">
+        <div class="card-header">
+          <div>Chuyến về</div>
+          <p>Hà Nội (HAN) - Hồ Chí Minh (SGN)</p>
+          <p>Thứ 7, 22/04/2023</p>
+        </div>
+        <div class="card-body">
+          <p class="card-text">Đang chọn chuyến về</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+
+  <div class="container">
+    <div class="section2">
+      <div class="content">
+        <div class="left">
+          <div class="card">
+            <div class="card-body">
+              <span class="fitter">Bộ lọc</span>
+              <span class="remove-fitter">Xóa lọc</span>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                  <h6>Hạng chuyến bay</h6>
+                  <div>
+                    <input type="checkbox" class="check-btn" name="flight-class[]" id="flight-class"
+                      value="Phổ thông"></input><span class="text">Phổ thông</span><br>
+                  </div>
+                  <div>
+                    <input type="checkbox" class="check-btn" name="flight-class[]" id="flight-class"
+                      value="Thương gia"></input><span class="text">Thương gia</span>
+                  </div>
+                </li>
+                <li class="list-group-item">
+                  <h6>Thời gian</h6>
+                  <span>Giờ khởi hành</span>
+                  <div>
+                    <input type="checkbox" class="check-btn" name="departure-time[]" id="departure-time"
+                      value="0-6"></input><span class="text">00:00-06:00</span><br>
+                  </div>
+                  <div>
+                    <input type="checkbox" class="check-btn" name="departure-time[]" id="departure-time"
+                      value="0-12"></input><span class="text">06:00-12:00</span>
+                  </div>
+                  <div>
+                    <input type="checkbox" class="check-btn" name="departure-time[]" id="departure-time"
+                      value="12-18"></input><span class="text">12:00-18:00</span>
+                  </div>
+                  <div>
+                    <input type="checkbox" class="check-btn" name="departure-time[]" id="departure-time"
+                      value="18-24"></input><span class="text">18:00-24:00</span>
+                  </div>
+                  <br>
+                  <span>Giờ đến</span>
+                  <div>
+                    <input type="checkbox" class="check-btn" name="arrival-time[]" id="arrival-time"
+                      value="0-6"></input><span class="text">00:00-06:00</span><br>
+                  </div>
+                  <div>
+                    <input type="checkbox" class="check-btn" name="arrival-time[]" id="arrival-time"
+                      value="0-12"></input><span class="text">06:00-12:00</span>
+                  </div>
+                  <div>
+                    <input type="checkbox" class="check-btn" name="arrival-time[]" id="arrival-time"
+                      value="12-18"></input><span class="text">12:00-18:00</span>
+                  </div>
+                  <div>
+                    <input type="checkbox" class="check-btn" name="arrival-time[]" id="arrival-time"
+                      value="18-24"></input><span class="text">18:00-24:00</span>
+                  </div>
+                </li>
+              </ul>
+              <button class="btn-filter">Lọc</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="right">
+          <div class="card text-dark">
+            <div class="card-header">
+              <li>
+                <div class="flight-route">
+                  <div>
+                    <p class="time">05:20</p>
+                    <p class="time">SGN</p>
+                  </div>
+                  <div>
+                    <span class="fa">&#xf041;</span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="fa fa-fighter-jet"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="fa">&#xf041;</span>
+                    <br>
+                  </div>
+                  <div>
+                    <p class="time">17:20</p>
+                    <p class="time">DAD</p>
+                  </div>
+
+                  <div>
+                    <p class="far">2h15m</p>
+                    <p class="far">Bay thẳng</p>
+                  </div>
+
+                </div>
+              </li>
+            </div>
+            <div class="card-body">
+              <li>
+                <p class="flight-list">Phổ thông</p>
+                <p class="flight-list">1.120.000 VNĐ</p>
+                <button class="btn-seedel-ticket" data-bs-toggle="modal" data-bs-target="#seedetail">Xem chi
+                  tiết</button>
+                <a href="signedluggage.html" class="btn-book-ticket">Chọn vé</a>
+              </li>
+            </div>
+          </div>
+
+
+          <div class="card text-dark">
+            <div class="card-header">
+              <li>
+                <div class="flight-route">
+                  <div>
+                    <p class="time">05:20</p>
+                    <p class="time">SGN</p>
+                  </div>
+                  <div>
+                    <span class="fa">&#xf041;</span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="fa fa-fighter-jet"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="fa">&#xf041;</span>
+                    <br>
+                  </div>
+                  <div>
+                    <p class="time">17:20</p>
+                    <p class="time">DAD</p>
+                  </div>
+
+                  <div>
+                    <p class="far">2h15m</p>
+                    <p class="far">Bay thẳng</p>
+                  </div>
+
+                </div>
+              </li>
+            </div>
+            <div class="card-body">
+              <li>
+                <span class="flight-list">Phổ thông</span>
+                <span class="flight-list">1.120.000 VNĐ</span>
+                <button class="btn-seedel-ticket" data-bs-toggle="modal" data-bs-target="#seedetail">Xem chi
+                  tiết</button>
+                <a href="signedluggage.html" class="btn-book-ticket">Chọn vé</a>
+              </li>
+            </div>
+          </div>
+
+          <div class="card text-dark">
+            <div class="card-header">
+              <li>
+                <div class="flight-route">
+                  <div>
+                    <p class="time">05:20</p>
+                    <p class="time">SGN</p>
+                  </div>
+                  <div>
+                    <span class="fa">&#xf041;</span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="fa fa-fighter-jet"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="fa">&#xf041;</span>
+                    <br>
+                  </div>
+                  <div>
+                    <p class="time">17:20</p>
+                    <p class="time">DAD</p>
+                  </div>
+
+                  <div>
+                    <p class="far">2h15m</p>
+                    <p class="far">Bay thẳng</p>
+                  </div>
+
+                </div>
+              </li>
+            </div>
+            <div class="card-body">
+              <li>
+                <span class="flight-list">Phổ thông</span>
+                <span class="flight-list">1.120.000 VNĐ</span>
+                <button class="btn-seedel-ticket" data-bs-toggle="modal" data-bs-target="#seedetail">Xem chi
+                  tiết</button>
+                <a href="signedluggage.html" class="btn-book-ticket">Chọn vé</a>
+              </li>
+            </div>
+          </div>
+
+          <div class="card text-dark">
+            <div class="card-header">
+              <li>
+                <div class="flight-route">
+                  <div>
+                    <p class="time">05:20</p>
+                    <p class="time">SGN</p>
+                  </div>
+                  <div>
+                    <span class="fa">&#xf041;</span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="fa fa-fighter-jet"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="fa">&#xf041;</span>
+                    <br>
+                  </div>
+                  <div>
+                    <p class="time">17:20</p>
+                    <p class="time">DAD</p>
+                  </div>
+
+                  <div>
+                    <p class="far">2h15m</p>
+                    <p class="far">Bay thẳng</p>
+                  </div>
+
+                </div>
+              </li>
+            </div>
+            <div class="card-body">
+              <li>
+                <span class="flight-list">Phổ thông</span>
+                <span class="flight-list">1.120.000 VNĐ</span>
+                <button class="btn-seedel-ticket" data-bs-toggle="modal" data-bs-target="#seedetail">Xem chi
+                  tiết</button>
+                <a href="signedluggage.html" class="btn-book-ticket">Chọn vé</a>
+              </li>
+            </div>
+          </div>
+        
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="modal" id="seedetail">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Hồ Chí Minh (SGN) - Đà Nẵng (DAD)</h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <div style="margin-top: 70px;" class="time-inf">
+            <span class="fa fa-plane" aria-hidden="true">5:20</span>
+            <p>Thứ 5, 20/04/2023</p>                    
+              <p class="dot"></p>
+              <p class="dot"></p>
+              <p class="dot"></p>
+            <span span class="fa fa-fighter-jet" aria-hidden="true">7:20</span>
+            <p>Thứ 5, 20/04/2023</p>
+          </div>
+          <div class="place-inf">
+
+            <span>Chuyến bay: VJ199</span>
+            <p>Loại máy bay: Airbus A321</p>
+
+             <span>Hà Nội (HAN)</span>
+             <p style="margin-bottom: 100px;">Sân bay Nội Bài</p>
+
+             <span>Hồ Chí Minh (SGN)</span>
+             <p>Sân bay Tân Sơn Nhất</p>
+
+            
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+          <a href="signedluggage.html" class="btn-book-ticket btn btn-success">Chọn vé</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <footer class="bg-dark text-center text-lg-start text-white mt-5">
+    <div class="container p-4">
+      <div class="row">
+        <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+          <h6 class="text-uppercase">về chúng tôi</h6>
+          <ul class="list-unstyled mb-0">
+            <li>
+              <a href="aboutus.html" class="text-white">Tập đoàn</a>
+            </li>
+            <li>
+              <a href="aboutus.html" class="text-white">Đội bay</a>
+            </li>
+            <li>
+              <a href="aboutus.html" class="text-white">Cam kết với khách hàng</a>
+            </li>
+            <li>
+              <a href="aboutus.html" class="text-white">Các điều kiện và điều khoản</a>
+            </li>
+          </ul>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+          <h6 class="text-uppercase">Sản phẩm</h6>
+
+          <ul class="list-unstyled">
+            <li>
+              <i class="fa fa-ticket" aria-hidden="true"></i><a href="search_flight.html" class="text-white"> Vé máy
+                bay</a>
+            </li>
+          </ul>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+          <h6 class="text-uppercase">Đối tác thanh toán</h6>
+          <ul class="list-unstyled">
+            <li>
+              <div>
+                VISA
+                </a>
+            </li>
+            <li>
+              <div>
+                MASTERCARD
+              </div>
+            </li>
+            <li>
+              <div>
+                MOMO
+              </div>
+            </li>
+            <li>
+              <div>
+                ZALOPAY
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+          <h6 class="text-uppercase">liên hệ</h6>
+          <ul class="list-unstyled">
+            <li>
+              <p class="text-white"><i class="fa fa-phone" aria-hidden="true"></i> SDT: 0909.291.291</p>
+            </li>
+            <li>
+              <p class="text-white"><i class="fa fa-location-arrow" aria-hidden="true"></i> Email: svoairlines@gmail.com
+              </p>
+            </li>
+            <li>
+              <p class="text-white"><i class="fa fa-map-marker" aria-hidden="true"></i> Địa chỉ: Quận 7, TP. Hồ Chí Minh
+              </p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
+      © 2022 Copyright:
+      <a class="text-white" href="home.html">svoairlines.com.vn</a>
+    </div>
+  </footer>
+</body>
+
+<script>
+  $(document).ready(function () {
+    $("#myCarousel").carousel();
+  });
+
+
+// Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal 
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+
+</script>
+
+</html>

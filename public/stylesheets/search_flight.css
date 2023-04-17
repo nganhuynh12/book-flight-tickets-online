@@ -1,0 +1,449 @@
+.header {
+  padding: 10px;
+  background: #047683;
+  color: #fff;
+  width: 100%;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}
+
+hr {
+  background-color: #9b9b9b;
+}
+
+.navbar {
+  background-color: #047683;
+}
+
+.nav-item {
+  margin-right: 10px;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.navbar-brand {
+  margin-left: 20px;
+  font-size: 50px;
+  font-style: italic;
+  font-weight: bold;
+}
+
+
+/* processbar */
+.progressbar-wrapper {
+  background: #fff;
+  width: 100%;
+  padding-top: 10px;
+  padding-bottom: 5px;
+  margin-bottom: 90px;
+  margin-left: 280px;
+
+}
+
+.progressbar li {
+  list-style-type: none;
+  width: 15%;
+  float: left;
+  font-size: 12px;
+  position: relative;
+  text-align: center;
+  text-transform: uppercase;
+  color: #7d7d7d;
+}
+
+.progressbar li:before {
+  width: 60px;
+  height: 60px;
+  content: "";
+  line-height: 60px;
+  border: 2px solid #7d7d7d;
+  display: block;
+  text-align: center;
+  margin: 0 auto 3px auto;
+  border-radius: 50%;
+  position: relative;
+  z-index: 2;
+  background-color: #fff;
+}
+
+.progressbar li:after {
+  width: 100%;
+  height: 2px;
+  content: '';
+  position: absolute;
+  background-color: #7d7d7d;
+  top: 30px;
+  left: -50%;
+  z-index: 0;
+}
+
+.progressbar li:first-child:after {
+  content: none;
+}
+
+.progressbar li.active {
+  color: #b2b0b0;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.progressbar li.active:before {
+  border-color: #047683;
+  background: #7d7d7d;
+}
+
+.progressbar li.active+li:after {
+  background-color: #047683;
+}
+
+.progressbar li.active:before {
+  background: #047683 url(user.svg) no-repeat center center;
+  background-size: 60%;
+}
+
+.progressbar li::before {
+  background: #fff url(user.svg) no-repeat center center;
+  background-size: 60%;
+
+}
+
+.progressbar {
+  counter-reset: step;
+}
+
+.progressbar li:before {
+  content: counter(step);
+  counter-increment: step;
+
+}
+
+/* end processbar */
+
+
+h1 {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* search card */
+#searchCard {
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+}
+
+.symbols {
+  text-align: center;
+  margin-right: -1px;
+}
+
+#searchButton {
+  background-color: #047683;
+  ;
+}
+
+#searchButton:hover {
+  background-color: #047683;
+  color: white;
+}
+
+.radio {
+  color: black;
+  font-weight: 600;
+  margin: 8px;
+}
+
+.input-qty {
+  border-radius: 5px;
+  border: 1px solid #b7b7b7;
+  color: #727272;
+  height: 40px;
+  padding: 5px;
+}
+
+.form-select {
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.highlights {
+  margin: 10px;
+  text-align: center;
+}
+
+.searchCard {
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 15px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+}
+
+/* end search card */
+
+
+.section2 {
+  float: left;
+  width: 100%;
+}
+
+.section2 .content {
+  float: left;
+  width: 100%;
+  
+}
+
+.section2 .content .left {
+  width: 30%;
+  float: left;
+  padding: 0px 10px;
+
+}
+
+.section2 .content .right {
+  width: 70%;
+  float: left;
+  padding: 0px 20px;
+}
+
+.section2 .content .right .card {
+  margin-bottom: 20px;
+}
+
+
+
+.text {
+  margin-left: 10px;
+}
+
+.fitter {
+  margin-left: 18px;
+}
+
+.remove-fitter {
+  margin-left: 150px;
+}
+
+.btn-filter {
+  width: 80px;
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #047683;
+  background-color: #047683;
+  color: white;
+  margin-left: 200px;
+}
+
+.btn-filter:hover {
+  background-color: #018290;
+}
+
+.check-btn {
+  display: inline-block;
+  vertical-align: middle;
+  width: 20px;
+  height: 20px;
+}
+
+
+.flight-route {
+  display: flex;
+  justify-content: center;
+}
+
+.dot {
+  height: 5px;
+  width: 5px;
+  background-color: #bbb;
+  border-radius: 50%;
+  
+}
+
+.time {
+  margin-right: 5px;
+  margin-left: 5px;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.far {
+  margin-left: 100px;
+}
+
+.flight-list {
+  font-weight: bold;
+  display: inline-block;
+  margin-right: 50px;
+  margin-top: 15px;
+}
+
+.main-content {
+  display: flex;
+  margin-top: 70px;
+}
+
+li{
+  list-style: none;
+}
+@media only screen and (min-width: 768px) {
+  .btn-book-ticket {
+    padding: 5px;
+    text-decoration: none;
+    border-radius: 5px;
+    border: 1px solid #047683;
+    background-color: #047683;
+    color: white;
+    margin-left: 50px;
+    float: right;
+    margin-top: 15px;
+  }
+
+  .btn-seedel-ticket {
+    padding: 5px;
+    text-decoration: none;
+    border-radius: 5px;
+    border: 1px solid #047683;
+    background-color: #047683;
+    color: white;
+    margin-left: 50px;
+    float: right;
+    margin-top: 15px;
+  }
+}
+
+@media only screen and (max-device-width: 767px) {
+  .btn-seedel-ticket {
+    padding: 5px;
+    text-decoration: none;
+    border-radius: 5px;
+    border: 1px solid #047683;
+    background-color: #047683;
+    color: white;
+    margin-top: 15px;
+  }
+
+  .btn-book-ticket {
+    padding: 5px;
+    text-decoration: none;
+    border-radius: 5px;
+    border: 1px solid #047683;
+    background-color: #047683;
+    color: white;
+    margin-left: 50px;
+    margin-top: 15px;
+  }
+}
+
+.btn-book-ticket:hover {
+  background-color: #018290;
+  color: white;
+}
+
+.btn-seedel-ticket:hover {
+  background-color: #018290;
+  color: white;
+}
+
+footer {
+  float: left;
+  width: 100%;
+}
+
+
+/*  modal */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  position: relative;
+  background-color: #fefefe;
+  margin: auto;
+  padding: 0;
+  border: 1px solid #888;
+  width: 80%;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+  -webkit-animation-name: animatetop;
+  -webkit-animation-duration: 0.4s;
+  animation-name: animatetop;
+  animation-duration: 0.4s
+}
+
+/* Add Animation */
+@-webkit-keyframes animatetop {
+  from {top:-300px; opacity:0} 
+  to {top:0; opacity:1}
+}
+
+@keyframes animatetop {
+  from {top:-300px; opacity:0}
+  to {top:0; opacity:1}
+}
+
+/* The Close Button */
+.close {
+  color: white;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modal-header {
+  padding: 2px 16px;
+  background-color: #fff;
+  color: #000;
+}
+
+.modal-body {
+  display: flex;
+  padding: 2px 16px;
+  justify-content:space-between;
+}
+
+.modal-footer {
+  display: flex;
+  padding: 2px 16px;
+  background-color: #fff;
+  color: #000;
+}
+
+.container {
+  width: 100%;
+  overflow: hidden;
+  margin-top: 50px;
+}
+
+.left-column {
+  width: 48%;
+  float: left;
+  
+  
+}
+
+.right-column {
+  width: 48%;
+  float: right;
+
+}
+
+.card-header{
+  display: flex;
+  justify-content: space-around;
+}
+
+
+

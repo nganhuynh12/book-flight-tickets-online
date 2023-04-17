@@ -5,11 +5,14 @@ $(document).ready(() => {
   const addFlightForm = $('#add-flight-form');
   const updateFlightForm = $('#update-flight-form');
   const updateTicketForm = $('#update-ticket-form');
-  const btnViewFlightDetail = $('.btn-view');
   const btnCloseDialog = $('.btn-close-dialog');
-  const btnAddPlace = $('#btn-add-place');
+  const btnAddLocation = $('#btn-add-location');
+  const pagination = $('#pagination');
   let formName = '';
   let dialogID = '';
+  let locationName = '';
+  let page = 1;
+  let pageCount = 0;
 
   prefixList.forEach((prefix) => {
     const elementList = $(`div[id^=${prefix}]`);
@@ -22,19 +25,27 @@ $(document).ready(() => {
     });
   });
 
+  pagination.on('click','.pagination-link',function(){
+    $('.pagination-link').removeClass('active');
+    $(this).addClass('active');
+    page = $(this).html();
+    loadLocationTable();
+  })
+
   const loadLocationTable = async () => {
     const selectField = ['value'];
-    const result = await $.get('/locations');
-    const table = $('#place table');
+    const result = await $.get('/locations',{ page: page, per_page: 6});
+    pageCount = result.page_count;
+    const table = $('#location table');
     const tbody = $('<tbody></tbody>');
-    $.each(result, (index, data) => {
+    $.each(result.rows, (index, data) => {
       tbody.append(
         `<tr id="${data.id}"><td>${index}</td>${$.map(selectField, (field) => {
           return `<td>${data[field]}</td>`;
         })}
           <td>
-             <button class='btn-edit' id='btn-update-place'><span class='fa fa-pencil'></span></button>
-             <button class='btn-delete' id='btn-delete-place'><span
+             <button class='btn-edit' id='btn-update-location'><span class='fa fa-pencil'></span></button>
+             <button class='btn-delete' id='btn-delete-location'><span
                class='fa fa-trash'
             ></span></button>
            </td>
@@ -43,7 +54,7 @@ $(document).ready(() => {
     });
     table.empty();
     table.append(
-      `<thead style="background-color: var(--main-color)"><tr><th>ID</th>${$.map(
+      `<thead><tr><th>ID</th>${$.map(
         selectField,
         (value) => {
           return `<th>${value}</th>`;
@@ -51,6 +62,7 @@ $(document).ready(() => {
       )}<th>action</th></tr></thead>`,
       tbody
     );
+    return pageCount;
     // if (locationData.length > 0) {
     //   locationData.forEach((location, index) => {
     //     $('<tr></tr>').html('td');
@@ -63,6 +75,23 @@ $(document).ready(() => {
     //   });
     // }
   };
+
+  async function createPageLink(){
+    const pageTotal = await loadLocationTable();
+    var pageLink = '';
+    pageLink += `<a class='pagination-link'><<</a>`;
+    pageLink += `<a class='pagination-link'><</a>`;
+    for(let i = 1; i <= pageTotal; i++){
+      if (i == 1){
+        pageLink += `<a class='pagination-link active'> ${i} </a>`;
+      }else{
+        pageLink += `<a class='pagination-link'> ${i} </a>`; 
+      }
+    }
+    pageLink += `<a class='pagination-link'>></a>`;
+    pageLink += `<a class='pagination-link'>>></a>`
+    pagination.append(pageLink);
+  }
 
   //Hàm chuyển tab
   const openTabs = (tabName) => {
@@ -84,8 +113,9 @@ $(document).ready(() => {
     tabActive[indexTab].classList.add('active');
 
     console.log(tabName);
-    if (tabName === 'place') {
+    if (tabName === 'location') {
       loadLocationTable();
+      createPageLink();
     } else if (tabName === 'flight') {
       loadFlightTable();
     } else if (tabName === 'customer') {
@@ -101,10 +131,6 @@ $(document).ready(() => {
     hideDialog();
   });
 
-  btnViewFlightDetail.on('click', function () {
-    showDialog();
-  });
-
   $('body').on('click', '.btn-delete', function () {
     let id = $(this).attr('id');
     console.log(id);
@@ -115,9 +141,9 @@ $(document).ready(() => {
       var idFlight = currentRow.find('td:eq(0)').html();
       $('#flightID').html(idFlight);
       showDialog('delete', 'users', currentRowId);
-    } else if (dialogID.includes('place')) {
-      var placeName = currentRow.find('td:eq(1)').html();
-      $('#placeName').html(placeName);
+    } else if (dialogID.includes('location')) {
+      locationName = currentRow.find('td:eq(1)').html();
+      $('#locationName').html(locationName);
       showDialog('delete', 'locations', currentRowId);
     } else if (dialogID.includes('customer')) {
       var customerName = currentRow.find('td:eq(1)').html();
@@ -128,8 +154,8 @@ $(document).ready(() => {
 
   btnCloseDialog.on('click', hideDialog);
 
-  btnAddPlace.on('click', function () {
-    var id = btnAddPlace.attr('id');
+  btnAddLocation.on('click', function () {
+    var id = btnAddLocation.attr('id');
     dialogID = id.slice(id.indexOf('-') + 1, id.length);
     showDialog('add', 'locations');
   });
@@ -140,7 +166,7 @@ $(document).ready(() => {
       showUpdateFlightForm();
     } else {
       dialogID = id.slice(id.indexOf('-') + 1, id.length);
-
+      locationName = $(this).closest('tr').find('td:eq(1)').html();
       showDialog('update', 'locations', $(this).closest('tr').attr('id'));
     }
   });
@@ -200,7 +226,7 @@ $(document).ready(() => {
       });
     } else if (actionType === 'update') {
       if (tableName === 'locations') {
-        dialog.find('input[name=value]').val('');
+        dialog.find('input[name=value]').val(locationName);
         confirmButton.on('click', async () => {
           const res = await $.ajax({
             url: `locations/${currentRowId}`,

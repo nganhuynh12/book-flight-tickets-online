@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{static "stylesheets/searchticket.css"}}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="home.html" style="font-size: 30px;">SVO Airlines</a>
+            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="home.html"> Trang chủ</a>
+                    </li>
+                    <li class="nav-item aria-current">
+                        <a class="nav-link" href="search_flight.html"> Chuyến bay</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="history.html">Tra cứu</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="login.html"> Đăng nhập</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="help.html"> Trợ giúp</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1 class="text-center mb-3 mt-2">Tra cứu thông tin đặt vé</h1>
+        <div class="input-group mx-auto">
+            <input type="search" class="form-control" placeholder="Nhập mã đặt chỗ tại đây..." aria-label="Search" aria-describedby="search-addon" />
+            <button type="button" class="btn btn-outline-primary">Tra cứu</button>
+        </div>  
+        
+        <table class="table table-bordered border-dark mt-5">
+            <tr class="row-color">
+                <td colspan="4">
+                    <h5>NGÀY KHỞI HÀNH: <b>08/04/2023</b></h5>
+                </td>
+            </tr>
+            <tr>
+                <td rowspan="2">
+                    <b>TICKET2910</b>
+                    <p>THỜI GIAN BAY: 1 tiếng 30 phút</p>
+                </td>
+                <td class="none-border-right">
+                    <h6>HO CHI MINH CITY</h6>
+                    <p>VIET NAM</p>
+                </td>
+                <td class="none-border-left">
+                    <h6>SINGAPORE</h6>
+                    <p>SINGAPORE</p>
+                </td>
+                <td rowspan="2">
+                    <h6>MÁY BAY</h6>
+                    <p>Máy bay Boeing 787 Dreamliner</p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>GIỜ KHỞI HÀNH:</span>
+                    <h6>20:00</h6>
+
+                    <span>CỔNG</span><br>
+                    <h6>Gate 1</h6>
+                </td>
+
+                <td>
+                    <span>GIỜ ĐẾN:</span>
+                    <h6>21:30</h6>
+
+                    <span>CỔNG</span><br>
+                    <h6>Không có thông tin</h6>
+                </td>
+            </tr>
+        </table>
+
+        <table class="table table-bordered border-dark">
+            <tr class="text-center row-color">
+                <th>MÃ KHÁCH HÀNG</th>
+                <th>TÊN KHÁCH HÀNG</th>
+                <th>TỔNG SỐ GHẾ</th>
+                <th>HẠNG</th>
+                <th>GIÁ</th>
+                <th>TÌNH TRẠNG</th>
+            </tr>
+            <tr class="text-center">
+                <td>KH001</td>
+                <td>Huỳnh Thị Thảo Ngân</td>
+                <td>3</td>
+                <td>Phổ thông</td>
+                <td>12.000.000đ</td>
+                <td class="text-pay">Đã thanh toán</td>
+            </tr>
+        </table>
+    </div>
+
+    <footer class="bg-dark text-center text-lg-start text-white mt-5">
+        <div class="container p-4">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h6 class="text-uppercase">về chúng tôi</h6>
+                    <ul class="list-unstyled mb-0">
+                        <li>
+                            <a href="#" class="text-white">Tập đoàn</a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-white">Đội bay</a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-white">Cam kết với khách hàng</a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-white">Các điều kiện và điều khoản</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h6 class="text-uppercase">Sản phẩm</h6>
+
+                    <ul class="list-unstyled">
+                        <li>
+                            <i class="fa fa-ticket" aria-hidden="true"></i><a href="#" class="text-white"> Vé máy
+                                bay</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h6 class="text-uppercase">Đối tác thanh toán</h6>
+                    <ul class="list-unstyled">
+                        <li>
+                            <div>
+                                VISA
+                                </a>
+                        </li>
+                        <li>
+                            <div>
+                                MASTERCARD
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                MOMO
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                ZALOPAY
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h6 class="text-uppercase">liên hệ</h6>
+                    <ul class="list-unstyled">
+                        <li>
+                            <p class="text-white"><i class="fa fa-phone" aria-hidden="true"></i> SDT: 0909.291.291</p>
+                        </li>
+                        <li>
+                            <p class="text-white"><i class="fa fa-location-arrow" aria-hidden="true"></i> Email:
+                                svoairlines@gmail.com
+                            </p>
+                        </li>
+                        <li>
+                            <p class="text-white"><i class="fa fa-map-marker" aria-hidden="true"></i> Địa chỉ: Quận 7,
+                                TP. Hồ Chí Minh
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="text-center p-3">
+            © 2022 Copyright:
+            <a class="text-white" href="#">svoairlines.com.vn</a>
+        </div>
+    </footer>
+</body>
+</html>
