@@ -4,15 +4,15 @@ $(document).ready(() => {
   const prefixList = ['sidebar', 'Opentab'];
   const addFlightForm = $('#add-flight-form');
   const updateFlightForm = $('#update-flight-form');
-  const updateTicketForm = $('#update-ticket-form');
   const btnCloseDialog = $('.btn-close-dialog');
   const btnAddLocation = $('#btn-add-location');
-  const pagination = $('#pagination');
+  const pagination = $('.pagination-list');
   let formName = '';
   let dialogID = '';
   let locationName = '';
   let page = 1;
   let pageCount = 0;
+  let tableName = '';
 
   prefixList.forEach((prefix) => {
     const elementList = $(`div[id^=${prefix}]`);
@@ -26,15 +26,39 @@ $(document).ready(() => {
   });
 
   pagination.on('click','.pagination-link',function(){
+    pagination.empty();
     $('.pagination-link').removeClass('active');
     $(this).addClass('active');
     page = $(this).html();
-    loadLocationTable();
+    if(tableName === 'location'){
+      loadLocationTable();
+      createPageLink(tableName);
+    }
+  })
+
+  pagination.on('click', '.next', function(){
+    pagination.empty();
+    page = parseInt($(this).attr('id'));
+    console.log(tableName);
+    if(tableName === 'location'){
+      loadLocationTable();
+      createPageLink(tableName);
+    }
+  })
+
+  pagination.on('click', '.previous', function(){
+    pagination.empty();
+    page = parseInt($(this).attr('id'));
+    if(tableName === 'location'){
+      loadLocationTable();
+      createPageLink(tableName);
+    }
   })
 
   const loadLocationTable = async () => {
     const selectField = ['value'];
     const result = await $.get('/locations',{ page: page, per_page: 6});
+    console.log(result);
     pageCount = result.page_count;
     const table = $('#location table');
     const tbody = $('<tbody></tbody>');
@@ -76,21 +100,89 @@ $(document).ready(() => {
     // }
   };
 
-  async function createPageLink(){
-    const pageTotal = await loadLocationTable();
+  async function createPageLink(tableName){
+    if(tableName === 'location'){
+      pageCount = await loadLocationTable();
+    }else if(tableName === 'customer'){
+      pageCount = await loadUserTable();
+    }
+    var previous = '';
+    var next = '';
     var pageLink = '';
-    pageLink += `<a class='pagination-link'><<</a>`;
-    pageLink += `<a class='pagination-link'><</a>`;
-    for(let i = 1; i <= pageTotal; i++){
-      if (i == 1){
-        pageLink += `<a class='pagination-link active'> ${i} </a>`;
+    var page_array = [];
+
+    if(pageCount > 4){
+      if(page < 5){
+        for(let count = 1; count <= 5;count++){
+          page_array.push(count);
+        }
+        page_array.push('...');
+        page_array.push(pageCount);
       }else{
-        pageLink += `<a class='pagination-link'> ${i} </a>`; 
+        var end = pageCount - 5;
+        if(page > end){
+          page_array.push(1);
+          page_array.push('...');
+          for(let count = end; count <= pageCount;count++){
+            page_array.push(count);
+          }
+        }else{
+          page_array.push(1);
+          page_array.push('...');
+          for(let count = page - 1; count <= parseInt(page) + 1; count++){
+            console.log(count <= page + 1);
+            page_array.push(count);
+          }
+          page_array.push('...');
+          page_array.push(pageCount);
+        }
+      }
+    }else{
+      for(let count = 1; count <= pageCount;count++){
+        page_array.push(count);
       }
     }
-    pageLink += `<a class='pagination-link'>></a>`;
-    pageLink += `<a class='pagination-link'>>></a>`
-    pagination.append(pageLink);
+    for(let count = 0; count < page_array.length; count++){
+      if(page == page_array[count]){
+        pageLink += `<li>
+          <a class="pagination-link active" href="#">${page_array[count]}</a>
+        </li>`;
+        var previous_id = page_array[count] - 1;
+        if(previous_id > 0){
+          previous += `<li><a class="previous" id="${previous_id}" href="#">Previous</a></li>`;
+        }else
+        {
+          previous += `
+          <li >
+            <a class="previous disable" href="#">Previous</a>
+          </li>
+          `;
+        }
+
+        var next_id = page_array[count] + 1;
+        if(next_id >= pageCount){
+          next += `
+          <li >
+            <a class="next disable" href="#">Next</a>
+          </li>
+          `;
+        }else
+        {
+          next += `<li><a class="next" id="${next_id}" href="#">Next</a></li>`;
+        }
+      }else{
+        if(page_array[count] == '...'){
+          pageLink += `<li><a class="pagination-link disable" href="#">...</a></li>`;
+        }else{
+          pageLink += `<li><a class="pagination-link" href="#">${page_array[count]}</a></li>`;
+        }
+      }
+    }
+
+    var pageList = previous + pageLink + next;
+    var container = $('.pagination-list').append(pageList);
+    $('.pagination-container').append(container);
+    console.log(page_array);
   }
 
   //Hàm chuyển tab
@@ -114,12 +206,14 @@ $(document).ready(() => {
 
     console.log(tabName);
     if (tabName === 'location') {
+      tableName = 'location';
+      pagination.empty();
       loadLocationTable();
-      createPageLink();
+      createPageLink(tableName);
     } else if (tabName === 'flight') {
       loadFlightTable();
     } else if (tabName === 'customer') {
-      console.log('test');
+      tableName = 'customer';
       loadUserTable();
     }
   };
@@ -278,15 +372,13 @@ $(document).ready(() => {
   };
 
   const loadUserTable = async () => {
-    const res = await $.get('/users');
+    const res = await $.get('/users', { page: page, per_page: 6});
+    console.log(res);
     const userTable = $('#user_table');
     const userTbody = userTable.find('tbody');
     userTbody.empty();
 
-    console.log(userTable, userTbody);
-
     res.forEach((user, index) => {
-      console.log(user);
       userTbody.append(`<tr id=${user.id}>
         <td>${index}</td>  
         <td>${user.username}</td>
