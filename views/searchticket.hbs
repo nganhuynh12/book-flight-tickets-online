@@ -42,54 +42,14 @@
     <div class="container">
         <h1 class="text-center mb-3 mt-2">Tra cứu thông tin đặt vé</h1>
         <div class="input-group mx-auto">
-            <input type="search" class="form-control" placeholder="Nhập mã đặt chỗ tại đây..." aria-label="Search" aria-describedby="search-addon" />
-            <button type="button" class="btn btn-outline-primary">Tra cứu</button>
+            <input type="search" class="form-control" placeholder="Nhập mã đặt chỗ tại đây..." aria-label="Search" aria-describedby="search-addon" id="searchFlightInput"/>
+            <button type="button" class="btn btn-outline-primary" id="searchFlightButton">Tra cứu</button>
         </div>  
         
-        <table class="table table-bordered border-dark mt-5">
-            <tr class="row-color">
-                <td colspan="4">
-                    <h5>NGÀY KHỞI HÀNH: <b>08/04/2023</b></h5>
-                </td>
-            </tr>
-            <tr>
-                <td rowspan="2">
-                    <b>TICKET2910</b>
-                    <p>THỜI GIAN BAY: 1 tiếng 30 phút</p>
-                </td>
-                <td class="none-border-right">
-                    <h6>HO CHI MINH CITY</h6>
-                    <p>VIET NAM</p>
-                </td>
-                <td class="none-border-left">
-                    <h6>SINGAPORE</h6>
-                    <p>SINGAPORE</p>
-                </td>
-                <td rowspan="2">
-                    <h6>MÁY BAY</h6>
-                    <p>Máy bay Boeing 787 Dreamliner</p>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <span>GIỜ KHỞI HÀNH:</span>
-                    <h6>20:00</h6>
-
-                    <span>CỔNG</span><br>
-                    <h6>Gate 1</h6>
-                </td>
-
-                <td>
-                    <span>GIỜ ĐẾN:</span>
-                    <h6>21:30</h6>
-
-                    <span>CỔNG</span><br>
-                    <h6>Không có thông tin</h6>
-                </td>
-            </tr>
+        <table class="table table-bordered border-dark mt-5" id="flightDataTable">
         </table>
 
-        <table class="table table-bordered border-dark">
+        <table class="table table-bordered border-dark" id="userTable">
             <tr class="text-center row-color">
                 <th>MÃ KHÁCH HÀNG</th>
                 <th>TÊN KHÁCH HÀNG</th>
@@ -99,12 +59,12 @@
                 <th>TÌNH TRẠNG</th>
             </tr>
             <tr class="text-center">
-                <td>KH001</td>
+                {{!-- <td>KH001</td>
                 <td>Huỳnh Thị Thảo Ngân</td>
                 <td>3</td>
                 <td>Phổ thông</td>
                 <td>12.000.000đ</td>
-                <td class="text-pay">Đã thanh toán</td>
+                <td class="text-pay">Đã thanh toán</td> --}}
             </tr>
         </table>
     </div>
@@ -189,5 +149,6 @@
             <a class="text-white" href="#">svoairlines.com.vn</a>
         </div>
     </footer>
+    <script src="/javascripts/searchTicket.js"></script>
 </body>
 </html>
