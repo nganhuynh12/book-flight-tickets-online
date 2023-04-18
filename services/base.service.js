@@ -6,7 +6,13 @@ class baseService {
     this.pathName = pathName;
   }
 
-  async findAll({ page, per_page } = { page: undefined, per_page: undefined }) {
+  async findAll(
+    { page, per_page, where } = {
+      page: undefined,
+      per_page: undefined,
+      where: undefined,
+    }
+  ) {
     if (page !== undefined && per_page !== undefined) {
       const offset = (page - 1) * per_page;
       const limit = per_page;
@@ -36,7 +42,7 @@ class baseService {
 
       return res;
     } else {
-      return await this.model.findAll();
+      return await this.model.findAll({ where });
     }
   }
 
