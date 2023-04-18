@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
-  <link rel="stylesheet" href='{{static /stylesheets/search_flight.css}}'>
+  <link rel="stylesheet" href='/stylesheets/search_flight.css'>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/css/bootstrap.min.css">
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
@@ -68,7 +68,7 @@
         </div>
         <div class="row mt-3">
           <div class="col-lg-4 ">
-            <span>&nbsp;Người lớn:</span>
+            <span>Người lớn:</span>
             <input aria-label="quantity" class="input-qty passenger" max="20" min="0" name="numberOfPassenger"
               type="number" value="0">
           </div>
@@ -85,32 +85,26 @@
         </div>
         <div class="row mt-3 mb-2">
           <div class="col-lg-6">
-            <label for="diemdi">&nbsp;Điểm đi:</label>
-            <select class="form-select mt-2  " name="diemdi" aria-label="Default select example">
+            <label for="diemdi">Điểm đi:</label>
+            <select class="form-select mt-2  " name="diemdi" aria-label="Default select example" id="startLocationSelect">
               <option selected></option>
-              <option value="1">Thành phố Hồ Chí Minh</option>
-              <option value="2">Hà Nội</option>
-              <option value="3">Đà Nẵng</option>
             </select>
           </div>
           <div class="col-lg-6">
-            <label for="diemdi">&nbsp;Điểm đến:</label>
-            <select class="form-select mt-2" name="diemden" aria-label="Default select example">
+            <label for="diemdi">Điểm đến:</label>
+            <select class="form-select mt-2" name="diemden" aria-label="Default select example" id="arriveLocationSelect">
               <option selected></option>
-              <option value="1">Thành phố Hồ Chí Minh</option>
-              <option value="2">Hà Nội</option>
-              <option value="3">Đà Nẵng</option>
             </select>
           </div>
         </div>
         <div class="row">
           <div class="col-lg-6">
             &nbsp;Chọn ngày đi: &nbsp;
-            <input type="date" id="ngayDi" class="w-50 input-qty">
+            <input type="date" id="startDateInput" class="w-50 input-qty" >
           </div>
           <div class="col-lg-6">
             &nbsp;Chọn ngày về: &nbsp;
-            <input type="date" id="ngayDi" class="w-50 input-qty">
+            <input type="date" id="endDateInput" class="w-50 input-qty">
           </div>
         </div>
       </div>
@@ -214,199 +208,7 @@
         </div>
 
         <div class="right">
-          <div class="card text-dark">
-            <div class="card-header">
-              <li>
-                <div class="flight-route">
-                  <div>
-                    <p class="time">05:20</p>
-                    <p class="time">SGN</p>
-                  </div>
-                  <div>
-                    <span class="fa">&#xf041;</span>
-                    <span class="dot"></span>
-                    <span class="dot"></span>
-                    <span class="dot"></span>
-                    <span class="dot"></span>
-                    <span class="dot"></span>
-                    <span class="fa fa-fighter-jet"></span>
-                    <span class="dot"></span>
-                    <span class="dot"></span>
-                    <span class="dot"></span>
-                    <span class="dot"></span>
-                    <span class="dot"></span>
-                    <span class="fa">&#xf041;</span>
-                    <br>
-                  </div>
-                  <div>
-                    <p class="time">17:20</p>
-                    <p class="time">DAD</p>
-                  </div>
 
-                  <div>
-                    <p class="far">2h15m</p>
-                    <p class="far">Bay thẳng</p>
-                  </div>
-
-                </div>
-              </li>
-            </div>
-            <div class="card-body">
-              <li>
-                <p class="flight-list">Phổ thông</p>
-                <p class="flight-list">1.120.000 VNĐ</p>
-                <button class="btn-seedel-ticket" data-bs-toggle="modal" data-bs-target="#seedetail">Xem chi
-                  tiết</button>
-                <a href="signedluggage.html" class="btn-book-ticket">Chọn vé</a>
-              </li>
-            </div>
-          </div>
-
-
-          <div class="card text-dark">
-            <div class="card-header">
-              <li>
-                <div class="flight-route">
-                  <div>
-                    <p class="time">05:20</p>
-                    <p class="time">SGN</p>
-                  </div>
-                  <div>
-                    <span class="fa">&#xf041;</span>
-                    <span class="dot"></span>
-                    <span class="dot"></span>
-                    <span class="dot"></span>
-                    <span class="dot"></span>
-                    <span class="dot"></span>
-                    <span class="fa fa-fighter-jet"></span>
-                    <span class="dot"></span>
-                    <span class="dot"></span>
-                    <span class="dot"></span>
-                    <span class="dot"></span>
-                    <span class="dot"></span>
-                    <span class="fa">&#xf041;</span>
-                    <br>
-                  </div>
-                  <div>
-                    <p class="time">17:20</p>
-                    <p class="time">DAD</p>
-                  </div>
-
-                  <div>
-                    <p class="far">2h15m</p>
-                    <p class="far">Bay thẳng</p>
-                  </div>
-
-                </div>
-              </li>
-            </div>
-            <div class="card-body">
-              <li>
-                <span class="flight-list">Phổ thông</span>
-                <span class="flight-list">1.120.000 VNĐ</span>
-                <button class="btn-seedel-ticket" data-bs-toggle="modal" data-bs-target="#seedetail">Xem chi
-                  tiết</button>
-                <a href="signedluggage.html" class="btn-book-ticket">Chọn vé</a>
-              </li>
-            </div>
-          </div>
-
-          <div class="card text-dark">
-            <div class="card-header">
-              <li>
-                <div class="flight-route">
-                  <div>
-                    <p class="time">05:20</p>
-                    <p class="time">SGN</p>
-                  </div>
-                  <div>
-                    <span class="fa">&#xf041;</span>
-                    <span class="dot"></span>
-                    <span class="dot"></span>
-                    <span class="dot"></span>
-                    <span class="dot"></span>
-                    <span class="dot"></span>
-                    <span class="fa fa-fighter-jet"></span>
-                    <span class="dot"></span>
-                    <span class="dot"></span>
-                    <span class="dot"></span>
-                    <span class="dot"></span>
-                    <span class="dot"></span>
-                    <span class="fa">&#xf041;</span>
-                    <br>
-                  </div>
-                  <div>
-                    <p class="time">17:20</p>
-                    <p class="time">DAD</p>
-                  </div>
-
-                  <div>
-                    <p class="far">2h15m</p>
-                    <p class="far">Bay thẳng</p>
-                  </div>
-
-                </div>
-              </li>
-            </div>
-            <div class="card-body">
-              <li>
-                <span class="flight-list">Phổ thông</span>
-                <span class="flight-list">1.120.000 VNĐ</span>
-                <button class="btn-seedel-ticket" data-bs-toggle="modal" data-bs-target="#seedetail">Xem chi
-                  tiết</button>
-                <a href="signedluggage.html" class="btn-book-ticket">Chọn vé</a>
-              </li>
-            </div>
-          </div>
-
-          <div class="card text-dark">
-            <div class="card-header">
-              <li>
-                <div class="flight-route">
-                  <div>
-                    <p class="time">05:20</p>
-                    <p class="time">SGN</p>
-                  </div>
-                  <div>
-                    <span class="fa">&#xf041;</span>
-                    <span class="dot"></span>
-                    <span class="dot"></span>
-                    <span class="dot"></span>
-                    <span class="dot"></span>
-                    <span class="dot"></span>
-                    <span class="fa fa-fighter-jet"></span>
-                    <span class="dot"></span>
-                    <span class="dot"></span>
-                    <span class="dot"></span>
-                    <span class="dot"></span>
-                    <span class="dot"></span>
-                    <span class="fa">&#xf041;</span>
-                    <br>
-                  </div>
-                  <div>
-                    <p class="time">17:20</p>
-                    <p class="time">DAD</p>
-                  </div>
-
-                  <div>
-                    <p class="far">2h15m</p>
-                    <p class="far">Bay thẳng</p>
-                  </div>
-
-                </div>
-              </li>
-            </div>
-            <div class="card-body">
-              <li>
-                <span class="flight-list">Phổ thông</span>
-                <span class="flight-list">1.120.000 VNĐ</span>
-                <button class="btn-seedel-ticket" data-bs-toggle="modal" data-bs-target="#seedetail">Xem chi
-                  tiết</button>
-                <a href="signedluggage.html" class="btn-book-ticket">Chọn vé</a>
-              </li>
-            </div>
-          </div>
-        
         </div>
       </div>
     </div>
@@ -535,7 +337,7 @@
   </footer>
 </body>
 
-<script>
+{{!-- <script>
   $(document).ready(function () {
     $("#myCarousel").carousel();
   });
@@ -567,6 +369,7 @@ window.onclick = function(event) {
   }
 }
 
-</script>
+</script> --}}
+<script src="/javascripts/search_flight.js"></script>
 
 </html>
