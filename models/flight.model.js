@@ -20,6 +20,10 @@ module.exports = (sequelize, Sequelize) => {
         type: Sequelize.INTEGER,
         allowNull: false,
       },
+      basePrice: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+      },
     },
     { sequelize, modelName: 'flight' }
   );
