@@ -1,4 +1,5 @@
 $(document).ready(() => {
+  const ticketData = JSON.parse(window.localStorage.getItem('ticketData'));
   const container1 = $('.container1');
   const seats = $('.row .seat:not(.occupied)');
   let seatList = [];
@@ -30,4 +31,11 @@ $(document).ready(() => {
 
     container1.append($(`<div class="row1"></div>`).append(temp));
   }
+
+  const nextPage = () => {};
+  $('.button-continue').on('click', () => {
+    ticketData.seatList = seatList;
+    window.localStorage.setItem('ticketData', JSON.stringify(ticketData));
+    window.location = '/inforbooking';
+  });
 });
