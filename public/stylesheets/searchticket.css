@@ -59,3 +59,11 @@ hr {
 .row-color{
     background-color: #F0F8FF;
 }
+
+.row-color-title{
+    background-color: var(--main-color);
+}
+
+.bookinghistory th, .bookinghistory td{
+    padding: 15px !important;
+}
