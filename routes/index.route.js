@@ -29,4 +29,21 @@ router.get('/home', (req, res, next) => {
 router.get('/searchticket', (req, res, next) => {
   res.render('searchticket');
 });
+
+router.get('/profile', (req, res, next) => {
+  res.render('profile');
+});
+
+router.get('/searchflight', (req, res, next) => {
+  res.render('search_flight');
+});
+
+router.get('/seatbooking', (req, res, next) => {
+  res.render('seatbooking');
+});
+
+router.get('/signedluggage', (req, res, next) => {
+  res.render('signedluggage');
+});
+
 module.exports = router;

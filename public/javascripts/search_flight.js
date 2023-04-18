@@ -64,7 +64,7 @@ $(document).ready(async () => {
             </div>
             <div class="card-body">
               <li>
-                <p class="flight-list">${flight.}</p>
+                <p class="flight-list">${flight}</p>
                 <p class="flight-list">1.120.000 VNĐ</p>
                 <button class="btn-seedel-ticket" data-bs-toggle="modal" data-bs-target="#seedetail">Xem chi
                   tiết</button>

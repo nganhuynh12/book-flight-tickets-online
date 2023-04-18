@@ -5,11 +5,11 @@ class userController {
 
   async findAll(req, res, next) {
     const result = await this.service.findAll();
+    console.log(result);
     return res.json(result);
   }
 
   async findByPk(req, res, next) {
-    console.log('test', this);
     const result = await this.service.findByPk(req.params.id);
     return res.json(result);
   }
