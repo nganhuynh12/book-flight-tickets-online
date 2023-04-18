@@ -13,7 +13,7 @@ module.exports = class flightController {
   }
 
   async findAll(req, res, next) {
-    const result = await this.service.findAll({ where: req.query });
+    const result = await this.service.findAllWithLocationData({ where: req.query });
     return res.json(result);
   }
 };
