@@ -57,19 +57,24 @@
         <h4>Thông tin khách hàng</h4>
         <div class="col-lg-6 mt-3">
           Nhập họ và tên đệm<br>
-          <input type="text" class="input-control" placeholder="Nhập họ và tên đệm" name="firstname" />
+          <input type="text" class="input-control" placeholder="Nhập họ và tên đệm" name="firstname" value="{{data.firstName}}"/>
         </div>
         <div class="col-lg-6 mt-3">
           Nhập Tên<br>
-          <input type="text" class="input-control" placeholder="Nhập tên" name="lastname" />
+          <input type="text" class="input-control" placeholder="Nhập tên" name="lastname" value="{{data.lastName}}" />
         </div>
       </div>
       <div>
         Chọn giới tính <br>
         <select id="gender" name="gender">
           <option></option>
-          <option value="female">Nữ</option>
+{{#if data.gender}}
+          <option value="female" >Nữ</option>
+          <option value="male" selected>Nam</option>
+{{else}}
+          <option value="female" selected>Nữ</option>
           <option value="male">Nam</option>
+{{/if}}
         </select>
       </div>
       <br>
@@ -84,11 +89,11 @@
       <div>
         <br>
         Nhập email<br>
-        <input type="email" class="input-control" placeholder="Nhập email" name="email" />
+        <input type="email" class="input-control" placeholder="Nhập email" name="email"  value="{{data.email}}"/>
       </div>
       <div>
         Nhập số điện thoại<br>
-        <input type="number" class="input-control" placeholder="Nhập số điện thoại" name="phonenumber" />
+        <input type="text" class="input-control" placeholder="Nhập số điện thoại" name="phonenumber"  value="{{data.phone}}"/>
       </div>
       <div style="margin-top:15px">
         <input type="checkbox" class="check-btn" name="accept" id="accept"><span> Tôi chọn thông tin này làm thông tin
@@ -99,20 +104,20 @@
         <h4>Thông tin liên hệ</h4>
         <div class="col-lg-6 mt-3">
           Nhập họ và tên đệm<br>
-          <input type="text" class="input-control" placeholder="Nhập họ và tên đệm" name="firstname" />
+          <input type="text" class="input-control" placeholder="Nhập họ và tên đệm" name="firstname" value="{{data.firstName}}"/>
         </div>
         <div class="col-lg-6 mt-3">
           Nhập Tên<br>
-          <input type="text" class="input-control" placeholder="Nhập tên" name="lastname" />
+          <input type="text" class="input-control" placeholder="Nhập tên" name="lastname"  value="{{data.lastName}}"/>
         </div>
       </div>
       <div>
         Nhập email<br>
-        <input type="email" class="input-control" placeholder="Nhập email" name="email" />
+        <input type="email" class="input-control" placeholder="Nhập email" name="email" value="{{data.email}}"/>
       </div>
       <div>
         Nhập số điện thoại<br>
-        <input type="number" class="input-control" placeholder="Nhập số điện thoại" name="phonenumber" />
+        <input type="text" class="input-control" placeholder="Nhập số điện thoại" name="phonenumber" value={{data.phone}} />
       </div>
       <div class="card" style="margin-top: 50px;">
         <div class="card-body">

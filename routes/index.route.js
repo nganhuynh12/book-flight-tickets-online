@@ -1,6 +1,7 @@
 var express = require('express');
 const localAuthGuard = require('../guards/local-auth.guard');
 var router = express.Router();
+const User = require('../models/index').users;
 
 router.get('/', function (req, res, next) {
   res.render('index');
@@ -32,6 +33,24 @@ router.get('/searchticket', (req, res, next) => {
 
 router.get('/profile', (req, res, next) => {
   res.render('profile');
+});
+
+router.get('/inforbooking', async (req, res, next) => {
+  const userData = (await User.findByPk(req.query.userId)).dataValues;
+  console.log(userData);
+
+  const lastName = userData.username.slice(userData.username.lastIndexOf(' '));
+  const firstName = userData.username.slice(
+    0,
+    userData.username.lastIndexOf(' ')
+  );
+  const gender = userData.gender;
+  const email = userData.email;
+  const phone = userData.phone;
+  const data = { firstName, lastName, gender, email, phone };
+  console.log(data.gender);
+
+  res.render('inforbooking', { data });
 });
 
 router.get('/searchflight', (req, res, next) => {
