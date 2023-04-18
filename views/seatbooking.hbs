@@ -53,89 +53,7 @@
 
   <div class="card-header">
     <br>
-    <div class="movie-container1">
-      <div class="container1">
-        <div class="row1">
-          <div class="seat"></div>
-          <div class="seat"></div>
-          <div class="seat"></div>
-          <div class="seat"></div>
-          <div class="seat"></div>
-          <div class="seat"></div>
-          <div class="seat"></div>
-          <div class="seat"></div>
-        </div>
-        <div class="row1">
-          <div class="seat"></div>
-          <div class="seat"></div>
-          <div class="seat"></div>
-          <div class="seat occupied"></div>
-          <div class="seat occupied"></div>
-          <div class="seat"></div>
-          <div class="seat"></div>
-          <div class="seat"></div>
-        </div>
-        <div class="row1">
-          <div class="seat"></div>
-          <div class="seat"></div>
-          <div class="seat"></div>
-          <div class="seat"></div>
-          <div class="seat"></div>
-          <div class="seat"></div>
-          <div class="seat occupied"></div>
-          <div class="seat occupied"></div>
-        </div>
-        <div class="row1">
-          <div class="seat"></div>
-          <div class="seat"></div>
-          <div class="seat"></div>
-          <div class="seat"></div>
-          <div class="seat"></div>
-          <div class="seat"></div>
-          <div class="seat"></div>
-          <div class="seat"></div>
-        </div>
-        <div class="row1">
-          <div class="seat"></div>
-          <div class="seat"></div>
-          <div class="seat"></div>
-          <div class="seat occupied"></div>
-          <div class="seat occupied"></div>
-          <div class="seat"></div>
-          <div class="seat"></div>
-          <div class="seat"></div>
-        </div>
-        <div class="row1">
-          <div class="seat"></div>
-          <div class="seat"></div>
-          <div class="seat"></div>
-          <div class="seat"></div>
-          <div class="seat"></div>
-          <div class="seat occupied"></div>
-          <div class="seat occupied"></div>
-          <div class="seat"></div>
-        </div>
-        <div class="row1">
-          <div class="seat"></div>
-          <div class="seat"></div>
-          <div class="seat"></div>
-          <div class="seat"></div>
-          <div class="seat occupied"></div>
-          <div class="seat"></div>
-          <div class="seat"></div>
-          <div class="seat"></div>
-        </div>
-        <div class="row1">
-          <div class="seat"></div>
-          <div class="seat"></div>
-          <div class="seat"></div>
-          <div class="seat"></div>
-          <div class="seat occupied"></div>
-          <div class="seat"></div>
-          <div class="seat occupied"></div>
-          <div class="seat"></div>
-        </div>
-      </div>
+    <div class="movie-container1"> <div class="container1"> </div>
     </div>
   </div>
   <br>
@@ -240,19 +158,8 @@
       </div>
     </footer>
     <script>
-      const container1 = document.querySelector('.container1');
-      const seats = document.querySelectorAll('.row .seat:not(.occupied)');
-      const movieSelect = document.getElementById('movie');
-
-      //Seat click event
-      container1.addEventListener('click', e => {
-        if (e.target.classList.contains('seat') &&
-          !e.target.classList.contains('occupied')) {
-          e.target.classList.toggle('selected');
-        }
-        updateSelectedCount();
-      });
     </script>
+    <script src="/javascripts/seatbooking.js"></script>
 </body>
 
 </html>
