@@ -28,6 +28,13 @@ $(document).ready(async () => {
       arriveLocationId,
     });
 
+    const nextPage = (event) => {
+      const basePrice = $(event.target).parent().find('#base_price').text();
+      const ticketData = { basePrice };
+      window.localStorage.setItem('ticketData', JSON.stringify(ticketData));
+      window.location = '/signedluggage';
+    };
+
     flightList.forEach((flight) => {
       const arriveTime = new Date(flight.arriveTime);
       const startTime = new Date(flight.startTime);
@@ -64,11 +71,10 @@ $(document).ready(async () => {
             </div>
             <div class="card-body">
               <li>
-                <p class="flight-list">${flight}</p>
-                <p class="flight-list">1.120.000 VNĐ</p>
+                <p class="flight-list" id="base_price">${flight.basePrice}</p>
                 <button class="btn-seedel-ticket" data-bs-toggle="modal" data-bs-target="#seedetail">Xem chi
                   tiết</button>
-                <a href="signedluggage.html" class="btn-book-ticket">Chọn vé</a>
+                <button class="btn-book-ticket">Chọn vé</button>
               </li>
             </div>
           </div>
@@ -76,5 +82,6 @@ $(document).ready(async () => {
 	`
       );
     });
+    $('body').on('click', 'button.btn-book-ticket', nextPage);
   });
 });
