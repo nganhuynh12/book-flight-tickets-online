@@ -31,6 +31,9 @@ module.exports = (sequelize, Sequelize) => {
       address: {
         type: Sequelize.STRING,
       },
+      birthDay: {
+        type: Sequelize.DATEONLY,
+      },
     },
     {
       sequelize,
