@@ -85,4 +85,8 @@ router.get('/signedluggage', (req, res, next) => {
   res.render('signedluggage');
 });
 
+router.get('/bookinghistory', (req, res, next) => {
+  res.render('bookinghistory');
+});
+
 module.exports = router;

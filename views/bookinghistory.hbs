@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{static "stylesheets/searchticket.css"}}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="home.html" style="font-size: 30px;">SVO Airlines</a>
+            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="home.html"> Trang chủ</a>
+                    </li>
+                    <li class="nav-item aria-current">
+                        <a class="nav-link" href="search_flight.html"> Chuyến bay</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="history.html">Tra cứu</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="login.html"> Đăng nhập</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="help.html"> Trợ giúp</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1 class="text-center mt-5">Lịch sử đặt vé</h1> 
+        
+        <table class="table mt-5 bookinghistory">
+            <tr class="text-center text-white row-color-title">
+                <th>STT</th>
+                <th>Mã đặt vé</th>
+                <th>Mã chuyến bay</th>
+                <th>Ngày khởi hành</th>
+                <th>Thời gian</th>
+                <th>Nơi đi</th>
+                <th>Nơi đến</th>
+                <th>Hạng vé</th>
+                <th>Tổng thanh toán</th>
+            </tr>
+            <tr class="text-center">
+                <th>1</th>
+                <th>TICKET2910</th>
+                <th>VN6002</th>
+                <th>18/04/2023</th>
+                <th>20:00 - 21:30</th>
+                <th>Ho Chi Minh</th>
+                <th>Sinagapore</th>
+                <th>Phổ thông</th>
+                <th>10.000.000</th>
+            </tr>
+        </table>
+    </div>
+
+    <footer class="bg-dark text-center text-lg-start text-white mt-5 fixed-bottom">
+        <div class="container p-4">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h6 class="text-uppercase">về chúng tôi</h6>
+                    <ul class="list-unstyled mb-0">
+                        <li>
+                            <a href="#" class="text-white">Tập đoàn</a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-white">Đội bay</a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-white">Cam kết với khách hàng</a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-white">Các điều kiện và điều khoản</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h6 class="text-uppercase">Sản phẩm</h6>
+
+                    <ul class="list-unstyled">
+                        <li>
+                            <i class="fa fa-ticket" aria-hidden="true"></i><a href="#" class="text-white"> Vé máy
+                                bay</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h6 class="text-uppercase">Đối tác thanh toán</h6>
+                    <ul class="list-unstyled">
+                        <li>
+                            <div>
+                                VISA
+                                </a>
+                        </li>
+                        <li>
+                            <div>
+                                MASTERCARD
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                MOMO
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                ZALOPAY
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h6 class="text-uppercase">liên hệ</h6>
+                    <ul class="list-unstyled">
+                        <li>
+                            <p class="text-white"><i class="fa fa-phone" aria-hidden="true"></i> SDT: 0909.291.291</p>
+                        </li>
+                        <li>
+                            <p class="text-white"><i class="fa fa-location-arrow" aria-hidden="true"></i> Email:
+                                svoairlines@gmail.com
+                            </p>
+                        </li>
+                        <li>
+                            <p class="text-white"><i class="fa fa-map-marker" aria-hidden="true"></i> Địa chỉ: Quận 7,
+                                TP. Hồ Chí Minh
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="text-center p-3">
+            © 2022 Copyright:
+            <a class="text-white" href="#">svoairlines.com.vn</a>
+        </div>
+    </footer>
+    <script src="/javascripts/searchTicket.js"></script>
+</body>
+</html>
