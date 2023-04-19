@@ -177,15 +177,24 @@
               <div class="form-row">
                 <div class="form-group col-sm-4">
                   <label for="surname"><b>Họ lót:</b></label>
-                  <input type="text" class="form-control" id="surname">
+                  <input type="text" class="form-control" id="surname" value="{{data.firstName}}">
                 </div>
                 <div class="form-group col-sm-4">
                   <label for="name"><b>Tên:</b></label>
-                  <input type="text" class="form-control" id="name">
+                  <input type="text" class="form-control" id="name" value="{{data.lastName}}">
                 </div>
                 <div class="form-group col-sm-4">
                   <label for="sex"><b>Giới tính:</b></label>
-                  <input type="text" class="form-control" id="sex">
+        <select id="gender" name="gender">
+          <option></option>
+{{#if data.gender}}
+          <option value="1" >Nữ</option>
+          <option value="0" selected>Nam</option>
+{{else}}
+          <option value="1" selected>Nữ</option>
+          <option value="0">Nam</option>
+{{/if}}
+        </select>
                 </div>
 
               </div>
@@ -217,17 +226,17 @@
                 </div>
                 <div class="form-group col-sm-4">
                   <label for="domicile"><b>Nguyên quán:</b></label>
-                  <input type="text" class="form-control" id="domicile">
+                  <input type="text" class="form-control" id="domicile" value="{{data.address}}">
                 </div>
               </div>
               <div class="form-row">
                 <div class="form-group col-sm-4">
                   <label for="numberphone"><b>Số điện thoại:</b></label>
-                  <input type="tel" class="form-control" id="numberphone">
+                  <input type="text" class="form-control" id="phonenumber" value="{{data.phone}}">
                 </div>
                 <div class="form-group col-sm-8">
                   <label for="Email"><b>Email:</b></label>
-                  <input type="email" class="form-control" id="email">
+                  <input type="email" class="form-control" id="email" value="{{data.email}}">
                 </div>
               </div>
             </form>
@@ -235,7 +244,7 @@
         </div>
       </div>
       <br>
-      <button type="submit" class="btn-submit">Cập nhật</button>
+      <button type="submit" class="btn-submit" id="submitButton">Cập nhật</button>
     </div>
   </div>
 
@@ -317,7 +326,7 @@
       <a class="text-white" href="home.html">svoairlines.com.vn</a>
     </div>
   </footer>
-  <script>
+  {{!-- <script>
     $(document).ready(function (e) {
       var flag = false;
 
@@ -353,7 +362,8 @@
       }
       $("#img").draggable();
     });
-  </script>
+  </script> --}}
+  <script src="/javascripts/profile.js"></script>
 </body>
 
 </html>

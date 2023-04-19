@@ -31,8 +31,28 @@ router.get('/searchticket', (req, res, next) => {
   res.render('searchticket');
 });
 
-router.get('/profile', (req, res, next) => {
-  res.render('profile');
+router.get('/profile/:id', async (req, res, next) => {
+  const userData = (await User.findByPk(req.params.id)).dataValues;
+  console.log(userData);
+
+  const lastName = userData.username.slice(userData.username.lastIndexOf(' '));
+  const firstName = userData.username.slice(
+    0,
+    userData.username.lastIndexOf(' ')
+  );
+  const gender = userData.gender;
+  const email = userData.email;
+  const phone = userData.phone;
+  const data = {
+    firstName,
+    lastName,
+    gender,
+    email,
+    phone,
+    address: userData.address,
+  };
+
+  res.render('profile', { data });
 });
 
 router.get('/inforbooking', async (req, res, next) => {
