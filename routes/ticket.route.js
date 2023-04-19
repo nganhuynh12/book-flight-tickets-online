@@ -3,6 +3,7 @@ const { ticketController } = require('../controllers');
 const { body } = require('express-validator');
 const validationPipe = require('../pipes/validation.pipe');
 const { route } = require('./index.route');
+const parseIntPipe = require('../pipes/parse-int.pipe');
 
 const router = express.Router();
 
@@ -15,8 +16,16 @@ router.post(
   validationPipe,
   ticketController.add.bind(ticketController)
 );
-router.get('/', ticketController.findAll.bind(ticketController));
+
+router.get(
+  '/',
+  parseIntPipe('page'),
+  parseIntPipe('per_page'),
+  ticketController.findAll.bind(ticketController)
+);
+
 router.get('/:id', ticketController.findByPk.bind(ticketController));
+
 router.delete('/:id', ticketController.deleteById.bind(ticketController));
 
 module.exports = router;

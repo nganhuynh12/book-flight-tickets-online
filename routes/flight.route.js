@@ -2,6 +2,7 @@ const express = require('express');
 const { body } = require('express-validator');
 const { flightController } = require('../controllers');
 const validationPipe = require('../pipes/validation.pipe');
+const parseIntPipe = require('../pipes/parse-int.pipe');
 
 const router = express.Router();
 
@@ -15,6 +16,11 @@ router.post(
   flightController.add.bind(flightController)
 );
 
-router.get('/', flightController.findAll.bind(flightController));
+router.get(
+  '/',
+  parseIntPipe('page'),
+  parseIntPipe('per_page'),
+  flightController.findAll.bind(flightController)
+);
 
 module.exports = router;
