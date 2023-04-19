@@ -59,7 +59,7 @@ router.get('/profile/:id', async (req, res, next) => {
 });
 
 router.get('/inforbooking', async (req, res, next) => {
-  const userData = (await User.findByPk(req.query.userId)).dataValues;
+  const userData = (await User.findByPk(req.user.id)).dataValues;
   console.log(userData);
 
   const lastName = userData.username.slice(userData.username.lastIndexOf(' '));
@@ -91,7 +91,7 @@ router.get('/signedluggage', (req, res, next) => {
 router.get('/bookinghistory', async (req, res, next) => {
   const ticketDatas = (
     await Ticket.findAll({
-      where: { userId: req.query.userId },
+      where: { userId: req.user.id },
       include: [
         {
           model: Flight,

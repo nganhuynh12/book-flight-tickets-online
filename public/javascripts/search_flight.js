@@ -7,7 +7,6 @@ $(document).ready(async () => {
   const searchButton = $('#searchButton');
   const rightPart = $('.right');
 
-  console.log(startDateInput, endDateInput, searchButton);
   locationList.forEach(({ value, id }) => {
     startLocationSelect.append(
       `<option value=${id} id=${id}>${value}</option>`
@@ -26,7 +25,10 @@ $(document).ready(async () => {
     const flightList = await $.get('/flights/', {
       startLocationId,
       arriveLocationId,
+      startTime,
     });
+
+    console.log(flightList);
 
     const nextPage = (event) => {
       const basePrice = $(event.target).parent().find('#base_price').text();

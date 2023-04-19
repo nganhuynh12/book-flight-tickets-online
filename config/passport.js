@@ -27,14 +27,15 @@ passport.use(
 );
 
 passport.serializeUser((user, done) => {
-  done(null, user.id);
+  console.log(user);
+  done(null, user.dataValues.id);
 });
 
 passport.deserializeUser(async (id, done) => {
   try {
     const user = await db.users.findOne({ where: { id } });
-    if (user) {
-      done(null, user);
+    if (user.dataValues) {
+      done(null, user.dataValues);
     }
   } catch (error) {
     done(error);

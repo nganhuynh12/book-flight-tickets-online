@@ -4,8 +4,7 @@ class userController {
   }
 
   async findAll(req, res, next) {
-    const result = await this.service.findAll();
-    console.log(result);
+    const result = await this.service.findAll(req.query);
     return res.json(result);
   }
 
@@ -15,6 +14,7 @@ class userController {
   }
 
   async updateById(req, res, next) {
+    console.log(req.body);
     const result = await this.service.updateById(req.params.id, req.body);
     return res.json(result);
   }
