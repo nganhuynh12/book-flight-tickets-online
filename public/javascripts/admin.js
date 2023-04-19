@@ -25,39 +25,39 @@ $(document).ready(() => {
     });
   });
 
-  pagination.on('click','.pagination-link',function(){
+  pagination.on('click', '.pagination-link', function () {
     pagination.empty();
     $('.pagination-link').removeClass('active');
     $(this).addClass('active');
     page = $(this).html();
-    if(tableName === 'location'){
+    if (tableName === 'location') {
       loadLocationTable();
       createPageLink(tableName);
     }
-  })
+  });
 
-  pagination.on('click', '.next', function(){
+  pagination.on('click', '.next', function () {
     pagination.empty();
     page = parseInt($(this).attr('id'));
     console.log(tableName);
-    if(tableName === 'location'){
+    if (tableName === 'location') {
       loadLocationTable();
       createPageLink(tableName);
     }
-  })
+  });
 
-  pagination.on('click', '.previous', function(){
+  pagination.on('click', '.previous', function () {
     pagination.empty();
     page = parseInt($(this).attr('id'));
-    if(tableName === 'location'){
+    if (tableName === 'location') {
       loadLocationTable();
       createPageLink(tableName);
     }
-  })
+  });
 
   const loadLocationTable = async () => {
     const selectField = ['value'];
-    const result = await $.get('/locations',{ page: page, per_page: 6});
+    const result = await $.get('/locations', { page: page, per_page: 6 });
     console.log(result);
     pageCount = result.page_count;
     const table = $('#location table');
@@ -78,12 +78,9 @@ $(document).ready(() => {
     });
     table.empty();
     table.append(
-      `<thead><tr><th>ID</th>${$.map(
-        selectField,
-        (value) => {
-          return `<th>${value}</th>`;
-        }
-      )}<th>action</th></tr></thead>`,
+      `<thead><tr><th>ID</th>${$.map(selectField, (value) => {
+        return `<th>${value}</th>`;
+      })}<th>action</th></tr></thead>`,
       tbody
     );
     return pageCount;
@@ -100,10 +97,10 @@ $(document).ready(() => {
     // }
   };
 
-  async function createPageLink(tableName){
-    if(tableName === 'location'){
+  async function createPageLink(tableName) {
+    if (tableName === 'location') {
       pageCount = await loadLocationTable();
-    }else if(tableName === 'customer'){
+    } else if (tableName === 'customer') {
       pageCount = await loadUserTable();
     }
     var previous = '';
@@ -111,25 +108,25 @@ $(document).ready(() => {
     var pageLink = '';
     var page_array = [];
 
-    if(pageCount > 4){
-      if(page < 5){
-        for(let count = 1; count <= 5;count++){
+    if (pageCount > 4) {
+      if (page < 5) {
+        for (let count = 1; count <= 5; count++) {
           page_array.push(count);
         }
         page_array.push('...');
         page_array.push(pageCount);
-      }else{
+      } else {
         var end = pageCount - 5;
-        if(page > end){
+        if (page > end) {
           page_array.push(1);
           page_array.push('...');
-          for(let count = end; count <= pageCount;count++){
+          for (let count = end; count <= pageCount; count++) {
             page_array.push(count);
           }
-        }else{
+        } else {
           page_array.push(1);
           page_array.push('...');
-          for(let count = page - 1; count <= parseInt(page) + 1; count++){
+          for (let count = page - 1; count <= parseInt(page) + 1; count++) {
             console.log(count <= page + 1);
             page_array.push(count);
           }
@@ -137,21 +134,20 @@ $(document).ready(() => {
           page_array.push(pageCount);
         }
       }
-    }else{
-      for(let count = 1; count <= pageCount;count++){
+    } else {
+      for (let count = 1; count <= pageCount; count++) {
         page_array.push(count);
       }
     }
-    for(let count = 0; count < page_array.length; count++){
-      if(page == page_array[count]){
+    for (let count = 0; count < page_array.length; count++) {
+      if (page == page_array[count]) {
         pageLink += `<li>
           <a class="pagination-link active" href="#">${page_array[count]}</a>
         </li>`;
         var previous_id = page_array[count] - 1;
-        if(previous_id > 0){
+        if (previous_id > 0) {
           previous += `<li><a class="previous" id="${previous_id}" href="#">Previous</a></li>`;
-        }else
-        {
+        } else {
           previous += `
           <li >
             <a class="previous disable" href="#">Previous</a>
@@ -160,20 +156,19 @@ $(document).ready(() => {
         }
 
         var next_id = page_array[count] + 1;
-        if(next_id >= pageCount){
+        if (next_id >= pageCount) {
           next += `
           <li >
             <a class="next disable" href="#">Next</a>
           </li>
           `;
-        }else
-        {
+        } else {
           next += `<li><a class="next" id="${next_id}" href="#">Next</a></li>`;
         }
-      }else{
-        if(page_array[count] == '...'){
+      } else {
+        if (page_array[count] == '...') {
           pageLink += `<li><a class="pagination-link disable" href="#">...</a></li>`;
-        }else{
+        } else {
           pageLink += `<li><a class="pagination-link" href="#">${page_array[count]}</a></li>`;
         }
       }
@@ -301,6 +296,7 @@ $(document).ready(() => {
   function showDialog(actionType, tableName, currentRowId, data) {
     let dialog = $(`#${dialogID}`).find('.dialog');
     let confirmButton = dialog.find('button[type="submit"]');
+    confirmButton.unbind();
     if (actionType === 'delete') {
       confirmButton.on('click', async () => {
         const res = await $.ajax({
@@ -340,6 +336,7 @@ $(document).ready(() => {
     } else if (actionType === 'add') {
       if (tableName === 'locations') {
         confirmButton.on('click', async () => {
+          console.log(dialog, dialog.find('input[name=value]'));
           const res = await $.post('/locations', {
             value: dialog.find('input[name=value]').val(),
           });
@@ -372,7 +369,7 @@ $(document).ready(() => {
   };
 
   const loadUserTable = async () => {
-    const res = await $.get('/users', { page: page, per_page: 6});
+    const res = await $.get('/users', { page: page, per_page: 6 });
     console.log(res);
     const userTable = $('#user_table');
     const userTbody = userTable.find('tbody');
