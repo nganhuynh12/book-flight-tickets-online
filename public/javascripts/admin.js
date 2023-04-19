@@ -6,7 +6,10 @@ $(document).ready(() => {
   const updateFlightForm = $('#update-flight-form');
   const btnCloseDialog = $('.btn-close-dialog');
   const btnAddLocation = $('#btn-add-location');
-  const pagination = $('.pagination-list');
+  const paginationLocation = $('#pagination-location-list');
+  const paginationCustomer = $('#pagination-customer-list');
+  const paginationTicket = $('#pagination-ticket-list');
+  const paginationFlight = $('#pagination-flight-list');
   let formName = '';
   let dialogID = '';
   let locationName = '';
@@ -25,32 +28,44 @@ $(document).ready(() => {
     });
   });
 
-  pagination.on('click', '.pagination-link', function () {
-    pagination.empty();
+  $('body').on('click', '.pagination-link', function () {
+    paginationLocation.empty();
+    paginationCustomer.empty();
     $('.pagination-link').removeClass('active');
     $(this).addClass('active');
     page = $(this).html();
     if (tableName === 'location') {
       loadLocationTable();
       createPageLink(tableName);
+    }else if(tableName === 'customer'){
+      loadUserTable();
+      createPageLink(tableName);
     }
   });
 
-  pagination.on('click', '.next', function () {
-    pagination.empty();
+  $('body').on('click', '.next', function () {
+    paginationLocation.empty();
+    paginationCustomer.empty();
     page = parseInt($(this).attr('id'));
     console.log(tableName);
     if (tableName === 'location') {
       loadLocationTable();
       createPageLink(tableName);
+    }else if(tableName === 'customer'){
+      loadUserTable();
+      createPageLink(tableName);
     }
   });
 
-  pagination.on('click', '.previous', function () {
-    pagination.empty();
+  $('body').on('click', '.previous', function () {
+    paginationLocation.empty();
+    paginationCustomer.empty();
     page = parseInt($(this).attr('id'));
     if (tableName === 'location') {
       loadLocationTable();
+      createPageLink(tableName);
+    }else if(tableName === 'customer'){
+      loadUserTable();
       createPageLink(tableName);
     }
   });
@@ -58,7 +73,6 @@ $(document).ready(() => {
   const loadLocationTable = async () => {
     const selectField = ['value'];
     const result = await $.get('/locations', { page: page, per_page: 6 });
-    console.log(result);
     pageCount = result.page_count;
     const table = $('#location table');
     const tbody = $('<tbody></tbody>');
@@ -146,11 +160,11 @@ $(document).ready(() => {
         </li>`;
         var previous_id = page_array[count] - 1;
         if (previous_id > 0) {
-          previous += `<li><a class="previous" id="${previous_id}" href="#">Previous</a></li>`;
+          previous += `<li><a class="previous" id="${previous_id}" href="#">Trước</a></li>`;
         } else {
           previous += `
           <li >
-            <a class="previous disable" href="#">Previous</a>
+            <a class="previous disable" href="#">Trước</a>
           </li>
           `;
         }
@@ -159,11 +173,11 @@ $(document).ready(() => {
         if (next_id >= pageCount) {
           next += `
           <li >
-            <a class="next disable" href="#">Next</a>
+            <a class="next disable" href="#">Sau</a>
           </li>
           `;
         } else {
-          next += `<li><a class="next" id="${next_id}" href="#">Next</a></li>`;
+          next += `<li><a class="next" id="${next_id}" href="#">Sau</a></li>`;
         }
       } else {
         if (page_array[count] == '...') {
@@ -175,8 +189,14 @@ $(document).ready(() => {
     }
 
     var pageList = previous + pageLink + next;
-    var container = $('.pagination-list').append(pageList);
-    $('.pagination-container').append(container);
+    if (tableName === 'location') {
+      var container = $('#pagination-location-list').append(pageList);
+      $('#pagination-location-container').append(container);
+    } else if (tableName === 'customer') {
+      var container = $('#pagination-customer-list').append(pageList);
+      $('#pagination-customer-container').append(container);
+    }
+    
     console.log(page_array);
   }
 
@@ -202,14 +222,24 @@ $(document).ready(() => {
     console.log(tabName);
     if (tabName === 'location') {
       tableName = 'location';
-      pagination.empty();
+      page = 1;
+      paginationLocation.empty();
       loadLocationTable();
       createPageLink(tableName);
     } else if (tabName === 'flight') {
+      tableName = 'flight';
+      page = 1;
       loadFlightTable();
     } else if (tabName === 'customer') {
       tableName = 'customer';
+      page = 1;
+      paginationCustomer.empty();
       loadUserTable();
+      createPageLink(tableName);
+    }else if (tabName === 'ticket') {
+      tableName = 'ticket';
+      page = 1;
+      loadTicketTable();
     }
   };
 
@@ -238,6 +268,8 @@ $(document).ready(() => {
       var customerName = currentRow.find('td:eq(1)').html();
       $('#customerName').html(customerName);
       showDialog('delete', 'users', currentRowId);
+    }else if (dialogID.includes('ticket')) {
+      showDialog('delete', 'tickets', currentRowId);
     }
   });
 
@@ -309,6 +341,8 @@ $(document).ready(() => {
             loadLocationTable();
           } else if (tableName === 'users') {
             loadUserTable();
+          }else if (tableName === 'tickets') {
+            loadTicketTable();
           }
           dialog.removeClass('show');
           $(`#${dialogID}`).removeClass('show');
@@ -361,8 +395,6 @@ $(document).ready(() => {
     document.getElementById(dialogID).classList.remove('show');
   }
 
-  /* Chỉnh sửa thông tin chuyến bay */
-
   const loadFlightTable = async () => {
     const res = await $.get('/flights');
     console.log(res);
@@ -370,12 +402,13 @@ $(document).ready(() => {
 
   const loadUserTable = async () => {
     const res = await $.get('/users', { page: page, per_page: 6 });
-    console.log(res);
+    pageCount = res.page_count;
+    const userList = res.rows;
     const userTable = $('#user_table');
     const userTbody = userTable.find('tbody');
     userTbody.empty();
 
-    res.forEach((user, index) => {
+    userList.forEach((user, index) => {
       userTbody.append(`<tr id=${user.id}>
         <td>${index}</td>  
         <td>${user.username}</td>
@@ -388,5 +421,33 @@ $(document).ready(() => {
         </td> 
       </tr>`);
     });
+    return pageCount;
+  };
+
+  const loadTicketTable = async () => {
+    const res = await $.get('/tickets');
+    console.log(res);
+    // pageCount = res.page_count;
+    // const ticketList = res.rows;
+    const ticketTable = $('#ticket_table');
+    const ticketTbody = ticketTable.find('tbody');
+    ticketTbody.empty();
+
+    res.forEach((ticket, index) => {
+      ticketTbody.append(`<tr id=${ticket.id}>
+        <td>${index}</td>  
+        <td>${ticket.userId}</td>
+        <td>${ticket.flightId}</td>
+        <td>${ticket.type}</td>
+        <td>${ticket.luggageType}</td>
+        <td>${ticket.seatId}</td>
+        <td>${ticket.price}</td>
+       <td>
+          <button class='btn-delete' id="btn-delete-ticket"><span class='fa fa-trash'></span></button>
+        </td> 
+      </tr>`);
+    });
   };
 });
+
+

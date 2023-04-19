@@ -553,7 +553,7 @@ input:focus {
   width: 47.5%;
 }
 
-.pagination-container {
+#pagination-location-container, #pagination-customer-container, #pagination-ticket-container, #pagination-flight-container {
   margin-top: 25px;
   display: flex;
   flex-direction: row;
@@ -561,7 +561,7 @@ input:focus {
   align-items: center;
 }
 
-.pagination-list {
+#pagination-location-list, #pagination-customer-list, #pagination-ticket-list, #pagination-flight-list{
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -569,7 +569,7 @@ input:focus {
   list-style: none;
 }
 
-.pagination-list li {
+#pagination-location-list li, #pagination-customer-list li, #pagination-ticket-list li, #pagination-flight-list li{
   margin: 0 10px;
 }
 
