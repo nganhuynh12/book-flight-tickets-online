@@ -334,7 +334,6 @@ $(document).ready(() => {
       const arriveLocationId = addFlightForm.find('#destination').val();
       const basePrice = addFlightForm.find('#flight-price').val();
       const numSeat = addFlightForm.find('#numSeat').val();
-      console.log('test');
 
       const res = await $.post('/flights', {
         startTime,

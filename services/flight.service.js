@@ -27,7 +27,7 @@ module.exports = class flightService extends baseService {
         delete option[key];
       }
     }
-    console.log(option);
+
     return await this.model.findAll({
       include: [
         { model: Location, as: 'startLocation' },

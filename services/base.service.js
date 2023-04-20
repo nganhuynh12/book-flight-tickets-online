@@ -16,6 +16,7 @@ class baseService {
     if (page !== undefined && per_page !== undefined) {
       const offset = (page - 1) * per_page;
       const limit = per_page;
+      console.log(offset, limit);
 
       const res = await this.model.findAndCountAll({
         offset,
