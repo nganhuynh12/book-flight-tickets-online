@@ -20,10 +20,29 @@ module.exports = (sequelize, Sequelize) => {
         type: Sequelize.INTEGER,
         allowNull: false,
       },
-      luggageType: {
+      luggagePrice: {
         type: Sequelize.INTEGER,
         allowNull: false,
         default: 0,
+      },
+      email: {
+        type: Sequelize.STRING,
+        allowNull: false,
+        unique: 'email',
+      },
+      username: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
+      gender: {
+        type: Sequelize.BOOLEAN,
+        defaultValue: 0,
+      },
+      phone: {
+        type: Sequelize.STRING,
+      },
+      address: {
+        type: Sequelize.STRING,
       },
     },
     { sequelize, modelName: 'ticket' }

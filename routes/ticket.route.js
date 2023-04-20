@@ -12,7 +12,6 @@ router.post(
   body('type').exists().notEmpty().isIn([0, 1]),
   body('price').exists().notEmpty().isFloat(),
   body('flightId').exists().notEmpty(),
-  body('userId').exists().notEmpty(),
   validationPipe,
   ticketController.add.bind(ticketController)
 );

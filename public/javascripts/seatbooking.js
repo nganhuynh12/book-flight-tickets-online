@@ -34,6 +34,13 @@ $(document).ready(() => {
               }
               event.target.classList.toggle('selected');
             }
+            seatPriceList = seatList.map((res, seat) => {
+              if (seat <= 8 * 3 + 1) {
+                return 300000;
+              } else {
+                return 150000;
+              }
+            }, 0);
             seatPrice = seatList.reduce((res, seat) => {
               if (seat <= 8 * 3 + 1) {
                 return res + 300000;
@@ -57,6 +64,7 @@ $(document).ready(() => {
 
   $('.button-continue').on('click', () => {
     ticketData.seatPrice = seatPrice;
+    ticketData.seatList = seatList;
 
     window.localStorage.setItem('ticketData', JSON.stringify(ticketData));
     window.location = '/inforbooking';

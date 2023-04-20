@@ -1,133 +1,163 @@
-<!DOCTYPE html>
-<html lang="en">
+<html lang='en'>
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/stylesheets/inforbooking.css">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-</head>
+  <head>
+    <meta charset='UTF-8' />
+    <meta http-equiv='X-UA-Compatible' content='IE=edge' />
+    <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+    <link rel='stylesheet' href='/stylesheets/inforbooking.css' />
+    <link
+      href='https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css'
+      rel='stylesheet'
+    />
+    <script
+      src='https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js'
+    ></script>
+  </head>
 
-<body>
-  <br>
+  <body>
+    <input id='userId' value='{{data.userId}}' />
+    <br />
 
-  <div class="progressbar-wrapper">
-    <ul class="progressbar">
-      <li class="active">Chuyến bay</li>
-      <li class="active">Hành lý</li>
-      <li class="active">Chổ ngồi</li>
-      <li class="active">Điền thông tin & thanh toán</li>
-    </ul>
-  </div>
+    <div class='progressbar-wrapper'>
+      <ul class='progressbar'>
+        <li class='active'>Chuyến bay</li>
+        <li class='active'>Hành lý</li>
+        <li class='active'>Chổ ngồi</li>
+        <li class='active'>Điền thông tin & thanh toán</li>
+      </ul>
+    </div>
 
-  <h1>Điền thông tin & thanh toán</h1>
+    <h1>Điền thông tin & thanh toán</h1>
 
-  <form>
-    <div class="container">
-      <div class="row mt-3">
-        <h4>Thông tin khách hàng</h4>
-        <div class="col-lg-6 mt-3">
-          Nhập họ và tên đệm<br>
-          <input type="text" class="input-control" placeholder="Nhập họ và tên đệm" name="firstname" value="{{data.firstName}}"/>
+    <form>
+      <div class='container'>
+        <div class='row mt-3'>
+          <h4>Thông tin khách hàng</h4>
+          <div class='col-lg-6 mt-3'>
+            Nhập họ và tên đệm<br />
+            <input
+              type='text'
+              class='input-control'
+              placeholder='Nhập họ và tên đệm'
+              name='firstname'
+              value='{{data.firstName}}'
+            />
+          </div>
+          <div class='col-lg-6 mt-3'>
+            Nhập Tên<br />
+            <input
+              type='text'
+              class='input-control'
+              placeholder='Nhập tên'
+              name='lastname'
+              value='{{data.lastName}}'
+            />
+          </div>
         </div>
-        <div class="col-lg-6 mt-3">
-          Nhập Tên<br>
-          <input type="text" class="input-control" placeholder="Nhập tên" name="lastname" value="{{data.lastName}}" />
+        <div>
+          Chọn giới tính
+          <br />
+          <select id='gender' name='gender'>
+            <option></option>
+            {{#if data.gender}}
+              <option value='female'>Nữ</option>
+              <option value='male' selected>Nam</option>
+            {{else}}
+              <option value='female' selected>Nữ</option>
+              <option value='male'>Nam</option>
+            {{/if}}
+          </select>
         </div>
-      </div>
-      <div>
-        Chọn giới tính <br>
-        <select id="gender" name="gender">
-          <option></option>
-{{#if data.gender}}
-          <option value="female" >Nữ</option>
-          <option value="male" selected>Nam</option>
-{{else}}
-          <option value="female" selected>Nữ</option>
-          <option value="male">Nam</option>
-{{/if}}
-        </select>
-      </div>
-      <br>
-      <div>
-        Nhập email<br>
-        <input type="email" class="input-control" placeholder="Nhập email" name="email"  value="{{data.email}}"/>
-      </div>
-      <div>
-        Nhập số điện thoại<br>
-        <input type="text" class="input-control" placeholder="Nhập số điện thoại" name="phonenumber"  value="{{data.phone}}"/>
-      </div>
-      <div style="margin-top:15px">
-        <input type="checkbox" class="check-btn" name="accept" id="accept"><span> Tôi chọn thông tin này làm thông tin
-          liên hệ</span></input><br>
-      </div>
+        <br />
+        <div>
+          Nhập email<br />
+          <input
+            type='email'
+            class='input-control'
+            placeholder='Nhập email'
+            name='email'
+            value='{{data.email}}'
+          />
+        </div>
+        <div>
+          Nhập số điện thoại<br />
+          <input
+            type='text'
+            class='input-control'
+            placeholder='Nhập số điện thoại'
+            name='phonenumber'
+            value='{{data.phone}}'
+          />
+        </div>
 
-      <div class="row mt-6">
-        <h4>Thông tin liên hệ</h4>
-        <div class="col-lg-6 mt-3">
-          Nhập họ và tên đệm<br>
-          <input type="text" class="input-control" placeholder="Nhập họ và tên đệm" name="firstname" value="{{data.firstName}}"/>
+        <div>
+          Nhập địa chỉ<br />
+          <input
+            type='text'
+            class='input-control'
+            placeholder='Nhập địa chỉ'
+            name='address'
+            value='{{data.address}}'
+          />
         </div>
-        <div class="col-lg-6 mt-3">
-          Nhập Tên<br>
-          <input type="text" class="input-control" placeholder="Nhập tên" name="lastname"  value="{{data.lastName}}"/>
+
+        <div class='card' style='margin-top: 50px;'>
+          <div class='card-body'>
+            <a
+              href='#'
+              class='btn-continue'
+              data-bs-toggle='modal'
+              data-bs-target='#payment'
+            >Thanh toán</a>
+            <span class='price'>1.150.000 VNĐ</span>
+          </div>
         </div>
       </div>
-      <div>
-        Nhập email<br>
-        <input type="email" class="input-control" placeholder="Nhập email" name="email" value="{{data.email}}"/>
-      </div>
-      <div>
-        Nhập số điện thoại<br>
-        <input type="text" class="input-control" placeholder="Nhập số điện thoại" name="phonenumber" value="{{data.phone}}" />
-      </div>
-      <div class="card" style="margin-top: 50px;">
-        <div class="card-body">
-          <a href="#" class="btn-continue" data-bs-toggle="modal" data-bs-target="#payment">Thanh toán</a>
-          <span class="price">1.150.000 VNĐ</span>
+    </form>
+
+    <div class='modal' id='payment'>
+      <div class='modal-dialog'>
+        <div class='modal-content'>
+          <div class='modal-header'>
+            <h4 class='modal-title'>Tóm tắt thanh toán</h4>
+            <button
+              type='button'
+              class='btn-close'
+              data-bs-dismiss='modal'
+            ></button>
+          </div>
+          <div class='modal-body'>
+            <h5 class='modal-title' style='margin-bottom: 30px;'>Chuyến bay từ
+              Tp. Hồ Chí Minh đến Đà Nẵng –Thứ Bảy 24 Tháng Mười Hai 2022</h5>
+            <div class='inf-modal'>
+              <span>Giá vé</span>
+              <span class='value' id='basePrice'>1.150.000 VNĐ</span>
+            </div>
+            <div class='inf-modal'>
+              <span>Hành lý ký gửi</span>
+              <span class='value' id='luggagePrice'>600.000 VNĐ</span>
+            </div>
+            <div class='inf-modal'>
+              <span>Chỗ ngồi</span>
+              <span class='value' id='seatPrice'>700.000 VNĐ</span>
+            </div>
+          </div>
+          <div class='modal-footer'>
+            <button
+              type='button'
+              class='btn btn-danger'
+              data-bs-dismiss='modal'
+            >Close</button>
+            <button
+              type='button'
+              class='btn btn-success'
+              id='submitButton'
+            >Thanh toán</button>
+          </div>
         </div>
       </div>
     </div>
-  </form>
-
-  <div class="modal" id="payment">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h4 class="modal-title">Tóm tắt thanh toán</h4>
-          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-        </div>
-        <div class="modal-body">
-          <h5 class="modal-title" style="margin-bottom: 30px;">Chuyến bay từ Tp. Hồ Chí Minh đến Đà Nẵng –Thứ Bảy 24
-            Tháng Mười Hai 2022</h5>
-          <div class="inf-modal">
-            <span>Giá vé</span>
-            <span class="value" id="basePrice">1.150.000 VNĐ</span>
-          </div>
-          <div class="inf-modal">
-            <span>Hành lý ký gửi</span>
-            <span class="value" id="luggagePrice">600.000 VNĐ</span>
-          </div>
-          <div class="inf-modal">
-            <span>Chỗ ngồi</span>
-            <span class="value" id="seatPrice">700.000 VNĐ</span>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-          <a href="#" type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#success">Thanh
-            toán</a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-
-
-<script src="/javascripts/inforbooking.js"></script>
-</body>
-
+    <script src='/javascripts/inforbooking.js'></script>
+  </body>
 
 </html>

@@ -15,7 +15,7 @@ searchFlightButton.on('click', async () => {
 
   userTable.find('.text-center').eq(1).append(`
   <td>${ticket.userId}</td>
-  <td>${ticket.user.username}</td>
+  <td>${ticket.username}</td>
   <td>${ticket.type ? 'Thương gia' : 'Phổ thông'}</td>
   <td>${Intl.NumberFormat('VND', { style: 'currency', currency: 'VND' }).format(
     ticket.price

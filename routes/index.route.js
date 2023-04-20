@@ -22,7 +22,7 @@ router.get('/aboutus', (req, res, next) => {
   res.render('aboutus');
 });
 
-router.get('/home', localAuthGuard, (req, res, next) => {
+router.get('/home', (req, res, next) => {
   res.render('home');
 });
 
@@ -30,9 +30,8 @@ router.get('/searchticket', (req, res, next) => {
   res.render('searchticket');
 });
 
-router.get('/profile/:id', async (req, res, next) => {
-  const userData = (await User.findByPk(req.params.id)).dataValues;
-  console.log(userData);
+router.get('/profile', localAuthGuard, async (req, res, next) => {
+  const userData = (await User.findByPk(req.user.id)).dataValues;
 
   const lastName = userData.username.slice(userData.username.lastIndexOf(' '));
   const firstName = userData.username.slice(
@@ -55,22 +54,42 @@ router.get('/profile/:id', async (req, res, next) => {
 });
 
 router.get('/inforbooking', async (req, res, next) => {
-  const userData = (await User.findByPk('47ee153f-f5af-4753-a16a-9893fac988ea'))
-    .dataValues;
-  console.log(userData);
+  if ('user' in req) {
+    const userData = (
+      await User.findByPk('47ee153f-f5af-4753-a16a-9893fac988ea')
+    ).dataValues;
 
-  const lastName = userData.username.slice(userData.username.lastIndexOf(' '));
-  const firstName = userData.username.slice(
-    0,
-    userData.username.lastIndexOf(' ')
-  );
-  const gender = userData.gender;
-  const email = userData.email;
-  const phone = userData.phone;
-  const data = { firstName, lastName, gender, email, phone };
-  console.log(data.gender);
+    const lastName = userData.username.slice(
+      userData.username.lastIndexOf(' ')
+    );
+    const firstName = userData.username.slice(
+      0,
+      userData.username.lastIndexOf(' ')
+    );
+    const gender = userData.gender;
+    const email = userData.email;
+    const phone = userData.phone;
+    const data = {
+      firstName,
+      lastName,
+      gender,
+      email,
+      phone,
+      userId: req.user.id,
+    };
 
-  res.render('inforbooking', { data });
+    res.render('inforbooking', { data });
+  } else {
+    const data = {
+      firstName: '',
+      lastName: '',
+      gender: true,
+      email: '',
+      phone: '',
+      userId: '',
+    };
+    res.render('inforbooking', { data });
+  }
 });
 
 router.get('/searchflight', (req, res, next) => {
@@ -85,7 +104,7 @@ router.get('/signedluggage', (req, res, next) => {
   res.render('signedluggage');
 });
 
-router.get('/bookinghistory', async (req, res, next) => {
+router.get('/bookinghistory', localAuthGuard, async (req, res, next) => {
   const ticketDatas = (
     await Ticket.findAll({
       where: { userId: req.user.id },
@@ -112,6 +131,7 @@ router.get('/bookinghistory', async (req, res, next) => {
     return ticketData.dataValues;
   });
   console.log(ticketDatas[0]);
+
   res.render('bookinghistory', { ticketDatas, userId: req.user.id });
 });
 
