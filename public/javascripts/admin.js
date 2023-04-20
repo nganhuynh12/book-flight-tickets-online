@@ -10,6 +10,9 @@ $(document).ready(() => {
   const paginationCustomer = $('#pagination-customer-list');
   const paginationTicket = $('#pagination-ticket-list');
   const paginationFlight = $('#pagination-flight-list');
+  const departureSelect = $('#departure');
+  const destinationSelect = $('#destination');
+
   let formName = '';
   let dialogID = '';
   let locationName = '';
@@ -38,10 +41,10 @@ $(document).ready(() => {
     if (tableName === 'location') {
       loadLocationTable();
       createPageLink(tableName);
-    }else if(tableName === 'customer'){
+    } else if (tableName === 'customer') {
       loadUserTable();
       createPageLink(tableName);
-    }else if(tableName === 'ticket'){
+    } else if (tableName === 'ticket') {
       loadTicketTable();
       createPageLink(tableName);
     }
@@ -56,10 +59,10 @@ $(document).ready(() => {
     if (tableName === 'location') {
       loadLocationTable();
       createPageLink(tableName);
-    }else if(tableName === 'customer'){
+    } else if (tableName === 'customer') {
       loadUserTable();
       createPageLink(tableName);
-    }else if(tableName === 'ticket'){
+    } else if (tableName === 'ticket') {
       loadTicketTable();
       createPageLink(tableName);
     }
@@ -73,10 +76,10 @@ $(document).ready(() => {
     if (tableName === 'location') {
       loadLocationTable();
       createPageLink(tableName);
-    }else if(tableName === 'customer'){
+    } else if (tableName === 'customer') {
       loadUserTable();
       createPageLink(tableName);
-    }else if(tableName === 'ticket'){
+    } else if (tableName === 'ticket') {
       loadTicketTable();
       createPageLink(tableName);
     }
@@ -128,7 +131,7 @@ $(document).ready(() => {
       pageCount = await loadLocationTable();
     } else if (tableName === 'customer') {
       pageCount = await loadUserTable();
-    }else if (tableName === 'ticket'){
+    } else if (tableName === 'ticket') {
       pageCount = await loadTicketTable();
     }
     var previous = '';
@@ -209,11 +212,11 @@ $(document).ready(() => {
     } else if (tableName === 'customer') {
       var container = $('#pagination-customer-list').append(pageList);
       $('#pagination-customer-container').append(container);
-    }else if (tableName === 'ticket') {
+    } else if (tableName === 'ticket') {
       var container = $('#pagination-ticket-list').append(pageList);
       $('#pagination-ticket-container').append(container);
     }
-    
+
     console.log(page_array);
   }
 
@@ -253,7 +256,7 @@ $(document).ready(() => {
       paginationCustomer.empty();
       loadUserTable();
       createPageLink(tableName);
-    }else if (tabName === 'ticket') {
+    } else if (tabName === 'ticket') {
       tableName = 'ticket';
       page = 1;
       paginationTicket.empty();
@@ -287,7 +290,7 @@ $(document).ready(() => {
       var customerName = currentRow.find('td:eq(1)').html();
       $('#customerName').html(customerName);
       showDialog('delete', 'users', currentRowId);
-    }else if (dialogID.includes('ticket')) {
+    } else if (dialogID.includes('ticket')) {
       showDialog('delete', 'tickets', currentRowId);
     }
   });
@@ -311,9 +314,40 @@ $(document).ready(() => {
     }
   });
 
-  function showAddFlightForm() {
-    formName = '#' + addFlightForm.attr('id');
+  async function showAddFlightForm() {
+    const locationList = await $.get('/locations');
+
+    locationList.forEach(({ value, id }) => {
+      departureSelect.append(`<option value=${id}>${value}</option>`);
+      destinationSelect.append(`<option value=${id}>${value}</option>`);
+    });
+
     addFlightForm.css('display', 'block');
+    const submitButton = addFlightForm.find('button[type=submit]');
+    console.log(submitButton);
+
+    submitButton.on('click', async (event) => {
+      event.preventDefault();
+      const startTime = addFlightForm.find('#departure-time').val();
+      const arriveTime = addFlightForm.find('#arrival-time').val();
+      const startLocationId = addFlightForm.find('#departure').val();
+      const arriveLocationId = addFlightForm.find('#destination').val();
+      const basePrice = addFlightForm.find('#flight-price').val();
+      const numSeat = addFlightForm.find('#numSeat').val();
+      console.log('test');
+
+      const res = await $.post('/flights', {
+        startTime,
+        arriveTime,
+        startLocationId,
+        arriveLocationId,
+        basePrice,
+        numSeat,
+      });
+
+      console.log(res);
+    });
+
     setTimeout(function () {
       document.querySelector('#add-flight-form form').classList.add('show');
     }, 50);
@@ -360,7 +394,7 @@ $(document).ready(() => {
             loadLocationTable();
           } else if (tableName === 'users') {
             loadUserTable();
-          }else if (tableName === 'tickets') {
+          } else if (tableName === 'tickets') {
             loadTicketTable();
           }
           dialog.removeClass('show');
@@ -469,5 +503,3 @@ $(document).ready(() => {
     return pageCount;
   };
 });
-
-
