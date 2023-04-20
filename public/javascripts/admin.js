@@ -31,6 +31,7 @@ $(document).ready(() => {
   $('body').on('click', '.pagination-link', function () {
     paginationLocation.empty();
     paginationCustomer.empty();
+    paginationTicket.empty();
     $('.pagination-link').removeClass('active');
     $(this).addClass('active');
     page = $(this).html();
@@ -40,12 +41,16 @@ $(document).ready(() => {
     }else if(tableName === 'customer'){
       loadUserTable();
       createPageLink(tableName);
+    }else if(tableName === 'ticket'){
+      loadTicketTable();
+      createPageLink(tableName);
     }
   });
 
   $('body').on('click', '.next', function () {
     paginationLocation.empty();
     paginationCustomer.empty();
+    paginationTicket.empty();
     page = parseInt($(this).attr('id'));
     console.log(tableName);
     if (tableName === 'location') {
@@ -54,18 +59,25 @@ $(document).ready(() => {
     }else if(tableName === 'customer'){
       loadUserTable();
       createPageLink(tableName);
+    }else if(tableName === 'ticket'){
+      loadTicketTable();
+      createPageLink(tableName);
     }
   });
 
   $('body').on('click', '.previous', function () {
     paginationLocation.empty();
     paginationCustomer.empty();
+    paginationTicket.empty();
     page = parseInt($(this).attr('id'));
     if (tableName === 'location') {
       loadLocationTable();
       createPageLink(tableName);
     }else if(tableName === 'customer'){
       loadUserTable();
+      createPageLink(tableName);
+    }else if(tableName === 'ticket'){
+      loadTicketTable();
       createPageLink(tableName);
     }
   });
@@ -116,6 +128,8 @@ $(document).ready(() => {
       pageCount = await loadLocationTable();
     } else if (tableName === 'customer') {
       pageCount = await loadUserTable();
+    }else if (tableName === 'ticket'){
+      pageCount = await loadTicketTable();
     }
     var previous = '';
     var next = '';
@@ -195,6 +209,9 @@ $(document).ready(() => {
     } else if (tableName === 'customer') {
       var container = $('#pagination-customer-list').append(pageList);
       $('#pagination-customer-container').append(container);
+    }else if (tableName === 'ticket') {
+      var container = $('#pagination-ticket-list').append(pageList);
+      $('#pagination-ticket-container').append(container);
     }
     
     console.log(page_array);
@@ -239,7 +256,9 @@ $(document).ready(() => {
     }else if (tabName === 'ticket') {
       tableName = 'ticket';
       page = 1;
+      paginationTicket.empty();
       loadTicketTable();
+      createPageLink(tableName);
     }
   };
 
@@ -425,15 +444,15 @@ $(document).ready(() => {
   };
 
   const loadTicketTable = async () => {
-    const res = await $.get('/tickets');
+    const res = await $.get('/tickets', { page: page, per_page: 6 });
     console.log(res);
-    // pageCount = res.page_count;
-    // const ticketList = res.rows;
+    pageCount = res.page_count;
+    const ticketList = res.rows;
     const ticketTable = $('#ticket_table');
     const ticketTbody = ticketTable.find('tbody');
     ticketTbody.empty();
 
-    res.forEach((ticket, index) => {
+    ticketList.forEach((ticket, index) => {
       ticketTbody.append(`<tr id=${ticket.id}>
         <td>${index}</td>  
         <td>${ticket.userId}</td>
@@ -447,6 +466,7 @@ $(document).ready(() => {
         </td> 
       </tr>`);
     });
+    return pageCount;
   };
 });
 
