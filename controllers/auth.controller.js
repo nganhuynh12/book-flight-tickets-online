@@ -4,20 +4,25 @@ class authController {
   }
 
   show(req, res, next) {
-    return res.render('auth');
+    return res.render('auth', { layout: false });
   }
 
   async register(req, res, next) {
     try {
       const result = await this.service.register(req.body);
       if (result.success) {
-        return res.redirect('/test');
+        return res.redirect('/home');
       } else {
-        return res.render('auth', { error_message: res.message });
+        return res.render('auth', {
+          layout: false,
+          error_message: res.message,
+        });
       }
     } catch (error) {
-      console.error(error);
-      return res.render('auth', { error_message: error.message });
+      return res.render('auth', {
+        layout: false,
+        error_message: error.message,
+      });
     }
   }
 
