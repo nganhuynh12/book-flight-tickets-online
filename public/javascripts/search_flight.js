@@ -28,11 +28,14 @@ $(document).ready(async () => {
       startTime,
     });
 
-    console.log(flightList);
-
     const nextPage = (event) => {
       const basePrice = $(event.target).parent().find('#base_price').text();
-      const ticketData = { basePrice };
+      let flight = flightList.filter((flight) => {
+        return flight.id == $(event.target).parent().attr('id');
+      });
+      flight = flight[0];
+      const ticketData = { basePrice, flight };
+      console.log(ticketData);
       window.localStorage.setItem('ticketData', JSON.stringify(ticketData));
       window.location = '/signedluggage';
     };
@@ -71,8 +74,8 @@ $(document).ready(async () => {
                 </div>
               </li>
             </div>
-            <div class="card-body">
-              <li>
+            <div class="card-body" >
+              <li id=${flight.id}>
                 <p class="flight-list" id="base_price">${flight.basePrice}</p>
                 <button class="btn-seedel-ticket" data-bs-toggle="modal" data-bs-target="#seedetail">Xem chi
                   tiết</button>
