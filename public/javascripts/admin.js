@@ -154,7 +154,7 @@ $(document).ready(() => {
         }
 
         var next_id = page_array[count] + 1;
-        if (next_id >= pageCount) {
+        if (next_id > pageCount) {
           next += `
           <li >
             <a class="next disable" href="#">Sau</a>
