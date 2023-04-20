@@ -7,7 +7,7 @@ const Location = require('../models/index').locations;
 const Flight = require('../models/index').flights;
 
 router.get('/', function (req, res, next) {
-  res.render('index');
+  res.render('home');
 });
 
 router.get('/faq', (req, res, next) => {
@@ -18,15 +18,11 @@ router.get('/admin', (req, res, next) => {
   res.render('admin');
 });
 
-router.get('/test', localAuthGuard, (req, res, next) => {
-  res.render('test');
-});
-
 router.get('/aboutus', (req, res, next) => {
   res.render('aboutus');
 });
 
-router.get('/home', (req, res, next) => {
+router.get('/home', localAuthGuard, (req, res, next) => {
   res.render('home');
 });
 
@@ -59,7 +55,8 @@ router.get('/profile/:id', async (req, res, next) => {
 });
 
 router.get('/inforbooking', async (req, res, next) => {
-  const userData = (await User.findByPk(req.user.id)).dataValues;
+  const userData = (await User.findByPk('47ee153f-f5af-4753-a16a-9893fac988ea'))
+    .dataValues;
   console.log(userData);
 
   const lastName = userData.username.slice(userData.username.lastIndexOf(' '));

@@ -31,7 +31,7 @@ router.post(
     .isLength({ min: 6, max: 20 }),
   passport.authenticate('local', {
     failureRedirect: '/auth',
-    successRedirect: '/test',
+    successRedirect: '/home',
   }),
   validationPipe,
   authController.login.bind(authController)
