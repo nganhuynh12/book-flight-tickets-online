@@ -6,15 +6,18 @@ const userTable = $('#userTable');
 searchFlightButton.on('click', async () => {
   const searchFlightInputValue = searchFlightInput.val();
   const ticket = await $.get(`/tickets/${searchFlightInputValue}`);
-  console.log(ticket);
+  const different =
+    new Date(ticket.flight.arriveTime).getTime() -
+    new Date(ticket.flight.startTime).getTime();
+  const hourDiff = different / (1000 * 3600);
+  const minuteDiff = (different - hourDiff * (1000 * 3600)) / 1000;
+  console.log(hourDiff, minuteDiff);
 
   userTable.find('.text-center').eq(1).append(`
   <td>${ticket.userId}</td>
   <td>${ticket.user.username}</td>
-  <td>2</td>
   <td>${ticket.type ? 'Thương gia' : 'Phổ thông'}</td>
   <td>${ticket.price}</td>
-	<td class="text-pay">Đã thanh toán</td> 
   `);
 
   flightDataTable.append(
@@ -27,7 +30,7 @@ searchFlightButton.on('click', async () => {
             <tr>
                 <td rowspan="2">
                     <b>${ticket.id}</b>
-                    <p>THỜI GIAN BAY: 1 tiếng 30 phút</p>
+                    <p>THỜI GIAN BAY: ${hourDiff} tiếng ${minuteDiff} phút</p>
                 </td>
                 <td class="none-border-right">
                     <h6>${ticket.flight.startLocation.value}</h6>
