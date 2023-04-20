@@ -11,59 +11,12 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg navbar-dark">
-      <div class="container-fluid">
-          <a class="navbar-brand" href="home.html" style = "font-size: 30px;">SVO Airlines</a>
-          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav ms-auto">
-              <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="home.html"> Trang chủ</a>
-              </li>
-              <li class="nav-item aria-current">
-                <a class="nav-link" href="search_flight.html"> Chuyến bay</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="history.html">Tra cứu</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="login.html"> Đăng nhập</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link active" href="help.html"> Trợ giúp</a>
-              </li>
-            </ul>
-          </div>
-      </div>
-    </nav> 
     <img src = "/images/bannerhome.png"  alt="" width="100%">
     <div class = "container mt-3">
       <div class = "card w-50 mx-auto searchCard">
         <div class = "header">VÉ MÁY BAY</div>
         <div class = "card-body radio">
-          <div class= "row">
-            <div class = "col-lg-6">
-              <input type="radio" id="radio1" name="ticket_type">&nbsp;Khứ hồi</span>
-            </div>
-            <div class = "col-lg-6">
-              <input type="radio" id="radio2" name="ticket_type"><span>&nbsp;Một chiều</span>
-            </div>
-          </div>
           <div class = "row mt-3">
-            <div class = "col-lg-4 ">
-              <span>&nbsp;Người lớn:</span>
-              <input aria-label="quantity" class="input-qty passenger" max="20" min="0" name="numberOfPassenger" type="number" value="0">
-            </div>
-            <div class = "col-lg-4">
-              <span>Trẻ em:</span>
-              <input aria-label="quantity" class="input-qty passenger"  max="50" min="0" name="numberOfPassenger" type="number" value="0">
-            </div>
-                <div class = "col-lg-4">
-                  <span>Em bé:</span>
-                  <input aria-label="quantity" class="input-qty passenger" max="50" min="0" name="numberOfPassenger" type="number" value="0">
-            </div>
           </div>
           <div class = "row mt-3 mb-2">
             <div class = "col-lg-6">
@@ -357,81 +310,6 @@
           </div>
         </div>
       </div>
-      <footer class="bg-dark text-center text-lg-start text-white mt-5">
-        <div class="container p-4">
-          <div class="row">
-            <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-              <h6 class="text-uppercase">về chúng tôi</h6>
-              <ul class="list-unstyled mb-0">
-                <li>
-                  <a href="aboutus.html" class="text-white">Tập đoàn</a>
-                </li>
-                <li>
-                  <a href="aboutus.html" class="text-white">Đội bay</a>
-                </li>
-                <li>
-                  <a href="aboutus.html" class="text-white">Cam kết với khách hàng</a>
-                </li>
-                <li>
-                  <a href="aboutus.html" class="text-white">Các điều kiện và điều khoản</a>
-                </li>
-              </ul>
-            </div>
-            <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-              <h6 class="text-uppercase">Sản phẩm</h6>
-    
-              <ul class="list-unstyled">
-                <li>
-                  <i class="fa fa-ticket" aria-hidden="true"></i><a href="search_flight.html" class="text-white"> Vé máy bay</a>
-                </li>
-              </ul>
-            </div>
-            <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-              <h6 class="text-uppercase">Đối tác thanh toán</h6>
-              <ul class="list-unstyled">
-                <li>
-                    <div>
-                      VISA
-                  </a>
-                </li>
-                <li>
-                    <div>
-                      MASTERCARD
-                    </div>
-                </li>
-                <li>
-                    <div>
-                      MOMO
-                    </div>
-                </li>
-                <li>
-                    <div>
-                      ZALOPAY
-                    </div>
-                </li>
-              </ul>
-            </div>
-            <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-              <h6 class="text-uppercase">liên hệ</h6>    
-              <ul class="list-unstyled">
-                <li>
-                  <p class="text-white"><i class="fa fa-phone" aria-hidden="true"></i> SDT: 0909.291.291</p>
-                </li>
-                <li>
-                  <p class="text-white"><i class="fa fa-location-arrow" aria-hidden="true"></i> Email: svoairlines@gmail.com</p>
-                </li>
-                <li>
-                  <p class="text-white"><i class="fa fa-map-marker" aria-hidden="true"></i> Địa chỉ: Quận 7, TP. Hồ Chí Minh</p>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
-          © 2022 Copyright:
-          <a class="text-white" href="home.html">svoairlines.com.vn</a>
-        </div>
-    </footer>
     </body>
     <script>
       $(document).ready(function(){
