@@ -32,56 +32,38 @@ $(document).ready(() => {
   });
 
   $('body').on('click', '.pagination-link', function () {
-    paginationLocation.empty();
-    paginationCustomer.empty();
-    paginationTicket.empty();
     $('.pagination-link').removeClass('active');
     $(this).addClass('active');
     page = $(this).html();
     if (tableName === 'location') {
       loadLocationTable();
-      createPageLink(tableName);
     } else if (tableName === 'customer') {
       loadUserTable();
-      createPageLink(tableName);
     } else if (tableName === 'ticket') {
       loadTicketTable();
-      createPageLink(tableName);
     }
   });
 
   $('body').on('click', '.next', function () {
-    paginationLocation.empty();
-    paginationCustomer.empty();
-    paginationTicket.empty();
     page = parseInt($(this).attr('id'));
     console.log(tableName);
     if (tableName === 'location') {
       loadLocationTable();
-      createPageLink(tableName);
     } else if (tableName === 'customer') {
       loadUserTable();
-      createPageLink(tableName);
     } else if (tableName === 'ticket') {
       loadTicketTable();
-      createPageLink(tableName);
     }
   });
 
   $('body').on('click', '.previous', function () {
-    paginationLocation.empty();
-    paginationCustomer.empty();
-    paginationTicket.empty();
     page = parseInt($(this).attr('id'));
     if (tableName === 'location') {
       loadLocationTable();
-      createPageLink(tableName);
     } else if (tableName === 'customer') {
       loadUserTable();
-      createPageLink(tableName);
     } else if (tableName === 'ticket') {
       loadTicketTable();
-      createPageLink(tableName);
     }
   });
 
@@ -89,6 +71,7 @@ $(document).ready(() => {
     const selectField = ['value'];
     const result = await $.get('/locations', { page: page, per_page: 6 });
     pageCount = result.page_count;
+    const totalLocation = result.count;
     const table = $('#location table');
     const tbody = $('<tbody></tbody>');
     $.each(result.rows, (index, data) => {
@@ -112,28 +95,12 @@ $(document).ready(() => {
       })}<th>action</th></tr></thead>`,
       tbody
     );
-    return pageCount;
-    // if (locationData.length > 0) {
-    //   locationData.forEach((location, index) => {
-    //     $('<tr></tr>').html('td');
-    //     tbody.append(
-    //       `<tr>
-    //       <td>${index}</td>
-    //       <td>${location.value}</td>
-    //     </tr>`
-    //     );
-    //   });
-    // }
+    paginationLocation.empty();
+    createPageLink(tableName);
+    return totalLocation;
   };
 
   async function createPageLink(tableName) {
-    if (tableName === 'location') {
-      pageCount = await loadLocationTable();
-    } else if (tableName === 'customer') {
-      pageCount = await loadUserTable();
-    } else if (tableName === 'ticket') {
-      pageCount = await loadTicketTable();
-    }
     var previous = '';
     var next = '';
     var pageLink = '';
@@ -187,7 +154,7 @@ $(document).ready(() => {
         }
 
         var next_id = page_array[count] + 1;
-        if (next_id >= pageCount) {
+        if (next_id > pageCount) {
           next += `
           <li >
             <a class="next disable" href="#">Sau</a>
@@ -243,9 +210,7 @@ $(document).ready(() => {
     if (tabName === 'location') {
       tableName = 'location';
       page = 1;
-      paginationLocation.empty();
       loadLocationTable();
-      createPageLink(tableName);
     } else if (tabName === 'flight') {
       tableName = 'flight';
       page = 1;
@@ -253,15 +218,11 @@ $(document).ready(() => {
     } else if (tabName === 'customer') {
       tableName = 'customer';
       page = 1;
-      paginationCustomer.empty();
       loadUserTable();
-      createPageLink(tableName);
     } else if (tabName === 'ticket') {
       tableName = 'ticket';
       page = 1;
-      paginationTicket.empty();
       loadTicketTable();
-      createPageLink(tableName);
     }
   };
 
@@ -391,10 +352,25 @@ $(document).ready(() => {
         if (res.success) {
           if (tableName === 'locations') {
             loadLocationTable();
+            const count = await loadLocationTable();
+            if(count % 6 === 0){
+              page = count / 6;
+              loadLocationTable();
+            }
           } else if (tableName === 'users') {
             loadUserTable();
+            const count = await loadUserTable();
+            if(count % 6 === 0){
+              page = count / 6;
+              loadUserTable();
+            }
           } else if (tableName === 'tickets') {
             loadTicketTable();
+            const count = await loadTicketTable();
+            if(count % 6 === 0){
+              page = count / 6;
+              loadTicketTable();
+            }
           }
           dialog.removeClass('show');
           $(`#${dialogID}`).removeClass('show');
@@ -456,6 +432,7 @@ $(document).ready(() => {
     const res = await $.get('/users', { page: page, per_page: 6 });
     pageCount = res.page_count;
     const userList = res.rows;
+    const totalUser = res.count;
     const userTable = $('#user_table');
     const userTbody = userTable.find('tbody');
     userTbody.empty();
@@ -468,12 +445,15 @@ $(document).ready(() => {
         <td>${user.address}</td>
         <td>${user.phone}</td>
         <td>${user.gender === true ? 'Nam' : 'Nữ'}</td>
+        <td>${user.birthDay}</td>
        <td>
           <button class='btn-delete' id="btn-delete-customer"><span class='fa fa-trash'></span></button>
         </td> 
       </tr>`);
     });
-    return pageCount;
+    paginationCustomer.empty();
+    createPageLink(tableName);
+    return totalUser;
   };
 
   const loadTicketTable = async () => {
@@ -481,6 +461,7 @@ $(document).ready(() => {
     console.log(res);
     pageCount = res.page_count;
     const ticketList = res.rows;
+    const totalTicket = res.count;
     const ticketTable = $('#ticket_table');
     const ticketTbody = ticketTable.find('tbody');
     ticketTbody.empty();
@@ -490,7 +471,7 @@ $(document).ready(() => {
         <td>${index}</td>  
         <td>${ticket.userId}</td>
         <td>${ticket.flightId}</td>
-        <td>${ticket.type}</td>
+        <td>${ticket.type === true ? 'Thương gia' : 'Phổ Thông'}</td>
         <td>${ticket.luggageType}</td>
         <td>${ticket.seatId}</td>
         <td>${ticket.price}</td>
@@ -499,6 +480,8 @@ $(document).ready(() => {
         </td> 
       </tr>`);
     });
-    return pageCount;
+    paginationTicket.empty();
+    createPageLink(tableName);
+    return totalTicket;
   };
 });
