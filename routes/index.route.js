@@ -15,7 +15,7 @@ router.get('/faq', (req, res, next) => {
 });
 
 router.get('/admin', (req, res, next) => {
-  res.render('admin');
+  res.render('admin', { layout: 'plain' });
 });
 
 router.get('/aboutus', (req, res, next) => {
@@ -112,7 +112,7 @@ router.get('/bookinghistory', async (req, res, next) => {
     return ticketData.dataValues;
   });
   console.log(ticketDatas[0]);
-  res.render('bookinghistory', { ticketDatas });
+  res.render('bookinghistory', { ticketDatas, userId: req.user.id });
 });
 
 module.exports = router;
