@@ -5,16 +5,24 @@ $(document).ready(() => {
   const luggageType = $('input[name=luggage]');
   const priceSpan = $('span.price');
   let luggagePrice = 750000;
-  priceSpan.text(`${basePrice + luggagePrice} VNĐ`);
+  let luggagePriceText = Intl.NumberFormat('VND', {
+    style: 'currency',
+    currency: 'VND',
+  }).format(luggagePrice + basePrice);
+
+  priceSpan.text(`${luggagePriceText}`);
 
   luggageType.on('click', (event) => {
-    console.log(basePrice);
     luggagePrice = Number.parseInt(event.target.value) + basePrice;
-    priceSpan.text(`${luggagePrice} VND`);
+    let luggagePriceText = Intl.NumberFormat('VND', {
+      style: 'currency',
+      currency: 'VND',
+    }).format(luggagePrice);
+
+    priceSpan.text(`${luggagePriceText}`);
   });
 
   const nextPage = () => {
-    console.log('test');
     ticketData.luggagePrice = luggagePrice;
     window.localStorage.setItem('ticketData', JSON.stringify(ticketData));
     window.location = '/seatbooking';
