@@ -41,6 +41,8 @@ $(document).ready(() => {
       loadUserTable();
     } else if (tableName === 'ticket') {
       loadTicketTable();
+    }else if (tableName === 'flight') {
+      loadFlightTable();
     }
   });
 
@@ -53,6 +55,8 @@ $(document).ready(() => {
       loadUserTable();
     } else if (tableName === 'ticket') {
       loadTicketTable();
+    }else if (tableName === 'flight') {
+      loadFlightTable();
     }
   });
 
@@ -64,6 +68,8 @@ $(document).ready(() => {
       loadUserTable();
     } else if (tableName === 'ticket') {
       loadTicketTable();
+    }else if (tableName === 'flight') {
+      loadFlightTable();
     }
   });
 
@@ -182,6 +188,9 @@ $(document).ready(() => {
     } else if (tableName === 'ticket') {
       var container = $('#pagination-ticket-list').append(pageList);
       $('#pagination-ticket-container').append(container);
+    }else if (tableName === 'flight') {
+      var container = $('#pagination-flight-list').append(pageList);
+      $('#pagination-flight-container').append(container);
     }
 
     console.log(page_array);
@@ -206,7 +215,6 @@ $(document).ready(() => {
     });
     tabActive[indexTab].classList.add('active');
 
-    console.log(tabName);
     if (tabName === 'location') {
       tableName = 'location';
       page = 1;
@@ -227,7 +235,11 @@ $(document).ready(() => {
   };
 
   /* Thêm chuyến bay */
-  btnAddFlight.on('click', showAddFlightForm);
+  btnAddFlight.on('click', function(){
+    var id = btnAddFlight.attr('id');
+    formName = '#' + id.slice(id.indexOf('-') + 1, id.length) + '-form';
+    showAddFlightForm();
+  });
   btnHideForm.on('click', function () {
     hideForm();
     hideDialog();
@@ -285,7 +297,6 @@ $(document).ready(() => {
 
     addFlightForm.css('display', 'block');
     const submitButton = addFlightForm.find('button[type=submit]');
-    console.log(submitButton);
 
     submitButton.on('click', async (event) => {
       event.preventDefault();
@@ -305,7 +316,11 @@ $(document).ready(() => {
         numSeat,
       });
 
-      console.log(res);
+      document.querySelector('#add-flight-form form').classList.remove('show');
+      setTimeout(function () {
+        $('#add-flight-form').css('display', 'none');
+      }, 300);
+      loadFlightTable();
     });
 
     setTimeout(function () {
@@ -337,7 +352,6 @@ $(document).ready(() => {
     }
   });
 
-  /* Xem thông tin chi tiết chuyến bay */
   function showDialog(actionType, tableName, currentRowId, data) {
     let dialog = $(`#${dialogID}`).find('.dialog');
     let confirmButton = dialog.find('button[type="submit"]');
@@ -424,8 +438,41 @@ $(document).ready(() => {
   }
 
   const loadFlightTable = async () => {
-    const res = await $.get('/flights');
-    console.log(res);
+    const res = await $.get('/flights',  { page: page, per_page: 6 });
+    const locationList = await $.get('/locations');
+    let arriveLocation = '';
+    let startLocation = '';
+    const flightList = res.rows;
+    const totalFlight = res.count;
+    const flightTable = $('#flight_table');
+    const flightTbody = flightTable.find('tbody');
+    if(totalFlight % 6 != 0){
+      pageCount = (totalFlight / 6) + 1;
+    }
+    flightTbody.empty();
+
+    flightList.forEach((flight, index) => {
+      locationList.find((location) =>{
+        if(flight.startLocationId === location.id) startLocation = location.value;
+        if(flight.arriveLocationId === location.id) arriveLocation = location.value;
+      })
+      flightTbody.append(`<tr id=${flight.id}>
+        <td>${index}</td>  
+        <td>${flight.startTime.replace("T", " ").slice(0,19)}</td>
+        <td>${flight.arriveTime.replace("T", " ").slice(0,19)}</td>
+        <td>${startLocation}</td>
+        <td>${arriveLocation}</td>
+        <td>${flight.numSeat}</td>
+        <td>${flight.basePrice}</td>
+       <td>
+        <button class='btn-edit' id='btn-update-flight'><span class='fa fa-pencil'></span></button>
+          <button class='btn-delete' id="btn-delete-flight"><span class='fa fa-trash'></span></button>
+        </td> 
+      </tr>`);
+    });
+    paginationFlight.empty();
+    createPageLink(tableName);
+    return totalFlight;
   };
 
   const loadUserTable = async () => {

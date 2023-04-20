@@ -4,56 +4,20 @@
       <h2 class="title-table">Quản lý chuyến bay</h2>
       <button class='btn-add' id='btn-add-flight'>Thêm chuyến bay</button>
     </div>
-    <table class ='airlines_table'>
+    <table class ='airlines_table' id="flight_table">
       <thead>
         <tr>
-          <th>Chuyến bay</th>
-          <th>Ngày bay</th>
-          <th>Thời gian</th>
+          <th>STT</th>
+          <th>Thời gian đi</th>
+          <th>Thời gian đến</th>
           <th>Địa điểm đi</th>
           <th>Địa điểm đến</th>
-          <th>Nổi bật</th>
+          <th>Số ghế</th>
+          <th>Giá</th>
           <th>Thao tác</th>
         </tr>
       </thead>
-        <tr>
-          <td>VN6002</td>
-          <td>16/03/2023</td>
-          <td>6:30 - 9:05</td>
-          <td>Hồ Chí Minh</td>
-          <td>Hà Nội</td>
-          <td><input type="checkbox" id="outstanding" name="outstanding"></td>
-          <td>
-            <button class='btn-view'><span
-                class='fa fa-eye'
-              ></span></button>
-            <button class='btn-edit' id="btn-update-flight"><span
-                class='fa fa-pencil'
-              ></span></button>
-            <button class='btn-delete' id="btn-delete-flight"><span
-                class='fa fa-trash'
-              ></span></button>
-          </td>
-        </tr>
-        <tr>
-          <td>VN6002</td>
-          <td>16/03/2023</td>
-          <td>6:30 - 9:05</td>
-          <td>Hồ Chí Minh</td>
-          <td>Hà Nội</td>
-          <td><input type="checkbox" id="outstanding" name="outstanding"></td>
-          <td>
-            <button class='btn-view'><span
-                class='fa fa-eye'
-              ></span></button>
-            <button class='btn-edit' id="btn-update-flight"><span
-                class='fa fa-pencil'
-              ></span></button>
-            <button class='btn-delete' id="btn-delete-flight"><span
-                class='fa fa-trash'
-              ></span></button>
-          </td>
-        </tr>
+      <tbody></tbody>
     </table>
     <div id='pagination-flight-container'>
       <ul id='pagination-flight-list'></ul>
