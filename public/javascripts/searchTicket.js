@@ -17,7 +17,9 @@ searchFlightButton.on('click', async () => {
   <td>${ticket.userId}</td>
   <td>${ticket.user.username}</td>
   <td>${ticket.type ? 'Thương gia' : 'Phổ thông'}</td>
-  <td>${ticket.price}</td>
+  <td>${Intl.NumberFormat('VND', { style: 'currency', currency: 'VND' }).format(
+    ticket.price
+  )}</td>
   `);
 
   flightDataTable.append(
