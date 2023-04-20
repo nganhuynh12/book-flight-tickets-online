@@ -20,28 +20,12 @@ module.exports = (app, dirName) => {
     engine({
       extname: 'hbs',
       helpers: {
-        gen_seats(colNum, rowNum, options) {
-          const matrix = [];
-          let count = 1;
-          for (let i = 0; i < rowNum; i++) {
-            const row = [];
-            for (let j = 0; j < colNum; j++) {
-              row.push(
-                `<div style="width: 50px; height: 50px;">${options.fn(
-                  count
-                )}</div>`
-              );
-              count += 1;
-            }
-            matrix.push(`<div style="display: flex">${row.join(' ')}</div>`);
-          }
-          return `<div style='display: flex; flex-direction: column;'> 
-              ${matrix.join(' ')}
-          </div>
-        `;
-        },
         static(name) {
           return require('../lib/static').map(name);
+        },
+        currency(value) {
+          console.log(value);
+          return value;
         },
       },
     })
