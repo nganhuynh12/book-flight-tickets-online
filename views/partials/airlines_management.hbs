@@ -9,48 +9,43 @@
     <div class='container-group-2'>
       <div>
         <label class='label-input' for='flight-price'>Giá chuyến bay:</label>
-        <input type='number' id='flight-price' name='flight-price' required />
+        <input type='number' id='flight-price' name='flight-price' />
       </div>
 
-      <div>
-        <label class='label-input' for='flight-date'>Ngày bay:</label>
-        <input type='date' id='flight-date' name='flight-date' required />
-      </div>
     </div>
 
     <div class='container-group-2'>
       <div>
         <label class='label-input' for='departure-time'>Thời gian đi:</label>
-        <input type='time' id='departure-time' name='departure-time' required />
+        <input
+          type='datetime-local'
+          id='departure-time'
+          name='departure-time'
+        />
       </div>
 
       <div>
         <label class='label-input' for='arrival-time'>Thời gian đến:</label>
-        <input type='time' id='arrival-time' name='arrival-time' required />
+        <input type='datetime-local' id='arrival-time' name='arrival-time' />
       </div>
     </div>
 
     <div class='container-group-2'>
       <div>
         <label class='label-input' for='numSeat'>Số ghế:</label>
-        <input type='number' id='numSeat' name='numSeat' required />
-      </div>
-
-      <div>
-        <label class='label-input' for='ticketClass'>Hạng vé:</label>
-        <input type='text' id='ticketClass' name='ticketClass' required />
+        <input type='number' id='numSeat' name='numSeat' />
       </div>
     </div>
 
     <div class='container-group-2'>
       <div>
         <label class='label-input' for='departure'>Điểm khởi hành:</label>
-        <input type='text' id='departure' name='departure' required />
+        <select type='text' id='departure' name='departure'></select>
       </div>
 
       <div>
         <label class='label-input' for='destination'>Điểm đến:</label>
-        <input type='text' id='destination' name='destination' required />
+        <select type='text' id='destination' name='destination'></select>
       </div>
     </div>
     <button type='submit' class='btn-submit-add'>Thêm</button>
@@ -68,22 +63,12 @@
     <div class='container-group-2'>
       <div>
         <label class='label-input' for='flight-no'>Mã chuyến bay:</label>
-        <input
-          type='text'
-          id='update-flight-no'
-          name='update-flight-no'
-          required
-        />
+        <input type='text' id='update-flight-no' name='update-flight-no' />
       </div>
 
       <div>
         <label class='label-input' for='flight-date'>Ngày bay:</label>
-        <input
-          type='date'
-          id='update-flight-date'
-          name='update-flight-date'
-          required
-        />
+        <input type='date' id='update-flight-date' name='update-flight-date' />
       </div>
     </div>
 
@@ -94,7 +79,6 @@
           type='time'
           id='update-departure-time'
           name='update-departure-time'
-          required
         />
       </div>
 
@@ -104,7 +88,6 @@
           type='time'
           id='update-arrival-time'
           name='update-arrival-time'
-          required
         />
       </div>
     </div>
@@ -112,44 +95,24 @@
     <div class='container-group-2'>
       <div>
         <label class='label-input' for='numSeat'>Số ghế:</label>
-        <input
-          type='number'
-          id='update-numSeat'
-          name='update-numSeat'
-          required
-        />
+        <input type='number' id='update-numSeat' name='update-numSeat' />
       </div>
 
       <div>
         <label class='label-input' for='ticketClass'>Hạng vé:</label>
-        <input
-          type='text'
-          id='update-ticketClass'
-          name='update-ticketClass'
-          required
-        />
+        <input type='text' id='update-ticketClass' name='update-ticketClass' />
       </div>
     </div>
 
     <div class='container-group-2'>
       <div>
         <label class='label-input' for='departure'>Điểm khởi hành:</label>
-        <input
-          type='text'
-          id='update-departure'
-          name='update-departure'
-          required
-        />
+        <input type='text' id='update-departure' name='update-departure' />
       </div>
 
       <div>
         <label class='label-input' for='destination'>Điểm đến:</label>
-        <input
-          type='text'
-          id='update-destination'
-          name='update-destination'
-          required
-        />
+        <input type='text' id='update-destination' name='update-destination' />
       </div>
     </div>
     <button type='submit' class='btn-submit-update'>Sửa</button>
