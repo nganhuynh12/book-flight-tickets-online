@@ -1,5 +1,6 @@
 var express = require('express');
 const localAuthGuard = require('../guards/local-auth.guard');
+const localAuthAdminGuard = require('../guards/local-auth-admin.guard');
 var router = express.Router();
 const User = require('../models/index').users;
 const Ticket = require('../models/index').tickets;
@@ -14,8 +15,8 @@ router.get('/faq', (req, res, next) => {
   res.render('faq');
 });
 
-router.get('/admin', (req, res, next) => {
-  res.render('admin', { layout: 'plain' });
+router.get('/admin', localAuthAdminGuard, (req, res, next) => {
+  res.render('admin', { layout: 'plain', user: req.user });
 });
 
 router.get('/aboutus', (req, res, next) => {
@@ -23,6 +24,7 @@ router.get('/aboutus', (req, res, next) => {
 });
 
 router.get('/home', (req, res, next) => {
+  console.log(res.locals);
   res.render('home');
 });
 

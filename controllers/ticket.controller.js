@@ -19,7 +19,7 @@ class ticketController {
 
   async findByPk(req, res, next) {
     const result = await this.service.findTicketWithUserData(req.params.id);
-    console.log(result);
+    result.username = result.user.username;
     return res.json(result);
   }
 

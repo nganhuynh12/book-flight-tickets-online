@@ -32,12 +32,13 @@ router.post(
   passport.authenticate('local', {
     failureRedirect: '/auth',
     successRedirect: '/home',
+    failureFlash: 'login error',
   }),
   validationPipe,
   authController.login.bind(authController)
 );
 
-router.post(
+router.get(
   '/logout',
   localAuthGuard,
   authController.logout.bind(authController)

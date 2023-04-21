@@ -34,6 +34,9 @@ module.exports = (sequelize, Sequelize) => {
       birthDay: {
         type: Sequelize.DATEONLY,
       },
+      isAdmin: {
+        type: Sequelize.BOOLEAN,
+      },
     },
     {
       sequelize,

@@ -30,6 +30,7 @@ class authController {
     if (req.user) {
       return res.json({
         success: true,
+        isAdmin: req.user.isAdmin,
       });
     }
   }
@@ -39,7 +40,11 @@ class authController {
     return res.json(result);
   }
 
-  logout(req, res, next) {}
+  logout(req, res, next) {
+    req.logout(() => {
+      res.redirect('/auth');
+    });
+  }
 }
 
 module.exports = authController;
