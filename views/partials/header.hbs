@@ -21,21 +21,24 @@
         <li class='nav-item'>
           <a class='nav-link' href='searchticket'>Tra cứu</a>
         </li>
+        <li class='nav-item'>
+          <a class='nav-link active' href='faq'> Trợ giúp</a>
+        </li>
         {{#if isLoggedIn}}
+          <li class='nav-item'>
+            <a class='nav-link' href='/bookinghistory'>Lịch sử</a>
+          </li>
           <li class='nav-item'>
             <a class='nav-link' href='profile'>{{user.username}}</a>
           </li>
           <li class='nav-item'>
-            <a class='nav-link' href='/auth/logout'>logout</a>
+            <a class='nav-link' href='/auth/logout'>Đăng xuất</a>
           </li>
         {{else}}
           <li class='nav-item'>
             <a class='nav-link' href='auth'>Đăng nhập</a>
           </li>
         {{/if}}
-        <li class='nav-item'>
-          <a class='nav-link active' href='faq'> Trợ giúp</a>
-        </li>
       </ul>
     </div>
   </div>
