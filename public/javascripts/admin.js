@@ -41,7 +41,7 @@ $(document).ready(() => {
       loadUserTable();
     } else if (tableName === 'ticket') {
       loadTicketTable();
-    }else if (tableName === 'flight') {
+    } else if (tableName === 'flight') {
       loadFlightTable();
     }
   });
@@ -55,7 +55,7 @@ $(document).ready(() => {
       loadUserTable();
     } else if (tableName === 'ticket') {
       loadTicketTable();
-    }else if (tableName === 'flight') {
+    } else if (tableName === 'flight') {
       loadFlightTable();
     }
   });
@@ -68,7 +68,7 @@ $(document).ready(() => {
       loadUserTable();
     } else if (tableName === 'ticket') {
       loadTicketTable();
-    }else if (tableName === 'flight') {
+    } else if (tableName === 'flight') {
       loadFlightTable();
     }
   });
@@ -188,7 +188,7 @@ $(document).ready(() => {
     } else if (tableName === 'ticket') {
       var container = $('#pagination-ticket-list').append(pageList);
       $('#pagination-ticket-container').append(container);
-    }else if (tableName === 'flight') {
+    } else if (tableName === 'flight') {
       var container = $('#pagination-flight-list').append(pageList);
       $('#pagination-flight-container').append(container);
     }
@@ -235,7 +235,7 @@ $(document).ready(() => {
   };
 
   /* Thêm chuyến bay */
-  btnAddFlight.on('click', function(){
+  btnAddFlight.on('click', function () {
     var id = btnAddFlight.attr('id');
     formName = '#' + id.slice(id.indexOf('-') + 1, id.length) + '-form';
     showAddFlightForm();
@@ -296,6 +296,7 @@ $(document).ready(() => {
 
     addFlightForm.css('display', 'block');
     const submitButton = addFlightForm.find('button[type=submit]');
+    submitButton.unbind();
 
     submitButton.on('click', async (event) => {
       event.preventDefault();
@@ -366,33 +367,33 @@ $(document).ready(() => {
           if (tableName === 'locations') {
             loadLocationTable();
             const count = await loadLocationTable();
-            if(count % 6 === 0){
+            if (count % 6 === 0) {
               page = count / 6;
               loadLocationTable();
             }
           } else if (tableName === 'users') {
             loadUserTable();
             const count = await loadUserTable();
-            if(count % 6 === 0){
+            if (count % 6 === 0) {
               page = count / 6;
               loadUserTable();
             }
           } else if (tableName === 'tickets') {
             loadTicketTable();
             const count = await loadTicketTable();
-            if(count % 6 === 0){
+            if (count % 6 === 0) {
               page = count / 6;
               loadTicketTable();
             }
-          }else if (tableName === 'flights') {
+          } else if (tableName === 'flights') {
             loadFlightTable();
             const count = await loadFlightTable();
-            if(count % 6 === 0){
+            if (count % 6 === 0) {
               page = count / 6;
               loadFlightTable();
             }
           }
-          
+
           dialog.removeClass('show');
           $(`#${dialogID}`).removeClass('show');
         }
@@ -445,7 +446,7 @@ $(document).ready(() => {
   }
 
   const loadFlightTable = async () => {
-    const res = await $.get('/flights',  { page: page, per_page: 6 });
+    const res = await $.get('/flights', { page: page, per_page: 6 });
     const locationList = await $.get('/locations');
     let arriveLocation = '';
     let startLocation = '';
@@ -453,22 +454,24 @@ $(document).ready(() => {
     const totalFlight = res.count;
     const flightTable = $('#flight_table');
     const flightTbody = flightTable.find('tbody');
-    if(totalFlight % 6 != 0){
-      pageCount = (totalFlight / 6) + 1;
-    }else{
+    if (totalFlight % 6 != 0) {
+      pageCount = totalFlight / 6 + 1;
+    } else {
       pageCount = totalFlight / 6;
     }
     flightTbody.empty();
 
     flightList.forEach((flight, index) => {
-      locationList.find((location) =>{
-        if(flight.startLocationId === location.id) startLocation = location.value;
-        if(flight.arriveLocationId === location.id) arriveLocation = location.value;
-      })
+      locationList.find((location) => {
+        if (flight.startLocationId === location.id)
+          startLocation = location.value;
+        if (flight.arriveLocationId === location.id)
+          arriveLocation = location.value;
+      });
       flightTbody.append(`<tr id=${flight.id}>
         <td>${index}</td>  
-        <td>${flight.startTime.replace("T", " ").slice(0,19)}</td>
-        <td>${flight.arriveTime.replace("T", " ").slice(0,19)}</td>
+        <td>${flight.startTime.replace('T', ' ').slice(0, 19)}</td>
+        <td>${flight.arriveTime.replace('T', ' ').slice(0, 19)}</td>
         <td>${startLocation}</td>
         <td>${arriveLocation}</td>
         <td>${flight.numSeat}</td>
