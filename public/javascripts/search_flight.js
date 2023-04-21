@@ -39,6 +39,7 @@ $(document).ready(async () => {
       window.localStorage.setItem('ticketData', JSON.stringify(ticketData));
       window.location = '/signedluggage';
     };
+    rightPart.empty();
 
     flightList.forEach((flight) => {
       const arriveTime = new Date(flight.arriveTime);

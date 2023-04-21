@@ -26,7 +26,9 @@ searchFlightButton.on('click', async () => {
     `
             <tr class="row-color">
                 <td colspan="4">
-                    <h5>NGÀY KHỞI HÀNH: <b>${ticket.flight.startTime}</b></h5>
+                    <h5>NGÀY KHỞI HÀNH: <b>${new Date(
+                      ticket.flight.startTime
+                    ).toLocaleDateString()}</b></h5>
                 </td>
             </tr>
             <tr>
