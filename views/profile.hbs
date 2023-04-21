@@ -152,16 +152,16 @@
                 </div>
                 <div class="form-group col-sm-4">
                   <label for="sex"><b>Giới tính:</b></label>
-        <select id="gender" name="gender">
-          <option></option>
-{{#if data.gender}}
-          <option value="1" >Nữ</option>
-          <option value="0" selected>Nam</option>
-{{else}}
-          <option value="1" selected>Nữ</option>
-          <option value="0">Nam</option>
-{{/if}}
-        </select>
+                  <select id="gender" name="gender">
+                    <option></option>
+                    {{#if data.gender}}
+                    <option value="1">Nữ</option>
+                    <option value="0" selected>Nam</option>
+                    {{else}}
+                    <option value="1" selected>Nữ</option>
+                    <option value="0">Nam</option>
+                    {{/if}}
+                  </select>
                 </div>
 
               </div>
@@ -206,6 +206,9 @@
                   <input type="email" class="form-control" id="email" value="{{data.email}}">
                 </div>
               </div>
+              <button type="button" style="background-color:#047683; color:#fff" class="btn" data-bs-toggle="modal" data-bs-target="#passwordModal">
+                Đổi mật khẩu
+              </button>
             </form>
           </div>
         </div>
@@ -215,43 +218,38 @@
     </div>
   </div>
 
-  {{!-- <script>
-    $(document).ready(function (e) {
-      var flag = false;
+  <!-- Dialog đổi mật khẩu -->
+  <div class="modal fade" id="passwordModal" tabindex="-1" aria-labelledby="passwordModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="passwordModalLabel">Đổi mật khẩu</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="mb-3">
+              <label for="currentPassword" class="form-label">Mật khẩu hiện tại</label>
+              <input type="password" class="form-control" id="currentPassword">
+            </div>
+            <div class="mb-3">
+              <label for="newPassword" class="form-label">Mật khẩu mới</label>
+              <input type="password" class="form-control" id="newPassword">
+            </div>
+            <div class="mb-3">
+              <label for="confirmPassword" class="form-label">Xác nhận mật khẩu mới</label>
+              <input type="password" class="form-control" id="confirmPassword">
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+          <button type="button" class="btn btn-primary" id="savePassword">Lưu</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
-      $(".cc").click(function () {
-        if (flag) {
-          $("#filePhoto").click();
-        }
-      });
-
-      $("#filePhoto").click(function (e) {
-        if (flag) {
-          e.preventDefault();
-        }
-      });
-
-      if (e) {
-        var imageLoader = document.getElementById("filePhoto");
-        imageLoader.addEventListener("change", handleImage, false);
-      }
-
-      function handleImage(e) {
-        var reader = new FileReader();
-        reader.onload = function (event) {
-          $(".uploader img").attr("src", event.target.result);
-        };
-
-        reader.readAsDataURL(e.target.files[0]);
-
-        reader.onloadend = function (event) {
-          $(".uploader").after("");
-          flag = true;
-        };
-      }
-      $("#img").draggable();
-    });
-  </script> --}}
   <script src="/javascripts/profile.js"></script>
 </body>
 
