@@ -1,3 +1,5 @@
+const { log } = require('handlebars');
+
 class ticketController {
   constructor(service) {
     this.service = service;
@@ -23,7 +25,10 @@ class ticketController {
 
   async findByPk(req, res, next) {
     const result = await this.service.findTicketWithUserData(req.params.id);
-    result.username = result.user.username;
+    if ('user' in result && result.user !== null) {
+      console.log(result.user);
+      result.username = result.user.username;
+    }
     return res.json(result);
   }
 

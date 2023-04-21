@@ -13,7 +13,6 @@ $(document).ready(async () => {
   const bookedSeatList = bookedTicketList.map((bookedTicket) => {
     return bookedTicket.seatId;
   });
-  console.log(bookedSeatList);
 
   let luggagePriceText = Intl.NumberFormat('VND', {
     style: 'currency',
@@ -37,13 +36,15 @@ $(document).ready(async () => {
             !event.target.classList.contains('occupied')
           ) {
             if (!event.target.classList.contains('selected')) {
-              seatList.push(event.target.id);
+              seatList.push(Number.parseInt(event.target.id));
             } else {
               seatList = seatList.filter((seat) => seat !== event.target.id);
             }
             event.target.classList.toggle('selected');
           }
-          seatPriceList = seatList.map((res, seat) => {
+          console.log(seatList);
+          seatPriceList = seatList.map((seat, index) => {
+            console.log(seat);
             if (seat <= 8 * 3 + 1) {
               return 300000;
             } else {
@@ -73,6 +74,7 @@ $(document).ready(async () => {
   $('.button-continue').on('click', () => {
     ticketData.seatPrice = seatPrice;
     ticketData.seatList = seatList;
+    ticketData.seatPriceList = seatPriceList;
 
     window.localStorage.setItem('ticketData', JSON.stringify(ticketData));
     window.location = '/inforbooking';

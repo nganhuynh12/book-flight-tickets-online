@@ -43,6 +43,7 @@ class baseService {
 
       return res;
     } else {
+      console.log(where);
       return await this.model.findAll({ where });
     }
   }

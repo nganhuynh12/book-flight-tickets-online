@@ -29,7 +29,10 @@ $(document).ready(async () => {
     });
 
     const nextPage = (event) => {
-      const basePrice = $(event.target).parent().find('#base_price').text();
+      const basePrice = $(event.target)
+        .parent()
+        .find('#base_price')
+        .attr('value');
       let flight = flightList.filter((flight) => {
         return flight.id == $(event.target).parent().attr('id');
       });
@@ -82,17 +85,18 @@ $(document).ready(async () => {
             </div>
             <div class="card-body" >
               <li id=${flight.id}>
-                <p class="flight-list" id="base_price">giá vé: ${Intl.NumberFormat(
-                  'VND',
-                  { currency: 'VND', style: 'currency' }
-                ).format(flight.basePrice)}</p>
+                <p class="flight-list" id="base_price" value=${
+                  flight.basePrice
+                }>giá vé: ${Intl.NumberFormat('VND', {
+          currency: 'VND',
+          style: 'currency',
+        }).format(flight.basePrice)}</p>
                 <button class="btn-seedel-ticket" data-bs-toggle="modal" data-bs-target="#seedetail">Xem chi
                   tiết</button>
                 <button class="btn-book-ticket">Chọn vé</button>
               </li>
             </div>
           </div>
-
 	`
       );
     });

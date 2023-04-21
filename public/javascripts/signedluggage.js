@@ -13,13 +13,15 @@ $(document).ready(() => {
   priceSpan.text(`${luggagePriceText}`);
 
   luggageType.on('click', (event) => {
-    luggagePrice = Number.parseInt(event.target.value) + basePrice;
-    let luggagePriceText = Intl.NumberFormat('VND', {
+    luggagePrice = Number.parseInt(event.target.value);
+    console.log(luggagePrice);
+    luggagePriceAndBasePrice = Number.parseInt(event.target.value) + basePrice;
+    let luggagePriceAndBasePriceText = Intl.NumberFormat('VND', {
       style: 'currency',
       currency: 'VND',
-    }).format(luggagePrice);
+    }).format(luggagePriceAndBasePrice);
 
-    priceSpan.text(`${luggagePriceText}`);
+    priceSpan.text(`${luggagePriceAndBasePriceText}`);
   });
 
   const nextPage = () => {

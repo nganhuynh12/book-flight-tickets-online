@@ -46,13 +46,13 @@ $(document).ready(() => {
   }).format(ticketData.luggagePrice + ticketData.seatPrice);
   priceSpan.text(ticketPriceText);
 
-  submitButton.on('click', () => {
-    ticketData.seatList.forEach(async function (seat) {
-      let data = {};
+  submitButton.on('click', async () => {
+    let data = {};
+    ticketData.seatList.forEach(async (seat, index) => {
       if (userId !== '') {
         data = {
-          type: 1,
-          price: ticketData.seatPrice + ticketData.basePrice,
+          type: seat < 8 * 3 ? 1 : 0,
+          price: ticketData.seatPriceList[index] + ticketData.basePrice,
           flightId: ticketData.flight.id,
           seatId: seat,
           luggagePrice: ticketData.luggagePrice,
@@ -64,8 +64,8 @@ $(document).ready(() => {
         };
       } else {
         data = {
-          type: 1,
-          price: ticketData.seatPrice + ticketData.basePrice,
+          type: seat < 8 * 3 ? 1 : 0,
+          price: ticketData.seatPriceList[index] + ticketData.basePrice,
           flightId: ticketData.flight.id,
           seatId: seat,
           luggagePrice: ticketData.luggagePrice,
