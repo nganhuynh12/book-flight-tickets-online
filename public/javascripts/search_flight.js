@@ -44,6 +44,11 @@ $(document).ready(async () => {
     flightList.forEach((flight) => {
       const arriveTime = new Date(flight.arriveTime);
       const startTime = new Date(flight.startTime);
+      const different =
+        new Date(flight.arriveTime).getTime() -
+        new Date(flight.startTime).getTime();
+      const hourDiff = different / (1000 * 3600);
+      const minuteDiff = (different - hourDiff * (1000 * 3600)) / 1000;
       console.log(flight);
 
       rightPart.append(
@@ -68,7 +73,7 @@ $(document).ready(async () => {
                   </div>
 
                   <div>
-                    <p class="far">hm</p>
+                    <p class="far">${hourDiff}h${minuteDiff}m</p>
                     <p class="far">Bay thẳng</p>
                   </div>
 
@@ -77,7 +82,10 @@ $(document).ready(async () => {
             </div>
             <div class="card-body" >
               <li id=${flight.id}>
-                <p class="flight-list" id="base_price">${flight.basePrice}</p>
+                <p class="flight-list" id="base_price">giá vé: ${Intl.NumberFormat(
+                  'VND',
+                  { currency: 'VND', style: 'currency' }
+                ).format(flight.basePrice)}</p>
                 <button class="btn-seedel-ticket" data-bs-toggle="modal" data-bs-target="#seedetail">Xem chi
                   tiết</button>
                 <button class="btn-book-ticket">Chọn vé</button>
