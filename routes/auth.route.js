@@ -31,8 +31,7 @@ router.post(
     .isLength({ min: 6, max: 20 }),
   passport.authenticate('local', {
     failureRedirect: '/auth',
-    successRedirect: '/home',
-    failureFlash: 'login error',
+    failureMessage: true,
   }),
   validationPipe,
   authController.login.bind(authController)

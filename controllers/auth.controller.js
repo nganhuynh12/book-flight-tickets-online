@@ -27,11 +27,11 @@ class authController {
   }
 
   async login(req, res, next) {
-    if (req.user) {
-      return res.json({
-        success: true,
-        isAdmin: req.user.isAdmin,
-      });
+    console.log('isAdmin' in req.user);
+    if ('isAdmin' in req.user) {
+      return res.redirect('/admin');
+    } else {
+      return res.redirect('/home');
     }
   }
 

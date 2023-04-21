@@ -21,7 +21,7 @@ module.exports = class authService {
     user.password = hashedPassword;
     const result = await this.model.create(user);
     if (result) {
-      return { success: true, message: 'User created' };
+      return { success: true, message: 'User created', isAdmin: true };
     }
   }
 
