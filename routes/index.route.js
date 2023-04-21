@@ -57,9 +57,7 @@ router.get('/profile', localAuthGuard, async (req, res, next) => {
 
 router.get('/inforbooking', async (req, res, next) => {
   if ('user' in req) {
-    const userData = (
-      await User.findByPk('47ee153f-f5af-4753-a16a-9893fac988ea')
-    ).dataValues;
+    const userData = (await User.findByPk(req.user.id)).dataValues;
 
     const lastName = userData.username.slice(
       userData.username.lastIndexOf(' ')
@@ -129,10 +127,13 @@ router.get('/bookinghistory', localAuthGuard, async (req, res, next) => {
     ticketData.dataValues.type = ticketData.dataValues.type
       ? 'Thương gia'
       : 'Phổ thông';
+    ticketData.dataValues.price = Intl.NumberFormat('VND', {
+      style: 'currency',
+      currency: 'VND',
+    }).format(ticketData.dataValues.price);
 
     return ticketData.dataValues;
   });
-  console.log(ticketDatas[0]);
 
   res.render('bookinghistory', { ticketDatas, userId: req.user.id });
 });
