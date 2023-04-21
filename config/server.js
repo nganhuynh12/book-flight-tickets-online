@@ -8,13 +8,12 @@ const session = require('express-session');
 const cors = require('cors');
 const rateLimit = require('express-rate-limit');
 const express = require('express');
+const flash = require('connect-flash');
+const { log } = require('console');
 require('dotenv').config();
 
 module.exports = (app, dirName) => {
-  app.use(function (req, res, next) {
-    // res.set('Content-Security-Policy', "default-src 'self'");
-    next();
-  });
+  app.use(flash());
   app.engine(
     'hbs',
     engine({
@@ -55,4 +54,13 @@ module.exports = (app, dirName) => {
   );
   app.use(passport.session());
   app.use(passport.authenticate('session'));
+  app.use(function (req, res, next) {
+    // res.set('Content-Security-Policy', "default-src 'self'");
+
+    if ('user' in req) {
+      res.locals.user = req.user;
+      res.locals.isLoggedIn = true;
+    }
+    next();
+  });
 };
