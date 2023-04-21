@@ -13,7 +13,11 @@ class ticketController {
   }
 
   async findAll(req, res, next) {
-    const result = await this.service.findAll(req.query);
+    const result = await this.service.findAll({
+      page: req.query.page,
+      per_page: req.query.per_page,
+      where: req.query,
+    });
     return res.json(result);
   }
 
