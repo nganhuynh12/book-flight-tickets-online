@@ -32,12 +32,11 @@ hr {
 
 /* processbar */
 .progressbar-wrapper {
-  background: #fff;
-  width: 100%;
+  background: #fff; 
   padding-top: 10px;
   padding-bottom: 5px;
   margin-bottom: 90px;
-  margin-left: 280px;
+  margin-left: 400px;
 
 }
 
