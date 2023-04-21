@@ -252,9 +252,7 @@ $(document).ready(() => {
     let currentRowId = currentRow.attr('id');
     dialogID = id.slice(id.indexOf('-') + 1, id.length);
     if (dialogID.includes('flight')) {
-      var idFlight = currentRow.find('td:eq(0)').html();
-      $('#flightID').html(idFlight);
-      showDialog('delete', 'users', currentRowId);
+      showDialog('delete', 'flights', currentRowId);
     } else if (dialogID.includes('location')) {
       locationName = currentRow.find('td:eq(1)').html();
       $('#locationName').html(locationName);
@@ -289,6 +287,7 @@ $(document).ready(() => {
 
   async function showAddFlightForm() {
     const locationList = await $.get('/locations');
+    addFlightForm.find('input').val('');
 
     locationList.forEach(({ value, id }) => {
       departureSelect.append(`<option value=${id}>${value}</option>`);
@@ -385,7 +384,15 @@ $(document).ready(() => {
               page = count / 6;
               loadTicketTable();
             }
+          }else if (tableName === 'flights') {
+            loadFlightTable();
+            const count = await loadFlightTable();
+            if(count % 6 === 0){
+              page = count / 6;
+              loadFlightTable();
+            }
           }
+          
           dialog.removeClass('show');
           $(`#${dialogID}`).removeClass('show');
         }
@@ -448,6 +455,8 @@ $(document).ready(() => {
     const flightTbody = flightTable.find('tbody');
     if(totalFlight % 6 != 0){
       pageCount = (totalFlight / 6) + 1;
+    }else{
+      pageCount = totalFlight / 6;
     }
     flightTbody.empty();
 

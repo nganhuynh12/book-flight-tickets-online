@@ -23,4 +23,7 @@ router.get(
   flightController.findAll.bind(flightController)
 );
 
+router.delete('/:id', flightController.deleteById.bind(flightController));
+router.put('/:id', flightController.updateById.bind(flightController));
+
 module.exports = router;
