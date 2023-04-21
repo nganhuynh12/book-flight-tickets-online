@@ -33,13 +33,11 @@ hr {
 /* processbar */
 .progressbar-wrapper {
   background: #fff;
-  width: 100%;
   padding-top: 10px;
   padding-bottom: 5px;
   margin-bottom: 90px;
-  margin-left: 220px;
+  margin-left: 400px;
 }
-
 .progressbar li {
   list-style-type: none;
   width: 16.3%;
