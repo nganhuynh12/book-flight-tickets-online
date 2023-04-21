@@ -277,7 +277,7 @@ $(document).ready(() => {
   $('body').on('click', '.btn-edit', function () {
     var id = $(this).attr('id');
     if (id.includes('flight')) {
-      showUpdateFlightForm();
+      showUpdateFlightForm($(this).closest('tr').attr('id'));
     } else {
       dialogID = id.slice(id.indexOf('-') + 1, id.length);
       locationName = $(this).closest('tr').find('td:eq(1)').html();
@@ -328,9 +328,64 @@ $(document).ready(() => {
     }, 50);
   }
 
-  function showUpdateFlightForm() {
+  async function showUpdateFlightForm(rowID) {
     formName = '#' + updateFlightForm.attr('id');
+    const locationList = await $.get('/locations');
+    const flightData = await $.get('/flights',{page: page, per_page: 6});
+    const flightRows = flightData.rows;
+    const departure = $('#update-departure');
+    const destination = $('#update-destination');
+
+    locationList.forEach(({value, id}) =>{
+      departure.append(`<option value=${id}>${value}</option>`);
+      destination.append(`<option value=${id}>${value}</option>`);
+    });
+
+    flightRows.find((flight) =>{
+      if(flight.id === rowID){
+        $('#flight-update-price').val(flight.basePrice);
+        $('#update-numSeat').val(flight.numSeat);
+        $('#update-departure-time').val(flight.startTime.slice(0,16));
+        $('#update-arrival-time').val(flight.arriveTime.slice(0,16));
+      }
+    });
+
     updateFlightForm.css('display', 'block');
+    const submitButton = updateFlightForm.find('button[type=submit]');
+    submitButton.unbind();
+
+    submitButton.on('click', async (event) => {
+      event.preventDefault();
+      const start_time = $('#update-departure-time').val();
+      const arrive_time = $('#update-arrival-time').val();
+      const start_location_id = $('#update-departure').val();
+      const arrive_location_id = $('#update-destination').val();
+      const base_price = $('#flight-update-price').val();
+      const num_seat = $('#update-numSeat').val();
+
+      console.log(start_time);
+      const res = await $.ajax({
+        url: `flights/${rowID}`,
+        type: 'PUT',
+        data: {
+          startTime: start_time,
+          arriveTime: arrive_time,
+          startLocationId: start_location_id,
+          arriveLocationId: arrive_location_id,
+          basePrice: base_price,
+          numSeat: num_seat,
+        },
+      });
+
+      if(res.success){
+        document.querySelector('#update-flight-form form').classList.remove('show');
+        setTimeout(function () {
+          $('#update-flight-form').css('display', 'none');
+        }, 300);
+        loadFlightTable();
+      }
+    });
+
     setTimeout(function () {
       document.querySelector('#update-flight-form form').classList.add('show');
     }, 50);
